@@ -1,0 +1,32 @@
+{
+  "name": "openbci-rx",
+  "description": "Reactive Extensions for OpenBCI",
+  "main": "src/index.js",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node ./examples/example"
+  },
+  "author": "Alex Castillo <alex@castillo.io>",
+  "license": "MIT",
+  "keywords": [
+    "openbci",
+    "eeg",
+    "neurojs",
+    "rxjs",
+    "fili"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:NeuroJS/openbci-rx.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NeuroJS/openbci-rx/issues"
+  },
+  "dependencies": {
+    "fili": "^2.0.0",
+    "lodash": "^4.17.4",
+    "openbci": "^1.5.0",
+    "rxjs": "^5.1.0"
+  },
+  "devDependencies": {}
+}
