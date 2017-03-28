@@ -10,10 +10,10 @@
 module.exports = (fftChannelGroupBuffer, bandName) => {
 
     const frequencyBands = {
-        delta: [1, 3],
-        theta: [4, 8],
-        alpha: [8, 12],
-        beta: [13, 30],
+        delta: [0.1, 4],
+        theta: [4, 7],
+        alpha: [7, 14],
+        beta: [15, 30],
         gamma: [30, 100]
     };
 
