@@ -4,7 +4,7 @@
   "main": "src/index.js",
   "version": "0.0.1",
   "scripts": {
-    "start": "node ./examples/example"
+    "start": "node ./examples/basic"
   },
   "author": "Alex Castillo <alex@castillo.io>",
   "license": "MIT",

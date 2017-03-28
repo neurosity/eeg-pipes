@@ -51,6 +51,7 @@ operators have been added to make working with EEG data easier.
 #### Filtering operators
 * pickChannels
 * filterChannels
+* notchFilter
 
 #### Frequency range operators
 
@@ -75,7 +76,6 @@ This can be accomplished by using bufferCount or bufferTime operators.
 More operators!
 
 #### Filtering operators
-* notchFilter
 * bandPassFilter
 * vertScaleFilter
 * vertAgoFilter

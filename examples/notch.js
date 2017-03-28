@@ -7,10 +7,10 @@ const options = {
 };
 
 const brainwaves$ = OpenBCIObservable(options)
-    .pickChannels(7, 8)
     .bufferCount(128)
     .bufferToFFT()
     .toMicrovolts()
-    .subscribe(buffer =>
-        console.log('buffer', buffer)
+    .notchFilter({ cutoffFrequency: 50 })
+    .subscribe(fftBuffer =>
+        console.log('fftBuffer with notch filter', fftBuffer)
     );
