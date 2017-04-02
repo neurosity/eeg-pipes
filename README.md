@@ -51,6 +51,7 @@ operators have been added to make working with EEG data easier.
 #### Filtering operators
 * pickChannels
 * filterChannels
+* lowPassFilter
 * notchFilter
 
 #### Frequency range operators
