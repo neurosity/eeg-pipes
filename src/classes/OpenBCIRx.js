@@ -11,34 +11,20 @@ module.exports = class OpenBCIRx extends OpenBCIBoard {
         this.start();
     }
 
-    start () { 
-        return new Promise((resolve, reject) => {
-            
-            const onConnect = () => 
-                this.on('ready', () => {
-                    this.streamStart();
-                    resolve();
-                });
+    async start () {
+        try {
+            const portName = await this.autoFindOpenBCIBoard();
+            await this.stream(portName);
+        } catch (error) {
+            await this.stream(OBCISimulatorPortName);
+        }
+    }
 
-            const onError = error => 
-                reject(error);
-            
-            this.autoFindOpenBCIBoard()
-                .then(portName => {
-                    if (portName) {
-                        this.connect(portName)
-                            .then(onConnect);
-                    } else {
-                        onError('No port was found.');
-                    }
-                })
-                .catch(error => {
-                    console.log(error);
-                    this.connect(OBCISimulatorPortName)
-                        .then(onConnect)
-                        .catch(onError);
-                });
-         });
+    async stream (portName) {
+        await this.connect(portName);
+        this.on('ready', async () => {
+            await this.streamStart();
+        });
     }
 
     toObservable () {
