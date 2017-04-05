@@ -66,11 +66,14 @@ And now we have a buffer of Alpha waves from channels 7 and 8!
 All RxJS operators are available. Additionally, the following custom 
 operators have been added to make working with EEG data easier.
 
+#### Detection operators
+* detectPeak(voltage)
+
 #### Filtering operators
-* pickChannels
-* filterChannels
-* lowPassFilter
-* notchFilter
+* pickChannels(i1, i2, i3)
+* filterChannels(i1, i2, i3)
+* lowPassFilter({ cutoffFrequency })
+* notchFilter({ cutoffFrequency })
 
 #### Frequency range operators
 
