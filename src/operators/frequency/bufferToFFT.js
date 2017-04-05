@@ -1,8 +1,7 @@
 
 const { Observable } = require('rxjs/Observable');
-const Fili = require('fili');
+const { FFT } = require('dsp.js');
 const groupByChannel = require('../../utils/groupByChannel');
-const isBuffer = require('../../utils/isBuffer');
 
 /**
  * @method bufferToFFT
@@ -11,17 +10,17 @@ const isBuffer = require('../../utils/isBuffer');
  * @param {Object} options
  * @returns {Observable}
  */
-module.exports = function bufferToFFT ({ 
-    windowFunction = 'none' 
+module.exports = function bufferToFFT ({
+    sampleRate = 250
 } = {}) {
 
     const toFFT = samplesBuffer => {
 
         const fft = channelGroup => {
-            const fft = new Fili.Fft(channelGroup.length);
-            const fftResult = fft.forward(channelGroup, windowFunction);
-            const fftMagnitude = fft.magnitude(fftResult);
-            return fftMagnitude;
+            const bins = channelGroup.length;
+            const fft = new FFT(bins, sampleRate);
+            fft.forward(channelGroup);
+            return fft.spectrum;
         };
 
         const fftBuffer = groupByChannel(samplesBuffer)

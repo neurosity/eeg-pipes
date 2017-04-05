@@ -7,9 +7,9 @@ const options = {
 };
 
 const brainwaves$ = OpenBCIObservable(options)
-    .bufferCount(128)
-    .bufferToFFT()
     .toMicrovolts()
+    .bufferCount(256) // bins
+    .bufferToFFT()
     .subscribe(fftBuffer =>
         console.log('fftBuffer', fftBuffer)
     );

@@ -32,9 +32,9 @@ Adding operators
 ``` js 
 const brainwaves$ = OpenBCIObservable(options)
     .pickChannels(7, 8)
-    .bufferCount(512)
-    .bufferToFFT()
     .toMicrovolts()
+    .bufferCount(256) // bins
+    .bufferToFFT()
     .alphaRange()
     .subscribe(buffer =>
         console.log(buffer)

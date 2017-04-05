@@ -23,6 +23,7 @@
     "url": "https://github.com/NeuroJS/openbci-rx/issues"
   },
   "dependencies": {
+    "dsp.js": "github:neurojs/dsp.js",
     "fili": "^2.0.0",
     "lodash": "^4.17.4",
     "openbci": "^1.5.1",
@@ -30,6 +31,6 @@
   },
   "devDependencies": {},
   "engines": {
-    "node": ">=7.8.0" 
+    "node": ">=7.8.0"
   }
 }
