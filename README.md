@@ -89,3 +89,5 @@ More operators!
 #### Transformation operators
 * toTopo
 
+### License
+MIT © [NeuroJS](https://github.com/NeuroJS)
