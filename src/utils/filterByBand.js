@@ -9,6 +9,13 @@
  */
 module.exports = (fftChannelGroupBuffer, bandName) => {
 
+    if (!fftChannelGroupBuffer[0].length) {
+        return fftChannelGroupBuffer;
+    } 
+
+    const sampleRate = 250;
+    const bins = fftChannelGroupBuffer[0].length * 2;
+
     const frequencyBands = {
         delta: [0.1, 4],
         theta: [4, 7],
@@ -19,12 +26,26 @@ module.exports = (fftChannelGroupBuffer, bandName) => {
 
     const [ min, max ] = frequencyBands[bandName];
 
-    filteredBuffer = fftChannelGroupBuffer.map(channelGroup => {
-        return channelGroup.filter(channelValue => {
-            return channelValue >= min
-                && channelValue <= max;
-        });
-    });
+    const ranges = new Array(bins / 2)
+        .fill()    
+        .map((range, index) =>
+            Math.ceil(index * (sampleRate / bins))
+        );
+
+    const filteredBuffer = fftChannelGroupBuffer
+        .map(channel =>
+            channel.filter((spectrum, index) =>
+                ranges[index] >= min
+                && ranges[index] <= max
+            )
+        );
+
+    const averagedBuffer = [filteredBuffer
+        .map(channel =>
+            !channel.length
+                ? channel
+                : channel.reduce((a, b) => a + b) / channel.length
+        )];
 
     return filteredBuffer;
 };

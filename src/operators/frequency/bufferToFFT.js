@@ -20,7 +20,7 @@ module.exports = function bufferToFFT ({
             const bins = channelGroup.length;
             const fft = new FFT(bins, sampleRate);
             fft.forward(channelGroup);
-            return fft.spectrum;
+            return Array.from(fft.spectrum);
         };
 
         const fftBuffer = groupByChannel(samplesBuffer)
