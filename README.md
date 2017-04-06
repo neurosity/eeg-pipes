@@ -76,6 +76,9 @@ This can be accomplished by using bufferCount or bufferTime operators.
 
 More operators!
 
+#### Detection operators
+* detectPeak(voltage)
+
 #### Filtering operators
 * bandPassFilter
 * vertScaleFilter
