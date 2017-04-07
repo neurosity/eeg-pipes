@@ -3,6 +3,8 @@
 Reactive Extensions for OpenBCI
 
 #### Getting started
+#### Dependencies Prerequisites
+> Make sure you have **Node version >= 7.8** installed for development purpose
 
 ``` bash
 npm install --save openbci-rx
@@ -89,3 +91,6 @@ More operators!
 
 #### Transformation operators
 * toTopo
+
+### License
+MIT © [NeuroJS](https://github.com/NeuroJS)
