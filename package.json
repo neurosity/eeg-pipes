@@ -2,7 +2,7 @@
   "name": "openbci-rx",
   "description": "Reactive Extensions for OpenBCI",
   "main": "src/index.js",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "scripts": {
     "start": "node ./examples/basic"
   },
