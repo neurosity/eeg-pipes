@@ -2,12 +2,28 @@
 
 Reactive Extensions for OpenBCI
 
-#### Getting started
 #### Dependencies Prerequisites
-> Make sure you have **Node version >= 7.8** installed for development purpose
+> Make sure you have **Node version >= 7.8** installed for development purpose.
+
+#### Getting started
+
+This library works with the following OpenBCI hardware:
+
+* Cyton
+* Ganglion
+
+Get started by importing the module:
 
 ``` bash
 npm install --save openbci-rx
+```
+
+``` js
+const { Cyton, Ganglion } = require('openbci-rx');
+
+// Or with an alias...
+
+const BrainObservable  = require('openbci-rx').Ganglion;
 ```
 
 #### Examples
@@ -15,7 +31,7 @@ npm install --save openbci-rx
 Basic usage
 
 ``` js
-const BrainObservable = require('openbci-rx');
+const BrainObservable = require('openbci-rx').Cyton;
 
 // Same options accepted by 'openbci'
 const options = {

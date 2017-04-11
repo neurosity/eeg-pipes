@@ -1,5 +1,5 @@
 
-const BrainObservable = require('../src/index');
+const BrainObservable = require('../src/index').Cyton;
 
 const options = {
     verbose: true,

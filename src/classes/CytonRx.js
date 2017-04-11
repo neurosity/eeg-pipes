@@ -1,10 +1,9 @@
 
-const OpenBCI = require('openbci');
-const OpenBCIBoard = OpenBCI.OpenBCIBoard;
-const { OBCISimulatorPortName } = OpenBCI.OpenBCIConstants;
-const OpenBCIObservable = require('./OpenBCIObservable');
+const { OpenBCIBoard, OpenBCIConstants } = require('openbci');
+const { OBCISimulatorPortName } = OpenBCIConstants;
+const BCIObservable = require('./BCIObservable');
 
-module.exports = class OpenBCIRx extends OpenBCIBoard {
+module.exports = class CytonRx extends OpenBCIBoard {
     
     constructor (options) {
         super(options); 
@@ -28,7 +27,7 @@ module.exports = class OpenBCIRx extends OpenBCIBoard {
     }
 
     toObservable () {
-        return OpenBCIObservable
+        return BCIObservable
             .create(subscriber => {
                 const streamSample = sample =>
                     subscriber.next(sample);

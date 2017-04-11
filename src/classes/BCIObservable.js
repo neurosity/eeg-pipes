@@ -2,7 +2,7 @@
 const { Observable } = require('rxjs/Rx');
 const operators = require('../operators');
 
-class OpenBCIObservable extends Observable {
+class BCIObservable extends Observable {
     lift (operator) {
         const observable = new this();
         observable.source = this;
@@ -17,4 +17,4 @@ operators.forEach(operator => {
     });
 });
 
-module.exports = OpenBCIObservable;
+module.exports = BCIObservable;
