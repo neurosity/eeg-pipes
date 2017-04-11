@@ -8,14 +8,16 @@ const { Observable } = require('rxjs/Observable');
  * @param {Number} frequency
  * @returns {Observable} buffer
  */
-module.exports = function detectPeak (voltage) {
+module.exports = function detectPeak (threshhold) {
+
+    const average = list =>
+        list.reduce((a, b) => a + b) / list.length;
 
     const detect = buffer => {
-        return buffer
-            .map(channel => {
-                const average = channel.reduce((a, b) => a + b) / channel.length;
-                return average * 100 / voltage;
-            });
+        return average(
+            buffer.map(channel =>
+                average(channel) * 100 / threshhold)
+        );
     };
 
     return Observable.create(subscriber => {
