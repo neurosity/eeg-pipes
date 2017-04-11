@@ -1,12 +1,12 @@
 
-const OpenBCIObservable = require('../src/index');
+const BrainObservable = require('../src/index');
 
 const options = {
     verbose: true,
     simulate: true
 };
 
-const brainwaves$ = OpenBCIObservable(options)
+const brainwaves$ = BrainObservable(options)
     .bufferCount(128)
     .bufferToFFT()
     .toMicrovolts()

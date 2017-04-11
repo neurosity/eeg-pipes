@@ -15,7 +15,7 @@ npm install --save openbci-rx
 Basic usage
 
 ``` js
-const OpenBCIObservable = require('openbci-rx');
+const BrainObservable = require('openbci-rx');
 
 // Same options accepted by 'openbci'
 const options = {
@@ -23,7 +23,7 @@ const options = {
     simulate: true
 };
 
-const brainwaves$ = OpenBCIObservable(options)
+const brainwaves$ = BrainObservable(options)
     .subscribe(sample =>
         console.log(sample)
     );
@@ -32,7 +32,7 @@ const brainwaves$ = OpenBCIObservable(options)
 Adding operators
 
 ``` js 
-const brainwaves$ = OpenBCIObservable(options)
+const brainwaves$ = BrainObservable(options)
     .pickChannels(7, 8)
     .toMicrovolts()
     .bufferCount(256) // bins
