@@ -9,8 +9,8 @@ Reactive Extensions for OpenBCI
 
 This library works with the following OpenBCI hardware:
 
-* Cyton
-* Ganglion
+* [Cyton](https://github.com/OpenBCI/OpenBCI_NodeJS)
+* [Ganglion](https://github.com/OpenBCI/OpenBCI_NodeJS_Ganglion)
 
 Get started by importing the module:
 
