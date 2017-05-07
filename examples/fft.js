@@ -8,7 +8,7 @@ const options = {
 
 const brainwaves$ = BrainObservable(options)
     .toMicrovolts()
-    .bufferCount(256) // bins
+    .bufferCount(256, 10) // bins
     .bufferToFFT()
     .subscribe(fftBuffer =>
         console.log('fftBuffer', fftBuffer)

@@ -1,17 +1,22 @@
 
-const OpenBCIObservable = require('../src/index');
+const BrainObservable = require('../src/index').Cyton;
+
+const bins = 512;
+const FFTBufferSize = bins / 2;
+const windowOverlap = 12;
 
 const options = {
     verbose: true,
     simulate: true
 };
 
-const brainwaves$ = OpenBCIObservable(options)
+const brainwaves$ = BrainObservable(options)
+    .pickChannels(1, 2)
     .toMicrovolts()
-    .bufferCount(256) // bins
+    .bufferCount(bins, windowOverlap)
     .bufferToFFT()
     .alphaRange()
-    .detectPeak(50) // voltage
-    .subscribe(score =>
-        console.log('peak detected', score)
+    .detectPeak({ minPeakDistance: 10 })
+    .subscribe(spikes =>
+        console.log('peak detected', spikes)
     );

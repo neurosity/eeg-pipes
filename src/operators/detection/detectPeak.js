@@ -1,4 +1,5 @@
 
+const slayer = require('slayer');
 const { Observable } = require('rxjs/Observable');
 
 /**
@@ -8,16 +9,20 @@ const { Observable } = require('rxjs/Observable');
  * @param {Number} frequency
  * @returns {Observable} buffer
  */
-module.exports = function detectPeak (threshhold) {
+module.exports = function detectPeak (config = {
+    minPeakDistance: 30,
+    minPeakHeight: 0
+}) {
 
-    const average = list =>
-        list.reduce((a, b) => a + b) / list.length;
+    const average = buffer =>
+        buffer.reduce((a, b) => a + b) / buffer.length;
 
-    const detect = buffer => {
-        return average(
-            buffer.map(channel =>
-                average(channel) * 100 / threshhold)
+    const getSpikes = async (buffer) => {
+        const channels = buffer.map(
+            channel => slayer(config).fromArray(channel)
         );
+
+        return await Promise.all(channels)
     };
 
     return Observable.create(subscriber => {
@@ -26,7 +31,12 @@ module.exports = function detectPeak (threshhold) {
 
         const subscription = source.subscribe(buffer => {
             try {
-                subscriber.next(detect(buffer));
+                getSpikes(buffer)
+                    .then(channels => {
+                        const peaks = channels
+                            .map(channel => channel[0].x)
+                        subscriber.next(average(peaks));
+                    });
             } catch(error) {
                 subscriber.error(error);
             }
