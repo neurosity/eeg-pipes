@@ -89,6 +89,7 @@ This can be accomplished by using bufferCount or bufferTime operators.
 
 #### Utility operators
 * groupByChannel
+* [metadata](./examples/metadata.js)
 
 ### Roadmap 
 
