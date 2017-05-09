@@ -7,7 +7,8 @@ const windowOverlap = 12;
 
 const options = {
     verbose: true,
-    simulate: true
+    simulate: false,
+    simulatorInjectAlpha: true
 };
 
 const brainwaves$ = BrainObservable(options)
@@ -16,7 +17,7 @@ const brainwaves$ = BrainObservable(options)
     .bufferCount(bins, windowOverlap)
     .bufferToFFT()
     .alphaRange()
-    .detectPeak({ minPeakDistance: 10 })
-    .subscribe(spikes =>
-        console.log('peak detected', spikes)
+    .detectPeak()
+    .subscribe(peak =>
+        console.log('peak detected', peak)
     );

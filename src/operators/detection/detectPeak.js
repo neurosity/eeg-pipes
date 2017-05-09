@@ -1,28 +1,40 @@
 
-const slayer = require('slayer');
 const { Observable } = require('rxjs/Observable');
 
 /**
  * @method detectPeak
  * Detects peak
  * 
- * @param {Number} frequency
- * @returns {Observable} buffer
+ * @param {Number} config
+ * @returns {Observable} peak
  */
 module.exports = function detectPeak (config = {
-    minPeakDistance: 30,
-    minPeakHeight: 0
+    min: 0,
+    max: 100,
+    adjustBy: 1
 }) {
+
+    const { min, max, adjustBy } = config;
+
+    this.previousPeak = min;
+    this.previousAverage = null;
 
     const average = buffer =>
         buffer.reduce((a, b) => a + b) / buffer.length;
 
-    const getSpikes = async (buffer) => {
-        const channels = buffer.map(
-            channel => slayer(config).fromArray(channel)
-        );
-
-        return await Promise.all(channels)
+    const getPeak = buffer => {
+        const currentAverage = average(buffer.map(average));
+        let currentPeak;
+        this.previousAverage = this.previousAverage ? this.previousAverage : currentAverage;
+        if (currentAverage > this.previousAverage && this.previousPeak !== max) {
+            currentPeak = this.previousPeak + adjustBy;
+        } else if (currentAverage < this.previousAverage && this.previousPeak !== min) {
+            currentPeak = this.previousPeak - adjustBy;
+        } else {
+            currentPeak = this.previousPeak;
+        }
+        this.previousPeak = currentPeak;
+        return currentPeak;
     };
 
     return Observable.create(subscriber => {
@@ -31,12 +43,7 @@ module.exports = function detectPeak (config = {
 
         const subscription = source.subscribe(buffer => {
             try {
-                getSpikes(buffer)
-                    .then(channels => {
-                        const peaks = channels
-                            .map(channel => channel[0].x)
-                        subscriber.next(average(peaks));
-                    });
+                subscriber.next(getPeak(buffer));
             } catch(error) {
                 subscriber.error(error);
             }

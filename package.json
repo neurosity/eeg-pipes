@@ -29,8 +29,7 @@
     "lodash": "^4.17.4",
     "openbci": "^1.5.1",
     "openbci-ganglion": "^0.4.3",
-    "rxjs": "^5.3.0",
-    "slayer": "^1.0.1"
+    "rxjs": "^5.3.0"
   },
   "devDependencies": {},
   "engines": {
