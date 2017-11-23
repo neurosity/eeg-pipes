@@ -1,16 +1,23 @@
 {
-  "name": "openbci-rx",
-  "description": "Reactive Extensions for OpenBCI",
-  "main": "src/index.js",
-  "version": "0.1.0",
+  "name": "eeg-pipes",
+  "description": "Lettable RxJS operators for working with EEG data in Node and the Browser",
+  "version": "0.0.1",
+  "main": "dist/eeg-pipes.umd.js",
+  "module": "src/index.js",
   "scripts": {
-    "start": "node ./examples/basic"
+    "build": "webpack",
+    "start": "webpack-dev-server",
+    "prepublish": "npm run build"
   },
+  "files": [
+    "dist"
+  ],
   "author": "Alex Castillo <alex@castillo.io>",
   "license": "MIT",
+  "lock": false,
   "keywords": [
-    "openbci",
     "eeg",
+    "openbci",
     "neurojs",
     "rxjs",
     "cyton",
@@ -18,21 +25,21 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:NeuroJS/openbci-rx.git"
+    "url": "git@github.com:alexcastillo/eeg-pipes.git"
   },
   "bugs": {
-    "url": "https://github.com/NeuroJS/openbci-rx/issues"
+    "url": "https://github.com/alexcastillo/eeg-pipes/issues"
   },
   "dependencies": {
-    "dsp.js": "github:neurojs/dsp.js",
-    "fili": "^2.0.0",
-    "lodash": "^4.17.4",
-    "openbci": "^1.5.1",
-    "openbci-ganglion": "^0.4.3",
-    "rxjs": "^5.3.0"
+    "dsp.js": "^1.0.1",
+    "fili": "^2.0.1",
+    "rxjs": "^5.5.2"
   },
-  "devDependencies": {},
-  "engines": {
-    "node": ">=7.8.0"
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4"
   }
 }

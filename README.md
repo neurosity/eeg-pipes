@@ -1,115 +1,83 @@
-# OpenBCI Rx
+# EEG Pipes
 
-Reactive Extensions for OpenBCI
+Lettable RxJS operators for working with EEG data in Node and the Browser
 
-#### Dependencies Prerequisites
-> Make sure you have **Node version >= 7.8** installed for development purpose.
+#### Usage
 
-#### Getting started
+Before getting started, you'll need an observable of EEG data.
 
-This library works with the following OpenBCI hardware:
+The following are some libraries that provide exactly that:
 
-* [Cyton](https://github.com/OpenBCI/OpenBCI_NodeJS)
-* [Ganglion](https://github.com/OpenBCI/OpenBCI_NodeJS_Ganglion)
+* [OpenBCI Ganglion BLE (Browser)](https://github.com/alexcastillo/ganglion-ble)
+* [OpenBCI Cyton/Ganglion (Node)](https://github.com/alexcastillo/openbci-rx)
+* [Muse (Browser)](https://github.com/urish/muse-js)
 
-Get started by importing the module:
+Pipes can be added to an EEG observable of EEG data samples with the 
+following data structure:
+
+``` js
+{
+  data: [Number, Number, Number, Number], // channels
+  timestamp: Date
+};
+```
+
+We can start by installing the library:
 
 ``` bash
-npm install --save openbci-rx
+npm install --save eeg-pipes
 ```
+
+Then, importing the pipes from the library:
 
 ``` js
-const { Cyton, Ganglion } = require('openbci-rx');
-
-// Or with an alias...
-
-const BrainObservable  = require('openbci-rx').Ganglion;
+import { bufferFFT, alphaRange } from 'eeg-pipes';
 ```
 
-#### Examples
-
-Basic usage
+And adding them to the RxJS observable pipe operator:
 
 ``` js
-const BrainObservable = require('openbci-rx').Cyton;
-
-// Same options accepted by 'openbci'
-const options = {
-    verbose: true,
-    simulate: true
-};
-
-const brainwaves$ = BrainObservable(options)
-    .subscribe(sample =>
-        console.log(sample)
-    );
+eeg$.pipe(
+    bufferFFT({ bins: 256 }),
+    alphaRange()
+).subscribe(buffer =>
+    console.log(buffer)
+);
 ```
 
-Adding operators
+### Pipes
 
-``` js 
-const brainwaves$ = BrainObservable(options)
-    .pickChannels(7, 8)
-    .toMicrovolts()
-    .bufferCount(256) // bins
-    .bufferToFFT()
-    .alphaRange()
-    .subscribe(buffer =>
-        console.log(buffer)
-    );
-```
-
-And now we have a buffer of Alpha waves from channels 7 and 8!
-
-### Operators
-
-All RxJS operators are available. Additionally, the following custom 
-operators have been added to make working with EEG data easier.
-
-#### Detection operators
-* detectPeak(voltage)
-
-#### Filtering operators
-* pickChannels(i1, i2, i3)
-* filterChannels(i1, i2, i3)
+#### Filtering
+* pickChannels({ channels: [c1, c2, c3] })
+* filterChannels({ channels: [c1, c2, c3] })
 * lowPassFilter({ cutoffFrequency })
 * notchFilter({ cutoffFrequency })
 
-#### Frequency range operators
+#### Frequency
 
-Using frequency operators requires a buffer of samples. 
-This can be accomplished by using bufferCount or bufferTime operators.
+* bufferFFT({ bins, window, sampleRate })
 
-* bufferToFFT
-* alphaRange
-* betaRange
-* deltaRange
-* gammaRange
-* thetaRange
+Using frequency pipes requires a buffer of samples. 
+This can be accomplished by using bufferFFT first OR bufferCount/bufferTime operators from RxJS.
 
-#### Unit conversion operators
-* toMicrovolts
+* alphaRange()
+* betaRange()
+* deltaRange()
+* gammaRange()
+* thetaRange()
 
-#### Utility operators
-* groupByChannel
+#### Unit conversion
+* toMicrovolts({ log })
 
-### Roadmap 
+#### Utility
+* groupByChannel()
 
-More operators!
+### Coming soon
 
-#### Detection operators
-* detectPeak(voltage)
-
-#### Filtering operators
-* bandPassFilter
-* vertScaleFilter
-* vertAgoFilter
-* smoothFilter
-* polarityFilter
-* maxFrequencyFilter
-
-#### Transformation operators
-* toTopo
-
-### License
-MIT © [NeuroJS](https://github.com/NeuroJS)
+#### Filtering 
+* bandPassFilter()
+* vertScaleFilter()
+* vertAgoFilter()
+* smoothFilter()
+* polarityFilter()
+* maxFrequencyFilter()

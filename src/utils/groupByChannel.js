@@ -1,4 +1,8 @@
 
+import {
+    DATA_PROP as defaultDataProp
+} from '../constants';
+
 /**
  * @method groupByChannel
  * Group sample buffer by Channels. 
@@ -9,16 +13,14 @@
  * @param {any} samplesBuffer array of samples
  * @param {any} channelDataByChannel
  */
-module.exports = samplesBuffer => {
+export const groupByChannel = (samplesBuffer, dataProp = defaultDataProp) => {
+    const channels = samplesBuffer[0][dataProp].length;
+    const groups = new Array(channels).fill([]);
 
-    const channelAmount = samplesBuffer[0].channelData.length;
-    const buffer = new Array(channelAmount).fill([]);
-
-    samplesBuffer.forEach(sample => {
-        sample.channelData.forEach((channelValue, index) => {
+    return samplesBuffer.reduce((buffer, sample) => {
+        sample[dataProp].forEach((channelValue, index) => {
             buffer[index] = [ ...buffer[index], channelValue ];
         });
-    });
-
-    return [ ...buffer ];
+        return buffer;
+    }, groups);
 };
