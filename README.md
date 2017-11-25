@@ -58,7 +58,7 @@ eeg$.pipe(
 * bufferFFT({ bins, window, sampleRate })
 
 Using frequency pipes requires a buffer of samples. 
-This can be accomplished by using bufferFFT first OR bufferCount/bufferTime operators from RxJS.
+This can be accomplished by using bufferFFT first OR bufferCount/bufferTime.
 
 * alphaRange()
 * betaRange()
@@ -70,6 +70,8 @@ This can be accomplished by using bufferFFT first OR bufferCount/bufferTime oper
 * toMicrovolts({ log })
 
 #### Utility
+* bufferCount()
+* bufferTime()
 * groupByChannel()
 
 ### Coming soon
