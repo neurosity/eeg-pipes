@@ -1,6 +1,6 @@
 # EEG Pipes
 
-Lettable RxJS operators for working with EEG data in Node and the Browser
+Pipeable RxJS operators for working with EEG data in Node and the Browser
 
 #### Usage
 
