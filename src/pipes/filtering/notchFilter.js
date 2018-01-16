@@ -1,53 +1,44 @@
 import { CalcCascades, IirFilter } from "fili";
 import { map } from "rxjs/operators";
-
 import { createPipe } from "../../utils/createPipe";
-
 import { SAMPLE_RATE as defaultSampleRate } from "../../constants";
 
 /**
  * @method notchFilter
- * Applies notch filter to FFT buffer
+ * Applies notch filter to a buffer of EEG data
  *
  * @param {Object} options
  * @returns {Observable}
  */
-export const notchFilter = ({
-  order = 2,
-  characteristic = "butterworth",
-  cutoffFrequency = 50,
-  sampleRate = defaultSampleRate,
-  nbChannels = 4,
-  gain = 0,
-  preGain = false,
-  BW = 0.1
-} = {}) => source$ => {
-  const options = {
+export const notchFilter = (
+  {
+    order = 2,
+    characteristic = "butterworth",
+    cutoffFrequency = 50,
+    sampleRate = defaultSampleRate,
+    nbChannels = 4,
+    Fs = sampleRate,
+    Fc = cutoffFrequency,
+    gain = 0,
+    preGain = false,
+    BW = 0.1
+  } = {}
+) => source$ => {
+  var options = {
     order,
     characteristic,
-    sampleRate,
-    cutoffFrequency,
-    gain,
-    preGain,
+    Fs,
+    Fc,
     BW
   };
-  const notchFilterGroup = new Array(nbChannels).fill(notchIIR(options));
-  console.log(
-    "created options object: ",
-    options,
-    " and filterGroup: ",
-    notchFilterGroup
-  );
-
-  createPipe(
+  var notchFilterGroup = new Array(nbChannels).fill(notchIIR(options));
+  return createPipe(
     source$,
-    map(channelGroupBuffer => {
-      console.log("mapping through channelGroupBuffer: ", channelGroupBuffer);
-      return channelGroupBuffer.map((channelGroup, index) => {
-        console.log("mapping through channelGroups: ", channelGroup);
-        notchFilterGroup[index];
-      });
-    })
+    map(channelGroupBuffer =>
+      channelGroupBuffer.map((channel, index) =>
+        notchFilterGroup[index](channel)
+      )
+    )
   );
 };
 
@@ -60,5 +51,5 @@ const notchIIR = options => {
   const coeffs = calc.bandstop(options);
   const filter = new IirFilter(coeffs);
 
-  return filter.multiStep(channelGroup);
+  return channel => filter.multiStep(channel);
 };
