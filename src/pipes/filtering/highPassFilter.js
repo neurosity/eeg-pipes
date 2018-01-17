@@ -1,20 +1,22 @@
 import { CalcCascades, IirFilter } from "fili";
 import { map } from "rxjs/operators";
+
 import { createPipe } from "../../utils/createPipe";
+
 import { SAMPLE_RATE as defaultSampleRate } from "../../constants";
 
 /**
- * @method notchFilter
- * Applies notch filter to a buffer of EEG data
+ * @method highPassFilter
+ * Applies a high pass filter to an EEG buffer
  *
  * @param {Object} options
  * @returns {Observable}
  */
-export const notchFilter = (
+export const highPassFilter = (
   {
     order = 2,
     characteristic = "butterworth",
-    cutoffFrequency = 50,
+    cutoffFrequency = 100,
     sampleRate = defaultSampleRate,
     Fs = sampleRate,
     Fc = cutoffFrequency,
@@ -25,15 +27,15 @@ export const notchFilter = (
   createPipe(
     source,
     map(channelGroupBuffer => {
-      const notch = channelGroup => {
+      const highPass = channelGroup => {
         const options = { order, characteristic, Fs, Fc, gain, preGain };
         const calc = new CalcCascades();
-        const coeffs = calc.bandstop(options);
+        const coeffs = calc.highpass(options);
         const filter = new IirFilter(coeffs);
 
         return filter.multiStep(channelGroup);
       };
 
-      return channelGroupBuffer.map(notch);
+      return channelGroupBuffer.map(highPass);
     })
   );
