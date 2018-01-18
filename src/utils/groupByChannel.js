@@ -5,11 +5,11 @@ import {
 
 /**
  * @method groupByChannel
- * Group sample buffer by Channels. 
- * 
+ * Group sample buffer by Channels.
+ *
  * @example from [{ ...s0 }, { ...s1 }, ...]
  * to [[c0 ...], [c1 ...], ...]
- * 
+ *
  * @param {any} samplesBuffer array of samples
  * @param {any} channelDataByChannel
  */

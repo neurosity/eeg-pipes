@@ -1,6 +1,6 @@
 # EEG Pipes
 
-Lettable RxJS operators for working with EEG data in Node and the Browser
+Pipeable RxJS operators for working with EEG data in Node and the Browser
 
 #### Usage
 
@@ -12,7 +12,7 @@ The following are some libraries that provide exactly that:
 * [OpenBCI Cyton/Ganglion (Node)](https://github.com/alexcastillo/openbci-rx)
 * [Muse (Browser)](https://github.com/urish/muse-js)
 
-Pipes can be added to an EEG observable of EEG data samples with the 
+Pipes can be added to an EEG observable of EEG data samples with the
 following data structure:
 
 ``` js
@@ -57,7 +57,7 @@ eeg$.pipe(
 
 * bufferFFT({ bins, window, sampleRate })
 
-Using frequency pipes requires a buffer of samples. 
+Using frequency pipes requires a buffer of samples.
 This can be accomplished by using bufferFFT first OR bufferCount/bufferTime.
 
 * alphaRange()
@@ -71,13 +71,13 @@ This can be accomplished by using bufferFFT first OR bufferCount/bufferTime.
 * toMicrovolts({ log })
 
 #### Utility
-* bufferCount()
-* bufferTime()
+* [bufferCount()](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-bufferCount)
+* [bufferTime()](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-bufferTime)
 * groupByChannel()
 
 ### Coming soon
 
-#### Filtering 
+#### Filtering
 * bandPassFilter()
 * vertScaleFilter()
 * vertAgoFilter()

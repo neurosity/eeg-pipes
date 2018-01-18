@@ -11,11 +11,11 @@ import {
 /**
  * @method groupByChannel
  * Takes a samples buffer and returns a buffer of channel groups
- * 
+ *
  * @returns {Observable} samplesBuffer
  */
 export const groupByChannel = ({ dataProp = defaultDataProp } = {}) =>
-    source => createPipe(
-        source,
+    source$ => createPipe(
+        source$,
         map(samplesBuffer => groupChannels(samplesBuffer, dataProp))
     );
