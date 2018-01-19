@@ -19,14 +19,15 @@ export const notchFilter = (
     Fs = sampleRate,
     Fc = cutoffFrequency,
     gain = 0,
-    preGain = false
+    preGain = false,
+    BW = 1
   } = {}
 ) => source =>
   createPipe(
     source,
     map(channelGroupBuffer => {
       const notch = channelGroup => {
-        const options = { order, characteristic, Fs, Fc, gain, preGain };
+        const options = { order, characteristic, Fs, Fc, gain, preGain, BW };
         const calc = new CalcCascades();
         const coeffs = calc.bandstop(options);
         const filter = new IirFilter(coeffs);
