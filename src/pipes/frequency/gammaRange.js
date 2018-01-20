@@ -2,7 +2,11 @@
 import { map } from 'rxjs/operators';
 
 import { createPipe } from '../../utils/createPipe';
-import { filterByBand } from '../../utils/filterByBand';
+import { filterByRange } from './filterByRange';
+
+import {
+    FREQUENCY_BANDS as frequencyBands
+} from '../../constants';
 
 /**
  * @method gammaRange
@@ -13,5 +17,5 @@ import { filterByBand } from '../../utils/filterByBand';
 export const gammaRange = () =>
     source => createPipe(
         source,
-        map(fftBuffer => filterByBand(fftBuffer, 'gamma'))
+        filterByRange(frequencyBands.gamma)
     );

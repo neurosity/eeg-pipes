@@ -65,6 +65,7 @@ This can be accomplished by using bufferFFT first OR bufferCount/bufferTime.
 * deltaRange()
 * gammaRange()
 * thetaRange()
+* filterByRange([ min, max ])
 
 #### Unit conversion
 * toMicrovolts({ log })
