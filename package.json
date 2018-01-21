@@ -3,7 +3,6 @@
   "description": "Lettable RxJS operators for working with EEG data in Node and the Browser",
   "version": "0.0.2",
   "main": "dist/eeg-pipes.umd.js",
-  "module": "src/index.js",
   "scripts": {
     "build": "webpack",
     "start": "webpack-dev-server",
@@ -39,7 +38,8 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.9.4"
+    "babel-preset-env": "^1.6.1",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.1"
   }
 }
