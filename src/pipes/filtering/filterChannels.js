@@ -1,5 +1,4 @@
 import { map } from "rxjs/operators";
-
 import { createPipe } from "../../utils/createPipe";
 
 import { DATA_PROP as defaultDataProp } from "../../constants";

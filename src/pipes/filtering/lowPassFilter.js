@@ -2,7 +2,6 @@ import { CalcCascades, IirFilter } from "fili";
 import { map } from "rxjs/operators";
 
 import { createPipe } from "../../utils/createPipe";
-
 import { SAMPLE_RATE as defaultSampleRate } from "../../constants";
 
 /**

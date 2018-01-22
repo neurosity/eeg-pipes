@@ -2,6 +2,7 @@ export const CHANNELS = 4;
 export const SAMPLE_RATE = 250;
 export const ORDER = 2;
 export const CHARACTERISTIC = "butterworth";
+export const GAIN = 0;
 export const PREGAIN = false;
 export const FFT_BINS = 256;
 export const DATA_PROP = "data";

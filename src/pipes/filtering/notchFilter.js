@@ -1,8 +1,9 @@
 import { CalcCascades, IirFilter } from "fili";
-import { map } from "rxjs/operators";
+import { scan, map } from "rxjs/operators";
 
 import { createPipe } from "../../utils/createPipe";
 import {
+  CHANNELS as defaultNbChannels,
   SAMPLE_RATE as defaultSampleRate,
   ORDER as defaultOrder,
   CHARACTERISTIC as defaultCharacteristic,
@@ -17,6 +18,13 @@ import {
  * @param {Object} options
  * @returns {Observable}
  */
+
+const createNotchIIR = options => {
+  const calc = new CalcCascades();
+  const coeffs = calc.bandstop(options);
+  return new IirFilter(coeffs);
+};
+
 export const notchFilter = (
   {
     order = defaultOrder,
@@ -27,21 +35,25 @@ export const notchFilter = (
     Fc = cutoffFrequency,
     gain = defaultGain,
     preGain = defaultPreGain,
-    BW = 0.1
+    BW = 0.1,
+    nbChannels = defaultNbChannels
   } = {}
 ) => source =>
   createPipe(
     source,
-    map(channelGroupBuffer => {
-      const notch = channelGroup => {
-        const options = { order, characteristic, Fs, Fc, gain, preGain, BW };
-        const calc = new CalcCascades();
-        const coeffs = calc.bandstop(options);
-        const filter = new IirFilter(coeffs);
-
-        return filter.multiStep(channelGroup);
-      };
-
-      return channelGroupBuffer.map(notch);
-    })
+    scan(
+      (acc, curr) => [
+        curr.map((channel, index) => acc[1][index].multiStep(channel)),
+        acc[1]
+      ],
+      [
+        new Array(nbChannels).fill(0),
+        new Array(nbChannels)
+          .fill(0)
+          .map(x =>
+            createNotchIIR({ order, characteristic, Fs, Fc, gain, preGain, BW })
+          )
+      ]
+    ),
+    map(dataAndFilter => dataAndFilter[0]) // pluck just the data array to emit
   );
