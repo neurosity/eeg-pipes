@@ -1,5 +1,3 @@
-import { map } from "rxjs/operators";
-
 import { createPipe } from "../../utils/createPipe";
 import { filterByRange } from "./filterByRange";
 

@@ -1,7 +1,14 @@
 import { CalcCascades, IirFilter } from "fili";
 import { map } from "rxjs/operators";
+
 import { createPipe } from "../../utils/createPipe";
-import { SAMPLE_RATE as defaultSampleRate } from "../../constants";
+import {
+  SAMPLE_RATE as defaultSampleRate,
+  ORDER as defaultOrder,
+  CHARACTERISTIC as defaultCharacteristic,
+  GAIN as defaultGain,
+  PREGAIN as defaultPreGain
+} from "../../constants";
 
 /**
  * @method notchFilter
@@ -12,15 +19,15 @@ import { SAMPLE_RATE as defaultSampleRate } from "../../constants";
  */
 export const notchFilter = (
   {
-    order = 2,
-    characteristic = "butterworth",
-    cutoffFrequency = 50,
+    order = defaultOrder,
+    characteristic = defaultCharacteristic,
+    cutoffFrequency = 60,
     sampleRate = defaultSampleRate,
     Fs = sampleRate,
     Fc = cutoffFrequency,
-    gain = 0,
-    preGain = false,
-    BW = 1
+    gain = defaultGain,
+    preGain = defaultPreGain,
+    BW = 0.1
   } = {}
 ) => source =>
   createPipe(

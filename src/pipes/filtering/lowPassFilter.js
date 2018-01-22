@@ -27,7 +27,6 @@ export const lowPassFilter = (
   createPipe(
     source,
     map(channelGroupBuffer => {
-
       const lowPass = channelGroup => {
         const options = { order, characteristic, Fs, Fc, gain, preGain };
         const calc = new CalcCascades();

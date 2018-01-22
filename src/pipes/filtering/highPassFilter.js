@@ -2,8 +2,13 @@ import { CalcCascades, IirFilter } from "fili";
 import { map } from "rxjs/operators";
 
 import { createPipe } from "../../utils/createPipe";
-
-import { SAMPLE_RATE as defaultSampleRate } from "../../constants";
+import {
+  SAMPLE_RATE as defaultSampleRate,
+  ORDER as defaultOrder,
+  CHARACTERISTIC as defaultCharacteristic,
+  GAIN as defaultGain,
+  PREGAIN as defaultPreGain
+} from "../../constants";
 
 /**
  * @method highPassFilter
@@ -14,14 +19,14 @@ import { SAMPLE_RATE as defaultSampleRate } from "../../constants";
  */
 export const highPassFilter = (
   {
-    order = 2,
-    characteristic = "butterworth",
-    cutoffFrequency = 100,
+    order = defaultOrder,
+    characteristic = defaultCharacteristic,
+    cutoffFrequency = 2,
     sampleRate = defaultSampleRate,
     Fs = sampleRate,
     Fc = cutoffFrequency,
-    gain = 0,
-    preGain = false
+    gain = defaultGain,
+    preGain = defaultPreGain
   } = {}
 ) => source =>
   createPipe(

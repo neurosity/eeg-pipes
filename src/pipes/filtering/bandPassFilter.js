@@ -1,7 +1,13 @@
 import { CalcCascades, IirFilter } from "fili";
 import { map } from "rxjs/operators";
 import { createPipe } from "../../utils/createPipe";
-import { SAMPLE_RATE as defaultSampleRate } from "../../constants";
+import {
+  SAMPLE_RATE as defaultSampleRate,
+  ORDER as defaultOrder,
+  CHARACTERISTIC as defaultCharacteristic,
+  GAIN as defaultGain,
+  PREGAIN as defaultPreGain
+} from "../../constants";
 
 /**
  * @method bandPassFilter
@@ -12,23 +18,26 @@ import { SAMPLE_RATE as defaultSampleRate } from "../../constants";
  */
 export const bandPassFilter = (
   {
-    order = 2,
-    characteristic = "butterworth",
+    order = defaultOrder,
+    characteristic = defaultCharacteristic,
     cutoffFrequency = [2, 50],
     sampleRate = defaultSampleRate,
     Fs = sampleRate,
-    gain = 0,
-    preGain = false
+    gain = defaultGain,
+    preGain = defaultPreGain
   } = {}
 ) => source =>
   createPipe(
     source,
     map(channelGroupBuffer => {
       const bandPass = channelGroup => {
-        const options = { order, characteristic, Fc, gain, preGain };
+        const options = { order, characteristic, Fs, gain, preGain };
         const calc = new CalcCascades();
         const lowCoeffs = calc.lowPass({ ...options, Fc: cutoffFrequency[0] });
-        const highCoeffs = calc.highPass({ ...options, Fc: cutoffFrequency[1] });
+        const highCoeffs = calc.highPass({
+          ...options,
+          Fc: cutoffFrequency[1]
+        });
         const lowPass = new IirFilter(lowCoeffs);
         const highPass = new IirFilter(highCoeffs);
 

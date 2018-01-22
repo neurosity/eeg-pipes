@@ -1,4 +1,3 @@
-
 export * from './filterChannels';
 export * from './lowPassFilter';
 export * from './highPassFilter';

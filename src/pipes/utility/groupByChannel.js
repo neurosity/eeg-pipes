@@ -1,12 +1,9 @@
+import { map } from "rxjs/operators";
 
-import { map } from 'rxjs/operators';
+import { createPipe } from "../../utils/createPipe";
+import { groupByChannel as groupChannels } from "../../utils/groupByChannel";
 
-import { createPipe } from '../../utils/createPipe';
-import { groupByChannel as groupChannels } from '../../utils/groupByChannel';
-
-import {
-    DATA_PROP as defaultDataProp
-} from '../../constants';
+import { DATA_PROP as defaultDataProp } from "../../constants";
 
 /**
  * @method groupByChannel
@@ -14,8 +11,10 @@ import {
  *
  * @returns {Observable} samplesBuffer
  */
-export const groupByChannel = ({ dataProp = defaultDataProp } = {}) =>
-    source$ => createPipe(
-        source$,
-        map(samplesBuffer => groupChannels(samplesBuffer, dataProp))
-    );
+export const groupByChannel = (
+  { dataProp = defaultDataProp } = {}
+) => source$ =>
+  createPipe(
+    source$,
+    map(samplesBuffer => groupChannels(samplesBuffer, dataProp))
+  );
