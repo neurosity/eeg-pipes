@@ -47,11 +47,15 @@ eeg$.pipe(
 
 ### Pipes
 
-#### Filtering
-* pickChannels({ channels: [c1, c2, c3] })
+#### Filtering (IIR)
+
+Filter pipes can be applied to both samples or buffers of samples. 
+
 * filterChannels({ channels: [c1, c2, c3] })
-* lowPassFilter({ cutoffFrequency })
-* notchFilter({ cutoffFrequency })
+* lowPassFilter({ nbChannels, cutoffFrequency })
+* highPassFilter({ nbChannels, cutoffFrequency })
+* bandPassFilter({ nbChannels, cutoffFrequencies: [lowBound, highBound] })
+* notchFilter({ nbChannels, cutoffFrequency })
 
 #### Frequency
 
@@ -71,14 +75,13 @@ This can be accomplished by using bufferFFT first OR bufferCount/bufferTime.
 * toMicrovolts({ log })
 
 #### Utility
-* [bufferCount()](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-bufferCount)
-* [bufferTime()](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-bufferTime)
-* groupByChannel()
+* bufferCount()
+* bufferTime()
+* pickChannels({ channels: [c1, c2, c3] })
 
 ### Coming soon
 
 #### Filtering
-* bandPassFilter()
 * vertScaleFilter()
 * vertAgoFilter()
 * smoothFilter()

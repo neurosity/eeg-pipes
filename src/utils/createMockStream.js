@@ -9,7 +9,7 @@ import {
 export const createMockStream = ({
   channels = defaultChannels,
   sampleRate = defaultSampleRate
-}) =>
+} = {}) =>
   interval(1000 / sampleRate).pipe(
     map(() => ({
       timestamp: Date.now(),

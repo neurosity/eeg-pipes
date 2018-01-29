@@ -55,5 +55,6 @@ export const notchFilter = (
           )
       ]
     ),
-    map(dataAndFilter => dataAndFilter[0]) // pluck just the data array to emit
+    // Pluck just the data array to emit
+    map(dataAndFilter => dataAndFilter[0])
   );
