@@ -7,11 +7,11 @@ import {
   DATA_PROP as defaultDataProp,
   SAMPLE_RATE as defaultSamplingRate
 } from "../../constants";
+import { sample } from "rxjs/operators/sample";
 
 /**
  * @method chunk
- * Takes an array of Samples and returns a Chunk with a 2D data array grouped by channel.
- *  Will add startTime and samplingRate info to emitted Chunks.
+ * Takes an array of Samples and returns a Chunk with a 2D data array grouped by channel. Will add startTime and samplingRate info to emitted Chunks.
  * Requires samplingRate parameter unless stream already contains samplingRate in info.
  *
  * @returns {Observable} Chunk
