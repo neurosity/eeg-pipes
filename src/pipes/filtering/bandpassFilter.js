@@ -8,32 +8,32 @@ import {
 } from "../../constants";
 
 /**
- * @method notchFilter
- * Applies a notch filter to EEG Data. Can be applied to Samples or Chunks. Must provide nbChannels. cutOffFrequency will default to 60hz.
- * @example { nbChannels = 4, samplingRate = 256, cutOffFrequency = 60 }
+ * @method bandpassFilter
+ * Applies a band pass filter to EEG Data. Can be applied to Samples or Chunks. Must provide nbChannels. cutOffFrequencies should be defined in array with the lower bound (highpass) followed by the upper bound (lowpass). cutOffFrequencies will default to 2-50hz.
+ * @example { nbChannels = 4, samplingRate = 256, cutOffFrequencies = [2, 50] }
  * @param {Object} options
  * @returns {Observable}
  */
 
-const createNotchIIR = options => {
+const createBandpassIIR = options => {
   const calc = new CalcCascades();
-  const coeffs = calc.bandstop(options);
+  const coeffs = calc.bandpass(options);
   return new IirFilter(coeffs);
 };
 
-export const notchFilter = ({
+export const bandpassFilter = ({
   nbChannels,
   order = defaultOrder,
   characteristic = defaultCharacteristic,
-  cutoffFrequency = 60,
+  cutoffFrequencies = [2, 50],
   samplingRate = defaultsamplingRate,
   Fs = samplingRate,
-  Fc = cutoffFrequency,
-  BW = 0.1
+  Fc = (cutoffFrequencies[1] - cutoffFrequencies[0]) / 2,
+  BW = 1
 } = {}) => source => {
   if (!nbChannels) {
     throw new Error(
-      "Please supply nbChannels parameter to notchFilter operator"
+      "Please supply nbChannels parameter to bandpassFilter operator"
     );
   }
   const options = {
@@ -43,9 +43,9 @@ export const notchFilter = ({
     Fc,
     BW
   };
-  const notchArray = new Array(nbChannels)
+  const bandpassArray = new Array(nbChannels)
     .fill(0)
-    .map(() => createNotchIIR(options));
+    .map(() => createBandpassIIR(options));
   return createPipe(
     source,
     map(eegObject => {
@@ -54,7 +54,7 @@ export const notchFilter = ({
         return {
           ...eegObject,
           data: eegObject.data.map((channel, index) =>
-            notchArray[index].multiStep(channel)
+            bandpassArray[index].multiStep(channel)
           )
         };
       }
@@ -63,7 +63,7 @@ export const notchFilter = ({
       return {
         ...eegObject,
         data: eegObject.data.map((channel, index) =>
-          notchArray[index].singleStep(channel)
+          bandpassArray[index].singleStep(channel)
         )
       };
     })
