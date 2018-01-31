@@ -52,9 +52,9 @@ eeg$.pipe(
 Filter pipes can be applied to both samples or buffers of samples. 
 
 * filterChannels({ channels: [c1, c2, c3] })
-* lowPassFilter({ nbChannels, cutoffFrequency })
-* highPassFilter({ nbChannels, cutoffFrequency })
-* bandPassFilter({ nbChannels, cutoffFrequencies: [lowBound, highBound] })
+* lowpassFilter({ nbChannels, cutoffFrequency })
+* highpassFilter({ nbChannels, cutoffFrequency })
+* bandpassFilter({ nbChannels, cutoffFrequencies: [lowBound, highBound] })
 * notchFilter({ nbChannels, cutoffFrequency })
 
 #### Frequency
@@ -77,7 +77,9 @@ This can be accomplished by using bufferFFT first OR bufferCount/bufferTime.
 #### Utility
 * bufferCount()
 * bufferTime()
+* chunk()
 * pickChannels({ channels: [c1, c2, c3] })
+* addInfo()
 
 ### Coming soon
 
@@ -87,3 +89,42 @@ This can be accomplished by using bufferFFT first OR bufferCount/bufferTime.
 * smoothFilter()
 * polarityFilter()
 * maxFrequencyFilter()
+
+# Documentation
+
+## Data Structures
+
+#### Sample
+``` js
+{
+  data: [Number, Number, Number, Number], // channels
+  timestamp: Date,
+  info?: {
+  	samplingRate?: Number,
+  	channelNames?: [String, String, String, String],
+  	...
+  }
+};
+```
+
+Individual samples of EEG data contain an array of values for each EEG channel as well as a timestamp. An info object containing important metadata about the EEG stream such as sampling rate and channel names can be added to a pipe of samples with the addInfo operator. 
+
+#### Chunk
+```js
+{
+  data: [
+  	[Number, Number, ...], // samples,
+    [Number, Number, ...],
+    [Number, Number, ...],
+    [Number, Number, ...],
+  ], // channels
+  info: {
+    samplingRate: Number,
+    startTime: Number,
+    ...
+  }
+}
+
+```
+
+Samples that have been pooled together by a buffering operator such as bufferTime or bufferCount contain a 2D data array with shape nbChannels x nbSamples. Instead of individual timestamps for each sample, Chunk objects contain samplingRate and startTime information in the info object in order to allow time at any point within the Chunk to be inferred. Info properties present in Sample objects before being pooled into Chunks will be maintained.
