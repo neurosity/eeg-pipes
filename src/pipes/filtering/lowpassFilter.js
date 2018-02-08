@@ -8,24 +8,24 @@ import {
 } from "../../constants";
 
 /**
- * @method notchFilter
- * Applies a notch filter to EEG Data. Can be applied to Samples or Chunks. Must provide nbChannels. cutOffFrequency will default to 60hz.
- * @example { nbChannels = 4, samplingRate = 256, cutOffFrequency = 60 }
+ * @method lowpassFilter
+ * Applies a low pass filter to EEG Data. Can be applied to Samples or Chunks. Must provide nbChannels. cutOffFrequency will default to 50hz.
+ * @example { nbChannels = 4, samplingRate = 256, cutOffFrequency = 30 }
  * @param {Object} options
  * @returns {Observable}
  */
 
-const createNotchIIR = options => {
+const createLowpassIIR = options => {
   const calc = new CalcCascades();
-  const coeffs = calc.bandstop(options);
+  const coeffs = calc.lowpass(options);
   return new IirFilter(coeffs);
 };
 
-export const notchFilter = ({
+export const lowpassFilter = ({
   nbChannels,
   order = defaultOrder,
   characteristic = defaultCharacteristic,
-  cutoffFrequency = 60,
+  cutoffFrequency = 50,
   samplingRate = defaultsamplingRate,
   Fs = samplingRate,
   Fc = cutoffFrequency,
@@ -33,7 +33,7 @@ export const notchFilter = ({
 } = {}) => source => {
   if (!nbChannels) {
     throw new Error(
-      "Please supply nbChannels parameter to notchFilter operator"
+      "Please supply nbChannels parameter to lowpassFilter operator"
     );
   }
   const options = {
@@ -43,9 +43,9 @@ export const notchFilter = ({
     Fc,
     BW
   };
-  const notchArray = new Array(nbChannels)
+  const lowpassArray = new Array(nbChannels)
     .fill(0)
-    .map(() => createNotchIIR(options));
+    .map(() => createLowpassIIR(options));
   return createPipe(
     source,
     map(eegObject => {
@@ -54,7 +54,7 @@ export const notchFilter = ({
         return {
           ...eegObject,
           data: eegObject.data.map((channel, index) =>
-            notchArray[index].multiStep(channel)
+            lowpassArray[index].multiStep(channel)
           )
         };
       }
@@ -63,7 +63,7 @@ export const notchFilter = ({
       return {
         ...eegObject,
         data: eegObject.data.map((channel, index) =>
-          notchArray[index].singleStep(channel)
+          lowpassArray[index].singleStep(channel)
         )
       };
     })

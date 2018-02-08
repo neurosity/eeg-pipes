@@ -3,7 +3,7 @@ const { createMockStream, addInfo } = require('../dist/eeg-pipes.umd');
 
 const eeg1$ = createMockStream()
     .pipe(
-        addInfo({ sampleRate: 250 })
+        addInfo({ samplingRate: 250 })
     );
 
 const eeg2$ = createMockStream()

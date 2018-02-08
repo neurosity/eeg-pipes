@@ -1,2 +1,1 @@
-
-export * from 'rxjs/operators/bufferTime';
+export * from "rxjs/operators/bufferTime";

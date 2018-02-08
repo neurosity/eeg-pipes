@@ -1,3 +1,2 @@
-
-export * from './createMockStream';
-export * from './createPipe';
+export * from "./createMockStream";
+export * from "./createPipe";

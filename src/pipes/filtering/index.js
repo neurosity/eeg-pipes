@@ -1,7 +1,6 @@
-
 export * from './filterChannels';
-export * from './lowPassFilter';
-export * from './highPassFilter';
-export * from './bandPassFilter';
+export * from './lowpassFilter';
+export * from './highpassFilter';
+export * from './bandpassFilter';
 export * from './notchFilter';
 export * from './pickChannels';
