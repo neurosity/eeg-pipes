@@ -1,5 +1,5 @@
 
-const { createMockStream, addInfo } = require('../dist/eeg-pipes.umd');
+const { createMockStream, addInfo } = require("../");
 
 const eeg1$ = createMockStream()
     .pipe(
@@ -8,6 +8,9 @@ const eeg1$ = createMockStream()
 
 const eeg2$ = createMockStream()
     .pipe(
+        addInfo({
+            channels: ["FP1", "FP2", "OZ"]
+        }),
         addInfo(sample => ({
             channels: sample.info.channels.map((channel, index) => ({
                 [index]: channel
