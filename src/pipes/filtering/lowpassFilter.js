@@ -49,21 +49,12 @@ export const lowpassFilter = ({
   return createPipe(
     source,
     map(eegObject => {
-      // Should run multiStep function if inc. data is a Chunk (2D data array)
-      if (Array.isArray(eegObject.data[0])) {
-        return {
-          ...eegObject,
-          data: eegObject.data.map((channel, index) =>
-            lowpassArray[index].multiStep(channel)
-          )
-        };
-      }
-
-      // Should run singleStep if inc. data is a Sample (1D array)
+      const isChunk = Array.isArray(eegObject.data[0]);
+      const stepFunction = isChunk ? "multiStep" : "singleStep";
       return {
         ...eegObject,
         data: eegObject.data.map((channel, index) =>
-          lowpassArray[index].singleStep(channel)
+          lowpassArray[index][stepFunction](channel)
         )
       };
     })
