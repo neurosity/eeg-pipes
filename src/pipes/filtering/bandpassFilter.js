@@ -2,7 +2,7 @@ import { CalcCascades, IirFilter } from "fili";
 import { map } from "rxjs/operators";
 import { createPipe } from "../../utils/createPipe";
 import {
-  SAMPLE_RATE as defaultsamplingRate,
+  SAMPLE_RATE as defaultSamplingRate,
   ORDER as defaultOrder,
   CHARACTERISTIC as defaultCharacteristic
 } from "../../constants";
@@ -15,9 +15,22 @@ import {
  * @returns {Observable}
  */
 
-const createBandpassIIR = options => {
+const createHighpassIIR = options => {
   const calc = new CalcCascades();
-  const coeffs = calc.bandpass(options);
+  const coeffs = calc.highpass({
+    ...options,
+    Fc: options.cutoffFrequencies[0]
+  });
+  console.log('lowpass parameters: ', { ...options, Fc: options.cutoffFrequencies[1] });
+  console.log('coeffs: ', coeffs);
+  return new IirFilter(coeffs);
+};
+
+const createLowpassIIR = options => {
+  const calc = new CalcCascades();
+  const coeffs = calc.lowpass({ ...options, Fc: options.cutoffFrequencies[1] });
+  console.log('lowpass parameters: ', { ...options, Fc: options.cutoffFrequencies[1] });
+  console.log('coeffs: ', coeffs);
   return new IirFilter(coeffs);
 };
 
@@ -26,9 +39,8 @@ export const bandpassFilter = ({
   order = defaultOrder,
   characteristic = defaultCharacteristic,
   cutoffFrequencies = [2, 50],
-  samplingRate = defaultsamplingRate,
+  samplingRate = defaultSamplingRate,
   Fs = samplingRate,
-  Fc = (cutoffFrequencies[1] - cutoffFrequencies[0]) / 2,
   BW = 1
 } = {}) => source => {
   if (!nbChannels) {
@@ -39,13 +51,14 @@ export const bandpassFilter = ({
   const options = {
     order,
     characteristic,
+    cutoffFrequencies,
     Fs,
-    Fc,
     BW
   };
-  const bandpassArray = new Array(nbChannels)
-    .fill(0)
-    .map(() => createBandpassIIR(options));
+  const bandpassArray = new Array(nbChannels).fill(0).map(() => ({
+    high: createHighpassIIR(options),
+    low: createLowpassIIR(options)
+  }));
   return createPipe(
     source,
     map(eegObject => {
@@ -54,7 +67,9 @@ export const bandpassFilter = ({
       return {
         ...eegObject,
         data: eegObject.data.map((channel, index) =>
-          bandpassArray[index][stepFunction](channel)
+          bandpassArray[index]['low'][stepFunction](
+            bandpassArray[index]['high'][stepFunction](channel)
+          )
         )
       };
     })

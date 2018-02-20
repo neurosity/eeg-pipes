@@ -29,7 +29,7 @@ export const lowpassFilter = ({
   samplingRate = defaultsamplingRate,
   Fs = samplingRate,
   Fc = cutoffFrequency,
-  BW = 0.1
+  BW = 1
 } = {}) => source => {
   if (!nbChannels) {
     throw new Error(

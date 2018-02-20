@@ -4,6 +4,7 @@ const {
   bufferCount,
   chunk,
   notchFilter,
+  bandpassFilter,
   safeNotchFilter,
   safeBandpassFilter
 } = require("../");
@@ -29,7 +30,7 @@ const eeg3$ = createMockStream().pipe(
 const eeg4$ = createMockStream().pipe(
   bufferCount(5),
   chunk(),
-  safeBandpassFilter({ nbChannels: 4 })
+  bandpassFilter({ nbChannels: 4 })
 );
 
 eeg4$.subscribe(console.log);
