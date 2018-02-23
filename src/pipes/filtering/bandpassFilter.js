@@ -21,16 +21,12 @@ const createHighpassIIR = options => {
     ...options,
     Fc: options.cutoffFrequencies[0]
   });
-  console.log('lowpass parameters: ', { ...options, Fc: options.cutoffFrequencies[1] });
-  console.log('coeffs: ', coeffs);
   return new IirFilter(coeffs);
 };
 
 const createLowpassIIR = options => {
   const calc = new CalcCascades();
   const coeffs = calc.lowpass({ ...options, Fc: options.cutoffFrequencies[1] });
-  console.log('lowpass parameters: ', { ...options, Fc: options.cutoffFrequencies[1] });
-  console.log('coeffs: ', coeffs);
   return new IirFilter(coeffs);
 };
 
@@ -67,8 +63,8 @@ export const bandpassFilter = ({
       return {
         ...eegObject,
         data: eegObject.data.map((channel, index) =>
-          bandpassArray[index]['low'][stepFunction](
-            bandpassArray[index]['high'][stepFunction](channel)
+          bandpassArray[index].low[stepFunction](
+            bandpassArray[index].high[stepFunction](channel)
           )
         )
       };

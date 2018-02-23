@@ -22,13 +22,13 @@ const createNotchIIR = options => {
 };
 
 const interpolate = (before, after) => {
-  if (!isNaN(before)) {
-    if (!isNaN(after)) {
+  if (!Number.isNaN(before)) {
+    if (!Number.isNaN(after)) {
       return (before + after) / 2;
     }
     return before;
   }
-  if (!isNaN(after)) {
+  if (!Number.isNaN(after)) {
     return after;
   }
   return 0;
@@ -49,30 +49,27 @@ export const safeNotchFilter = ({
       "Please supply nbChannels parameter to notchFilter operator"
     );
   }
-  const options = {
-    order,
-    characteristic,
-    Fs,
-    Fc,
-    BW
-  };
-  const notchArray = new Array(nbChannels)
-    .fill(0)
-    .map(() => createNotchIIR(options));
+  const notchArray = new Array(nbChannels).fill(0).map(() =>
+    createNotchIIR({
+      order,
+      characteristic,
+      Fs,
+      Fc,
+      BW
+    })
+  );
   return createPipe(
     source,
     map(eegObject => {
       const isChunk = Array.isArray(eegObject.data[0]);
-      const stepFunction = isChunk ? "multiStep" : "singleStep";
       return {
         ...eegObject,
         data: eegObject.data.map((channel, index) => {
-          const nans = [];
-          // If Chunk, map through channel data, cleaning NaNs by interpolating. Store index of each NaN for reinsertion later
+          // If Chunk, map through channel data, cleaning NaNs by interpolating.
           if (isChunk) {
-            
-            channel = channel.map((sample, sampleIndex) => {
-              if (isNaN(sample)) {
+            const nans = [];
+            const safeChannel = channel.map((sample, sampleIndex) => {
+              if (Number.isNaN(sample)) {
                 nans.push(sampleIndex);
                 const interpolation = interpolate(
                   channel[sampleIndex - 1],
@@ -82,16 +79,23 @@ export const safeNotchFilter = ({
               }
               return sample;
             });
-          } else if (isNaN(channel)) {
-            return channel;
+
+            // Then, perform filter
+            const filteredData = notchArray[index].multiStep(safeChannel);
+
+            // Afterwards, reinsert NaNs
+            if (nans.length > 0) {
+              nans.forEach(nan => {
+                filteredData[nan] = NaN;
+              });
+            }
+            return filteredData;
           }
-          const filteredData = notchArray[index][stepFunction](channel);
-          if (nans.length > 0) {
-            nans.forEach(nan => {
-              filteredData[nan] = NaN;
-            });
+          // If Sample, only filter if not NaN
+          if (!Number.isNaN(channel)) {
+            return notchArray[index].singleStep(channel);
           }
-          return filteredData;
+          return channel;
         })
       };
     })
