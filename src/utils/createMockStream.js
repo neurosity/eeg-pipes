@@ -13,6 +13,6 @@ export const createMockStream = ({
   interval(1000 / sampleRate).pipe(
     map(() => ({
       timestamp: Date.now(),
-      data: Array.from({ length: channels }, Math.random)
+      data: Array.from({ length: channels }, () => Math.random())
     }))
   );

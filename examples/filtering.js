@@ -1,4 +1,13 @@
-const { createMockStream, addInfo, bufferCount, chunk, notchFilter } = require("../");
+const {
+  createMockStream,
+  addInfo,
+  bufferCount,
+  chunk,
+  notchFilter,
+  bandpassFilter,
+  safeNotchFilter,
+  safeBandpassFilter
+} = require("../");
 
 // Test Samples
 const eeg1$ = createMockStream().pipe(notchFilter({ nbChannels: 4 }));
@@ -10,4 +19,18 @@ const eeg2$ = createMockStream().pipe(
   notchFilter({ nbChannels: 4 })
 );
 
-eeg2$.subscribe(console.log);
+// Test NaNStream
+const eeg3$ = createMockStream().pipe(
+  bufferCount(5),
+  chunk(),
+  notchFilter({ nbChannels: 4 })
+);
+
+// Test NaNStream
+const eeg4$ = createMockStream().pipe(
+  bufferCount(5),
+  chunk(),
+  bandpassFilter({ nbChannels: 4 })
+);
+
+eeg4$.subscribe(console.log);

@@ -5,3 +5,4 @@ export * from './deltaRange';
 export * from './filterByRange';
 export * from './gammaRange';
 export * from './thetaRange';
+export * from './chunkFFT';
