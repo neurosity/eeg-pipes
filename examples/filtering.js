@@ -1,5 +1,6 @@
 const {
   createMockStream,
+  createMockNaNStream,
   addInfo,
   bufferCount,
   chunk,
@@ -12,25 +13,18 @@ const {
 // Test Samples
 const eeg1$ = createMockStream().pipe(notchFilter({ nbChannels: 4 }));
 
-// Test Chunks
-const eeg2$ = createMockStream().pipe(
+// Test Chunks and normal notch against stream with NaNs. Will error out
+const eeg2$ = createMockNaNStream().pipe(
   bufferCount(5),
   chunk(),
   notchFilter({ nbChannels: 4 })
 );
 
-// Test NaNStream
-const eeg3$ = createMockStream().pipe(
+// Test Chunks and safe notch against stream with NaNs. Should be fine
+const eeg3$ = createMockNaNStream().pipe(
   bufferCount(5),
   chunk(),
-  notchFilter({ nbChannels: 4 })
+  safeNotchFilter({ nbChannels: 4 })
 );
 
-// Test NaNStream
-const eeg4$ = createMockStream().pipe(
-  bufferCount(5),
-  chunk(),
-  bandpassFilter({ nbChannels: 4 })
-);
-
-eeg4$.subscribe(console.log);
+eeg3$.subscribe(console.log);
