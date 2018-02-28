@@ -7,8 +7,9 @@ const {
   notchFilter,
   bandpassFilter,
   safeNotchFilter,
-  safeBandpassFilter
+  safeHighpassFilter
 } = require("../");
+const createEEGStream = require('./datasets/createEEGStream');
 
 // Test Samples
 const eeg1$ = createMockStream().pipe(notchFilter({ nbChannels: 4 }));
@@ -27,4 +28,16 @@ const eeg3$ = createMockNaNStream().pipe(
   safeNotchFilter({ nbChannels: 4 })
 );
 
-eeg3$.subscribe(console.log);
+// Test Chunks and safe notch against stream with NaNs. Should be fine
+const eeg4$ = createMockNaNStream().pipe(
+  bufferCount(5),
+  chunk(),
+  safeHighpassFilter({ nbChannels: 4, cutoffFrequency: 2, samplingRate: 1000 })
+);
+
+const eeg5$ = createEEGStream().pipe(
+  safeNotchFilter({ nbChannels: 4 }),
+  safeHighpassFilter({ nbChannels: 4 })
+);
+
+eeg5$.subscribe(console.log);
