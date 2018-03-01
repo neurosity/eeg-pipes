@@ -3,13 +3,14 @@ import { map } from "rxjs/operators";
 import { createPipe } from "../../utils/createPipe";
 import {
   SAMPLE_RATE as defaultsamplingRate,
-  ORDER as defaultOrder,
-  CHARACTERISTIC as defaultCharacteristic
+  NOTCH_ORDER as defaultOrder,
+  CHARACTERISTIC as defaultCharacteristic,
+  NOTCH_BW as defaultNotchBW
 } from "../../constants";
 
 /**
  * @method safeNotchFilter
- * Applies a notch filter to EEG Data. Can be applied to Samples or Chunks. Must provide nbChannels. cutOffFrequency will default to 60hz.
+ * Applies a notch filter to EEG Data. Filters around NaN values while leaving them intact in output. Can be applied to Samples or Chunks. Must provide nbChannels. cutOffFrequency will default to 60hz.
  * @example { nbChannels = 4, samplingRate = 256, cutOffFrequency = 60 }
  * @param {Object} options
  * @returns {Observable}
@@ -22,13 +23,13 @@ const createNotchIIR = options => {
 };
 
 const interpolate = (before, after) => {
-  if (!Number.isNaN(before)) {
-    if (!Number.isNaN(after)) {
+  if (!isNaN(before)) {
+    if (!isNaN(after)) {
       return (before + after) / 2;
     }
     return before;
   }
-  if (!Number.isNaN(after)) {
+  if (!isNaN(after)) {
     return after;
   }
   return 0;
@@ -42,7 +43,7 @@ export const safeNotchFilter = ({
   samplingRate = defaultsamplingRate,
   Fs = samplingRate,
   Fc = cutoffFrequency,
-  BW = 0.1
+  BW = defaultNotchBW
 } = {}) => source => {
   if (!nbChannels) {
     throw new Error(
@@ -69,7 +70,7 @@ export const safeNotchFilter = ({
           if (isChunk) {
             const nans = [];
             const safeChannel = channel.map((sample, sampleIndex) => {
-              if (Number.isNaN(sample)) {
+              if (isNaN(sample)) {
                 nans.push(sampleIndex);
                 const interpolation = interpolate(
                   channel[sampleIndex - 1],
@@ -92,7 +93,7 @@ export const safeNotchFilter = ({
             return filteredData;
           }
           // If Sample, only filter if not NaN
-          if (!Number.isNaN(channel)) {
+          if (!isNaN(channel)) {
             return notchArray[index].singleStep(channel);
           }
           return channel;

@@ -5,4 +5,6 @@ export * from './bandpassFilter';
 export * from './notchFilter';
 export * from './safeNotchFilter';
 export * from './safeBandpassFilter';
+export * from './safeHighpassFilter';
+export * from './safeLowpassFilter';
 export * from './pickChannels';

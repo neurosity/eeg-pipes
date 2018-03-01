@@ -8,16 +8,16 @@ import {
 } from "../../constants";
 
 /**
- * @method safeHighpassFilter
- * Applies a highpass filter to EEG Data. Filters around NaN values while leaving them intact in output. Can be applied to Samples or Chunks. Must provide nbChannels. cutOffFrequency will default to 2hz.
+ * @method safeLowpassFilter
+ * Applies a lowpass filter to EEG Data. Filters around NaN values while leaving them intact in output. Can be applied to Samples or Chunks. Must provide nbChannels. cutOffFrequency will default to 2hz.
  * @example { nbChannels = 4, samplingRate = 256, cutOffFrequency = 60 }
  * @param {Object} options
  * @returns {Observable}
  */
 
-const createHighpassIIR = options => {
+const createLowpassIIR = options => {
   const calc = new CalcCascades();
-  const coeffs = calc.highpass(options);
+  const coeffs = calc.lowpass(options);
   return new IirFilter(coeffs);
 };
 
@@ -34,11 +34,11 @@ const interpolate = (before, after) => {
   return 0;
 };
 
-export const safeHighpassFilter = ({
+export const safeLowpassFilter = ({
   nbChannels,
   order = defaultOrder,
   characteristic = defaultCharacteristic,
-  cutoffFrequency = 2,
+  cutoffFrequency = 55,
   samplingRate = defaultsamplingRate,
   Fs = samplingRate,
   Fc = cutoffFrequency,
@@ -49,8 +49,8 @@ export const safeHighpassFilter = ({
       "Please supply nbChannels parameter to notchFilter operator"
     );
   }
-  const highpassArray = new Array(nbChannels).fill(0).map(() =>
-    createHighpassIIR({
+  const lowpassArray = new Array(nbChannels).fill(0).map(() =>
+    createLowpassIIR({
       order,
       characteristic,
       Fs,
@@ -81,7 +81,7 @@ export const safeHighpassFilter = ({
             });
 
             // Then, perform filter
-            const filteredData = highpassArray[index].multiStep(safeChannel);
+            const filteredData = lowpassArray[index].multiStep(safeChannel);
 
             // Afterwards, reinsert NaNs
             if (nans.length > 0) {
@@ -93,7 +93,7 @@ export const safeHighpassFilter = ({
           }
           // If Sample, only filter if not NaN
           if (!isNaN(channel)) {
-            return highpassArray[index].singleStep(channel);
+            return lowpassArray[index].singleStep(channel);
           }
           return channel;
         })

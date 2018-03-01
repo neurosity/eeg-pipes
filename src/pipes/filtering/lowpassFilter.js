@@ -25,7 +25,7 @@ export const lowpassFilter = ({
   nbChannels,
   order = defaultOrder,
   characteristic = defaultCharacteristic,
-  cutoffFrequency = 50,
+  cutoffFrequency = 55,
   samplingRate = defaultsamplingRate,
   Fs = samplingRate,
   Fc = cutoffFrequency,

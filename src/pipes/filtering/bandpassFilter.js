@@ -21,13 +21,13 @@ const createHighpassIIR = options => {
     ...options,
     Fc: options.cutoffFrequencies[0]
   });
-  return new IirFilter(coeffs);
+  return new IirFilter(coeffs, true);
 };
 
 const createLowpassIIR = options => {
   const calc = new CalcCascades();
   const coeffs = calc.lowpass({ ...options, Fc: options.cutoffFrequencies[1] });
-  return new IirFilter(coeffs);
+  return new IirFilter(coeffs, true);
 };
 
 export const bandpassFilter = ({

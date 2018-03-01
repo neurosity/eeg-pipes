@@ -4,7 +4,8 @@ import { createPipe } from "../../utils/createPipe";
 import {
   SAMPLE_RATE as defaultsamplingRate,
   ORDER as defaultOrder,
-  CHARACTERISTIC as defaultCharacteristic
+  CHARACTERISTIC as defaultCharacteristic,
+  NOTCH_BW as defaultNotchBW
 } from "../../constants";
 
 /**
@@ -29,7 +30,7 @@ export const notchFilter = ({
   samplingRate = defaultsamplingRate,
   Fs = samplingRate,
   Fc = cutoffFrequency,
-  BW = 0.1
+  BW = defaultNotchBW
 } = {}) => source => {
   if (!nbChannels) {
     throw new Error(

@@ -9,7 +9,7 @@ import {
 
 /**
  * @method safeBandpassFilter
- * Applies a bandpass filter to EEG Data. Can be applied to Samples or Chunks. Must provide nbChannels.
+ * Applies a bandpass filter to EEG Data. Filters around dropped data values while leaving them intact in output. Can be applied to Samples or Chunks. Must provide nbChannels.
  * @example { nbChannels = 4, samplingRate = 256, cutOffFrequency = 60 }
  * @param {Object} options
  * @returns {Observable}
