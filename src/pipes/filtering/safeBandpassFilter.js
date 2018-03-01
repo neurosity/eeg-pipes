@@ -15,10 +15,19 @@ import {
  * @returns {Observable}
  */
 
-const createBandpassIIR = options => {
+const createHighpassIIR = options => {
   const calc = new CalcCascades();
-  const coeffs = calc.bandpass(options);
-  return new IirFilter(coeffs);
+  const coeffs = calc.highpass({
+    ...options,
+    Fc: options.cutoffFrequencies[0]
+  });
+  return new IirFilter(coeffs, true);
+};
+
+const createLowpassIIR = options => {
+  const calc = new CalcCascades();
+  const coeffs = calc.lowpass({ ...options, Fc: options.cutoffFrequencies[1] });
+  return new IirFilter(coeffs, true);
 };
 
 const interpolate = (before, after) => {
@@ -41,7 +50,6 @@ export const safeBandpassFilter = ({
   cutoffFrequencies = [2, 50],
   samplingRate = defaultsamplingRate,
   Fs = samplingRate,
-  Fc = (cutoffFrequencies[1] - cutoffFrequencies[0]) / 2,
   BW = 1
 } = {}) => source => {
   if (!nbChannels) {
@@ -52,26 +60,25 @@ export const safeBandpassFilter = ({
   const options = {
     order,
     characteristic,
+    cutoffFrequencies,
     Fs,
-    Fc,
     BW
   };
-  const bandpassArray = new Array(nbChannels)
-    .fill(0)
-    .map(() => createBandpassIIR(options));
+  const bandpassArray = new Array(nbChannels).fill(0).map(() => ({
+    high: createHighpassIIR(options),
+    low: createLowpassIIR(options)
+  }));
   return createPipe(
     source,
     map(eegObject => {
       const isChunk = Array.isArray(eegObject.data[0]);
-      const stepFunction = isChunk ? "multiStep" : "singleStep";
       return {
         ...eegObject,
         data: eegObject.data.map((channel, index) => {
-          const nans = [];
-
-          // If Chunk, map through channel data, cleaning NaNs by interpolating. Store index of each NaN for reinsertion later
+          // If Chunk, map through channel data, cleaning NaNs by interpolating.
           if (isChunk) {
-            channel = channel.map((sample, sampleIndex) => {
+            const nans = [];
+            const safeChannel = channel.map((sample, sampleIndex) => {
               if (isNaN(sample)) {
                 nans.push(sampleIndex);
                 const interpolation = interpolate(
@@ -82,16 +89,27 @@ export const safeBandpassFilter = ({
               }
               return sample;
             });
-          } else if (isNaN(channel)) {
-            return channel;
+
+            // Then, perform filter
+            const filteredData = bandpassArray[index].low.multiStep(
+              bandpassArray[index].high.multiStep(safeChannel)
+            );
+
+            // Afterwards, reinsert NaNs
+            if (nans.length > 0) {
+              nans.forEach(nan => {
+                filteredData[nan] = NaN;
+              });
+            }
+            return filteredData;
           }
-          const filteredData = bandpassArray[index][stepFunction](channel);
-          if (nans.length > 0) {
-            nans.forEach(nan => {
-              filteredData[nan] = NaN;
-            });
+          // If Sample, only filter if not NaN
+          if (!isNaN(channel)) {
+            return bandpassArray[index].low.singleStep(
+              bandpassArray[index].high.multiStep(channel)
+            );
           }
-          return filteredData;
+          return channel;
         })
       };
     })
