@@ -4,13 +4,13 @@ import { createPipe } from "../../utils/createPipe";
 import { DATA_PROP as defaultDataProp } from "../../constants";
 
 /**
- * @method filterChannels
- * Filters out channel based on channel number
+ * @method removeChannels
+ * Removes channels from stream based on channel number (indexed at one)
  *
  * @param {Object} options
  * @returns {Observable} sample
  */
-export const filterChannels = (
+export const removeChannels = (
   { channels = [], dataProp = defaultDataProp } = {}
 ) => source =>
   createPipe(

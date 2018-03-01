@@ -49,9 +49,9 @@ eeg$.pipe(
 
 #### Filtering (IIR)
 
-Filter pipes can be applied to both samples or buffers of samples. 
+Filter pipes can be applied to both samples or buffers of samples.
+If your data stream contains dropped samples, you can use the 'safe' versions of IIR filter operators that will filter around `NaN` or `null` values while maintaining them as `NaN` downstream.
 
-* filterChannels({ channels: [c1, c2, c3] })
 * lowpassFilter({ nbChannels, cutoffFrequency })
 * highpassFilter({ nbChannels, cutoffFrequency })
 * bandpassFilter({ nbChannels, cutoffFrequencies: [lowBound, highBound] })
@@ -79,6 +79,7 @@ This can be accomplished by using bufferFFT first OR bufferCount/bufferTime.
 * bufferTime()
 * chunk()
 * pickChannels({ channels: [c1, c2, c3] })
+* removeChannels({ channels: [c1, c2, c3] })
 * addInfo()
 
 ### Coming soon
