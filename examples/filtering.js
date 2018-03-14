@@ -7,9 +7,10 @@ const {
   notchFilter,
   bandpassFilter,
   safeNotchFilter,
-  safeHighpassFilter
+  safeHighpassFilter,
+  safeBandpassFilter
 } = require("../");
-const createEEGStream = require('./datasets/createEEGStream');
+const createEEGStream = require("./datasets/createEEGStream");
 
 // Test Samples
 const eeg1$ = createMockStream().pipe(notchFilter({ nbChannels: 4 }));
@@ -35,9 +36,6 @@ const eeg4$ = createMockNaNStream().pipe(
   safeHighpassFilter({ nbChannels: 4, cutoffFrequency: 2, samplingRate: 1000 })
 );
 
-const eeg5$ = createEEGStream().pipe(
-  safeNotchFilter({ nbChannels: 4 }),
-  safeHighpassFilter({ nbChannels: 4 })
-);
+const eeg5$ = createEEGStream().pipe(safeBandpassFilter({ nbChannels: 4 }));
 
 eeg5$.subscribe(console.log);

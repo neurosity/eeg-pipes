@@ -106,7 +106,7 @@ export const safeBandpassFilter = ({
           // If Sample, only filter if not NaN
           if (!isNaN(channel)) {
             return bandpassArray[index].low.singleStep(
-              bandpassArray[index].high.multiStep(channel)
+              bandpassArray[index].high.singleStep(channel)
             );
           }
           return channel;

@@ -39,10 +39,7 @@ export const safeHighpassFilter = ({
   order = defaultOrder,
   characteristic = defaultCharacteristic,
   cutoffFrequency = 2,
-  samplingRate = defaultsamplingRate,
-  Fs = samplingRate,
-  Fc = cutoffFrequency,
-  BW = 1
+  samplingRate = defaultsamplingRate
 } = {}) => source => {
   if (!nbChannels) {
     throw new Error(
@@ -53,9 +50,8 @@ export const safeHighpassFilter = ({
     createHighpassIIR({
       order,
       characteristic,
-      Fs,
-      Fc,
-      BW
+      Fs: samplingRate,
+      Fc: cutoffFrequency,
     })
   );
   return createPipe(

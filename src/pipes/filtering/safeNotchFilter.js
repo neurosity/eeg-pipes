@@ -1,5 +1,5 @@
 import { CalcCascades, IirFilter } from "fili";
-import { map } from "rxjs/operators";
+import { map, filter } from "rxjs/operators";
 import { createPipe } from "../../utils/createPipe";
 import {
   SAMPLE_RATE as defaultsamplingRate,
@@ -16,10 +16,22 @@ import {
  * @returns {Observable}
  */
 
-const createNotchIIR = options => {
+const createNotchIIR = (options, filterHarmonics) => {
   const calc = new CalcCascades();
   const coeffs = calc.bandstop(options);
-  return new IirFilter(coeffs);
+  
+  if (filterHarmonics) {
+    const thirdHarmonicCoeffs = calc.bandstop({
+      ...options,
+      Fc: options.Fc * 3
+    });
+    const firstFilter = new IirFilter(coeffs);
+    const thirdFilter = new IirFilter(thirdHarmonicCoeffs);
+    return (signal, stepFunction) =>
+      thirdFilter[stepFunction](firstFilter[stepFunction](signal));
+  }
+  const filter = new IirFilter(coeffs);
+  return (signal, stepFunction) => filter[stepFunction](signal);
 };
 
 const interpolate = (before, after) => {
@@ -41,9 +53,8 @@ export const safeNotchFilter = ({
   characteristic = defaultCharacteristic,
   cutoffFrequency = 60,
   samplingRate = defaultsamplingRate,
-  Fs = samplingRate,
-  Fc = cutoffFrequency,
-  BW = defaultNotchBW
+  bandWidth = defaultNotchBW,
+  filterHarmonics = false
 } = {}) => source => {
   if (!nbChannels) {
     throw new Error(
@@ -51,13 +62,16 @@ export const safeNotchFilter = ({
     );
   }
   const notchArray = new Array(nbChannels).fill(0).map(() =>
-    createNotchIIR({
-      order,
-      characteristic,
-      Fs,
-      Fc,
-      BW
-    })
+    createNotchIIR(
+      {
+        order,
+        characteristic,
+        Fs: samplingRate,
+        Fc: cutoffFrequency,
+        BW: bandWidth
+      },
+      filterHarmonics
+    )
   );
   return createPipe(
     source,
@@ -82,7 +96,7 @@ export const safeNotchFilter = ({
             });
 
             // Then, perform filter
-            const filteredData = notchArray[index].multiStep(safeChannel);
+            const filteredData = notchArray[index](safeChannel, "multiStep");
 
             // Afterwards, reinsert NaNs
             if (nans.length > 0) {
@@ -94,7 +108,7 @@ export const safeNotchFilter = ({
           }
           // If Sample, only filter if not NaN
           if (!isNaN(channel)) {
-            return notchArray[index].singleStep(channel);
+            return notchArray[index](channel, "singleStep");
           }
           return channel;
         })

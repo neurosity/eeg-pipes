@@ -26,10 +26,7 @@ export const highpassFilter = ({
   order = defaultOrder,
   characteristic = defaultCharacteristic,
   cutoffFrequency = 2,
-  samplingRate = defaultsamplingRate,
-  Fs = samplingRate,
-  Fc = cutoffFrequency,
-  BW = 1
+  samplingRate = defaultsamplingRate
 } = {}) => source => {
   if (!nbChannels) {
     throw new Error(
@@ -39,9 +36,8 @@ export const highpassFilter = ({
   const options = {
     order,
     characteristic,
-    Fs,
-    Fc,
-    BW
+    Fs: samplingRate,
+    Fc: cutoffFrequency
   };
   const highpassArray = new Array(nbChannels)
     .fill(0)

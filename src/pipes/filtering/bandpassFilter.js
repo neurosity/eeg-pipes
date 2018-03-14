@@ -35,9 +35,7 @@ export const bandpassFilter = ({
   order = defaultOrder,
   characteristic = defaultCharacteristic,
   cutoffFrequencies = [2, 50],
-  samplingRate = defaultSamplingRate,
-  Fs = samplingRate,
-  BW = 1
+  samplingRate = defaultSamplingRate
 } = {}) => source => {
   if (!nbChannels) {
     throw new Error(
@@ -48,8 +46,7 @@ export const bandpassFilter = ({
     order,
     characteristic,
     cutoffFrequencies,
-    Fs,
-    BW
+    Fs: samplingRate
   };
   const bandpassArray = new Array(nbChannels).fill(0).map(() => ({
     high: createHighpassIIR(options),

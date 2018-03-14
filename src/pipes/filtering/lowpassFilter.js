@@ -25,11 +25,8 @@ export const lowpassFilter = ({
   nbChannels,
   order = defaultOrder,
   characteristic = defaultCharacteristic,
-  cutoffFrequency = 55,
-  samplingRate = defaultsamplingRate,
-  Fs = samplingRate,
-  Fc = cutoffFrequency,
-  BW = 1
+  cutoffFrequency = 50,
+  samplingRate = defaultsamplingRate
 } = {}) => source => {
   if (!nbChannels) {
     throw new Error(
@@ -39,9 +36,8 @@ export const lowpassFilter = ({
   const options = {
     order,
     characteristic,
-    Fs,
-    Fc,
-    BW
+    Fs: samplingRate,
+    Fc: cutoffFrequency
   };
   const lowpassArray = new Array(nbChannels)
     .fill(0)

@@ -16,10 +16,22 @@ import {
  * @returns {Observable}
  */
 
-const createNotchIIR = options => {
+const createNotchIIR = (options, filterHarmonics) => {
   const calc = new CalcCascades();
   const coeffs = calc.bandstop(options);
-  return new IirFilter(coeffs);
+
+  if (filterHarmonics) {
+    const thirdHarmonicCoeffs = calc.bandstop({
+      ...options,
+      Fc: options.Fc * 3
+    });
+    const firstFilter = new IirFilter(coeffs);
+    const thirdFilter = new IirFilter(thirdHarmonicCoeffs);
+    return (signal, stepFunction) =>
+      thirdFilter[stepFunction](firstFilter[stepFunction](signal));
+  }
+  const filter = new IirFilter(coeffs);
+  return (signal, stepFunction) => filter[stepFunction](signal);
 };
 
 export const notchFilter = ({
@@ -28,9 +40,8 @@ export const notchFilter = ({
   characteristic = defaultCharacteristic,
   cutoffFrequency = 60,
   samplingRate = defaultsamplingRate,
-  Fs = samplingRate,
-  Fc = cutoffFrequency,
-  BW = defaultNotchBW
+  bandWidth = defaultNotchBW,
+  filterHarmonics = false
 } = {}) => source => {
   if (!nbChannels) {
     throw new Error(
@@ -40,13 +51,13 @@ export const notchFilter = ({
   const options = {
     order,
     characteristic,
-    Fs,
-    Fc,
-    BW
+    Fs: samplingRate,
+    Fc: cutoffFrequency,
+    BW: bandWidth
   };
   const notchArray = new Array(nbChannels)
     .fill(0)
-    .map(() => createNotchIIR(options));
+    .map(() => createNotchIIR(options, filterHarmonics));
   return createPipe(
     source,
     map(eegObject => {
@@ -55,7 +66,7 @@ export const notchFilter = ({
       return {
         ...eegObject,
         data: eegObject.data.map((channel, index) =>
-          notchArray[index][stepFunction](channel)
+          notchArray[index](channel, stepFunction)
         )
       };
     })

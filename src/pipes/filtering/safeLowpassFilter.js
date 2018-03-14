@@ -39,10 +39,7 @@ export const safeLowpassFilter = ({
   order = defaultOrder,
   characteristic = defaultCharacteristic,
   cutoffFrequency = 55,
-  samplingRate = defaultsamplingRate,
-  Fs = samplingRate,
-  Fc = cutoffFrequency,
-  BW = 1
+  samplingRate = defaultsamplingRate
 } = {}) => source => {
   if (!nbChannels) {
     throw new Error(
@@ -53,9 +50,8 @@ export const safeLowpassFilter = ({
     createLowpassIIR({
       order,
       characteristic,
-      Fs,
-      Fc,
-      BW
+      Fs: samplingRate,
+      Fc: cutoffFrequency
     })
   );
   return createPipe(
