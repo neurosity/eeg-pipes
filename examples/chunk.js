@@ -1,9 +1,9 @@
-const { createMockStream, addInfo, bufferCount, chunk } = require("../");
+const { createEEG, addInfo, bufferCount, chunk } = require("..");
 
-const eeg1$ = createMockStream().pipe(
+const eeg$ = createEEG().pipe(
   addInfo({ samplingRate: 250 }),
   bufferCount(5),
   chunk()
 );
 
-eeg1$.subscribe(console.log);
+eeg$.subscribe(console.log);

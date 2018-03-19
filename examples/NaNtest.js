@@ -1,5 +1,5 @@
 var Fili = require('fili');
-const { createMockStream, addInfo, bufferCount, chunk, notchFilter, safeNotchFilter } = require("../");
+const { addInfo, bufferCount, chunk, notchFilter, safeNotchFilter } = require("../");
 
 
 //  Instance of a filter coefficient calculator

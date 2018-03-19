@@ -1,7 +1,7 @@
-const { createMockStream, alphaRange, bufferFFT } = require("../");
+const { createEEG, alphaRange, bufferFFT } = require("../");
 
-const eeg1$ = createMockStream().pipe(
-  bufferFFT({bins: 256}),
+const eeg1$ = createEEG().pipe(
+  bufferFFT({ bins: 256 }),
   alphaRange()
 );
 
