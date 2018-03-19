@@ -17,18 +17,6 @@ const config = {
                 use: {
                     loader: 'babel-loader'
                 }
-            },
-            {
-                test: /\.csv$/,
-                exclude: /(node_modules)/,
-                use: {
-                    loader: 'csv-loader',
-                    options: {
-                        dynamicTyping: true,
-                        header: false,
-                        skipEmptyLines: true
-                    }
-                }
             }
         ]
     },
@@ -47,7 +35,7 @@ const exportLibraryTarget = libraryTarget =>
     Object.assign({}, config, {
         output: {
             path: path.resolve(__dirname, 'dist'),
-            filename: `${libraryFileName}.${libraryTarget}.js`,
+            filename: `${libraryFileName}.[name].${libraryTarget}.js`,
             chunkFilename: `${libraryFileName}.[name].${libraryTarget}.js`,
             library,
             libraryTarget,

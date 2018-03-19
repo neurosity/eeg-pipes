@@ -2,7 +2,7 @@
   "name": "eeg-pipes",
   "description": "Lettable RxJS operators for working with EEG data in Node and the Browser",
   "version": "1.1.0",
-  "main": "dist/eeg-pipes.umd.js",
+  "main": "dist/eeg-pipes.main.umd.js",
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack --mode development",
@@ -37,11 +37,10 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
-    "babel-plugin-dynamic-import-webpack": "^1.0.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-plugin-webpack-named-dynamic-imports": "^1.1.0",
     "babel-preset-env": "^1.6.1",
-    "csv-loader": "^2.1.1",
     "eslint": "^4.18.1",
     "webpack": "^4.1.1",
     "webpack-cli": "^2.0.12",

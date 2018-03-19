@@ -1,23 +1,18 @@
 import { interval } from "rxjs/observable/interval";
+import { fromPromise } from "rxjs/observable/fromPromise";
 import { map } from "rxjs/operators";
 
-import museCsv from "../../dataset/muse-lsl.csv";
-
 // Code splitting: dynaically importing the csv so it is not included in the main bundle
-// @TODO: not currently working, webpack bug: https://twitter.com/castillo__io/status/975585584486916096
-export const getMuseCsv = async () =>
-  await import(
-    /* webpackChunkName: "museCsv" */
-    "../../dataset/muse-lsl.csv"
-  ).then(csv => 
-    csv.map(row => row.slice(1, 5)) // filter channel data
-  );
+// @TODO: not working due to https://github.com/webpack/webpack/issues/2471
+// export const getMuseCsv = async () =>
+//   await importModules("../../dataset", "dataset")
+//     .then(module => module.default)
+//     .then(csv => 
+//       csv.map(row => row.slice(1, 5)) // filter channel data
+//     );
 
 const NUM_CHANNELS = 4;
 const SAMPLE_RATE = 256;
-
-// filter channel data
-const museData = museCsv.map(row => row.slice(1, 5));
 
 const createMockRow = length =>
   Array.from({ length }, () => Math.random());
@@ -38,16 +33,24 @@ export const createEEG = ({
   channels = NUM_CHANNELS,
   sampleRate = SAMPLE_RATE,
   mock = false,
-  NaNRange = [0, 0],
-  csv = museData
-} = {}) =>
-  interval(1000 / sampleRate).pipe(
+  NaNRange = [0, 0]
+} = {}) => {
+  const startStream = csv => interval(1000 / sampleRate).pipe(
     map(interval => {
       const timestamp = Date.now();
-      const row = mock
-        ? createMockRow(channels)
-        : getCsvRow(csv, interval)
+      const row = csv
+        ? getCsvRow(csv, interval)
+        : createMockRow(channels)
       const data = injectNaNs(row, NaNRange);
       return { timestamp, data };
     })
   );
+    
+  if (mock) {
+    return startStream();
+  }
+    
+  return fromPromise(
+    importModules("../../dataset", "dataset")
+  );
+};
