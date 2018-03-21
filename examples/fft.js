@@ -1,8 +1,8 @@
-const { createEEG, alphaRange, bufferFFT } = require("../");
+const { createEEG, alphaPower, bufferFFT } = require("../");
 
 const eeg1$ = createEEG().pipe(
   bufferFFT({ bins: 256 }),
-  alphaRange()
+  alphaPower()
 );
 
 eeg1$.subscribe(console.log);
