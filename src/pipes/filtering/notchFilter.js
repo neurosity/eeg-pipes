@@ -3,7 +3,7 @@ import { map } from "rxjs/operators";
 import { createPipe } from "../../utils/createPipe";
 import {
   SAMPLE_RATE as defaultsamplingRate,
-  NOTCH_ORDER as defaultOrder,
+  ORDER as defaultOrder,
   CHARACTERISTIC as defaultCharacteristic,
   NOTCH_BW as defaultNotchBW
 } from "../../constants";
