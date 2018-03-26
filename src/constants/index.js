@@ -1,8 +1,8 @@
 export const CHANNELS = 4;
 export const SAMPLE_RATE = 250;
 export const ORDER = 3;
-export const NOTCH_ORDER = 1;
-export const NOTCH_BW = 0.25;
+export const NOTCH_ORDER = 2;
+export const NOTCH_BW = 0.5;
 export const CHARACTERISTIC = "butterworth";
 export const GAIN = 0;
 export const PREGAIN = false;

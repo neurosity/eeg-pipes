@@ -2,15 +2,15 @@ import { CalcCascades, IirFilter } from "fili";
 import { map } from "rxjs/operators";
 import { createPipe } from "../../utils/createPipe";
 import {
-  SAMPLE_RATE as defaultSamplingRate,
+  SAMPLE_RATE as defaultsamplingRate,
   ORDER as defaultOrder,
   CHARACTERISTIC as defaultCharacteristic
 } from "../../constants";
 
 /**
- * @method bandpassFilter
- * Applies a band pass filter to EEG Data. Can be applied to Samples or Chunks. Must provide nbChannels. cutOffFrequencies should be defined in array with the lower bound (highpass) followed by the upper bound (lowpass). cutOffFrequencies will default to 2-50hz.
- * @example { nbChannels = 4, samplingRate = 256, cutOffFrequencies = [2, 50] }
+ * @method safeBandpassFilter
+ * Applies a bandpass filter to EEG Data. Filters around dropped data values while leaving them intact in output. Can be applied to Samples or Chunks. Must provide nbChannels.
+ * @example { nbChannels = 4, samplingRate = 256, cutOffFrequency = 60 }
  * @param {Object} options
  * @returns {Observable}
  */
@@ -30,23 +30,39 @@ const createLowpassIIR = options => {
   return new IirFilter(coeffs, true);
 };
 
+const interpolate = (before, after) => {
+  if (!isNaN(before)) {
+    if (!isNaN(after)) {
+      return (before + after) / 2;
+    }
+    return before;
+  }
+  if (!isNaN(after)) {
+    return after;
+  }
+  return 0;
+};
+
 export const bandpassFilter = ({
   nbChannels,
   order = defaultOrder,
   characteristic = defaultCharacteristic,
   cutoffFrequencies = [2, 50],
-  samplingRate = defaultSamplingRate
+  samplingRate = defaultsamplingRate,
+  Fs = samplingRate,
+  BW = 1
 } = {}) => source => {
   if (!nbChannels) {
     throw new Error(
-      "Please supply nbChannels parameter to bandpassFilter operator"
+      "Please supply nbChannels parameter to safeBandpassFilter operator"
     );
   }
   const options = {
     order,
     characteristic,
     cutoffFrequencies,
-    Fs: samplingRate
+    Fs,
+    BW
   };
   const bandpassArray = new Array(nbChannels).fill(0).map(() => ({
     high: createHighpassIIR(options),
@@ -56,14 +72,45 @@ export const bandpassFilter = ({
     source,
     map(eegObject => {
       const isChunk = Array.isArray(eegObject.data[0]);
-      const stepFunction = isChunk ? "multiStep" : "singleStep";
       return {
         ...eegObject,
-        data: eegObject.data.map((channel, index) =>
-          bandpassArray[index].low[stepFunction](
-            bandpassArray[index].high[stepFunction](channel)
-          )
-        )
+        data: eegObject.data.map((channel, index) => {
+          // If Chunk, map through channel data, cleaning NaNs by interpolating.
+          if (isChunk) {
+            const nans = [];
+            const safeChannel = channel.map((sample, sampleIndex) => {
+              if (isNaN(sample)) {
+                nans.push(sampleIndex);
+                const interpolation = interpolate(
+                  channel[sampleIndex - 1],
+                  channel[sampleIndex + 1]
+                );
+                return interpolation;
+              }
+              return sample;
+            });
+
+            // Then, perform filter
+            const filteredData = bandpassArray[index].low.multiStep(
+              bandpassArray[index].high.multiStep(safeChannel)
+            );
+
+            // Afterwards, reinsert NaNs
+            if (nans.length > 0) {
+              nans.forEach(nan => {
+                filteredData[nan] = NaN;
+              });
+            }
+            return filteredData;
+          }
+          // If Sample, only filter if not NaN
+          if (!isNaN(channel)) {
+            return bandpassArray[index].low.singleStep(
+              bandpassArray[index].high.singleStep(channel)
+            );
+          }
+          return channel;
+        })
       };
     })
   );
