@@ -1,10 +1,11 @@
 {
   "name": "eeg-pipes",
   "description": "Lettable RxJS operators for working with EEG data in Node and the Browser",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "main": "dist/eeg-pipes.umd.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development",
     "start": "webpack-dev-server",
     "prepublishOnly": "npm run build"
   },
@@ -13,7 +14,6 @@
   ],
   "author": "Alex Castillo <alex@castillo.io>",
   "license": "MIT",
-  "lock": false,
   "keywords": [
     "eeg",
     "openbci",
@@ -37,12 +37,16 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-plugin-dynamic-import-webpack": "^1.0.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
-    "csv-parse": "^2.0.4",
+    "csv-loader": "^2.1.1",
     "eslint": "^4.18.1",
-    "fs": "^0.0.1-security",
-    "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.11.1"
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.12",
+    "webpack-dev-server": "^2.11.1",
+    "webpack-node-externals": "^1.6.0",
+    "webpack-rxjs-externals": "^1.1.0"
   }
 }

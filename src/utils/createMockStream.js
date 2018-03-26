@@ -1,18 +1,10 @@
-import { interval } from "rxjs/observable/interval";
-import { map } from "rxjs/operators";
+import { createEEG } from "./createEEG";
 
-import {
-  SAMPLE_RATE as defaultSampleRate,
-  CHANNELS as defaultChannels
-} from "../constants";
-
-export const createMockStream = ({
-  channels = defaultChannels,
-  sampleRate = defaultSampleRate
-} = {}) =>
-  interval(1000 / sampleRate).pipe(
-    map(() => ({
-      timestamp: Date.now(),
-      data: Array.from({ length: channels }, () => Math.random())
-    }))
-  );
+// Exists for backwards compatibility. Displays deprecation warning.
+export const createMockStream = (options = {}) => {
+  console.warn('createMockStream will be deprecated in the next major release. Use the createEEG instead.');
+  return createEEG({
+    ...options,
+    mock: true
+  });
+};

@@ -31,7 +31,7 @@ npm install --save eeg-pipes
 Then, importing the pipes from the library:
 
 ``` js
-import { bufferFFT, alphaRange } from 'eeg-pipes';
+import { bufferFFT, alphaPower } from 'eeg-pipes';
 ```
 
 And adding them to the RxJS observable pipe operator:
@@ -39,7 +39,7 @@ And adding them to the RxJS observable pipe operator:
 ``` js
 eeg$.pipe(
     bufferFFT({ bins: 256 }),
-    alphaRange()
+    alphaPower()
 ).subscribe(buffer =>
     console.log(buffer)
 );
@@ -60,16 +60,14 @@ If your data stream contains dropped samples, you can use the 'safe' versions of
 #### Frequency
 
 * bufferFFT({ bins, window, sampleRate })
-
-Using frequency pipes requires a buffer of samples.
-This can be accomplished by using bufferFFT first OR bufferCount/bufferTime.
-
-* alphaRange()
-* betaRange()
-* deltaRange()
-* gammaRange()
-* thetaRange()
-* filterByRange([ min, max ])
+* alphaPower()
+* betaPower()
+* deltaPower()
+* gammaPower()
+* thetaPower()
+* averagePower()
+* sliceFFT([ min, max ])
+* powerByBand()
 
 #### Unit conversion
 * toMicrovolts({ log })
@@ -100,7 +98,7 @@ This can be accomplished by using bufferFFT first OR bufferCount/bufferTime.
 {
   data: [Number, Number, Number, Number], // channels
   timestamp: Date,
-  info?: {
+    info?: {
   	samplingRate?: Number,
   	channelNames?: [String, String, String, String],
   	...

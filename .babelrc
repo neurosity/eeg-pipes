@@ -1,3 +1,7 @@
 {
-  "plugins": ["transform-object-rest-spread"]
+  "plugins": [
+    "transform-object-rest-spread",
+    "dynamic-import-webpack",
+    "transform-runtime"
+  ]
 }

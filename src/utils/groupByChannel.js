@@ -14,7 +14,6 @@ import { DATA_PROP as defaultDataProp } from "../constants";
  * http://www.codesuck.com/2012/02/transpose-javascript-array-in-one-line.html
  */
 
-
 export const groupByChannel = (samplesBuffer, dataProp = defaultDataProp) =>
   samplesBuffer[0][dataProp].map((_, channelIndex) =>
     samplesBuffer.map(sample => sample[dataProp][channelIndex])
