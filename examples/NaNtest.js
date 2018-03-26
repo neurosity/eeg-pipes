@@ -1,6 +1,11 @@
-var Fili = require('fili');
-const { addInfo, bufferCount, chunk, notchFilter, safeNotchFilter } = require("../");
-
+var Fili = require("fili");
+const {
+  addInfo,
+  bufferCount,
+  chunk,
+  notchFilter,
+  safeNotchFilter
+} = require("../");
 
 //  Instance of a filter coefficient calculator
 const iirCalculator = new Fili.CalcCascades();

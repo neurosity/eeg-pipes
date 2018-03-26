@@ -26,7 +26,7 @@ const eeg2$ = createEEG({ NaNRange }).pipe(
 const eeg3$ = createEEG({ NaNRange }).pipe(
   bufferCount(5),
   chunk(),
-  safeNotchFilter({ nbChannels: 4 })
+  safeNotchFilter({ nbChannels: 4, order: 2 })
 );
 
 // Test Chunks and safe notch against stream with NaNs. Should be fine
@@ -38,4 +38,6 @@ const eeg4$ = createEEG({ NaNRange }).pipe(
 
 const eeg5$ = createEEG().pipe(safeBandpassFilter({ nbChannels: 4 }));
 
-eeg5$.subscribe(console.log);
+const eeg6$ = createEEGStream().pipe(safeNotchFilter({ nbChannels: 4, order: 3 })); 
+
+eeg6$.subscribe(console.log);
