@@ -42,9 +42,7 @@ export const lowpassFilter = ({
   samplingRate = defaultsamplingRate
 } = {}) => source => {
   if (!nbChannels) {
-    throw new Error(
-      "Please supply nbChannels parameter to notchFilter operator"
-    );
+    throw new Error("Please supply nbChannels parameter");
   }
   const lowpassArray = new Array(nbChannels).fill(0).map(() =>
     createLowpassIIR({

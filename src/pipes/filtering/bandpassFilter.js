@@ -53,9 +53,7 @@ export const bandpassFilter = ({
   BW = 1
 } = {}) => source => {
   if (!nbChannels) {
-    throw new Error(
-      "Please supply nbChannels parameter to safeBandpassFilter operator"
-    );
+    throw new Error("Please supply nbChannels parameter");
   }
   const options = {
     order,

@@ -42,16 +42,14 @@ export const highpassFilter = ({
   samplingRate = defaultsamplingRate
 } = {}) => source => {
   if (!nbChannels) {
-    throw new Error(
-      "Please supply nbChannels parameter to notchFilter operator"
-    );
+    throw new Error("Please supply nbChannels parameter");
   }
   const highpassArray = new Array(nbChannels).fill(0).map(() =>
     createHighpassIIR({
       order,
       characteristic,
       Fs: samplingRate,
-      Fc: cutoffFrequency,
+      Fc: cutoffFrequency
     })
   );
   return createPipe(
