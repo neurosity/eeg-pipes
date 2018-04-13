@@ -1,6 +1,7 @@
 {
   "name": "eeg-pipes",
-  "description": "Lettable RxJS operators for working with EEG data in Node and the Browser",
+  "description":
+    "Lettable RxJS operators for working with EEG data in Node and the Browser",
   "version": "2.0.0",
   "main": "dist/eeg-pipes.umd.js",
   "scripts": {
@@ -9,19 +10,10 @@
     "start": "webpack-dev-server",
     "prepublishOnly": "npm run build"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "author": "Alex Castillo <alex@castillo.io>",
   "license": "MIT",
-  "keywords": [
-    "eeg",
-    "openbci",
-    "neurojs",
-    "rxjs",
-    "cyton",
-    "ganglion"
-  ],
+  "keywords": ["eeg", "openbci", "neurojs", "rxjs", "cyton", "ganglion"],
   "repository": {
     "type": "git",
     "url": "git@github.com:alexcastillo/eeg-pipes.git"
@@ -42,8 +34,6 @@
     "eslint": "^4.18.1",
     "webpack": "^4.1.1",
     "webpack-cli": "^2.0.12",
-    "webpack-dev-server": "^2.11.1",
-    "webpack-node-externals": "^1.6.0",
-    "webpack-rxjs-externals": "^1.1.0"
+    "webpack-dev-server": "^2.11.1"
   }
 }
