@@ -19,4 +19,6 @@ const mockNaN$ = createEEG({
   NaNRange: [0.29, 0.31]
 });
 
-eeg$.subscribe(console.log);
+const sine$ = createEEG({ sine: 1 });
+
+sine$.subscribe(console.log);
