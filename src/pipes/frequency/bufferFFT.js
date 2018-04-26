@@ -17,27 +17,26 @@ import {
  * @param {Object} options
  * @returns {Observable}
  */
-export const bufferFFT = (
-  {
-    bins = defaultFftBins,
-    window = null,
-    sampleRate = defaultSampleRate,
-    dataProp = defaultDataProp
-  } = {}
-) => source =>
-  createPipe(
+export const bufferFFT = ({
+  bins = defaultFftBins,
+  window = null,
+  sampleRate = defaultSampleRate,
+  dataProp = defaultDataProp
+} = {}) => source => {
+  const fft = channelGroup => {
+    const safeSamples = channelGroup.map(x => {
+      if (isNaN(x) || !x) {
+        return 0;
+      }
+      return x;
+    });
+    const fft = new FFT(bins, sampleRate);
+    fft.forward(safeSamples);
+    return Array.from(fft.spectrum);
+  };
+  return createPipe(
     source,
     bufferCount(bins, window),
-    map(samplesBuffer => {
-      const fft = channelGroup => {
-        const bins = channelGroup.length;
-        const fft = new FFT(bins, sampleRate);
-        fft.forward(channelGroup);
-        return Array.from(fft.spectrum);
-      };
-
-      const fftBuffer = groupByChannel(samplesBuffer, dataProp).map(fft);
-
-      return fftBuffer;
-    })
+    map(samplesBuffer => groupByChannel(samplesBuffer, dataProp).map(fft))
   );
+};
