@@ -2,7 +2,7 @@
 
 Pipeable RxJS operators for working with EEG data in Node and the Browser
 
-#### Usage
+## Usage
 
 Before getting started, you'll need an observable of EEG data.
 
@@ -18,9 +18,16 @@ following data structure:
 ```js
 {
   data: [Number, Number, Number, Number], // channels
-  timestamp: Date
+  timestamp: Date,
+  info?: {
+  	samplingRate?: Number,
+  	channelNames?: [String, String, String, String],
+  	..
+  }
 };
 ```
+
+Individual samples of EEG data contain an array of values for each EEG channel as well as a timestamp. An additional info object containing metadata about the EEG stream such as sampling rate and channel names can also be included or added with the addInfo operator.
 
 We can start by installing the library:
 
@@ -42,9 +49,9 @@ eeg$
   .subscribe(buffer => console.log(buffer));
 ```
 
-### Pipes
+## Pipes
 
-#### Filtering (IIR)
+### Filtering (IIR)
 
 Filter pipes can be applied to both samples or buffers of samples. Filters are linear IIR filters using a digital biquad implementation.
 
@@ -54,11 +61,11 @@ Filter pipes can be applied to both samples or buffers of samples. Filters are l
 * notchFilter({ nbChannels, cutoffFrequency })
 
 Optional Parameters:  
-`characteristic`: 'butterworth' or 'bessel'. Default is butterworth characteristic for its steeper cutoff  
+`characteristic`: 'butterworth' or 'bessel'. Default is butterworth characteristic because of its steeper cutoff  
 `order`: the number of 2nd order biquad filters applied to the signal. Default is 2.  
 `samplingRate`: should match the samplingRate of your EEG device. Default is 250
 
-#### Frequency
+### Frequency
 
 * bufferFFT({ bins, window, sampleRate })
 * alphaPower()
@@ -93,27 +100,19 @@ Optional Parameters:
 * polarityFilter()
 * maxFrequencyFilter()
 
-# Documentation
+## Chunking Data
 
-## Data Structures
+Most pipes will work when applied to streams of individual EEG samples. However, in order to improve performance, especially when working with high sample rates, it is also possible to chunk data so that each emitted event represents a collection of individual EEG samples. *Only filter pipes support chunked data currently*
 
-#### Sample
+Chunks can be created by using a buffer operator such as `bufferCount` or `bufferTime` followed by the `chunk` operator:
 
 ```js
-{
-  data: [Number, Number, Number, Number], // channels
-  timestamp: Date,
-  info?: {
-  	samplingRate?: Number,
-  	channelNames?: [String, String, String, String],
-  	..
-  }
-};
+eeg$
+  .pipe(bufferCount(1000), chunk())
+  .subscribe(buffer => console.log(buffer));
 ```
 
-Individual samples of EEG data contain an array of values for each EEG channel as well as a timestamp. An info object containing important metadata about the EEG stream such as sampling rate and channel names can be added to a pipe of samples with the addInfo operator.
-
-#### Chunk
+Chunks have the following data structure:
 
 ```js
 {
@@ -131,4 +130,4 @@ Individual samples of EEG data contain an array of values for each EEG channel a
 }
 ```
 
-Samples that have been pooled together by a buffering operator such as bufferTime or bufferCount contain a 2D data array with shape nbChannels x nbSamples. Instead of individual timestamps for each sample, Chunk objects contain samplingRate and startTime information in the info object in order to allow time at any point within the Chunk to be inferred. Info properties present in Sample objects before being pooled into Chunks will be maintained.
+Chunks contain a 2D data array with shape nbChannels x nbSamples. Instead of individual timestamps for each sample, Chunk objects contain samplingRate and startTime information in the info object in order to allow time at any point within the Chunk to be inferred. Info properties present in Sample objects before being pooled into Chunks will be maintained.
