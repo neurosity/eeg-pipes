@@ -1,7 +1,7 @@
-import { bufferCount, scan } from "rxjs/operators";
+import { bufferCount, scan, filter } from "rxjs/operators";
 
 import { createPipe } from "../../utils/createPipe";
-import { groupByChannel } from "../../utils/groupByChannel";
+import { chunk } from "../utility/chunk";
 
 import {
   EPOCH_DURATION as defaultEpochDuration,
@@ -26,41 +26,9 @@ export const epoch = ({
   createPipe(
     source$,
     bufferCount(interval),
-    scan((acc, val) => {
-      const transposedSamples = groupByChannel(val);
-      if (acc === null) {
-        return {
-          [dataProp]: new Array(val[0][dataProp].length)
-            .fill(new Array(duration - interval).fill(0))
-            .map((channelData, channelIndex) =>
-              channelData.concat(transposedSamples[channelIndex])
-            ),
-          info: val[0].samplingRate
-            ? {
-                ...val[0].info,
-                samplingRate: val[0].samplingRate,
-                startTime:
-                  val[0].timestamp -
-                  (duration - interval) * (1000 / val[0].samplingRate)
-              }
-            : {
-                ...val[0].info,
-                samplingRate: samplingRate,
-                startTime:
-                  val[0].timestamp -
-                  (duration - interval) * (1000 / samplingRate)
-              }
-        };
-      }
-      return {
-        [dataProp]: transposedSamples.map((channelData, channelIndex) =>
-          acc[dataProp][channelIndex].concat(channelData).slice(interval)
-        ),
-        info: {
-          ...val[0].info,
-          startTime:
-            acc.info.startTime + interval * (1000 / acc.info.samplingRate)
-        }
-      };
-    }, null)
+    scan((acc, val) =>
+      acc.concat(val).slice(acc.length < duration ? 0 : interval)
+    ),
+    filter(samplesArray => samplesArray.length === duration),
+    chunk({ dataProp, samplingRate })
   );
