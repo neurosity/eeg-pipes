@@ -2,18 +2,10 @@ import { CalcCascades, IirFilter } from "fili";
 import { map } from "rxjs/operators";
 import { createPipe } from "../../utils/createPipe";
 import {
-  SAMPLE_RATE as defaultsamplingRate,
+  SAMPLE_RATE as defaultSamplingRate,
   ORDER as defaultOrder,
   CHARACTERISTIC as defaultCharacteristic
 } from "../../constants";
-
-/**
- * @method safeBandpassFilter
- * Applies a bandpass filter to EEG Data. Filters around dropped data values while leaving them intact in output. Can be applied to Samples or Chunks. Must provide nbChannels.
- * @example { nbChannels = 4, samplingRate = 256, cutOffFrequency = 60 }
- * @param {Object} options
- * @returns {Observable}
- */
 
 const createHighpassIIR = options => {
   const calc = new CalcCascades();
@@ -43,12 +35,26 @@ const interpolate = (before, after) => {
   return 0;
 };
 
+/**
+ * Applies a bandpass filter to EEG Data. Can be applied to both raw or epoched data
+ * @method bandpassFilter
+ * @example eeg$
+  .pipe(bandpassFilter({ cutoffFrequencies: [2, 50], nbChannels: 4 }))
+ * @param {Object} options - Filter options
+ * @param {number} options.nbChannels Number of channels
+ * @param {Array<number>} [options.cutoffFrequencies=[2,50]] Low and high cutoff frequencies in Hz
+ * @param {number} [options.samplingRate=250] Sampling rate of the EEG device
+ * @param {String} [options.characteristic='butterworth'] Filter characteristic
+ * @param {number} [options.order=2] The number of 2nd order biquad filters applied to the signal
+ * 
+ * @returns {Observable<Sample | Epoch>}
+ */
 export const bandpassFilter = ({
   nbChannels,
   order = defaultOrder,
   characteristic = defaultCharacteristic,
   cutoffFrequencies = [2, 50],
-  samplingRate = defaultsamplingRate,
+  samplingRate = defaultSamplingRate,
   Fs = samplingRate,
   BW = 1
 } = {}) => source => {

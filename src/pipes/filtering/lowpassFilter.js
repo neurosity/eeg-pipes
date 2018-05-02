@@ -7,14 +7,6 @@ import {
   CHARACTERISTIC as defaultCharacteristic
 } from "../../constants";
 
-/**
- * @method safeLowpassFilter
- * Applies a lowpass filter to EEG Data. Filters around NaN values while leaving them intact in output. Can be applied to Samples or Chunks. Must provide nbChannels. cutOffFrequency will default to 2hz.
- * @example { nbChannels = 4, samplingRate = 256, cutOffFrequency = 60 }
- * @param {Object} options
- * @returns {Observable}
- */
-
 const createLowpassIIR = options => {
   const calc = new CalcCascades();
   const coeffs = calc.lowpass(options);
@@ -34,11 +26,25 @@ const interpolate = (before, after) => {
   return 0;
 };
 
+/**
+ * Applies a lowpass filter to EEG Data. Can be applied to both raw or epoched data
+ * @method lowpassFilter
+ * @example eeg$
+  .pipe(lowpassFilter({ cutoffFrequency: 50, nbChannels: 4 }))
+ * @param {Object} options - Filter options
+ * @param {number} options.nbChannels Number of channels
+ * @param {number} [options.cutoffFrequency=50] Cutoff frequency in Hz
+ * @param {number} [options.samplingRate=250] Sampling rate of the EEG device
+ * @param {String} [options.characteristic='butterworth'] Filter characteristic. Options are 'bessel' and 'butterworth'
+ * @param {number} [options.order=2] The number of 2nd order biquad filters applied to the signal
+ * 
+ * @returns {Observable<Sample | Epoch>}
+ */
 export const lowpassFilter = ({
   nbChannels,
   order = defaultOrder,
   characteristic = defaultCharacteristic,
-  cutoffFrequency = 55,
+  cutoffFrequency = 50,
   samplingRate = defaultsamplingRate
 } = {}) => source => {
   if (!nbChannels) {

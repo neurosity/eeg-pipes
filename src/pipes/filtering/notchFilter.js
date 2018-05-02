@@ -8,14 +8,6 @@ import {
   NOTCH_BW as defaultNotchBW
 } from "../../constants";
 
-/**
- * @method safeNotchFilter
- * Applies a notch filter to EEG Data. Filters around NaN values while leaving them intact in output. Can be applied to Samples or Chunks. Must provide nbChannels. cutOffFrequency will default to 60hz.
- * @example { nbChannels = 4, samplingRate = 256, cutOffFrequency = 60 }
- * @param {Object} options
- * @returns {Observable}
- */
-
 const createNotchIIR = (options, filterHarmonics) => {
   const calc = new CalcCascades();
   const coeffs = calc.bandstop(options);
@@ -47,6 +39,22 @@ const interpolate = (before, after) => {
   return 0;
 };
 
+/**
+ * Applies a notch filter to EEG Data. Can be applied to both raw or epoched data. Has the ability to filter out harmonics of line noise (e.g. 120Hz, 180Hz), though this is only needed for high-frequency devices with >= 1000hz sampling rate
+ * @method notchFilter
+ * @example eeg$
+  .pipe(notchFilter({ cutoffFrequency: 60, nbChannels: 10, samplingRate: 1000, filterHarmonics: true }))
+ * @param {Object} options - Filter options
+ * @param {number} options.nbChannels Number of channels
+ * @param {number} [options.cutoffFrequency=60] Cutoff frequency in Hz
+ * @param {number} [options.bandWidth=0.5] Width of the cutoff centered around the notched frequency. Larger values reduce filter out more of the notch frequency at the cost of also reducing nearby frequencies
+ * @param {boolean} [options.filterHarmonics=false] Whether to filter harmonics of the notch frequency as well
+ * @param {number} [options.samplingRate=250] Sampling rate of the EEG device
+ * @param {String} [options.characteristic='butterworth'] Filter characteristic. Options are 'bessel' and 'butterworth'
+ * @param {number} [options.order=2] Number of 2nd order biquad filters applied to the signal
+ * 
+ * @returns {Observable<Sample | Epoch>}
+ */
 export const notchFilter = ({
   nbChannels,
   order = defaultOrder,

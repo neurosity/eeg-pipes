@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl">
+  <title data-ice="title">Home | eeg-pipes</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Lettable RxJS operators for working with EEG data in Node and the Browser"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="eeg-pipes"><meta property="twitter:description" content="Lettable RxJS operators for working with EEG data in Node and the Browser"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/alexcastillo/eeg-pipes"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#constants">constants</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CHANNELS">CHANNELS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CHARACTERISTIC">CHARACTERISTIC</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATA_PROP">DATA_PROP</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FFT_BINS">FFT_BINS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FREQUENCY_BANDS">FREQUENCY_BANDS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-GAIN">GAIN</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-NOTCH_BW">NOTCH_BW</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ORDER">ORDER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PREGAIN">PREGAIN</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SAMPLE_RATE">SAMPLE_RATE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-USE_LOG">USE_LOG</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pipes-filtering">pipes/filtering</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bandpassFilter">bandpassFilter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-highpassFilter">highpassFilter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-lowpassFilter">lowpassFilter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-notchFilter">notchFilter</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pipes-frequency">pipes/frequency</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-alphaPower">alphaPower</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-averagePower">averagePower</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-betaPower">betaPower</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bufferFFT">bufferFFT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-chunkFFT">chunkFFT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deltaPower">deltaPower</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-gammaPower">gammaPower</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-powerByBand">powerByBand</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sliceFFT">sliceFFT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-thetaPower">thetaPower</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pipes-reducer">pipes/reducer</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-averageDeep">averageDeep</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pipes-unit">pipes/unit</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-voltsToMicrovolts">voltsToMicrovolts</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pipes-utility">pipes/utility</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-addInfo">addInfo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-chunk">chunk</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-epoch">epoch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-pickChannels">pickChannels</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-removeChannels">removeChannels</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#utils">utils</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-average">average</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createEEG">createEEG</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getMuseCsv">getMuseCsv</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createMockStream">createMockStream</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createPipe">createPipe</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-groupByChannel">groupByChannel</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-zeroPad">zeroPad</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="eeg-pipes">EEG Pipes</h1><p>Pipeable RxJS operators for working with EEG data in Node and the Browser</p>
+<h2 id="usage">Usage</h2><p>Before getting started, you&apos;ll need an observable of EEG data.</p>
+<p>The following are some libraries that provide exactly that:</p>
+<ul>
+<li><a href="https://github.com/alexcastillo/ganglion-ble">OpenBCI Ganglion BLE (Browser)</a></li>
+<li><a href="https://github.com/alexcastillo/openbci-rx">OpenBCI Cyton/Ganglion (Node)</a></li>
+<li><a href="https://github.com/urish/muse-js">Muse (Browser)</a></li>
+</ul>
+<p>Pipes can be added to an EEG observable of EEG data samples with the
+following data structure:</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">{
+  data: [Number, Number, Number, Number], // channels
+  timestamp: Date,
+  info?: {
+      samplingRate?: Number,
+      channelNames?: [String, String, String, String],
+      ..
+  }
+};</code>
+</code></pre>
+<p>Individual samples of EEG data contain an array of values for each EEG channel as well as a timestamp. An additional info object containing metadata about the EEG stream such as sampling rate and channel names can also be included or added with the addInfo operator.</p>
+<p>We can start by installing the library:</p>
+<pre><code class="lang-bash"><code class="source-code prettyprint">npm install --save eeg-pipes</code>
+</code></pre>
+<p>Then, importing the pipes from the library:</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">import { bufferFFT, alphaPower } from &quot;eeg-pipes&quot;;</code>
+</code></pre>
+<p>And adding them to the RxJS observable pipe operator:</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">eeg$
+  .pipe(bufferFFT({ bins: 256 }), alphaPower())
+  .subscribe(buffer =&gt; console.log(buffer));</code>
+</code></pre>
+<h2 id="pipes">Pipes</h2><h3 id="filtering--iir-">Filtering (IIR)</h3><p>Filter pipes can be applied to both samples or buffers of samples. Filters are linear IIR filters using a digital biquad implementation.</p>
+<ul>
+<li>lowpassFilter({ nbChannels, cutoffFrequency })</li>
+<li>highpassFilter({ nbChannels, cutoffFrequency })</li>
+<li>bandpassFilter({ nbChannels, cutoffFrequencies: [lowBound, highBound] })</li>
+<li>notchFilter({ nbChannels, cutoffFrequency })</li>
+</ul>
+<p>Optional Parameters:<br><code>characteristic</code>: &apos;butterworth&apos; or &apos;bessel&apos;. Default is butterworth characteristic because of its steeper cutoff<br><code>order</code>: the number of 2nd order biquad filters applied to the signal. Default is 2.<br><code>samplingRate</code>: should match the samplingRate of your EEG device. Default is 250</p>
+<h3 id="frequency">Frequency</h3><ul>
+<li>bufferFFT({ bins, window, sampleRate })</li>
+<li>alphaPower()</li>
+<li>betaPower()</li>
+<li>deltaPower()</li>
+<li>gammaPower()</li>
+<li>thetaPower()</li>
+<li>averagePower()</li>
+<li>sliceFFT([ min, max ])</li>
+<li>powerByBand()</li>
+</ul>
+<h4 id="unit-conversion">Unit conversion</h4><ul>
+<li>toMicrovolts({ log })</li>
+</ul>
+<h4 id="utility">Utility</h4><ul>
+<li>bufferCount()</li>
+<li>bufferTime()</li>
+<li>chunk()</li>
+<li>pickChannels({ channels: [c1, c2, c3] })</li>
+<li>removeChannels({ channels: [c1, c2, c3] })</li>
+<li>addInfo()</li>
+</ul>
+<h3 id="coming-soon">Coming soon</h3><h4 id="filtering">Filtering</h4><ul>
+<li>vertScaleFilter()</li>
+<li>vertAgoFilter()</li>
+<li>smoothFilter()</li>
+<li>polarityFilter()</li>
+<li>maxFrequencyFilter()</li>
+</ul>
+<h2 id="chunking-data">Chunking Data</h2><p>Most pipes will work when applied to streams of individual EEG samples. However, in order to improve performance, especially when working with high sample rates, it is also possible to chunk data so that each emitted event represents a collection of individual EEG samples. <em>Only filter pipes support chunked data currently</em></p>
+<p>Chunks can be created by using a buffer operator such as <code>bufferCount</code> or <code>bufferTime</code> followed by the <code>chunk</code> operator:</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">eeg$
+  .pipe(bufferCount(1000), chunk())
+  .subscribe(buffer =&gt; console.log(buffer));</code>
+</code></pre>
+<p>Chunks have the following data structure:</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">{
+  data: [
+    [Number, Number, ...],
+    [Number, Number, ...],
+    [Number, Number, ...],
+    [Number, Number, ...],
+  ], // nbChannels x nbSamples 
+  info: {
+    samplingRate: Number,
+    startTime: Number,
+    ...
+  }
+}</code>
+</code></pre>
+<p>Chunks contain a 2D data array with shape nbChannels x nbSamples. Instead of individual timestamps for each sample, Chunk objects contain samplingRate and startTime information in the info object in order to allow time at any point within the Chunk to be inferred. Info properties present in Sample objects before being pooled into Chunks will be maintained.</p>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

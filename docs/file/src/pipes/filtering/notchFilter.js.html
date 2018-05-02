@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">src/pipes/filtering/notchFilter.js | eeg-pipes</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Lettable RxJS operators for working with EEG data in Node and the Browser"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="eeg-pipes"><meta property="twitter:description" content="Lettable RxJS operators for working with EEG data in Node and the Browser"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/alexcastillo/eeg-pipes"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#constants">constants</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CHANNELS">CHANNELS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CHARACTERISTIC">CHARACTERISTIC</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATA_PROP">DATA_PROP</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FFT_BINS">FFT_BINS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FREQUENCY_BANDS">FREQUENCY_BANDS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-GAIN">GAIN</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-NOTCH_BW">NOTCH_BW</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ORDER">ORDER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PREGAIN">PREGAIN</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SAMPLE_RATE">SAMPLE_RATE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-USE_LOG">USE_LOG</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pipes-filtering">pipes/filtering</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bandpassFilter">bandpassFilter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-highpassFilter">highpassFilter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-lowpassFilter">lowpassFilter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-notchFilter">notchFilter</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pipes-frequency">pipes/frequency</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-alphaPower">alphaPower</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-averagePower">averagePower</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-betaPower">betaPower</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bufferFFT">bufferFFT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-chunkFFT">chunkFFT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deltaPower">deltaPower</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-gammaPower">gammaPower</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-powerByBand">powerByBand</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sliceFFT">sliceFFT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-thetaPower">thetaPower</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pipes-reducer">pipes/reducer</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-averageDeep">averageDeep</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pipes-unit">pipes/unit</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-voltsToMicrovolts">voltsToMicrovolts</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pipes-utility">pipes/utility</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-addInfo">addInfo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-chunk">chunk</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-epoch">epoch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-pickChannels">pickChannels</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-removeChannels">removeChannels</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#utils">utils</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-average">average</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createEEG">createEEG</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getMuseCsv">getMuseCsv</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createMockStream">createMockStream</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createPipe">createPipe</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-groupByChannel">groupByChannel</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-zeroPad">zeroPad</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/pipes/filtering/notchFilter.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { CalcCascades, IirFilter } from &quot;fili&quot;;
+import { map } from &quot;rxjs/operators&quot;;
+import { createPipe } from &quot;../../utils/createPipe&quot;;
+import {
+  SAMPLE_RATE as defaultsamplingRate,
+  ORDER as defaultOrder,
+  CHARACTERISTIC as defaultCharacteristic,
+  NOTCH_BW as defaultNotchBW
+} from &quot;../../constants&quot;;
+
+const createNotchIIR = (options, filterHarmonics) =&gt; {
+  const calc = new CalcCascades();
+  const coeffs = calc.bandstop(options);
+
+  if (filterHarmonics) {
+    const thirdHarmonicCoeffs = calc.bandstop({
+      ...options,
+      Fc: options.Fc * 3
+    });
+    const firstFilter = new IirFilter(coeffs);
+    const thirdFilter = new IirFilter(thirdHarmonicCoeffs);
+    return (signal, stepFunction) =&gt;
+      thirdFilter[stepFunction](firstFilter[stepFunction](signal));
+  }
+  const filter = new IirFilter(coeffs);
+  return (signal, stepFunction) =&gt; filter[stepFunction](signal);
+};
+
+const interpolate = (before, after) =&gt; {
+  if (!isNaN(before)) {
+    if (!isNaN(after)) {
+      return (before + after) / 2;
+    }
+    return before;
+  }
+  if (!isNaN(after)) {
+    return after;
+  }
+  return 0;
+};
+
+/**
+ * Applies a notch filter to EEG Data. Can be applied to both raw or epoched data. Has the ability to filter out harmonics of line noise (e.g. 120Hz, 180Hz), though this is only needed for high-frequency devices with &gt;= 1000hz sampling rate
+ * @method notchFilter
+ * @example eeg$
+  .pipe(notchFilter({ cutoffFrequency: 60, nbChannels: 10, samplingRate: 1000, filterHarmonics: true }))
+ * @param {Object} options - Filter options
+ * @param {number} options.nbChannels Number of channels
+ * @param {number} [options.cutoffFrequency=60] Cutoff frequency in Hz
+ * @param {number} [options.bandWidth=0.5] Width of the cutoff centered around the notched frequency. Larger values reduce filter out more of the notch frequency at the cost of also reducing nearby frequencies
+ * @param {boolean} [options.filterHarmonics=false] Whether to filter harmonics of the notch frequency as well
+ * @param {number} [options.samplingRate=250] Sampling rate of the EEG device
+ * @param {String} [options.characteristic=&apos;butterworth&apos;] Filter characteristic. Options are &apos;bessel&apos; and &apos;butterworth&apos;
+ * @param {number} [options.order=2] Number of 2nd order biquad filters applied to the signal
+ * 
+ * @returns {Observable&lt;Sample | Epoch&gt;}
+ */
+export const notchFilter = ({
+  nbChannels,
+  order = defaultOrder,
+  characteristic = defaultCharacteristic,
+  cutoffFrequency = 60,
+  samplingRate = defaultsamplingRate,
+  bandWidth = defaultNotchBW,
+  filterHarmonics = false
+} = {}) =&gt; source =&gt; {
+  if (!nbChannels) {
+    throw new Error(&quot;Please supply nbChannels parameter&quot;);
+  }
+  const notchArray = new Array(nbChannels).fill(0).map(() =&gt;
+    createNotchIIR(
+      {
+        order,
+        characteristic,
+        Fs: samplingRate,
+        Fc: cutoffFrequency,
+        BW: bandWidth
+      },
+      filterHarmonics
+    )
+  );
+  return createPipe(
+    source,
+    map(eegObject =&gt; {
+      const isChunk = Array.isArray(eegObject.data[0]);
+      return {
+        ...eegObject,
+        data: eegObject.data.map((channel, index) =&gt; {
+          // If Chunk, map through channel data, cleaning NaNs by interpolating.
+          if (isChunk) {
+            const nans = [];
+            const safeChannel = channel.map((sample, sampleIndex) =&gt; {
+              if (isNaN(sample)) {
+                nans.push(sampleIndex);
+                const interpolation = interpolate(
+                  channel[sampleIndex - 1],
+                  channel[sampleIndex + 1]
+                );
+                return interpolation;
+              }
+              return sample;
+            });
+
+            // Then, perform filter
+            const filteredData = notchArray[index](safeChannel, &quot;multiStep&quot;);
+
+            // Afterwards, reinsert NaNs
+            if (nans.length &gt; 0) {
+              nans.forEach(nan =&gt; {
+                filteredData[nan] = NaN;
+              });
+            }
+            return filteredData;
+          }
+          // If Sample, only filter if not NaN
+          if (!isNaN(channel)) {
+            return notchArray[index](channel, &quot;singleStep&quot;);
+          }
+          return channel;
+        })
+      };
+    })
+  );
+};
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
