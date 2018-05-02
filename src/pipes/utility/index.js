@@ -4,3 +4,4 @@ export * from './bufferTime';
 export * from './chunk';
 export * from './pickChannels';
 export * from './removeChannels';
+export * from './epoch';

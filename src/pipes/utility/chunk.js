@@ -27,8 +27,8 @@ export const chunk = ({
       info: {
         ...samplesArray[0].info,
         startTime: samplesArray[0].timestamp,
-        samplingRate: samplesArray[0].samplingRate
-          ? samplesArray[0].samplingRate
+        samplingRate: samplesArray[0].info.samplingRate
+          ? samplesArray[0].info.samplingRate
           : samplingRate
       }
     }))
