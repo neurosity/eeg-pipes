@@ -6,11 +6,11 @@ import { sample } from "rxjs/operator/sample";
 
 // Code splitting: dynaically importing the csv so it is not included in the main bundle
 // @TODO: not currently working, webpack bug: https://twitter.com/castillo__io/status/975585584486916096
-export const getMuseCsv = async () =>
-  await import(/* webpackChunkName: "museCsv" */
-  "../../dataset/muse-lsl.csv").then(
-    csv => csv.map(row => row.slice(1, 5)) // filter channel data
-  );
+// export const getMuseCsv = async () =>
+//   await import(/* webpackChunkName: "museCsv" */
+//   "../../dataset/muse-lsl.csv").then(
+//     csv => csv.map(row => row.slice(1, 5)) // filter channel data
+//   );
 
 const NUM_CHANNELS = 4;
 const SAMPLE_RATE = 256;
