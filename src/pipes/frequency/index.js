@@ -2,7 +2,6 @@ export * from './alphaPower';
 export * from './averagePower';
 export * from './betaPower';
 export * from './bufferFFT';
-export * from './chunkFFT';
 export * from './deltaPower';
 export * from './gammaPower';
 export * from './powerByBand';

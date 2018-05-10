@@ -11,8 +11,7 @@ const eeg2$ = createEEG({ NaNRange: [0, 3] }).pipe(
 );
 
 const eeg3$ = createEEG({ sampleRate: 1000 }).pipe(
-  addInfo({ samplingRate: 1000 }),
-  epoch({ duration: 1024, interval: 100 })
+  epoch({ duration: 1024, interval: 100, samplingRate: 256 })
 );
 
 eeg3$.subscribe(console.log);

@@ -75,12 +75,11 @@ export const bandpassFilter = ({
   return createPipe(
     source,
     map(eegObject => {
-      const isChunk = Array.isArray(eegObject.data[0]);
+      const isEpoch = Array.isArray(eegObject.data[0]);
       return {
         ...eegObject,
         data: eegObject.data.map((channel, index) => {
-          // If Chunk, map through channel data, cleaning NaNs by interpolating.
-          if (isChunk) {
+          if (isEpoch) {
             const nans = [];
             const safeChannel = channel.map((sample, sampleIndex) => {
               if (isNaN(sample)) {

@@ -1,13 +1,6 @@
-import {
-  CalcCascades,
-  IirFilter
-} from "fili";
-import {
-  map
-} from "rxjs/operators";
-import {
-  createPipe
-} from "../../utils/createPipe";
+import { CalcCascades, IirFilter } from "fili";
+import { map } from "rxjs/operators";
+import { createPipe } from "../../utils/createPipe";
 import {
   SAMPLE_RATE as defaultsamplingRate,
   ORDER as defaultOrder,
@@ -75,7 +68,8 @@ export const notchFilter = ({
     throw new Error("Please supply nbChannels parameter");
   }
   const notchArray = new Array(nbChannels).fill(0).map(() =>
-    createNotchIIR({
+    createNotchIIR(
+      {
         order,
         characteristic,
         Fs: samplingRate,
@@ -88,12 +82,11 @@ export const notchFilter = ({
   return createPipe(
     source,
     map(eegObject => {
-      const isChunk = Array.isArray(eegObject.data[0]);
+      const isEpoch = Array.isArray(eegObject.data[0]);
       return {
         ...eegObject,
         data: eegObject.data.map((channel, index) => {
-          // If Chunk, map through channel data, cleaning NaNs by interpolating.
-          if (isChunk) {
+          if (isEpoch) {
             const nans = [];
             const safeChannel = channel.map((sample, sampleIndex) => {
               if (isNaN(sample)) {
