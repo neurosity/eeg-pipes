@@ -1,6 +1,13 @@
-import { CalcCascades, IirFilter } from "fili";
-import { map } from "rxjs/operators";
-import { createPipe } from "../../utils/createPipe";
+import {
+  CalcCascades,
+  IirFilter
+} from "fili";
+import {
+  map
+} from "rxjs/operators";
+import {
+  createPipe
+} from "../../utils/createPipe";
 import {
   SAMPLE_RATE as defaultsamplingRate,
   ORDER as defaultOrder,
@@ -68,8 +75,7 @@ export const notchFilter = ({
     throw new Error("Please supply nbChannels parameter");
   }
   const notchArray = new Array(nbChannels).fill(0).map(() =>
-    createNotchIIR(
-      {
+    createNotchIIR({
         order,
         characteristic,
         Fs: samplingRate,
