@@ -14,8 +14,8 @@ const patch = sample => info => ({
 });
 
 /**
- * @method addInfo
  * Annotates stream with user-defined metadata. Can be applied to Samples or Chunks
+ * @method addInfo
  * @example { samplingRate: 256, channelNames: ["Af&", "Fp1", "Fp2", "Af8"] }
  *
  * @param info
