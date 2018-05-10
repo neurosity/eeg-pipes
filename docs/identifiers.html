@@ -48,7 +48,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-averagePower">averagePower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-betaPower">betaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bufferFFT">bufferFFT</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-chunkFFT">chunkFFT</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deltaPower">deltaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-gammaPower">gammaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-powerByBand">powerByBand</a></span></span></li>
@@ -57,13 +56,12 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pipes-reducer">pipes/reducer</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-averageDeep">averageDeep</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pipes-unit">pipes/unit</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-voltsToMicrovolts">voltsToMicrovolts</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pipes-utility">pipes/utility</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-addInfo">addInfo</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-chunk">chunk</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bufferToEpoch">bufferToEpoch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-epoch">epoch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-pickChannels">pickChannels</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-removeChannels">removeChannels</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#utils">utils</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-average">average</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createEEG">createEEG</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getMuseCsv">getMuseCsv</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createMockStream">createMockStream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createPipe">createPipe</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-groupByChannel">groupByChannel</a></span></span></li>
@@ -653,34 +651,6 @@
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-chunkFFT">chunkFFT</a></span></span><span class="code" data-ice="signature">(options: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span>Observable</span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          <span data-ice="kind-icon" class="kind-function">F</span>
-          
-          
           <span class="code" data-ice="name"><span><a href="function/index.html#static-function-deltaPower">deltaPower</a></span></span><span class="code" data-ice="signature">(): <span>Observable</span></span>
         </p>
       </div>
@@ -869,13 +839,14 @@
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-voltsToMicrovolts">voltsToMicrovolts</a></span></span><span class="code" data-ice="signature">(options: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span>Observable</span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-voltsToMicrovolts">voltsToMicrovolts</a></span></span><span class="code" data-ice="signature">(options: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span>Observable</span>&lt;<span>Sample</span>|<span>Epoch</span>&gt;</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Converts a stream of EEG data (either eegObjects or Epochs) from volts to microvolts</p>
+</div>
       </div>
     </td>
     <td>
@@ -907,13 +878,14 @@
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-addInfo">addInfo</a></span></span><span class="code" data-ice="signature">(info: <span>*</span>): <span>Observable</span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-addInfo">addInfo</a></span></span><span class="code" data-ice="signature">(info: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span>Observable</span>&lt;<span>Sample</span>|<span>Epoch</span>|<span>PSD</span>&gt;</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Annotates stream with user-defined metadata</p>
+</div>
       </div>
     </td>
     <td>
@@ -935,13 +907,14 @@
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-chunk">chunk</a></span></span><span class="code" data-ice="signature">(objectPattern: {&quot;dataProp&quot;: <span>*</span>, &quot;samplingRate&quot;: <span>*</span>}): <span>Observable</span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-bufferToEpoch">bufferToEpoch</a></span></span><span class="code" data-ice="signature">(options: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span>Observable</span>&lt;<span>Epoch</span>&gt;</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Takes an array or RxJS buffer of EEG Samples and returns an Epoch.</p>
+</div>
       </div>
     </td>
     <td>
@@ -963,13 +936,14 @@
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-epoch">epoch</a></span></span><span class="code" data-ice="signature">(objectPattern: {&quot;duration&quot;: <span>*</span>, &quot;interval&quot;: <span>*</span>, &quot;dataProp&quot;: <span>*</span>}): <span>Observable</span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-epoch">epoch</a></span></span><span class="code" data-ice="signature">(options: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span>Observable</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Converts a stream of individual Samples of EEG data into a stream of Epochs of a given duration emitted at specified interval.</p>
+</div>
       </div>
     </td>
     <td>
@@ -1086,34 +1060,6 @@
           
           
           <span class="code" data-ice="name"><span><a href="function/index.html#static-function-createEEG">createEEG</a></span></span><span class="code" data-ice="signature">(objectPattern: {&quot;channels&quot;: <span>*</span>, &quot;sampleRate&quot;: <span>*</span>, &quot;mock&quot;: <span>*</span>, &quot;NaNRange&quot;: <span>*</span>, &quot;sine&quot;: <span>*</span>, &quot;csv&quot;: <span>*</span>})</span>
-        </p>
-      </div>
-      <div>
-        
-        
-        
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          <span data-ice="kind-icon" class="kind-function">F</span>
-          <span data-ice="async">async</span>
-          
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-getMuseCsv">getMuseCsv</a></span></span><span class="code" data-ice="signature">()</span>
         </p>
       </div>
       <div>

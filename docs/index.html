@@ -48,7 +48,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-averagePower">averagePower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-betaPower">betaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bufferFFT">bufferFFT</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-chunkFFT">chunkFFT</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deltaPower">deltaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-gammaPower">gammaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-powerByBand">powerByBand</a></span></span></li>
@@ -57,13 +56,12 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pipes-reducer">pipes/reducer</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-averageDeep">averageDeep</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pipes-unit">pipes/unit</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-voltsToMicrovolts">voltsToMicrovolts</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pipes-utility">pipes/utility</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-addInfo">addInfo</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-chunk">chunk</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bufferToEpoch">bufferToEpoch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-epoch">epoch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-pickChannels">pickChannels</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-removeChannels">removeChannels</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#utils">utils</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-average">average</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createEEG">createEEG</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getMuseCsv">getMuseCsv</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createMockStream">createMockStream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createPipe">createPipe</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-groupByChannel">groupByChannel</a></span></span></li>
@@ -124,12 +122,13 @@ following data structure:</p>
 <li>powerByBand()</li>
 </ul>
 <h4 id="unit-conversion">Unit conversion</h4><ul>
-<li>toMicrovolts({ log })</li>
+<li>voltToMicrovolts({ useLog })</li>
 </ul>
 <h4 id="utility">Utility</h4><ul>
+<li>epoch({ duration, interval, samplingRate })</li>
 <li>bufferCount()</li>
 <li>bufferTime()</li>
-<li>chunk()</li>
+<li>bufferToEpoch({ samplingRate })</li>
 <li>pickChannels({ channels: [c1, c2, c3] })</li>
 <li>removeChannels({ channels: [c1, c2, c3] })</li>
 <li>addInfo()</li>
@@ -141,28 +140,43 @@ following data structure:</p>
 <li>polarityFilter()</li>
 <li>maxFrequencyFilter()</li>
 </ul>
-<h2 id="chunking-data">Chunking Data</h2><p>Most pipes will work when applied to streams of individual EEG samples. However, in order to improve performance, especially when working with high sample rates, it is also possible to chunk data so that each emitted event represents a collection of individual EEG samples. <em>Only filter pipes support chunked data currently</em></p>
-<p>Chunks can be created by using a buffer operator such as <code>bufferCount</code> or <code>bufferTime</code> followed by the <code>chunk</code> operator:</p>
-<pre><code class="lang-js"><code class="source-code prettyprint">eeg$
-  .pipe(bufferCount(1000), chunk())
-  .subscribe(buffer =&gt; console.log(buffer));</code>
-</code></pre>
-<p>Chunks have the following data structure:</p>
+<h2 id="data-structures">Data Structures</h2><h3 id="sample">Sample</h3><p>This is the simplest, core data structure for individual samples of EEG data. Samples have a data array containing a single reading from a number of different EEG electrodes along with a single timestamp. Samples can also contain optional other parameters added by the <code>addInfo</code> operator. The design for this comes directly from the discussion on the <a href="https://github.com/NeuroJS/eeg-stream-data-model/issues/1">EEG stream data models repo</a>.</p>
 <pre><code class="lang-js"><code class="source-code prettyprint">{
-  data: [
-    [Number, Number, ...],
-    [Number, Number, ...],
-    [Number, Number, ...],
-    [Number, Number, ...],
-  ], // nbChannels x nbSamples 
-  info: {
-    samplingRate: Number,
-    startTime: Number,
-    ...
+    data: [Number, ..., Number], // length == nbChannels
+    timestamp: &lt;Number&gt;,
+    info?: {
+        samplingRate?: Number,
+        channelNames?: [String, String, String, String],
+      ...
   }
 }</code>
 </code></pre>
-<p>Chunks contain a 2D data array with shape nbChannels x nbSamples. Instead of individual timestamps for each sample, Chunk objects contain samplingRate and startTime information in the info object in order to allow time at any point within the Chunk to be inferred. Info properties present in Sample objects before being pooled into Chunks will be maintained.</p>
+<h3 id="epoch">Epoch</h3><p>An Epoch represents the EEG data that has been collected over a specific period of time. They can be produced by using either the <code>epoch</code> operator or by using a standard RxJS buffering operator such as <code>bufferTime</code> followed by the <code>bufferToEpoch</code> operator. Collecting data in this way is necessary for performing frequency-based analyses and, in many cases, will improve performance of filtering and other downstream operations. Epochs contain a 2D data array (channels x samples) and an info object that always includes samplingRate and startTime data so that the timestamps of individual samples can be derived. </p>
+<pre><code class="lang-js"><code class="source-code prettyprint">{
+    data: [
+        [Number, ... , Number], // length == duration
+        [Number, ... , Number]
+    ], // length == nbChannels
+    info: {
+        samplingRate: Number,
+        startTime: Number,
+        channelNames?: [String, ..., String ]
+    }
+}</code>
+</code></pre>
+<h3 id="power-spectral-density-or-psd--proposed-work-in-progress">Power Spectral Density or PSD: Proposed Work in Progress</h3><p>A PSD represents the absolute power of different frequency bins in an Epoch of EEG data. PSDs are produced by applying the <code>fft</code> operator to Epochs or using the <code>bufferFFT</code> operator directly on a stream of EEG Samples. PSDs contain an array of frequencies and a corresponding array of spectral power at each of those frequencies, as well as an info object that contains samplingRate and startTime info similarly to Epochs.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">{
+    psd: [
+        [Number, ... , Number] // spectral power; length = freqs.length
+    ], // length = numChannels
+    freqs: [Number, ... , Number], // length = fftLength / 2
+    info: {
+        samplingRate: Number,
+        startTime: Number,
+        channelNames?: [String, ..., String ]
+    }
+}</code>
+</code></pre>
 </div>
 </div>
 

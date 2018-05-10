@@ -809,7 +809,7 @@
     "__docId__": 61,
     "kind": "file",
     "name": "src/pipes/filtering/bandpassFilter.js",
-    "content": "import { CalcCascades, IirFilter } from \"fili\";\nimport { map } from \"rxjs/operators\";\nimport { createPipe } from \"../../utils/createPipe\";\nimport {\n  SAMPLE_RATE as defaultSamplingRate,\n  ORDER as defaultOrder,\n  CHARACTERISTIC as defaultCharacteristic\n} from \"../../constants\";\n\nconst createHighpassIIR = options => {\n  const calc = new CalcCascades();\n  const coeffs = calc.highpass({\n    ...options,\n    Fc: options.cutoffFrequencies[0]\n  });\n  return new IirFilter(coeffs, true);\n};\n\nconst createLowpassIIR = options => {\n  const calc = new CalcCascades();\n  const coeffs = calc.lowpass({ ...options, Fc: options.cutoffFrequencies[1] });\n  return new IirFilter(coeffs, true);\n};\n\nconst interpolate = (before, after) => {\n  if (!isNaN(before)) {\n    if (!isNaN(after)) {\n      return (before + after) / 2;\n    }\n    return before;\n  }\n  if (!isNaN(after)) {\n    return after;\n  }\n  return 0;\n};\n\n/**\n * Applies a bandpass filter to EEG Data. Can be applied to both raw or epoched data\n * @method bandpassFilter\n * @example eeg$\n  .pipe(bandpassFilter({ cutoffFrequencies: [2, 50], nbChannels: 4 }))\n * @param {Object} options - Filter options\n * @param {number} options.nbChannels Number of channels\n * @param {Array<number>} [options.cutoffFrequencies=[2,50]] Low and high cutoff frequencies in Hz\n * @param {number} [options.samplingRate=250] Sampling rate of the EEG device\n * @param {String} [options.characteristic='butterworth'] Filter characteristic\n * @param {number} [options.order=2] The number of 2nd order biquad filters applied to the signal\n * \n * @returns {Observable<Sample | Epoch>}\n */\nexport const bandpassFilter = ({\n  nbChannels,\n  order = defaultOrder,\n  characteristic = defaultCharacteristic,\n  cutoffFrequencies = [2, 50],\n  samplingRate = defaultSamplingRate,\n  Fs = samplingRate,\n  BW = 1\n} = {}) => source => {\n  if (!nbChannels) {\n    throw new Error(\"Please supply nbChannels parameter\");\n  }\n  const options = {\n    order,\n    characteristic,\n    cutoffFrequencies,\n    Fs,\n    BW\n  };\n  const bandpassArray = new Array(nbChannels).fill(0).map(() => ({\n    high: createHighpassIIR(options),\n    low: createLowpassIIR(options)\n  }));\n  return createPipe(\n    source,\n    map(eegObject => {\n      const isChunk = Array.isArray(eegObject.data[0]);\n      return {\n        ...eegObject,\n        data: eegObject.data.map((channel, index) => {\n          // If Chunk, map through channel data, cleaning NaNs by interpolating.\n          if (isChunk) {\n            const nans = [];\n            const safeChannel = channel.map((sample, sampleIndex) => {\n              if (isNaN(sample)) {\n                nans.push(sampleIndex);\n                const interpolation = interpolate(\n                  channel[sampleIndex - 1],\n                  channel[sampleIndex + 1]\n                );\n                return interpolation;\n              }\n              return sample;\n            });\n\n            // Then, perform filter\n            const filteredData = bandpassArray[index].low.multiStep(\n              bandpassArray[index].high.multiStep(safeChannel)\n            );\n\n            // Afterwards, reinsert NaNs\n            if (nans.length > 0) {\n              nans.forEach(nan => {\n                filteredData[nan] = NaN;\n              });\n            }\n            return filteredData;\n          }\n          // If Sample, only filter if not NaN\n          if (!isNaN(channel)) {\n            return bandpassArray[index].low.singleStep(\n              bandpassArray[index].high.singleStep(channel)\n            );\n          }\n          return channel;\n        })\n      };\n    })\n  );\n};\n",
+    "content": "import { CalcCascades, IirFilter } from \"fili\";\nimport { map } from \"rxjs/operators\";\nimport { createPipe } from \"../../utils/createPipe\";\nimport {\n  SAMPLE_RATE as defaultSamplingRate,\n  ORDER as defaultOrder,\n  CHARACTERISTIC as defaultCharacteristic\n} from \"../../constants\";\n\nconst createHighpassIIR = options => {\n  const calc = new CalcCascades();\n  const coeffs = calc.highpass({\n    ...options,\n    Fc: options.cutoffFrequencies[0]\n  });\n  return new IirFilter(coeffs, true);\n};\n\nconst createLowpassIIR = options => {\n  const calc = new CalcCascades();\n  const coeffs = calc.lowpass({ ...options, Fc: options.cutoffFrequencies[1] });\n  return new IirFilter(coeffs, true);\n};\n\nconst interpolate = (before, after) => {\n  if (!isNaN(before)) {\n    if (!isNaN(after)) {\n      return (before + after) / 2;\n    }\n    return before;\n  }\n  if (!isNaN(after)) {\n    return after;\n  }\n  return 0;\n};\n\n/**\n * Applies a bandpass filter to EEG Data. Can be applied to both raw or epoched data\n * @method bandpassFilter\n * @example eeg$\n  .pipe(bandpassFilter({ cutoffFrequencies: [2, 50], nbChannels: 4 }))\n * @param {Object} options - Filter options\n * @param {number} options.nbChannels Number of channels\n * @param {Array<number>} [options.cutoffFrequencies=[2,50]] Low and high cutoff frequencies in Hz\n * @param {number} [options.samplingRate=250] Sampling rate of the EEG device\n * @param {String} [options.characteristic='butterworth'] Filter characteristic. Options are 'bessel' and 'butterworth'\n * @param {number} [options.order=2] The number of 2nd order biquad filters applied to the signal\n * \n * @returns {Observable<Sample | Epoch>}\n */\nexport const bandpassFilter = ({\n  nbChannels,\n  order = defaultOrder,\n  characteristic = defaultCharacteristic,\n  cutoffFrequencies = [2, 50],\n  samplingRate = defaultSamplingRate,\n  Fs = samplingRate,\n  BW = 1\n} = {}) => source => {\n  if (!nbChannels) {\n    throw new Error(\"Please supply nbChannels parameter\");\n  }\n  const options = {\n    order,\n    characteristic,\n    cutoffFrequencies,\n    Fs,\n    BW\n  };\n  const bandpassArray = new Array(nbChannels).fill(0).map(() => ({\n    high: createHighpassIIR(options),\n    low: createLowpassIIR(options)\n  }));\n  return createPipe(\n    source,\n    map(eegObject => {\n      const isEpoch = Array.isArray(eegObject.data[0]);\n      return {\n        ...eegObject,\n        data: eegObject.data.map((channel, index) => {\n          if (isEpoch) {\n            const nans = [];\n            const safeChannel = channel.map((sample, sampleIndex) => {\n              if (isNaN(sample)) {\n                nans.push(sampleIndex);\n                const interpolation = interpolate(\n                  channel[sampleIndex - 1],\n                  channel[sampleIndex + 1]\n                );\n                return interpolation;\n              }\n              return sample;\n            });\n\n            // Then, perform filter\n            const filteredData = bandpassArray[index].low.multiStep(\n              bandpassArray[index].high.multiStep(safeChannel)\n            );\n\n            // Afterwards, reinsert NaNs\n            if (nans.length > 0) {\n              nans.forEach(nan => {\n                filteredData[nan] = NaN;\n              });\n            }\n            return filteredData;\n          }\n          // If Sample, only filter if not NaN\n          if (!isNaN(channel)) {\n            return bandpassArray[index].low.singleStep(\n              bandpassArray[index].high.singleStep(channel)\n            );\n          }\n          return channel;\n        })\n      };\n    })\n  );\n};\n",
     "static": true,
     "longname": "/home/dano/eeg-pipes/src/pipes/filtering/bandpassFilter.js",
     "access": "public",
@@ -1001,7 +1001,7 @@
         "defaultValue": "'butterworth'",
         "defaultRaw": "'butterworth'",
         "name": "options.characteristic",
-        "description": "Filter characteristic"
+        "description": "Filter characteristic. Options are 'bessel' and 'butterworth'"
       },
       {
         "nullable": null,
@@ -1029,7 +1029,7 @@
     "__docId__": 66,
     "kind": "file",
     "name": "src/pipes/filtering/highpassFilter.js",
-    "content": "import { CalcCascades, IirFilter } from \"fili\";\nimport { map } from \"rxjs/operators\";\nimport { createPipe } from \"../../utils/createPipe\";\nimport {\n  SAMPLE_RATE as defaultSamplingRate,\n  ORDER as defaultOrder,\n  CHARACTERISTIC as defaultCharacteristic\n} from \"../../constants\";\n\nconst createHighpassIIR = options => {\n  const calc = new CalcCascades();\n  const coeffs = calc.highpass(options);\n  return new IirFilter(coeffs);\n};\n\nconst interpolate = (before, after) => {\n  if (!isNaN(before)) {\n    if (!isNaN(after)) {\n      return (before + after) / 2;\n    }\n    return before;\n  }\n  if (!isNaN(after)) {\n    return after;\n  }\n  return 0;\n};\n\n/**\n * Applies a highpass filter to EEG Data. Can be applied to both raw or epoched data\n * @method highpassFilter\n * @example eeg$\n  .pipe(highpassFilter({ cutoffFrequency: 2, nbChannels: 4 }))\n * @param {Object} options - Filter options\n * @param {number} options.nbChannels Number of channels\n * @param {number} [options.cutoffFrequency=2] Cutoff frequency in Hz\n * @param {number} [options.samplingRate=250] Sampling rate of the EEG device\n * @param {String} [options.characteristic='butterworth'] Filter characteristic. Options are 'bessel' and 'butterworth'\n * @param {number} [options.order=2] The number of 2nd order biquad filters applied to the signal\n * \n * @returns {Observable<Sample | Epoch>}\n */\nexport const highpassFilter = ({\n  nbChannels,\n  order = defaultOrder,\n  characteristic = defaultCharacteristic,\n  cutoffFrequency = 2,\n  samplingRate = defaultSamplingRate\n} = {}) => source => {\n  if (!nbChannels) {\n    throw new Error(\"Please supply nbChannels parameter\");\n  }\n  const highpassArray = new Array(nbChannels).fill(0).map(() =>\n    createHighpassIIR({\n      order,\n      characteristic,\n      Fs: samplingRate,\n      Fc: cutoffFrequency\n    })\n  );\n  return createPipe(\n    source,\n    map(eegObject => {\n      const isChunk = Array.isArray(eegObject.data[0]);\n      return {\n        ...eegObject,\n        data: eegObject.data.map((channel, index) => {\n          // If Chunk, map through channel data, cleaning NaNs by interpolating.\n          if (isChunk) {\n            const nans = [];\n            const safeChannel = channel.map((sample, sampleIndex) => {\n              if (isNaN(sample)) {\n                nans.push(sampleIndex);\n                const interpolation = interpolate(\n                  channel[sampleIndex - 1],\n                  channel[sampleIndex + 1]\n                );\n                return interpolation;\n              }\n              return sample;\n            });\n\n            // Then, perform filter\n            const filteredData = highpassArray[index].multiStep(safeChannel);\n\n            // Afterwards, reinsert NaNs\n            if (nans.length > 0) {\n              nans.forEach(nan => {\n                filteredData[nan] = NaN;\n              });\n            }\n            return filteredData;\n          }\n          // If Sample, only filter if not NaN\n          if (!isNaN(channel)) {\n            return highpassArray[index].singleStep(channel);\n          }\n          return channel;\n        })\n      };\n    })\n  );\n};\n",
+    "content": "import { CalcCascades, IirFilter } from \"fili\";\nimport { map } from \"rxjs/operators\";\nimport { createPipe } from \"../../utils/createPipe\";\nimport {\n  SAMPLE_RATE as defaultSamplingRate,\n  ORDER as defaultOrder,\n  CHARACTERISTIC as defaultCharacteristic\n} from \"../../constants\";\n\nconst createHighpassIIR = options => {\n  const calc = new CalcCascades();\n  const coeffs = calc.highpass(options);\n  return new IirFilter(coeffs);\n};\n\nconst interpolate = (before, after) => {\n  if (!isNaN(before)) {\n    if (!isNaN(after)) {\n      return (before + after) / 2;\n    }\n    return before;\n  }\n  if (!isNaN(after)) {\n    return after;\n  }\n  return 0;\n};\n\n/**\n * Applies a highpass filter to EEG Data. Can be applied to both raw or epoched data\n * @method highpassFilter\n * @example eeg$\n  .pipe(highpassFilter({ cutoffFrequency: 2, nbChannels: 4 }))\n * @param {Object} options - Filter options\n * @param {number} options.nbChannels Number of channels\n * @param {number} [options.cutoffFrequency=2] Cutoff frequency in Hz\n * @param {number} [options.samplingRate=250] Sampling rate of the EEG device\n * @param {String} [options.characteristic='butterworth'] Filter characteristic. Options are 'bessel' and 'butterworth'\n * @param {number} [options.order=2] The number of 2nd order biquad filters applied to the signal\n * \n * @returns {Observable<Sample | Epoch>}\n */\nexport const highpassFilter = ({\n  nbChannels,\n  order = defaultOrder,\n  characteristic = defaultCharacteristic,\n  cutoffFrequency = 2,\n  samplingRate = defaultSamplingRate\n} = {}) => source => {\n  if (!nbChannels) {\n    throw new Error(\"Please supply nbChannels parameter\");\n  }\n  const highpassArray = new Array(nbChannels).fill(0).map(() =>\n    createHighpassIIR({\n      order,\n      characteristic,\n      Fs: samplingRate,\n      Fc: cutoffFrequency\n    })\n  );\n  return createPipe(\n    source,\n    map(eegObject => {\n      const isEpoch = Array.isArray(eegObject.data[0]);\n      return {\n        ...eegObject,\n        data: eegObject.data.map((channel, index) => {\n          if (isEpoch) {\n            const nans = [];\n            const safeChannel = channel.map((sample, sampleIndex) => {\n              if (isNaN(sample)) {\n                nans.push(sampleIndex);\n                const interpolation = interpolate(\n                  channel[sampleIndex - 1],\n                  channel[sampleIndex + 1]\n                );\n                return interpolation;\n              }\n              return sample;\n            });\n\n            // Then, perform filter\n            const filteredData = highpassArray[index].multiStep(safeChannel);\n\n            // Afterwards, reinsert NaNs\n            if (nans.length > 0) {\n              nans.forEach(nan => {\n                filteredData[nan] = NaN;\n              });\n            }\n            return filteredData;\n          }\n          // If Sample, only filter if not NaN\n          if (!isNaN(channel)) {\n            return highpassArray[index].singleStep(channel);\n          }\n          return channel;\n        })\n      };\n    })\n  );\n};\n",
     "static": true,
     "longname": "/home/dano/eeg-pipes/src/pipes/filtering/highpassFilter.js",
     "access": "public",
@@ -1226,7 +1226,7 @@
     "__docId__": 71,
     "kind": "file",
     "name": "src/pipes/filtering/lowpassFilter.js",
-    "content": "import { CalcCascades, IirFilter } from \"fili\";\nimport { map } from \"rxjs/operators\";\nimport { createPipe } from \"../../utils/createPipe\";\nimport {\n  SAMPLE_RATE as defaultsamplingRate,\n  ORDER as defaultOrder,\n  CHARACTERISTIC as defaultCharacteristic\n} from \"../../constants\";\n\nconst createLowpassIIR = options => {\n  const calc = new CalcCascades();\n  const coeffs = calc.lowpass(options);\n  return new IirFilter(coeffs);\n};\n\nconst interpolate = (before, after) => {\n  if (!isNaN(before)) {\n    if (!isNaN(after)) {\n      return (before + after) / 2;\n    }\n    return before;\n  }\n  if (!isNaN(after)) {\n    return after;\n  }\n  return 0;\n};\n\n/**\n * Applies a lowpass filter to EEG Data. Can be applied to both raw or epoched data\n * @method lowpassFilter\n * @example eeg$\n  .pipe(lowpassFilter({ cutoffFrequency: 50, nbChannels: 4 }))\n * @param {Object} options - Filter options\n * @param {number} options.nbChannels Number of channels\n * @param {number} [options.cutoffFrequency=50] Cutoff frequency in Hz\n * @param {number} [options.samplingRate=250] Sampling rate of the EEG device\n * @param {String} [options.characteristic='butterworth'] Filter characteristic. Options are 'bessel' and 'butterworth'\n * @param {number} [options.order=2] The number of 2nd order biquad filters applied to the signal\n * \n * @returns {Observable<Sample | Epoch>}\n */\nexport const lowpassFilter = ({\n  nbChannels,\n  order = defaultOrder,\n  characteristic = defaultCharacteristic,\n  cutoffFrequency = 50,\n  samplingRate = defaultsamplingRate\n} = {}) => source => {\n  if (!nbChannels) {\n    throw new Error(\"Please supply nbChannels parameter\");\n  }\n  const lowpassArray = new Array(nbChannels).fill(0).map(() =>\n    createLowpassIIR({\n      order,\n      characteristic,\n      Fs: samplingRate,\n      Fc: cutoffFrequency\n    })\n  );\n  return createPipe(\n    source,\n    map(eegObject => {\n      const isChunk = Array.isArray(eegObject.data[0]);\n      return {\n        ...eegObject,\n        data: eegObject.data.map((channel, index) => {\n          // If Chunk, map through channel data, cleaning NaNs by interpolating.\n          if (isChunk) {\n            const nans = [];\n            const safeChannel = channel.map((sample, sampleIndex) => {\n              if (isNaN(sample)) {\n                nans.push(sampleIndex);\n                const interpolation = interpolate(\n                  channel[sampleIndex - 1],\n                  channel[sampleIndex + 1]\n                );\n                return interpolation;\n              }\n              return sample;\n            });\n\n            // Then, perform filter\n            const filteredData = lowpassArray[index].multiStep(safeChannel);\n\n            // Afterwards, reinsert NaNs\n            if (nans.length > 0) {\n              nans.forEach(nan => {\n                filteredData[nan] = NaN;\n              });\n            }\n            return filteredData;\n          }\n          // If Sample, only filter if not NaN\n          if (!isNaN(channel)) {\n            return lowpassArray[index].singleStep(channel);\n          }\n          return channel;\n        })\n      };\n    })\n  );\n};\n",
+    "content": "import { CalcCascades, IirFilter } from \"fili\";\nimport { map } from \"rxjs/operators\";\nimport { createPipe } from \"../../utils/createPipe\";\nimport {\n  SAMPLE_RATE as defaultsamplingRate,\n  ORDER as defaultOrder,\n  CHARACTERISTIC as defaultCharacteristic\n} from \"../../constants\";\n\nconst createLowpassIIR = options => {\n  const calc = new CalcCascades();\n  const coeffs = calc.lowpass(options);\n  return new IirFilter(coeffs);\n};\n\nconst interpolate = (before, after) => {\n  if (!isNaN(before)) {\n    if (!isNaN(after)) {\n      return (before + after) / 2;\n    }\n    return before;\n  }\n  if (!isNaN(after)) {\n    return after;\n  }\n  return 0;\n};\n\n/**\n * Applies a lowpass filter to EEG Data. Can be applied to both raw or epoched data\n * @method lowpassFilter\n * @example eeg$\n  .pipe(lowpassFilter({ cutoffFrequency: 50, nbChannels: 4 }))\n * @param {Object} options - Filter options\n * @param {number} options.nbChannels Number of channels\n * @param {number} [options.cutoffFrequency=50] Cutoff frequency in Hz\n * @param {number} [options.samplingRate=250] Sampling rate of the EEG device\n * @param {String} [options.characteristic='butterworth'] Filter characteristic. Options are 'bessel' and 'butterworth'\n * @param {number} [options.order=2] The number of 2nd order biquad filters applied to the signal\n * \n * @returns {Observable<Sample | Epoch>}\n */\nexport const lowpassFilter = ({\n  nbChannels,\n  order = defaultOrder,\n  characteristic = defaultCharacteristic,\n  cutoffFrequency = 50,\n  samplingRate = defaultsamplingRate\n} = {}) => source => {\n  if (!nbChannels) {\n    throw new Error(\"Please supply nbChannels parameter\");\n  }\n  const lowpassArray = new Array(nbChannels).fill(0).map(() =>\n    createLowpassIIR({\n      order,\n      characteristic,\n      Fs: samplingRate,\n      Fc: cutoffFrequency\n    })\n  );\n  return createPipe(\n    source,\n    map(eegObject => {\n      const isEpoch = Array.isArray(eegObject.data[0]);\n      return {\n        ...eegObject,\n        data: eegObject.data.map((channel, index) => {\n          if (isEpoch) {\n            const nans = [];\n            const safeChannel = channel.map((sample, sampleIndex) => {\n              if (isNaN(sample)) {\n                nans.push(sampleIndex);\n                const interpolation = interpolate(\n                  channel[sampleIndex - 1],\n                  channel[sampleIndex + 1]\n                );\n                return interpolation;\n              }\n              return sample;\n            });\n\n            // Then, perform filter\n            const filteredData = lowpassArray[index].multiStep(safeChannel);\n\n            // Afterwards, reinsert NaNs\n            if (nans.length > 0) {\n              nans.forEach(nan => {\n                filteredData[nan] = NaN;\n              });\n            }\n            return filteredData;\n          }\n          // If Sample, only filter if not NaN\n          if (!isNaN(channel)) {\n            return lowpassArray[index].singleStep(channel);\n          }\n          return channel;\n        })\n      };\n    })\n  );\n};\n",
     "static": true,
     "longname": "/home/dano/eeg-pipes/src/pipes/filtering/lowpassFilter.js",
     "access": "public",
@@ -1412,7 +1412,7 @@
     "__docId__": 75,
     "kind": "file",
     "name": "src/pipes/filtering/notchFilter.js",
-    "content": "import { CalcCascades, IirFilter } from \"fili\";\nimport { map } from \"rxjs/operators\";\nimport { createPipe } from \"../../utils/createPipe\";\nimport {\n  SAMPLE_RATE as defaultsamplingRate,\n  ORDER as defaultOrder,\n  CHARACTERISTIC as defaultCharacteristic,\n  NOTCH_BW as defaultNotchBW\n} from \"../../constants\";\n\nconst createNotchIIR = (options, filterHarmonics) => {\n  const calc = new CalcCascades();\n  const coeffs = calc.bandstop(options);\n\n  if (filterHarmonics) {\n    const thirdHarmonicCoeffs = calc.bandstop({\n      ...options,\n      Fc: options.Fc * 3\n    });\n    const firstFilter = new IirFilter(coeffs);\n    const thirdFilter = new IirFilter(thirdHarmonicCoeffs);\n    return (signal, stepFunction) =>\n      thirdFilter[stepFunction](firstFilter[stepFunction](signal));\n  }\n  const filter = new IirFilter(coeffs);\n  return (signal, stepFunction) => filter[stepFunction](signal);\n};\n\nconst interpolate = (before, after) => {\n  if (!isNaN(before)) {\n    if (!isNaN(after)) {\n      return (before + after) / 2;\n    }\n    return before;\n  }\n  if (!isNaN(after)) {\n    return after;\n  }\n  return 0;\n};\n\n/**\n * Applies a notch filter to EEG Data. Can be applied to both raw or epoched data. Has the ability to filter out harmonics of line noise (e.g. 120Hz, 180Hz), though this is only needed for high-frequency devices with >= 1000hz sampling rate\n * @method notchFilter\n * @example eeg$\n  .pipe(notchFilter({ cutoffFrequency: 60, nbChannels: 10, samplingRate: 1000, filterHarmonics: true }))\n * @param {Object} options - Filter options\n * @param {number} options.nbChannels Number of channels\n * @param {number} [options.cutoffFrequency=60] Cutoff frequency in Hz\n * @param {number} [options.bandWidth=0.5] Width of the cutoff centered around the notched frequency. Larger values reduce filter out more of the notch frequency at the cost of also reducing nearby frequencies\n * @param {boolean} [options.filterHarmonics=false] Whether to filter harmonics of the notch frequency as well\n * @param {number} [options.samplingRate=250] Sampling rate of the EEG device\n * @param {String} [options.characteristic='butterworth'] Filter characteristic. Options are 'bessel' and 'butterworth'\n * @param {number} [options.order=2] Number of 2nd order biquad filters applied to the signal\n * \n * @returns {Observable<Sample | Epoch>}\n */\nexport const notchFilter = ({\n  nbChannels,\n  order = defaultOrder,\n  characteristic = defaultCharacteristic,\n  cutoffFrequency = 60,\n  samplingRate = defaultsamplingRate,\n  bandWidth = defaultNotchBW,\n  filterHarmonics = false\n} = {}) => source => {\n  if (!nbChannels) {\n    throw new Error(\"Please supply nbChannels parameter\");\n  }\n  const notchArray = new Array(nbChannels).fill(0).map(() =>\n    createNotchIIR(\n      {\n        order,\n        characteristic,\n        Fs: samplingRate,\n        Fc: cutoffFrequency,\n        BW: bandWidth\n      },\n      filterHarmonics\n    )\n  );\n  return createPipe(\n    source,\n    map(eegObject => {\n      const isChunk = Array.isArray(eegObject.data[0]);\n      return {\n        ...eegObject,\n        data: eegObject.data.map((channel, index) => {\n          // If Chunk, map through channel data, cleaning NaNs by interpolating.\n          if (isChunk) {\n            const nans = [];\n            const safeChannel = channel.map((sample, sampleIndex) => {\n              if (isNaN(sample)) {\n                nans.push(sampleIndex);\n                const interpolation = interpolate(\n                  channel[sampleIndex - 1],\n                  channel[sampleIndex + 1]\n                );\n                return interpolation;\n              }\n              return sample;\n            });\n\n            // Then, perform filter\n            const filteredData = notchArray[index](safeChannel, \"multiStep\");\n\n            // Afterwards, reinsert NaNs\n            if (nans.length > 0) {\n              nans.forEach(nan => {\n                filteredData[nan] = NaN;\n              });\n            }\n            return filteredData;\n          }\n          // If Sample, only filter if not NaN\n          if (!isNaN(channel)) {\n            return notchArray[index](channel, \"singleStep\");\n          }\n          return channel;\n        })\n      };\n    })\n  );\n};\n",
+    "content": "import { CalcCascades, IirFilter } from \"fili\";\nimport { map } from \"rxjs/operators\";\nimport { createPipe } from \"../../utils/createPipe\";\nimport {\n  SAMPLE_RATE as defaultsamplingRate,\n  ORDER as defaultOrder,\n  CHARACTERISTIC as defaultCharacteristic,\n  NOTCH_BW as defaultNotchBW\n} from \"../../constants\";\n\nconst createNotchIIR = (options, filterHarmonics) => {\n  const calc = new CalcCascades();\n  const coeffs = calc.bandstop(options);\n\n  if (filterHarmonics) {\n    const thirdHarmonicCoeffs = calc.bandstop({\n      ...options,\n      Fc: options.Fc * 3\n    });\n    const firstFilter = new IirFilter(coeffs);\n    const thirdFilter = new IirFilter(thirdHarmonicCoeffs);\n    return (signal, stepFunction) =>\n      thirdFilter[stepFunction](firstFilter[stepFunction](signal));\n  }\n  const filter = new IirFilter(coeffs);\n  return (signal, stepFunction) => filter[stepFunction](signal);\n};\n\nconst interpolate = (before, after) => {\n  if (!isNaN(before)) {\n    if (!isNaN(after)) {\n      return (before + after) / 2;\n    }\n    return before;\n  }\n  if (!isNaN(after)) {\n    return after;\n  }\n  return 0;\n};\n\n/**\n * Applies a notch filter to EEG Data. Can be applied to both raw or epoched data. Has the ability to filter out harmonics of line noise (e.g. 120Hz, 180Hz), though this is only needed for high-frequency devices with >= 1000hz sampling rate\n * @method notchFilter\n * @example eeg$\n  .pipe(notchFilter({ cutoffFrequency: 60, nbChannels: 10, samplingRate: 1000, filterHarmonics: true }))\n * @param {Object} options - Filter options\n * @param {number} options.nbChannels Number of channels\n * @param {number} [options.cutoffFrequency=60] Cutoff frequency in Hz\n * @param {number} [options.bandWidth=0.5] Width of the cutoff centered around the notched frequency. Larger values reduce filter out more of the notch frequency at the cost of also reducing nearby frequencies\n * @param {boolean} [options.filterHarmonics=false] Whether to filter harmonics of the notch frequency as well\n * @param {number} [options.samplingRate=250] Sampling rate of the EEG device\n * @param {String} [options.characteristic='butterworth'] Filter characteristic. Options are 'bessel' and 'butterworth'\n * @param {number} [options.order=2] Number of 2nd order biquad filters applied to the signal\n * \n * @returns {Observable<Sample | Epoch>}\n */\nexport const notchFilter = ({\n  nbChannels,\n  order = defaultOrder,\n  characteristic = defaultCharacteristic,\n  cutoffFrequency = 60,\n  samplingRate = defaultsamplingRate,\n  bandWidth = defaultNotchBW,\n  filterHarmonics = false\n} = {}) => source => {\n  if (!nbChannels) {\n    throw new Error(\"Please supply nbChannels parameter\");\n  }\n  const notchArray = new Array(nbChannels).fill(0).map(() =>\n    createNotchIIR(\n      {\n        order,\n        characteristic,\n        Fs: samplingRate,\n        Fc: cutoffFrequency,\n        BW: bandWidth\n      },\n      filterHarmonics\n    )\n  );\n  return createPipe(\n    source,\n    map(eegObject => {\n      const isEpoch = Array.isArray(eegObject.data[0]);\n      return {\n        ...eegObject,\n        data: eegObject.data.map((channel, index) => {\n          if (isEpoch) {\n            const nans = [];\n            const safeChannel = channel.map((sample, sampleIndex) => {\n              if (isNaN(sample)) {\n                nans.push(sampleIndex);\n                const interpolation = interpolate(\n                  channel[sampleIndex - 1],\n                  channel[sampleIndex + 1]\n                );\n                return interpolation;\n              }\n              return sample;\n            });\n\n            // Then, perform filter\n            const filteredData = notchArray[index](safeChannel, \"multiStep\");\n\n            // Afterwards, reinsert NaNs\n            if (nans.length > 0) {\n              nans.forEach(nan => {\n                filteredData[nan] = NaN;\n              });\n            }\n            return filteredData;\n          }\n          // If Sample, only filter if not NaN\n          if (!isNaN(channel)) {\n            return notchArray[index](channel, \"singleStep\");\n          }\n          return channel;\n        })\n      };\n    })\n  );\n};\n",
     "static": true,
     "longname": "/home/dano/eeg-pipes/src/pipes/filtering/notchFilter.js",
     "access": "public",
@@ -1822,63 +1822,6 @@
   {
     "__docId__": 87,
     "kind": "file",
-    "name": "src/pipes/frequency/chunkFFT.js",
-    "content": "import { FFT } from \"dsp.js\";\nimport { bufferCount, map } from \"rxjs/operators\";\n\nimport { createPipe } from \"../../utils/createPipe\";\nimport { groupByChannel } from \"../../utils/groupByChannel\";\n\nimport {\n  SAMPLE_RATE as defaultSampleRate,\n  FFT_BINS as defaultFftBins,\n  DATA_PROP as defaultDataProp\n} from \"../../constants\";\n\n/**\n * @method chunkFFT\n * Takes a Chunk and returns an FFT buffer\n *\n * @param {Object} options\n * @returns {Observable}\n */\nexport const chunkFFT = ({\n  bins = defaultFftBins,\n  window = null,\n  sampleRate = defaultSampleRate,\n  dataProp = defaultDataProp\n} = {}) => source => {\n  const fft = channel => {\n    const fft = new FFT(bins, sampleRate);\n    fft.forward(channel);\n    return Array.from(fft.spectrum);\n  };\n  return createPipe(\n    source,\n    map(chunk => ({\n      ...chunk,\n      data: chunk[dataProp].map(fft)\n    }))\n  );\n};\n",
-    "static": true,
-    "longname": "/home/dano/eeg-pipes/src/pipes/frequency/chunkFFT.js",
-    "access": "public",
-    "description": null,
-    "lineNumber": 1
-  },
-  {
-    "__docId__": 88,
-    "kind": "function",
-    "name": "chunkFFT",
-    "memberof": "src/pipes/frequency/chunkFFT.js",
-    "generator": false,
-    "async": false,
-    "static": true,
-    "longname": "src/pipes/frequency/chunkFFT.js~chunkFFT",
-    "access": "public",
-    "export": true,
-    "importPath": "eeg-pipes/src/pipes/frequency/chunkFFT.js",
-    "importStyle": "{chunkFFT}",
-    "description": "",
-    "lineNumber": 20,
-    "unknown": [
-      {
-        "tagName": "@method",
-        "tagValue": "chunkFFT\nTakes a Chunk and returns an FFT buffer"
-      },
-      {
-        "tagName": "@returns",
-        "tagValue": "{Observable}"
-      }
-    ],
-    "params": [
-      {
-        "nullable": null,
-        "types": [
-          "Object"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "options",
-        "description": ""
-      }
-    ],
-    "return": {
-      "nullable": null,
-      "types": [
-        "Observable"
-      ],
-      "spread": false,
-      "description": ""
-    }
-  },
-  {
-    "__docId__": 89,
-    "kind": "file",
     "name": "src/pipes/frequency/deltaPower.js",
     "content": "import { createPipe } from \"../../utils/createPipe\";\nimport { averagePower } from \"./averagePower\";\nimport { sliceFFT } from \"./sliceFFT\";\n\nimport { FREQUENCY_BANDS as frequencyBands } from \"../../constants\";\n\n/**\n * @method deltaPower\n * Filters FFT buffer based on delta frequency range and averages the power\n *\n * @returns {Observable} fftBuffer\n */\nexport const deltaPower = () => source =>\n  createPipe(\n    source,\n    sliceFFT(frequencyBands.delta),\n    averagePower()\n  );\n",
     "static": true,
@@ -1888,7 +1831,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 90,
+    "__docId__": 88,
     "kind": "function",
     "name": "deltaPower",
     "memberof": "src/pipes/frequency/deltaPower.js",
@@ -1923,7 +1866,7 @@
     "params": []
   },
   {
-    "__docId__": 91,
+    "__docId__": 89,
     "kind": "file",
     "name": "src/pipes/frequency/gammaPower.js",
     "content": "import { createPipe } from \"../../utils/createPipe\";\nimport { averagePower } from \"./averagePower\";\nimport { sliceFFT } from \"./sliceFFT\";\n\nimport { FREQUENCY_BANDS as frequencyBands } from \"../../constants\";\n\n/**\n * @method gammaPower\n * Filters FFT buffer based on gamma frequency range and averages the power\n *\n * @returns {Observable} fftBuffer\n */\nexport const gammaPower = () => source =>\n  createPipe(\n    source,\n    sliceFFT(frequencyBands.gamma),\n    averagePower()\n  );\n",
@@ -1934,7 +1877,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 92,
+    "__docId__": 90,
     "kind": "function",
     "name": "gammaPower",
     "memberof": "src/pipes/frequency/gammaPower.js",
@@ -1969,10 +1912,10 @@
     "params": []
   },
   {
-    "__docId__": 93,
+    "__docId__": 91,
     "kind": "file",
     "name": "src/pipes/frequency/index.js",
-    "content": "export * from './alphaPower';\nexport * from './averagePower';\nexport * from './betaPower';\nexport * from './bufferFFT';\nexport * from './chunkFFT';\nexport * from './deltaPower';\nexport * from './gammaPower';\nexport * from './powerByBand';\nexport * from './sliceFFT';\nexport * from './thetaPower';",
+    "content": "export * from './alphaPower';\nexport * from './averagePower';\nexport * from './betaPower';\nexport * from './bufferFFT';\nexport * from './deltaPower';\nexport * from './gammaPower';\nexport * from './powerByBand';\nexport * from './sliceFFT';\nexport * from './thetaPower';",
     "static": true,
     "longname": "/home/dano/eeg-pipes/src/pipes/frequency/index.js",
     "access": "public",
@@ -1980,7 +1923,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 94,
+    "__docId__": 92,
     "kind": "file",
     "name": "src/pipes/frequency/powerByBand.js",
     "content": "import { of } from \"rxjs/observable/of\";\nimport { zip } from \"rxjs/observable/zip\";\nimport { flatMap } from \"rxjs/operators\";\n\nimport { createPipe } from \"../../utils/createPipe\";\nimport { averagePower } from \"./averagePower\";\nimport { sliceFFT } from \"./sliceFFT\";\n\nimport {\n    SAMPLE_RATE as defaultSampleRate,\n    FREQUENCY_BANDS as defaultBands\n} from \"../../constants\";\n\n/**\n * @method powerByBand\n * Returns an object with average band powers for all the classic EEG bands.\n *\n * @param {object} bands { [bandName]: range[min, max] }\n * @returns {Observable} bands { [bandName]: bandPower }\n */\nexport const powerByBand = (\n  bands = defaultBands,\n  sampleRate = defaultSampleRate\n) => source =>\n  createPipe(\n    source,\n    flatMap(fftBuffer => {\n      const entries = Object.entries(bands);\n      const bandPowers = entries.map(([, range ]) =>\n        of(fftBuffer).pipe(\n          sliceFFT(range, sampleRate),\n          averagePower()\n        )\n      );\n      const zipPowers = (...powers) =>\n        powers.reduce((acc, power, index) => ({\n          ...acc,\n          [entries[index][0]]: power\n        }), {});\n      return zip(...bandPowers, zipPowers);\n    })\n  );\n",
@@ -1991,7 +1934,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 95,
+    "__docId__": 93,
     "kind": "function",
     "name": "powerByBand",
     "memberof": "src/pipes/frequency/powerByBand.js",
@@ -2037,7 +1980,7 @@
     }
   },
   {
-    "__docId__": 96,
+    "__docId__": 94,
     "kind": "file",
     "name": "src/pipes/frequency/sliceFFT.js",
     "content": "import { map } from \"rxjs/operators\";\n\nimport { createPipe } from \"../../utils/createPipe\";\n\nimport { SAMPLE_RATE as defaultSampleRate } from \"../../constants\";\n\n/**\n * @method sliceFFT\n * Filters FFT buffer by frequency range.\n *\n * @param {array} range: [min, max]\n * @param {number} sampleRate\n * @returns {Observable} fftBuffer\n */\nexport const sliceFFT = (\n  [min = 0, max = 128],\n  sampleRate = defaultSampleRate\n) => source =>\n  createPipe(\n    source,\n    map(fftBuffer => {\n      if (!fftBuffer.length || !fftBuffer[0].length) {\n        return fftBuffer;\n      }\n\n      const bins = fftBuffer[0].length * 2;\n\n      const ranges = Array.from({ length: bins / 2 }, (range, index) =>\n        Math.ceil(index * (sampleRate / bins))\n      );\n\n      return fftBuffer.map(channel =>\n        channel.filter(\n          (spectrum, index) => ranges[index] >= min && ranges[index] <= max\n        )\n      );\n    })\n  );\n",
@@ -2048,7 +1991,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 97,
+    "__docId__": 95,
     "kind": "function",
     "name": "sliceFFT",
     "memberof": "src/pipes/frequency/sliceFFT.js",
@@ -2104,7 +2047,7 @@
     }
   },
   {
-    "__docId__": 98,
+    "__docId__": 96,
     "kind": "file",
     "name": "src/pipes/frequency/thetaPower.js",
     "content": "import { createPipe } from \"../../utils/createPipe\";\nimport { averagePower } from \"./averagePower\";\nimport { sliceFFT } from \"./sliceFFT\";\n\nimport { FREQUENCY_BANDS as frequencyBands } from \"../../constants\";\n\n/**\n * @method thetaPower\n * Filters FFT buffer based on theta frequency range and averages the power\n *\n * @returns {Observable} fftBuffer\n */\nexport const thetaPower = () => source =>\n  createPipe(\n    source,\n    sliceFFT(frequencyBands.theta),\n    averagePower()\n  );\n",
@@ -2115,7 +2058,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 99,
+    "__docId__": 97,
     "kind": "function",
     "name": "thetaPower",
     "memberof": "src/pipes/frequency/thetaPower.js",
@@ -2150,7 +2093,7 @@
     "params": []
   },
   {
-    "__docId__": 100,
+    "__docId__": 98,
     "kind": "file",
     "name": "src/pipes/index.js",
     "content": "export * from \"./filtering\";\nexport * from \"./frequency\";\nexport * from \"./reducer\";\nexport * from \"./unit\";\nexport * from \"./utility\";\n",
@@ -2161,7 +2104,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 101,
+    "__docId__": 99,
     "kind": "file",
     "name": "src/pipes/reducer/averageDeep.js",
     "content": "import { map } from \"rxjs/operators\";\n\nimport { average } from \"../../utils\";\n\n/**\n * @method averageDeep\n * Averages list of values including deep lists, to a single value\n *\n * @returns {Observable} average\n */\nexport const averageDeep = () =>\n  map(channels => average(channels));",
@@ -2172,7 +2115,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 102,
+    "__docId__": 100,
     "kind": "function",
     "name": "averageDeep",
     "memberof": "src/pipes/reducer/averageDeep.js",
@@ -2207,7 +2150,7 @@
     "params": []
   },
   {
-    "__docId__": 103,
+    "__docId__": 101,
     "kind": "file",
     "name": "src/pipes/reducer/index.js",
     "content": "export * from \"./averageDeep\";",
@@ -2218,7 +2161,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 104,
+    "__docId__": 102,
     "kind": "file",
     "name": "src/pipes/unit/index.js",
     "content": "\nexport * from './voltsToMicrovolts';\n",
@@ -2229,10 +2172,10 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 105,
+    "__docId__": 103,
     "kind": "file",
     "name": "src/pipes/unit/voltsToMicrovolts.js",
-    "content": "import { map } from \"rxjs/operators\";\n\nimport { createPipe } from \"../../utils/createPipe\";\n\nimport {\n  USE_LOG as useLog,\n  DATA_PROP as defaultDataProp\n} from \"../../constants\";\n\n/**\n * @method toMicrovolts\n * Takes a data stream of samples and returns the values in microvolts\n *\n * @param {Object} options\n * @returns {Observable}\n */\nexport const voltsToMicrovolts = (\n  { log = useLog, dataProp = defaultDataProp } = {}\n) => source =>\n  createPipe(\n    source,\n    map(sample => ({\n      ...sample,\n      [dataProp]: sample[dataProp].map(\n        volt =>\n          log ? Math.log10(Math.pow(10, 6) * volt) : Math.pow(10, 6) * volt\n      )\n    }))\n  );\n",
+    "content": "import { map } from \"rxjs/operators\";\n\nimport { createPipe } from \"../../utils/createPipe\";\n\nimport {\n  USE_LOG as useLog,\n  DATA_PROP as defaultDataProp\n} from \"../../constants\";\n\n/**\n * Converts a stream of EEG data (either eegObjects or Epochs) from volts to microvolts\n * @method toMicrovolts\n * @example eeg&.pipe(toMicrovolts)\n * @param {Object} options - Conversion options\n * @param {boolean} [options.useLog=false] Whether to use logarithmic conversion\n * @param {string} [options.dataProp='data'] Name of the key associated with eeg data\n *\n * @returns {Observable<Sample | Epoch>}\n */\nexport const voltsToMicrovolts = ({\n  log = useLog,\n  dataProp = defaultDataProp\n} = {}) => source =>\n  createPipe(\n    source,\n    map(eegObject => {\n      const isEpoch = Array.isArray(eegObject.data[0]);\n      const conversion = log\n        ? volt => Math.log10(Math.pow(10, 6) * volt)\n        : volt => Math.pow(10, 6) * volt;\n      return {\n        ...eegObject,\n        [dataProp]: eegObject[dataProp].map(channel => {\n          if (isEpoch) {\n            return channel.map(conversion);\n          }\n          return conversion(channel);\n        })\n      };\n    })\n  );\n",
     "static": true,
     "longname": "/home/dano/eeg-pipes/src/pipes/unit/voltsToMicrovolts.js",
     "access": "public",
@@ -2240,7 +2183,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 106,
+    "__docId__": 104,
     "kind": "function",
     "name": "voltsToMicrovolts",
     "memberof": "src/pipes/unit/voltsToMicrovolts.js",
@@ -2252,16 +2195,19 @@
     "export": true,
     "importPath": "eeg-pipes/src/pipes/unit/voltsToMicrovolts.js",
     "importStyle": "{voltsToMicrovolts}",
-    "description": "",
-    "lineNumber": 17,
+    "description": "Converts a stream of EEG data (either eegObjects or Epochs) from volts to microvolts",
+    "examples": [
+      "eeg&.pipe(toMicrovolts)"
+    ],
+    "lineNumber": 20,
     "unknown": [
       {
         "tagName": "@method",
-        "tagValue": "toMicrovolts\nTakes a data stream of samples and returns the values in microvolts"
+        "tagValue": "toMicrovolts"
       },
       {
         "tagName": "@returns",
-        "tagValue": "{Observable}"
+        "tagValue": "{Observable<Sample | Epoch>}"
       }
     ],
     "params": [
@@ -2273,23 +2219,47 @@
         "spread": false,
         "optional": false,
         "name": "options",
-        "description": ""
+        "description": "Conversion options"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "false",
+        "defaultRaw": false,
+        "name": "options.useLog",
+        "description": "Whether to use logarithmic conversion"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "'data'",
+        "defaultRaw": "'data'",
+        "name": "options.dataProp",
+        "description": "Name of the key associated with eeg data"
       }
     ],
     "return": {
       "nullable": null,
       "types": [
-        "Observable"
+        "Observable<Sample | Epoch>"
       ],
       "spread": false,
       "description": ""
     }
   },
   {
-    "__docId__": 107,
+    "__docId__": 105,
     "kind": "file",
     "name": "src/pipes/utility/addInfo.js",
-    "content": "import { map } from \"rxjs/operators\";\n\nimport { createPipe } from \"../../utils/createPipe\";\n\nconst isObject = object => object instanceof Object;\nconst isFunction = object => typeof object === \"function\";\n\nconst patch = sample => info => ({\n  ...sample,\n  info: {\n    ...(sample.info || {}),\n    ...(info || {})\n  }\n});\n\n/**\n * @method addInfo\n * Annotates stream with user-defined metadata. Can be applied to Samples or Chunks\n * @example { samplingRate: 256, channelNames: [\"Af&\", \"Fp1\", \"Fp2\", \"Af8\"] }\n *\n * @param info\n * @returns {Observable} Sample or Chunk\n */\nexport const addInfo = (arg = {}) => source =>\n  createPipe(\n    source,\n    map(sample => {\n      if (!isObject(sample) || (!isObject(arg) && !isFunction(arg))) {\n        return sample;\n      }\n      const info = isFunction(arg) ? arg(sample) : arg;\n      return patch(sample)(info);\n    })\n  );\n",
+    "content": "import { map } from \"rxjs/operators\";\n\nimport { createPipe } from \"../../utils/createPipe\";\n\nconst isObject = object => object instanceof Object;\nconst isFunction = object => typeof object === \"function\";\n\nconst patch = sample => info => ({\n  ...sample,\n  info: {\n    ...(sample.info || {}),\n    ...(info || {})\n  }\n});\n\n/**\n * Annotates stream with user-defined metadata\n * @method addInfo\n * @example eeg$.pipe(addinfo({ samplingRate: 256, channelNames: [\"Af7\", \"Fp1\", \"Fp2\", \"Af8\"] })\n *\n * @param {Object} info - Info to be added to the EEG stream. Relevant info may include: `samplingRate` and `channelNames`\n * @returns {Observable<Sample | Epoch | PSD>}\n */\nexport const addInfo = (arg = {}) => source =>\n  createPipe(\n    source,\n    map(sample => {\n      if (!isObject(sample) || (!isObject(arg) && !isFunction(arg))) {\n        return sample;\n      }\n      const info = isFunction(arg) ? arg(sample) : arg;\n      return patch(sample)(info);\n    })\n  );\n",
     "static": true,
     "longname": "/home/dano/eeg-pipes/src/pipes/utility/addInfo.js",
     "access": "public",
@@ -2297,7 +2267,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 108,
+    "__docId__": 106,
     "kind": "function",
     "name": "isObject",
     "memberof": "src/pipes/utility/addInfo.js",
@@ -2324,7 +2294,7 @@
     "ignore": true
   },
   {
-    "__docId__": 109,
+    "__docId__": 107,
     "kind": "function",
     "name": "isFunction",
     "memberof": "src/pipes/utility/addInfo.js",
@@ -2351,7 +2321,7 @@
     "ignore": true
   },
   {
-    "__docId__": 110,
+    "__docId__": 108,
     "kind": "function",
     "name": "patch",
     "memberof": "src/pipes/utility/addInfo.js",
@@ -2378,7 +2348,7 @@
     "ignore": true
   },
   {
-    "__docId__": 111,
+    "__docId__": 109,
     "kind": "function",
     "name": "addInfo",
     "memberof": "src/pipes/utility/addInfo.js",
@@ -2390,44 +2360,44 @@
     "export": true,
     "importPath": "eeg-pipes/src/pipes/utility/addInfo.js",
     "importStyle": "{addInfo}",
-    "description": "",
+    "description": "Annotates stream with user-defined metadata",
     "examples": [
-      "{ samplingRate: 256, channelNames: [\"Af&\", \"Fp1\", \"Fp2\", \"Af8\"] }"
+      "eeg$.pipe(addinfo({ samplingRate: 256, channelNames: [\"Af7\", \"Fp1\", \"Fp2\", \"Af8\"] })"
     ],
     "lineNumber": 24,
     "unknown": [
       {
         "tagName": "@method",
-        "tagValue": "addInfo\nAnnotates stream with user-defined metadata. Can be applied to Samples or Chunks"
+        "tagValue": "addInfo"
       },
       {
         "tagName": "@returns",
-        "tagValue": "{Observable} Sample or Chunk"
+        "tagValue": "{Observable<Sample | Epoch | PSD>}"
       }
     ],
     "params": [
       {
         "nullable": null,
         "types": [
-          "*"
+          "Object"
         ],
         "spread": false,
         "optional": false,
         "name": "info",
-        "description": ""
+        "description": "Info to be added to the EEG stream. Relevant info may include: `samplingRate` and `channelNames`"
       }
     ],
     "return": {
       "nullable": null,
       "types": [
-        "Observable"
+        "Observable<Sample | Epoch | PSD>"
       ],
       "spread": false,
-      "description": "Sample or Chunk"
+      "description": ""
     }
   },
   {
-    "__docId__": 112,
+    "__docId__": 110,
     "kind": "file",
     "name": "src/pipes/utility/bufferCount.js",
     "content": "export * from \"rxjs/operators/bufferCount\";\n",
@@ -2438,7 +2408,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 113,
+    "__docId__": 111,
     "kind": "file",
     "name": "src/pipes/utility/bufferTime.js",
     "content": "export * from \"rxjs/operators/bufferTime\";\n",
@@ -2449,66 +2419,92 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 114,
+    "__docId__": 112,
     "kind": "file",
-    "name": "src/pipes/utility/chunk.js",
-    "content": "import { map } from \"rxjs/operators\";\n\nimport { createPipe } from \"../../utils/createPipe\";\nimport { groupByChannel } from \"../../utils/groupByChannel\";\n\nimport {\n  DATA_PROP as defaultDataProp,\n  SAMPLE_RATE as defaultSamplingRate\n} from \"../../constants\";\nimport { sample } from \"rxjs/operators/sample\";\n\n/**\n * @method chunk\n * Takes an array of Samples and returns a Chunk with a 2D data array grouped by channel. Will add startTime and samplingRate info to emitted Chunks.\n * Requires samplingRate parameter unless stream already contains samplingRate in info.\n *\n * @returns {Observable} Chunk\n */\nexport const chunk = ({\n  dataProp = defaultDataProp,\n  samplingRate = defaultSamplingRate\n} = {}) => source$ =>\n  createPipe(\n    source$,\n    map(samplesArray => ({\n      data: groupByChannel(samplesArray, dataProp),\n      info: {\n        ...samplesArray[0].info,\n        startTime: samplesArray[0].timestamp,\n        samplingRate: samplesArray[0].info.samplingRate\n          ? samplesArray[0].info.samplingRate\n          : samplingRate\n      }\n    }))\n  );\n",
+    "name": "src/pipes/utility/bufferToEpoch.js",
+    "content": "import { map } from \"rxjs/operators\";\n\nimport { createPipe } from \"../../utils/createPipe\";\nimport { groupByChannel } from \"../../utils/groupByChannel\";\n\nimport { DATA_PROP as defaultDataProp } from \"../../constants\";\n\n/**\n * Takes an array or RxJS buffer of EEG Samples and returns an Epoch. Requires samplingRate parameter unless stream already contains samplingRate in info.\n * @method bufferToEpoch\n * @example eeg$.pipe(bufferTime(1000), bufferToEpoch({ samplingRate: 256 }))\n *\n * @param {Object} options - Data structure options\n * @param {number} [options.samplingRate] Sampling rate\n * @param {string} [options.dataProp='data'] Name of the key associated with eeg data\n *\n * @returns {Observable<Epoch>}\n */\nexport const bufferToEpoch = ({\n  samplingRate,\n  dataProp = defaultDataProp\n} = {}) => source$ =>\n  createPipe(\n    source$,\n    map(samplesArray => ({\n      [dataProp]: groupByChannel(samplesArray, dataProp),\n      info: {\n        ...samplesArray[0].info,\n        startTime: samplesArray[0].timestamp,\n        samplingRate: samplingRate\n          ? samplingRate\n          : samplesArray[0].info.samplingRate\n      }\n    }))\n  );\n",
     "static": true,
-    "longname": "/home/dano/eeg-pipes/src/pipes/utility/chunk.js",
+    "longname": "/home/dano/eeg-pipes/src/pipes/utility/bufferToEpoch.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
   },
   {
-    "__docId__": 115,
+    "__docId__": 113,
     "kind": "function",
-    "name": "chunk",
-    "memberof": "src/pipes/utility/chunk.js",
+    "name": "bufferToEpoch",
+    "memberof": "src/pipes/utility/bufferToEpoch.js",
     "generator": false,
     "async": false,
     "static": true,
-    "longname": "src/pipes/utility/chunk.js~chunk",
+    "longname": "src/pipes/utility/bufferToEpoch.js~bufferToEpoch",
     "access": "public",
     "export": true,
-    "importPath": "eeg-pipes/src/pipes/utility/chunk.js",
-    "importStyle": "{chunk}",
-    "description": "",
+    "importPath": "eeg-pipes/src/pipes/utility/bufferToEpoch.js",
+    "importStyle": "{bufferToEpoch}",
+    "description": "Takes an array or RxJS buffer of EEG Samples and returns an Epoch. Requires samplingRate parameter unless stream already contains samplingRate in info.",
+    "examples": [
+      "eeg$.pipe(bufferTime(1000), bufferToEpoch({ samplingRate: 256 }))"
+    ],
     "lineNumber": 19,
     "unknown": [
       {
         "tagName": "@method",
-        "tagValue": "chunk\nTakes an array of Samples and returns a Chunk with a 2D data array grouped by channel. Will add startTime and samplingRate info to emitted Chunks.\nRequires samplingRate parameter unless stream already contains samplingRate in info."
+        "tagValue": "bufferToEpoch"
       },
       {
         "tagName": "@returns",
-        "tagValue": "{Observable} Chunk"
+        "tagValue": "{Observable<Epoch>}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options",
+        "description": "Data structure options"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "options.samplingRate",
+        "description": "Sampling rate"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "'data'",
+        "defaultRaw": "'data'",
+        "name": "options.dataProp",
+        "description": "Name of the key associated with eeg data"
       }
     ],
     "return": {
       "nullable": null,
       "types": [
-        "Observable"
+        "Observable<Epoch>"
       ],
       "spread": false,
-      "description": "Chunk"
-    },
-    "params": [
-      {
-        "name": "objectPattern",
-        "optional": true,
-        "types": [
-          "{\"dataProp\": *, \"samplingRate\": *}"
-        ],
-        "defaultRaw": {},
-        "defaultValue": "{}"
-      }
-    ]
+      "description": ""
+    }
   },
   {
-    "__docId__": 116,
+    "__docId__": 114,
     "kind": "file",
     "name": "src/pipes/utility/epoch.js",
-    "content": "import { bufferCount, scan, filter, tap } from \"rxjs/operators\";\n\nimport { createPipe } from \"../../utils/createPipe\";\nimport { chunk } from \"../utility/chunk\";\n\nimport {\n  EPOCH_DURATION as defaultEpochDuration,\n  EPOCH_INTERVAL as defaultEpochInterval,\n  DATA_PROP as defaultDataProp,\n  SAMPLE_RATE as defaultSamplingRate\n} from \"../../constants\";\n\n/**\n * @method epoch\n * Implements a standard circular buffer for converting streams of EEG data into epochs of a given size emitted at a specified interval.\n * Requires samplingRate parameter unless stream already contains samplingRate in info.\n *\n * @returns {Observable} Epoch\n */\nexport const epoch = ({\n  duration = defaultEpochDuration,\n  interval = defaultEpochInterval,\n  dataProp = defaultDataProp\n} = {}) => source$ =>\n  createPipe(\n    source$,\n    bufferCount(interval),\n    scan((acc, val) =>\n      acc.concat(val).slice(acc.length < duration ? 0 : -duration)\n    ),\n    filter(samplesArray => samplesArray.length === duration),\n    chunk({ dataProp })\n  );\n",
+    "content": "import { bufferCount, scan, filter } from \"rxjs/operators\";\n\nimport { createPipe } from \"../../utils/createPipe\";\nimport { bufferToEpoch } from \"../utility/bufferToEpoch\";\n\nimport {\n  EPOCH_DURATION as defaultEpochDuration,\n  EPOCH_INTERVAL as defaultEpochInterval,\n  DATA_PROP as defaultDataProp\n} from \"../../constants\";\n\n/**\n * Converts a stream of individual Samples of EEG data into a stream of Epochs of a given duration emitted at specified interval. This operator functions similarly to a circular buffer internally and allows overlapping Epochs of data to be emitted (e.g. emitting the last one second of data every 100ms). Requires samplingRate parameter unless stream already contains samplingRate in info.\n * @method epoch\n * @example eeg$.pipe(epoch({ duration: 1024, interval: 100, samplingRate: 256 }))\n * @param {Object} options - Epoching options\n * @param {number} options.duration Number of samples to include in each epoch\n * @param {number} options.interval Time between emitted Epochs\n * @param {number} [options.samplingRate] Sampling rate\n * @param {string} [options.dataProp='data'] Name of the key associated with eeg data\n * @returns {Observable} Epoch\n */\nexport const epoch = ({\n  duration = defaultEpochDuration,\n  interval = defaultEpochInterval,\n  samplingRate,\n  dataProp = defaultDataProp\n} = {}) => source$ =>\n  createPipe(\n    source$,\n    bufferCount(interval),\n    scan((acc, val) =>\n      acc.concat(val).slice(acc.length < duration ? 0 : -duration)\n    ),\n    filter(samplesArray => samplesArray.length === duration),\n    bufferToEpoch({ samplingRate, dataProp })\n  );\n",
     "static": true,
     "longname": "/home/dano/eeg-pipes/src/pipes/utility/epoch.js",
     "access": "public",
@@ -2516,7 +2512,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 117,
+    "__docId__": 115,
     "kind": "function",
     "name": "epoch",
     "memberof": "src/pipes/utility/epoch.js",
@@ -2528,16 +2524,73 @@
     "export": true,
     "importPath": "eeg-pipes/src/pipes/utility/epoch.js",
     "importStyle": "{epoch}",
-    "description": "",
-    "lineNumber": 20,
+    "description": "Converts a stream of individual Samples of EEG data into a stream of Epochs of a given duration emitted at specified interval. This operator functions similarly to a circular buffer internally and allows overlapping Epochs of data to be emitted (e.g. emitting the last one second of data every 100ms). Requires samplingRate parameter unless stream already contains samplingRate in info.",
+    "examples": [
+      "eeg$.pipe(epoch({ duration: 1024, interval: 100, samplingRate: 256 }))"
+    ],
+    "lineNumber": 23,
     "unknown": [
       {
         "tagName": "@method",
-        "tagValue": "epoch\nImplements a standard circular buffer for converting streams of EEG data into epochs of a given size emitted at a specified interval.\nRequires samplingRate parameter unless stream already contains samplingRate in info."
+        "tagValue": "epoch"
       },
       {
         "tagName": "@returns",
         "tagValue": "{Observable} Epoch"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options",
+        "description": "Epoching options"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options.duration",
+        "description": "Number of samples to include in each epoch"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options.interval",
+        "description": "Time between emitted Epochs"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "options.samplingRate",
+        "description": "Sampling rate"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "'data'",
+        "defaultRaw": "'data'",
+        "name": "options.dataProp",
+        "description": "Name of the key associated with eeg data"
       }
     ],
     "return": {
@@ -2547,24 +2600,13 @@
       ],
       "spread": false,
       "description": "Epoch"
-    },
-    "params": [
-      {
-        "name": "objectPattern",
-        "optional": true,
-        "types": [
-          "{\"duration\": *, \"interval\": *, \"dataProp\": *}"
-        ],
-        "defaultRaw": {},
-        "defaultValue": "{}"
-      }
-    ]
+    }
   },
   {
-    "__docId__": 118,
+    "__docId__": 116,
     "kind": "file",
     "name": "src/pipes/utility/index.js",
-    "content": "export * from './addInfo';\nexport * from './bufferCount';\nexport * from './bufferTime';\nexport * from './chunk';\nexport * from './pickChannels';\nexport * from './removeChannels';\nexport * from './epoch';",
+    "content": "export * from './addInfo';\nexport * from './bufferCount';\nexport * from './bufferTime';\nexport * from './bufferToEpoch';\nexport * from './pickChannels';\nexport * from './removeChannels';\nexport * from './epoch';",
     "static": true,
     "longname": "/home/dano/eeg-pipes/src/pipes/utility/index.js",
     "access": "public",
@@ -2572,7 +2614,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 119,
+    "__docId__": 117,
     "kind": "file",
     "name": "src/pipes/utility/pickChannels.js",
     "content": "import { map } from \"rxjs/operators\";\n\nimport { createPipe } from \"../../utils/createPipe\";\n\nimport { DATA_PROP as defaultDataProp } from \"../../constants\";\n\n/**\n * @method pickChannels\n * Selects channel based on channel number\n *\n * @param {Object} options\n * @returns {Observable} sample\n */\nexport const pickChannels = (\n  { channels = [], dataProp = defaultDataProp } = {}\n) => source =>\n  createPipe(\n    source,\n    map(sample => {\n      const channelData = sample[dataProp].filter((channel, index) =>\n        channels.includes(index + 1)\n      );\n\n      return {\n        ...sample,\n        [dataProp]: channelData\n      };\n    })\n  );\n",
@@ -2583,7 +2625,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 120,
+    "__docId__": 118,
     "kind": "function",
     "name": "pickChannels",
     "memberof": "src/pipes/utility/pickChannels.js",
@@ -2629,7 +2671,7 @@
     }
   },
   {
-    "__docId__": 121,
+    "__docId__": 119,
     "kind": "file",
     "name": "src/pipes/utility/removeChannels.js",
     "content": "import { map } from \"rxjs/operators\";\nimport { createPipe } from \"../../utils/createPipe\";\n\nimport { DATA_PROP as defaultDataProp } from \"../../constants\";\n\n/**\n * @method removeChannels\n * Removes channels from stream based on channel number (indexed at one)\n *\n * @param {Object} options\n * @returns {Observable} sample\n */\nexport const removeChannels = (\n  { channels = [], dataProp = defaultDataProp } = {}\n) => source =>\n  createPipe(\n    source,\n    map(sample => {\n      const channelData = sample[dataProp].filter(\n        (channel, index) => !channels.includes(index + 1)\n      );\n\n      return {\n        ...sample,\n        [dataProp]: channelData\n      };\n    })\n  );\n",
@@ -2640,7 +2682,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 122,
+    "__docId__": 120,
     "kind": "function",
     "name": "removeChannels",
     "memberof": "src/pipes/utility/removeChannels.js",
@@ -2686,7 +2728,7 @@
     }
   },
   {
-    "__docId__": 123,
+    "__docId__": 121,
     "kind": "file",
     "name": "src/utils/average.js",
     "content": "export const average = list =>\n  list.reduce(\n    (acc, value) => acc + (Array.isArray(value) ? average(value) : value)\n    , 0\n  ) / list.length;\n",
@@ -2697,7 +2739,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 124,
+    "__docId__": 122,
     "kind": "function",
     "name": "average",
     "memberof": "src/utils/average.js",
@@ -2723,10 +2765,10 @@
     "return": null
   },
   {
-    "__docId__": 125,
+    "__docId__": 123,
     "kind": "file",
     "name": "src/utils/createEEG.js",
-    "content": "import { interval } from \"rxjs/observable/interval\";\nimport { map } from \"rxjs/operators\";\n\nimport museCsv from \"../../dataset/muse-lsl.csv\";\nimport { sample } from \"rxjs/operator/sample\";\n\n// Code splitting: dynaically importing the csv so it is not included in the main bundle\n// @TODO: not currently working, webpack bug: https://twitter.com/castillo__io/status/975585584486916096\nexport const getMuseCsv = async () =>\n  await import(/* webpackChunkName: \"museCsv\" */\n  \"../../dataset/muse-lsl.csv\").then(\n    csv => csv.map(row => row.slice(1, 5)) // filter channel data\n  );\n\nconst NUM_CHANNELS = 4;\nconst SAMPLE_RATE = 256;\n\nlet sinCounter = 0;\n\n// filter channel data\nconst museData = museCsv.map(row => row.slice(1, 5));\n\nconst createMockRow = length => Array.from({ length }, () => Math.random());\n\nconst createSineRow = (length, freq, sampleRate) => {\n  sinCounter++;\n  return Array.from(\n    { length },\n    () => Math.sin(sinCounter / (sampleRate / freq / (Math.PI * 2))) * 100\n  );\n};\n\nconst getCsvRow = (csv, interval) => csv[interval % csv.length];\n\nconst injectNaNs = (data, [min, max]) =>\n  data.map(value => (value > min && value < max ? NaN : value));\n\n/*\n * Creates a stream of pre-recorded EEG data that can be used for testing\n * Default data was collected from Muse 2016 with muse-lsl: staring at software \n */\nexport const createEEG = ({\n  channels = NUM_CHANNELS,\n  sampleRate = SAMPLE_RATE,\n  mock = false,\n  NaNRange = [0, 0],\n  sine = false,\n  csv = museData\n} = {}) =>\n  interval(1000 / sampleRate).pipe(\n    map(interval => {\n      const timestamp = Date.now();\n      let row = [];\n      if (sine) {\n        row = createSineRow(channels, sine, sampleRate);\n      } else {\n        row = mock ? createMockRow(channels) : getCsvRow(csv, interval);\n      }\n      const data = injectNaNs(row, NaNRange);\n      return { timestamp, data };\n    })\n  );\n",
+    "content": "import { interval } from \"rxjs/observable/interval\";\nimport { map } from \"rxjs/operators\";\n\nimport museCsv from \"../../dataset/muse-lsl.csv\";\nimport { sample } from \"rxjs/operator/sample\";\n\n// Code splitting: dynaically importing the csv so it is not included in the main bundle\n// @TODO: not currently working, webpack bug: https://twitter.com/castillo__io/status/975585584486916096\n// export const getMuseCsv = async () =>\n//   await import(/* webpackChunkName: \"museCsv\" */\n//   \"../../dataset/muse-lsl.csv\").then(\n//     csv => csv.map(row => row.slice(1, 5)) // filter channel data\n//   );\n\nconst NUM_CHANNELS = 4;\nconst SAMPLE_RATE = 256;\n\nlet sinCounter = 0;\n\n// filter channel data\nconst museData = museCsv.map(row => row.slice(1, 5));\n\nconst createMockRow = length => Array.from({ length }, () => Math.random());\n\nconst createSineRow = (length, freq, sampleRate) => {\n  sinCounter++;\n  return Array.from(\n    { length },\n    () => Math.sin(sinCounter / (sampleRate / freq / (Math.PI * 2))) * 100\n  );\n};\n\nconst getCsvRow = (csv, interval) => csv[interval % csv.length];\n\nconst injectNaNs = (data, [min, max]) =>\n  data.map(value => (value > min && value < max ? NaN : value));\n\n/*\n * Creates a stream of pre-recorded EEG data that can be used for testing\n * Default data was collected from Muse 2016 with muse-lsl: staring at software \n */\nexport const createEEG = ({\n  channels = NUM_CHANNELS,\n  sampleRate = SAMPLE_RATE,\n  mock = false,\n  NaNRange = [0, 0],\n  sine = false,\n  csv = museData\n} = {}) =>\n  interval(1000 / sampleRate).pipe(\n    map(interval => {\n      const timestamp = Date.now();\n      let row = [];\n      if (sine) {\n        row = createSineRow(channels, sine, sampleRate);\n      } else {\n        row = mock ? createMockRow(channels) : getCsvRow(csv, interval);\n      }\n      const data = injectNaNs(row, NaNRange);\n      return { timestamp, data };\n    })\n  );\n",
     "static": true,
     "longname": "/home/dano/eeg-pipes/src/utils/createEEG.js",
     "access": "public",
@@ -2734,26 +2776,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 126,
-    "kind": "function",
-    "name": "getMuseCsv",
-    "memberof": "src/utils/createEEG.js",
-    "generator": false,
-    "async": true,
-    "static": true,
-    "longname": "src/utils/createEEG.js~getMuseCsv",
-    "access": "public",
-    "export": true,
-    "importPath": "eeg-pipes/src/utils/createEEG.js",
-    "importStyle": "{getMuseCsv}",
-    "description": null,
-    "lineNumber": 9,
-    "undocument": true,
-    "params": [],
-    "return": null
-  },
-  {
-    "__docId__": 127,
+    "__docId__": 124,
     "kind": "variable",
     "name": "NUM_CHANNELS",
     "memberof": "src/utils/createEEG.js",
@@ -2774,7 +2797,7 @@
     "ignore": true
   },
   {
-    "__docId__": 128,
+    "__docId__": 125,
     "kind": "variable",
     "name": "SAMPLE_RATE",
     "memberof": "src/utils/createEEG.js",
@@ -2795,7 +2818,7 @@
     "ignore": true
   },
   {
-    "__docId__": 129,
+    "__docId__": 126,
     "kind": "variable",
     "name": "sinCounter",
     "memberof": "src/utils/createEEG.js",
@@ -2816,7 +2839,7 @@
     "ignore": true
   },
   {
-    "__docId__": 130,
+    "__docId__": 127,
     "kind": "variable",
     "name": "museData",
     "memberof": "src/utils/createEEG.js",
@@ -2837,7 +2860,7 @@
     "ignore": true
   },
   {
-    "__docId__": 131,
+    "__docId__": 128,
     "kind": "function",
     "name": "createMockRow",
     "memberof": "src/utils/createEEG.js",
@@ -2864,7 +2887,7 @@
     "ignore": true
   },
   {
-    "__docId__": 132,
+    "__docId__": 129,
     "kind": "function",
     "name": "createSineRow",
     "memberof": "src/utils/createEEG.js",
@@ -2907,7 +2930,7 @@
     "ignore": true
   },
   {
-    "__docId__": 133,
+    "__docId__": 130,
     "kind": "function",
     "name": "getCsvRow",
     "memberof": "src/utils/createEEG.js",
@@ -2940,7 +2963,7 @@
     "ignore": true
   },
   {
-    "__docId__": 134,
+    "__docId__": 131,
     "kind": "function",
     "name": "injectNaNs",
     "memberof": "src/utils/createEEG.js",
@@ -2978,7 +3001,7 @@
     "ignore": true
   },
   {
-    "__docId__": 135,
+    "__docId__": 132,
     "kind": "function",
     "name": "createEEG",
     "memberof": "src/utils/createEEG.js",
@@ -3007,7 +3030,7 @@
     "return": null
   },
   {
-    "__docId__": 136,
+    "__docId__": 133,
     "kind": "file",
     "name": "src/utils/createMockStream.js",
     "content": "import { createEEG } from \"./createEEG\";\n\n// Exists for backwards compatibility. Displays deprecation warning.\nexport const createMockStream = (options = {}) => {\n  console.warn('createMockStream will be deprecated in the next major release. Use the createEEG instead.');\n  return createEEG({\n    ...options,\n    mock: true\n  });\n};\n",
@@ -3018,7 +3041,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 137,
+    "__docId__": 134,
     "kind": "function",
     "name": "createMockStream",
     "memberof": "src/utils/createMockStream.js",
@@ -3051,7 +3074,7 @@
     }
   },
   {
-    "__docId__": 138,
+    "__docId__": 135,
     "kind": "file",
     "name": "src/utils/createPipe.js",
     "content": "import { Observable } from \"rxjs/Observable\";\n\nexport const createPipe = (source, ...pipes) =>\n  new Observable(observer =>\n    source.pipe(...pipes).subscribe({\n      next(event) {\n        observer.next(event);\n      },\n      error(err) {\n        observer.error(err);\n      },\n      complete() {\n        observer.complete();\n      }\n    })\n  );\n\nexport default createPipe;\n",
@@ -3062,7 +3085,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 139,
+    "__docId__": 136,
     "kind": "function",
     "name": "createPipe",
     "memberof": "src/utils/createPipe.js",
@@ -3095,7 +3118,7 @@
     "return": null
   },
   {
-    "__docId__": 140,
+    "__docId__": 137,
     "kind": "file",
     "name": "src/utils/groupByChannel.js",
     "content": "import { DATA_PROP as defaultDataProp } from \"../constants\";\n\n/**\n * @method groupByChannel\n * Get a 2D data array organized by channel from an array of Samples\n *\n * @example from [{ ...s0 }, { ...s1 }, ...]\n * to [[c0 ...], [c1 ...], ...]\n *\n * @param {any} samplesBuffer array of samples\n * @param {any} channelDataByChannel\n * \n * Credit to Ken from Seattle's elegant transposition\n * http://www.codesuck.com/2012/02/transpose-javascript-array-in-one-line.html\n */\n\nexport const groupByChannel = (samplesBuffer, dataProp = defaultDataProp) =>\n  samplesBuffer[0][dataProp].map((_, channelIndex) =>\n    samplesBuffer.map(sample => sample[dataProp][channelIndex])\n  );\n",
@@ -3106,7 +3129,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 141,
+    "__docId__": 138,
     "kind": "function",
     "name": "groupByChannel",
     "memberof": "src/utils/groupByChannel.js",
@@ -3154,7 +3177,7 @@
     "return": null
   },
   {
-    "__docId__": 142,
+    "__docId__": 139,
     "kind": "file",
     "name": "src/utils/index.js",
     "content": "export * from \"./average\";\nexport * from \"./createEEG\";\nexport * from \"./createMockStream\";\nexport * from \"./createPipe\";",
@@ -3165,7 +3188,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 143,
+    "__docId__": 140,
     "kind": "file",
     "name": "src/utils/zeroPad.js",
     "content": "/**\n * @method zeroPad\n * zeroPads inputs for FFTs of non base 2\n * @param Array<number> bufferedData, number fftLength\n * @returns Array<number>\n */\n\nexport const zeroPad = (buffer, fftLength) => {\n  if (fftLength > buffer.length) {\n    console.log(\"zeropadding: \", fftLength - buffer.length);\n    return buffer.concat(new Array(fftLength - buffer.length).fill(0));\n  }\n  return buffer;\n};\n",
@@ -3176,7 +3199,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 144,
+    "__docId__": 141,
     "kind": "function",
     "name": "zeroPad",
     "memberof": "src/utils/zeroPad.js",
@@ -3223,7 +3246,7 @@
   },
   {
     "kind": "index",
-    "content": "# EEG Pipes\n\nPipeable RxJS operators for working with EEG data in Node and the Browser\n\n## Usage\n\nBefore getting started, you'll need an observable of EEG data.\n\nThe following are some libraries that provide exactly that:\n\n* [OpenBCI Ganglion BLE (Browser)](https://github.com/alexcastillo/ganglion-ble)\n* [OpenBCI Cyton/Ganglion (Node)](https://github.com/alexcastillo/openbci-rx)\n* [Muse (Browser)](https://github.com/urish/muse-js)\n\nPipes can be added to an EEG observable of EEG data samples with the\nfollowing data structure:\n\n```js\n{\n  data: [Number, Number, Number, Number], // channels\n  timestamp: Date,\n  info?: {\n  \tsamplingRate?: Number,\n  \tchannelNames?: [String, String, String, String],\n  \t..\n  }\n};\n```\n\nIndividual samples of EEG data contain an array of values for each EEG channel as well as a timestamp. An additional info object containing metadata about the EEG stream such as sampling rate and channel names can also be included or added with the addInfo operator.\n\nWe can start by installing the library:\n\n```bash\nnpm install --save eeg-pipes\n```\n\nThen, importing the pipes from the library:\n\n```js\nimport { bufferFFT, alphaPower } from \"eeg-pipes\";\n```\n\nAnd adding them to the RxJS observable pipe operator:\n\n```js\neeg$\n  .pipe(bufferFFT({ bins: 256 }), alphaPower())\n  .subscribe(buffer => console.log(buffer));\n```\n\n## Pipes\n\n### Filtering (IIR)\n\nFilter pipes can be applied to both samples or buffers of samples. Filters are linear IIR filters using a digital biquad implementation.\n\n* lowpassFilter({ nbChannels, cutoffFrequency })\n* highpassFilter({ nbChannels, cutoffFrequency })\n* bandpassFilter({ nbChannels, cutoffFrequencies: [lowBound, highBound] })\n* notchFilter({ nbChannels, cutoffFrequency })\n\nOptional Parameters:  \n`characteristic`: 'butterworth' or 'bessel'. Default is butterworth characteristic because of its steeper cutoff  \n`order`: the number of 2nd order biquad filters applied to the signal. Default is 2.  \n`samplingRate`: should match the samplingRate of your EEG device. Default is 250\n\n### Frequency\n\n* bufferFFT({ bins, window, sampleRate })\n* alphaPower()\n* betaPower()\n* deltaPower()\n* gammaPower()\n* thetaPower()\n* averagePower()\n* sliceFFT([ min, max ])\n* powerByBand()\n\n#### Unit conversion\n\n* toMicrovolts({ log })\n\n#### Utility\n\n* bufferCount()\n* bufferTime()\n* chunk()\n* pickChannels({ channels: [c1, c2, c3] })\n* removeChannels({ channels: [c1, c2, c3] })\n* addInfo()\n\n### Coming soon\n\n#### Filtering\n\n* vertScaleFilter()\n* vertAgoFilter()\n* smoothFilter()\n* polarityFilter()\n* maxFrequencyFilter()\n\n## Chunking Data\n\nMost pipes will work when applied to streams of individual EEG samples. However, in order to improve performance, especially when working with high sample rates, it is also possible to chunk data so that each emitted event represents a collection of individual EEG samples. *Only filter pipes support chunked data currently*\n\nChunks can be created by using a buffer operator such as `bufferCount` or `bufferTime` followed by the `chunk` operator:\n\n```js\neeg$\n  .pipe(bufferCount(1000), chunk())\n  .subscribe(buffer => console.log(buffer));\n```\n\nChunks have the following data structure:\n\n```js\n{\n  data: [\n    [Number, Number, ...],\n    [Number, Number, ...],\n    [Number, Number, ...],\n    [Number, Number, ...],\n  ], // nbChannels x nbSamples \n  info: {\n    samplingRate: Number,\n    startTime: Number,\n    ...\n  }\n}\n```\n\nChunks contain a 2D data array with shape nbChannels x nbSamples. Instead of individual timestamps for each sample, Chunk objects contain samplingRate and startTime information in the info object in order to allow time at any point within the Chunk to be inferred. Info properties present in Sample objects before being pooled into Chunks will be maintained.\n",
+    "content": "# EEG Pipes\n\nPipeable RxJS operators for working with EEG data in Node and the Browser\n\n## Usage\n\nBefore getting started, you'll need an observable of EEG data.\n\nThe following are some libraries that provide exactly that:\n\n* [OpenBCI Ganglion BLE (Browser)](https://github.com/alexcastillo/ganglion-ble)\n* [OpenBCI Cyton/Ganglion (Node)](https://github.com/alexcastillo/openbci-rx)\n* [Muse (Browser)](https://github.com/urish/muse-js)\n\nPipes can be added to an EEG observable of EEG data samples with the\nfollowing data structure:\n\n```js\n{\n  data: [Number, Number, Number, Number], // channels\n  timestamp: Date,\n  info?: {\n  \tsamplingRate?: Number,\n  \tchannelNames?: [String, String, String, String],\n  \t..\n  }\n};\n```\n\nIndividual samples of EEG data contain an array of values for each EEG channel as well as a timestamp. An additional info object containing metadata about the EEG stream such as sampling rate and channel names can also be included or added with the addInfo operator.\n\nWe can start by installing the library:\n\n```bash\nnpm install --save eeg-pipes\n```\n\nThen, importing the pipes from the library:\n\n```js\nimport { bufferFFT, alphaPower } from \"eeg-pipes\";\n```\n\nAnd adding them to the RxJS observable pipe operator:\n\n```js\neeg$\n  .pipe(bufferFFT({ bins: 256 }), alphaPower())\n  .subscribe(buffer => console.log(buffer));\n```\n\n## Pipes\n\n### Filtering (IIR)\n\nFilter pipes can be applied to both samples or buffers of samples. Filters are linear IIR filters using a digital biquad implementation.\n\n* lowpassFilter({ nbChannels, cutoffFrequency })\n* highpassFilter({ nbChannels, cutoffFrequency })\n* bandpassFilter({ nbChannels, cutoffFrequencies: [lowBound, highBound] })\n* notchFilter({ nbChannels, cutoffFrequency })\n\nOptional Parameters:  \n`characteristic`: 'butterworth' or 'bessel'. Default is butterworth characteristic because of its steeper cutoff  \n`order`: the number of 2nd order biquad filters applied to the signal. Default is 2.  \n`samplingRate`: should match the samplingRate of your EEG device. Default is 250\n\n### Frequency\n\n* bufferFFT({ bins, window, sampleRate })\n* alphaPower()\n* betaPower()\n* deltaPower()\n* gammaPower()\n* thetaPower()\n* averagePower()\n* sliceFFT([ min, max ])\n* powerByBand()\n\n#### Unit conversion\n\n* voltToMicrovolts({ useLog })\n\n#### Utility\n\n* epoch({ duration, interval, samplingRate })\n* bufferCount()\n* bufferTime()\n* bufferToEpoch({ samplingRate })\n* pickChannels({ channels: [c1, c2, c3] })\n* removeChannels({ channels: [c1, c2, c3] })\n* addInfo()\n\n### Coming soon\n\n#### Filtering\n\n* vertScaleFilter()\n* vertAgoFilter()\n* smoothFilter()\n* polarityFilter()\n* maxFrequencyFilter()\n\n## Data Structures\n\n### Sample\n\nThis is the simplest, core data structure for individual samples of EEG data. Samples have a data array containing a single reading from a number of different EEG electrodes along with a single timestamp. Samples can also contain optional other parameters added by the `addInfo` operator. The design for this comes directly from the discussion on the [EEG stream data models repo](https://github.com/NeuroJS/eeg-stream-data-model/issues/1).\n\n```js\n{\n    data: [Number, ..., Number], // length == nbChannels\n    timestamp: <Number>,\n    info?: {\n  \t  samplingRate?: Number,\n  \t  channelNames?: [String, String, String, String],\n  \t...\n  }\n}\n```\n\n### Epoch\n\nAn Epoch represents the EEG data that has been collected over a specific period of time. They can be produced by using either the `epoch` operator or by using a standard RxJS buffering operator such as `bufferTime` followed by the `bufferToEpoch` operator. Collecting data in this way is necessary for performing frequency-based analyses and, in many cases, will improve performance of filtering and other downstream operations. Epochs contain a 2D data array (channels x samples) and an info object that always includes samplingRate and startTime data so that the timestamps of individual samples can be derived. \n\n```js\n{\n    data: [\n        [Number, ... , Number], // length == duration\n        [Number, ... , Number]\n    ], // length == nbChannels\n    info: {\n        samplingRate: Number,\n        startTime: Number,\n        channelNames?: [String, ..., String ]\n    }\n}\n```\n\n### Power Spectral Density or PSD: Proposed Work in Progress\n\nA PSD represents the absolute power of different frequency bins in an Epoch of EEG data. PSDs are produced by applying the `fft` operator to Epochs or using the `bufferFFT` operator directly on a stream of EEG Samples. PSDs contain an array of frequencies and a corresponding array of spectral power at each of those frequencies, as well as an info object that contains samplingRate and startTime info similarly to Epochs.\n\n```js\n{\n    psd: [\n        [Number, ... , Number] // spectral power; length = freqs.length\n    ], // length = numChannels\n    freqs: [Number, ... , Number], // length = fftLength / 2\n    info: {\n        samplingRate: Number,\n        startTime: Number,\n        channelNames?: [String, ..., String ]\n    }\n}\n```",
     "longname": "/home/dano/eeg-pipes/README.md",
     "name": "./README.md",
     "static": true,
@@ -3231,7 +3254,7 @@
   },
   {
     "kind": "packageJSON",
-    "content": "{\n  \"name\": \"eeg-pipes\",\n  \"description\": \"Lettable RxJS operators for working with EEG data in Node and the Browser\",\n  \"version\": \"2.0.2\",\n  \"main\": \"dist/eeg-pipes.umd.js\",\n  \"scripts\": {\n    \"build\": \"webpack --mode production\",\n    \"dev\": \"webpack --mode development\",\n    \"start\": \"webpack-dev-server\",\n    \"prepublishOnly\": \"npm run build\"\n  },\n  \"files\": [\n    \"dist\"\n  ],\n  \"author\": \"Alex Castillo <alex@castillo.io>\",\n  \"license\": \"MIT\",\n  \"keywords\": [\n    \"eeg\",\n    \"openbci\",\n    \"neurojs\",\n    \"rxjs\",\n    \"cyton\",\n    \"ganglion\"\n  ],\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git@github.com:alexcastillo/eeg-pipes.git\"\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/alexcastillo/eeg-pipes/issues\"\n  },\n  \"dependencies\": {\n    \"dsp.js\": \"^1.0.1\",\n    \"fili\": \"^2.0.1\",\n    \"rxjs\": \"^5.5.2\"\n  },\n  \"devDependencies\": {\n    \"babel-core\": \"^6.26.0\",\n    \"babel-loader\": \"^7.1.2\",\n    \"babel-plugin-dynamic-import-webpack\": \"^1.0.2\",\n    \"babel-plugin-transform-object-rest-spread\": \"^6.26.0\",\n    \"babel-preset-env\": \"^1.6.1\",\n    \"csv-loader\": \"^2.1.1\",\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-ecmascript-proposal-plugin\": \"^1.0.0\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"eslint\": \"^4.18.1\",\n    \"webpack\": \"^4.1.1\",\n    \"webpack-cli\": \"^2.0.12\",\n    \"webpack-dev-server\": \"^2.11.1\",\n    \"webpack-node-externals\": \"^1.6.0\",\n    \"webpack-rxjs-externals\": \"^1.1.0\"\n  }\n}\n",
+    "content": "{\n  \"name\": \"eeg-pipes\",\n  \"description\": \"Lettable RxJS operators for working with EEG data in Node and the Browser\",\n  \"version\": \"2.0.3\",\n  \"main\": \"dist/eeg-pipes.umd.js\",\n  \"scripts\": {\n    \"build\": \"webpack --mode production\",\n    \"dev\": \"webpack --mode development\",\n    \"start\": \"webpack-dev-server\",\n    \"prepublishOnly\": \"npm run build\"\n  },\n  \"files\": [\n    \"dist\"\n  ],\n  \"author\": \"Alex Castillo <alex@castillo.io>\",\n  \"license\": \"MIT\",\n  \"keywords\": [\n    \"eeg\",\n    \"openbci\",\n    \"neurojs\",\n    \"rxjs\",\n    \"cyton\",\n    \"ganglion\"\n  ],\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git@github.com:alexcastillo/eeg-pipes.git\"\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/alexcastillo/eeg-pipes/issues\"\n  },\n  \"dependencies\": {\n    \"dsp.js\": \"^1.0.1\",\n    \"fili\": \"^2.0.1\",\n    \"rxjs\": \"^5.5.2\"\n  },\n  \"devDependencies\": {\n    \"babel-core\": \"^6.26.0\",\n    \"babel-loader\": \"^7.1.2\",\n    \"babel-plugin-dynamic-import-webpack\": \"^1.0.2\",\n    \"babel-plugin-transform-object-rest-spread\": \"^6.26.0\",\n    \"babel-preset-env\": \"^1.6.1\",\n    \"csv-loader\": \"^2.1.1\",\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-ecmascript-proposal-plugin\": \"^1.0.0\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"eslint\": \"^4.18.1\",\n    \"webpack\": \"^4.1.1\",\n    \"webpack-cli\": \"^2.0.12\",\n    \"webpack-dev-server\": \"^2.11.1\",\n    \"webpack-node-externals\": \"^1.6.0\",\n    \"webpack-rxjs-externals\": \"^1.1.0\"\n  }\n}\n",
     "longname": "/home/dano/eeg-pipes/package.json",
     "name": "package.json",
     "static": true,

@@ -114,15 +114,9 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "eeg-pipes/src/pipes/utility/chunk.js~chunk",
-    "function/index.html#static-function-chunk",
-    "<span>chunk</span> <span class=\"search-result-import-path\">eeg-pipes/src/pipes/utility/chunk.js</span>",
-    "function"
-  ],
-  [
-    "eeg-pipes/src/pipes/frequency/chunkfft.js~chunkfft",
-    "function/index.html#static-function-chunkFFT",
-    "<span>chunkFFT</span> <span class=\"search-result-import-path\">eeg-pipes/src/pipes/frequency/chunkFFT.js</span>",
+    "eeg-pipes/src/pipes/utility/buffertoepoch.js~buffertoepoch",
+    "function/index.html#static-function-bufferToEpoch",
+    "<span>bufferToEpoch</span> <span class=\"search-result-import-path\">eeg-pipes/src/pipes/utility/bufferToEpoch.js</span>",
     "function"
   ],
   [
@@ -159,12 +153,6 @@ window.esdocSearchIndex = [
     "eeg-pipes/src/pipes/frequency/gammapower.js~gammapower",
     "function/index.html#static-function-gammaPower",
     "<span>gammaPower</span> <span class=\"search-result-import-path\">eeg-pipes/src/pipes/frequency/gammaPower.js</span>",
-    "function"
-  ],
-  [
-    "eeg-pipes/src/utils/createeeg.js~getmusecsv",
-    "function/index.html#static-function-getMuseCsv",
-    "<span>getMuseCsv</span> <span class=\"search-result-import-path\">eeg-pipes/src/utils/createEEG.js</span>",
     "function"
   ],
   [
@@ -582,12 +570,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/pipes/frequency/chunkfft.js",
-    "file/src/pipes/frequency/chunkFFT.js.html",
-    "src/pipes/frequency/chunkFFT.js",
-    "file"
-  ],
-  [
     "src/pipes/frequency/deltapower.js",
     "file/src/pipes/frequency/deltaPower.js.html",
     "src/pipes/frequency/deltaPower.js",
@@ -672,9 +654,9 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/pipes/utility/chunk.js",
-    "file/src/pipes/utility/chunk.js.html",
-    "src/pipes/utility/chunk.js",
+    "src/pipes/utility/buffertoepoch.js",
+    "file/src/pipes/utility/bufferToEpoch.js.html",
+    "src/pipes/utility/bufferToEpoch.js",
     "file"
   ],
   [

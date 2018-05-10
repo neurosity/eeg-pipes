@@ -1,7 +1,7 @@
 {
   "type": "File",
   "start": 0,
-  "end": 203,
+  "end": 211,
   "loc": {
     "start": {
       "line": 1,
@@ -15,7 +15,7 @@
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 203,
+    "end": 211,
     "loc": {
       "start": {
         "line": 1,
@@ -136,7 +136,7 @@
       {
         "type": "ExportAllDeclaration",
         "start": 88,
-        "end": 112,
+        "end": 120,
         "loc": {
           "start": {
             "line": 4,
@@ -144,13 +144,13 @@
           },
           "end": {
             "line": 4,
-            "column": 24
+            "column": 32
           }
         },
         "source": {
           "type": "StringLiteral",
           "start": 102,
-          "end": 111,
+          "end": 119,
           "loc": {
             "start": {
               "line": 4,
@@ -158,20 +158,20 @@
             },
             "end": {
               "line": 4,
-              "column": 23
+              "column": 31
             }
           },
           "extra": {
-            "rawValue": "./chunk",
-            "raw": "'./chunk'"
+            "rawValue": "./bufferToEpoch",
+            "raw": "'./bufferToEpoch'"
           },
-          "value": "./chunk"
+          "value": "./bufferToEpoch"
         }
       },
       {
         "type": "ExportAllDeclaration",
-        "start": 113,
-        "end": 144,
+        "start": 121,
+        "end": 152,
         "loc": {
           "start": {
             "line": 5,
@@ -184,8 +184,8 @@
         },
         "source": {
           "type": "StringLiteral",
-          "start": 127,
-          "end": 143,
+          "start": 135,
+          "end": 151,
           "loc": {
             "start": {
               "line": 5,
@@ -205,8 +205,8 @@
       },
       {
         "type": "ExportAllDeclaration",
-        "start": 145,
-        "end": 178,
+        "start": 153,
+        "end": 186,
         "loc": {
           "start": {
             "line": 6,
@@ -219,8 +219,8 @@
         },
         "source": {
           "type": "StringLiteral",
-          "start": 159,
-          "end": 177,
+          "start": 167,
+          "end": 185,
           "loc": {
             "start": {
               "line": 6,
@@ -240,8 +240,8 @@
       },
       {
         "type": "ExportAllDeclaration",
-        "start": 179,
-        "end": 203,
+        "start": 187,
+        "end": 211,
         "loc": {
           "start": {
             "line": 7,
@@ -254,8 +254,8 @@
         },
         "source": {
           "type": "StringLiteral",
-          "start": 193,
-          "end": 202,
+          "start": 201,
+          "end": 210,
           "loc": {
             "start": {
               "line": 7,
@@ -774,9 +774,9 @@
         "binop": null,
         "updateContext": null
       },
-      "value": "./chunk",
+      "value": "./bufferToEpoch",
       "start": 102,
-      "end": 111,
+      "end": 119,
       "loc": {
         "start": {
           "line": 4,
@@ -784,7 +784,7 @@
         },
         "end": {
           "line": 4,
-          "column": 23
+          "column": 31
         }
       }
     },
@@ -801,16 +801,16 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 111,
-      "end": 112,
+      "start": 119,
+      "end": 120,
       "loc": {
         "start": {
           "line": 4,
-          "column": 23
+          "column": 31
         },
         "end": {
           "line": 4,
-          "column": 24
+          "column": 32
         }
       }
     },
@@ -829,8 +829,8 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 113,
-      "end": 119,
+      "start": 121,
+      "end": 127,
       "loc": {
         "start": {
           "line": 5,
@@ -856,8 +856,8 @@
         "updateContext": null
       },
       "value": "*",
-      "start": 120,
-      "end": 121,
+      "start": 128,
+      "end": 129,
       "loc": {
         "start": {
           "line": 5,
@@ -882,8 +882,8 @@
         "binop": null
       },
       "value": "from",
-      "start": 122,
-      "end": 126,
+      "start": 130,
+      "end": 134,
       "loc": {
         "start": {
           "line": 5,
@@ -909,8 +909,8 @@
         "updateContext": null
       },
       "value": "./pickChannels",
-      "start": 127,
-      "end": 143,
+      "start": 135,
+      "end": 151,
       "loc": {
         "start": {
           "line": 5,
@@ -935,8 +935,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 143,
-      "end": 144,
+      "start": 151,
+      "end": 152,
       "loc": {
         "start": {
           "line": 5,
@@ -963,8 +963,8 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 145,
-      "end": 151,
+      "start": 153,
+      "end": 159,
       "loc": {
         "start": {
           "line": 6,
@@ -990,8 +990,8 @@
         "updateContext": null
       },
       "value": "*",
-      "start": 152,
-      "end": 153,
+      "start": 160,
+      "end": 161,
       "loc": {
         "start": {
           "line": 6,
@@ -1016,8 +1016,8 @@
         "binop": null
       },
       "value": "from",
-      "start": 154,
-      "end": 158,
+      "start": 162,
+      "end": 166,
       "loc": {
         "start": {
           "line": 6,
@@ -1043,8 +1043,8 @@
         "updateContext": null
       },
       "value": "./removeChannels",
-      "start": 159,
-      "end": 177,
+      "start": 167,
+      "end": 185,
       "loc": {
         "start": {
           "line": 6,
@@ -1069,8 +1069,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 177,
-      "end": 178,
+      "start": 185,
+      "end": 186,
       "loc": {
         "start": {
           "line": 6,
@@ -1097,8 +1097,8 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 179,
-      "end": 185,
+      "start": 187,
+      "end": 193,
       "loc": {
         "start": {
           "line": 7,
@@ -1124,8 +1124,8 @@
         "updateContext": null
       },
       "value": "*",
-      "start": 186,
-      "end": 187,
+      "start": 194,
+      "end": 195,
       "loc": {
         "start": {
           "line": 7,
@@ -1150,8 +1150,8 @@
         "binop": null
       },
       "value": "from",
-      "start": 188,
-      "end": 192,
+      "start": 196,
+      "end": 200,
       "loc": {
         "start": {
           "line": 7,
@@ -1177,8 +1177,8 @@
         "updateContext": null
       },
       "value": "./epoch",
-      "start": 193,
-      "end": 202,
+      "start": 201,
+      "end": 210,
       "loc": {
         "start": {
           "line": 7,
@@ -1203,8 +1203,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 202,
-      "end": 203,
+      "start": 210,
+      "end": 211,
       "loc": {
         "start": {
           "line": 7,
@@ -1229,8 +1229,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 203,
-      "end": 203,
+      "start": 211,
+      "end": 211,
       "loc": {
         "start": {
           "line": 7,

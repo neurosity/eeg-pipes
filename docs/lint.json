@@ -54,15 +54,15 @@
       },
       {
         "lineNumber": 16,
-        "line": " * @method addInfo"
+        "line": " * Annotates stream with user-defined metadata"
       },
       {
         "lineNumber": 17,
-        "line": " * Annotates stream with user-defined metadata. Can be applied to Samples or Chunks"
+        "line": " * @method addInfo"
       },
       {
         "lineNumber": 18,
-        "line": " * @example { samplingRate: 256, channelNames: [\"Af&\", \"Fp1\", \"Fp2\", \"Af8\"] }"
+        "line": " * @example eeg$.pipe(addinfo({ samplingRate: 256, channelNames: [\"Af7\", \"Fp1\", \"Fp2\", \"Af8\"] })"
       },
       {
         "lineNumber": 19,
@@ -70,11 +70,11 @@
       },
       {
         "lineNumber": 20,
-        "line": " * @param info"
+        "line": " * @param {Object} info - Info to be added to the EEG stream. Relevant info may include: `samplingRate` and `channelNames`"
       },
       {
         "lineNumber": 21,
-        "line": " * @returns {Observable} Sample or Chunk"
+        "line": " * @returns {Observable<Sample | Epoch | PSD>}"
       },
       {
         "lineNumber": 22,

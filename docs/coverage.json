@@ -1,7 +1,7 @@
 {
-  "coverage": "38.98%",
-  "expectCount": 59,
-  "actualCount": 23,
+  "coverage": "38.59%",
+  "expectCount": 57,
+  "actualCount": 22,
   "files": {
     "src/constants/index.js": {
       "expectCount": 11,
@@ -73,11 +73,6 @@
       "actualCount": 1,
       "undocumentLines": []
     },
-    "src/pipes/frequency/chunkFFT.js": {
-      "expectCount": 1,
-      "actualCount": 1,
-      "undocumentLines": []
-    },
     "src/pipes/frequency/deltaPower.js": {
       "expectCount": 1,
       "actualCount": 1,
@@ -122,7 +117,7 @@
         8
       ]
     },
-    "src/pipes/utility/chunk.js": {
+    "src/pipes/utility/bufferToEpoch.js": {
       "expectCount": 1,
       "actualCount": 1,
       "undocumentLines": []
@@ -150,10 +145,9 @@
       ]
     },
     "src/utils/createEEG.js": {
-      "expectCount": 10,
+      "expectCount": 9,
       "actualCount": 0,
       "undocumentLines": [
-        9,
         15,
         16,
         18,

@@ -48,7 +48,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-averagePower">averagePower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-betaPower">betaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bufferFFT">bufferFFT</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-chunkFFT">chunkFFT</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deltaPower">deltaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-gammaPower">gammaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-powerByBand">powerByBand</a></span></span></li>
@@ -57,13 +56,12 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pipes-reducer">pipes/reducer</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-averageDeep">averageDeep</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pipes-unit">pipes/unit</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-voltsToMicrovolts">voltsToMicrovolts</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pipes-utility">pipes/utility</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-addInfo">addInfo</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-chunk">chunk</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bufferToEpoch">bufferToEpoch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-epoch">epoch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-pickChannels">pickChannels</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-removeChannels">removeChannels</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#utils">utils</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-average">average</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createEEG">createEEG</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getMuseCsv">getMuseCsv</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createMockStream">createMockStream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createPipe">createPipe</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-groupByChannel">groupByChannel</a></span></span></li>
@@ -91,13 +89,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-addInfo">addInfo</a></span></span><span class="code" data-ice="signature">(info: <span>*</span>): <span>Observable</span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-addInfo">addInfo</a></span></span><span class="code" data-ice="signature">(info: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span>Observable</span>&lt;<span>Sample</span>|<span>Epoch</span>|<span>PSD</span>&gt;</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Annotates stream with user-defined metadata</p>
+</div>
       </div>
     </td>
     <td>
@@ -316,41 +315,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-chunk">chunk</a></span></span><span class="code" data-ice="signature">(objectPattern: {&quot;dataProp&quot;: <span>*</span>, &quot;samplingRate&quot;: <span>*</span>}): <span>Observable</span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-bufferToEpoch">bufferToEpoch</a></span></span><span class="code" data-ice="signature">(options: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span>Observable</span>&lt;<span>Epoch</span>&gt;</span>
         </p>
       </div>
       <div>
         
         
-        
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-chunkFFT">chunkFFT</a></span></span><span class="code" data-ice="signature">(options: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span>Observable</span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        
+        <div data-ice="description"><p>Takes an array or RxJS buffer of EEG Samples and returns an Epoch.</p>
+</div>
       </div>
     </td>
     <td>
@@ -484,13 +456,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-epoch">epoch</a></span></span><span class="code" data-ice="signature">(objectPattern: {&quot;duration&quot;: <span>*</span>, &quot;interval&quot;: <span>*</span>, &quot;dataProp&quot;: <span>*</span>}): <span>Observable</span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-epoch">epoch</a></span></span><span class="code" data-ice="signature">(options: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span>Observable</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Converts a stream of individual Samples of EEG data into a stream of Epochs of a given duration emitted at specified interval.</p>
+</div>
       </div>
     </td>
     <td>
@@ -513,34 +486,6 @@
           
           
           <span class="code" data-ice="name"><span><a href="function/index.html#static-function-gammaPower">gammaPower</a></span></span><span class="code" data-ice="signature">(): <span>Observable</span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          <span data-ice="async">async</span>
-          
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-getMuseCsv">getMuseCsv</a></span></span><span class="code" data-ice="signature">()</span>
         </p>
       </div>
       <div>
@@ -823,13 +768,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-voltsToMicrovolts">voltsToMicrovolts</a></span></span><span class="code" data-ice="signature">(options: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span>Observable</span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-voltsToMicrovolts">voltsToMicrovolts</a></span></span><span class="code" data-ice="signature">(options: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span>Observable</span>&lt;<span>Sample</span>|<span>Epoch</span>&gt;</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Converts a stream of EEG data (either eegObjects or Epochs) from volts to microvolts</p>
+</div>
       </div>
     </td>
     <td>
@@ -878,7 +824,7 @@
     
     
     
-    <span class="code" data-ice="name">addInfo</span><span class="code" data-ice="signature">(info: <span>*</span>): <span>Observable</span></span>
+    <span class="code" data-ice="name">addInfo</span><span class="code" data-ice="signature">(info: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span>Observable</span>&lt;<span>Sample</span>|<span>Epoch</span>|<span>PSD</span>&gt;</span>
     <span class="right-info">
       
       
@@ -889,7 +835,8 @@
   <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {addInfo} from &apos;<span><a href="file/src/pipes/utility/addInfo.js.html#lineNumber24">eeg-pipes/src/pipes/utility/addInfo.js</a></span>&apos;</code></pre></div>
   
   
-  
+  <div data-ice="description"><p>Annotates stream with user-defined metadata</p>
+</div>
 
   
 
@@ -903,9 +850,10 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">info</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Info to be added to the EEG stream. Relevant info may include: <code>samplingRate</code> and <code>channelNames</code></p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -917,9 +865,8 @@
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>Observable</span></td>
-          <td class="return-desc" data-ice="returnDescription"><p>Sample or Chunk</p>
-</td>
+          <td class="return-type code" data-ice="returnType"><span>Observable</span>&lt;<span>Sample</span>|<span>Epoch</span>|<span>PSD</span>&gt;</td>
+          
         </tr>
       </tbody>
     </table>
@@ -940,7 +887,7 @@
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">{ samplingRate: 256, channelNames: [&quot;Af&amp;&quot;, &quot;Fp1&quot;, &quot;Fp2&quot;, &quot;Af8&quot;] }</code></pre>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">eeg$.pipe(addinfo({ samplingRate: 256, channelNames: [&quot;Af7&quot;, &quot;Fp1&quot;, &quot;Fp2&quot;, &quot;Af8&quot;] })</code></pre>
     </div>
 </div>
 
@@ -1243,7 +1190,7 @@
       <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
       <td data-ice="appendix"><ul><li>optional</li>
 <li>default: &apos;butterworth&apos;</li></ul></td>
-      <td data-ice="description"><p>Filter characteristic</p>
+      <td data-ice="description"><p>Filter characteristic. Options are &apos;bessel&apos; and &apos;butterworth&apos;</p>
 </td>
     </tr>
 <tr data-ice="property" data-depth="1">
@@ -1424,98 +1371,26 @@
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="static-function-chunk">
+  <h3 data-ice="anchor" id="static-function-bufferToEpoch">
     <span class="access" data-ice="access">public</span>
     
     
     
     
     
-    <span class="code" data-ice="name">chunk</span><span class="code" data-ice="signature">(objectPattern: {&quot;dataProp&quot;: <span>*</span>, &quot;samplingRate&quot;: <span>*</span>}): <span>Observable</span></span>
+    <span class="code" data-ice="name">bufferToEpoch</span><span class="code" data-ice="signature">(options: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span>Observable</span>&lt;<span>Epoch</span>&gt;</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/pipes/utility/chunk.js.html#lineNumber19">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/pipes/utility/bufferToEpoch.js.html#lineNumber19">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {chunk} from &apos;<span><a href="file/src/pipes/utility/chunk.js.html#lineNumber19">eeg-pipes/src/pipes/utility/chunk.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {bufferToEpoch} from &apos;<span><a href="file/src/pipes/utility/bufferToEpoch.js.html#lineNumber19">eeg-pipes/src/pipes/utility/bufferToEpoch.js</a></span>&apos;</code></pre></div>
   
   
-  
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">objectPattern</td>
-      <td data-ice="type" class="code">{&quot;dataProp&quot;: <span>*</span>, &quot;samplingRate&quot;: <span>*</span>}</td>
-      <td data-ice="appendix"><ul><li>optional</li>
-<li>default: {}</li></ul></td>
-      <td data-ice="description"></td>
-    </tr>
-</tbody>
-  </table>
+  <div data-ice="description"><p>Takes an array or RxJS buffer of EEG Samples and returns an Epoch. Requires samplingRate parameter unless stream already contains samplingRate in info.</p>
 </div>
-</div>
-
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tbody>
-        <tr>
-          <td class="return-type code" data-ice="returnType"><span>Observable</span></td>
-          <td class="return-desc" data-ice="returnDescription"><p>Chunk</p>
-</td>
-        </tr>
-      </tbody>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="static-function-chunkFFT">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    
-    <span class="code" data-ice="name">chunkFFT</span><span class="code" data-ice="signature">(options: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span>Observable</span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/pipes/frequency/chunkFFT.js.html#lineNumber20">source</a></span></span>
-    </span>
-  </h3>
-
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {chunkFFT} from &apos;<span><a href="file/src/pipes/frequency/chunkFFT.js.html#lineNumber20">eeg-pipes/src/pipes/frequency/chunkFFT.js</a></span>&apos;</code></pre></div>
-  
-  
-  
 
   
 
@@ -1531,7 +1406,23 @@
       <td data-ice="name" class="code" data-depth="0">options</td>
       <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Data structure options</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">options.samplingRate</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li></ul></td>
+      <td data-ice="description"><p>Sampling rate</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">options.dataProp</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: &apos;data&apos;</li></ul></td>
+      <td data-ice="description"><p>Name of the key associated with eeg data</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -1543,7 +1434,7 @@
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>Observable</span></td>
+          <td class="return-type code" data-ice="returnType"><span>Observable</span>&lt;<span>Epoch</span>&gt;</td>
           
         </tr>
       </tbody>
@@ -1560,7 +1451,14 @@
 
   
 
-  
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">eeg$.pipe(bufferTime(1000), bufferToEpoch({ samplingRate: 256 }))</code></pre>
+    </div>
+</div>
 
   
 
@@ -1828,18 +1726,19 @@
     
     
     
-    <span class="code" data-ice="name">epoch</span><span class="code" data-ice="signature">(objectPattern: {&quot;duration&quot;: <span>*</span>, &quot;interval&quot;: <span>*</span>, &quot;dataProp&quot;: <span>*</span>}): <span>Observable</span></span>
+    <span class="code" data-ice="name">epoch</span><span class="code" data-ice="signature">(options: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span>Observable</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/pipes/utility/epoch.js.html#lineNumber20">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/pipes/utility/epoch.js.html#lineNumber23">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {epoch} from &apos;<span><a href="file/src/pipes/utility/epoch.js.html#lineNumber20">eeg-pipes/src/pipes/utility/epoch.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {epoch} from &apos;<span><a href="file/src/pipes/utility/epoch.js.html#lineNumber23">eeg-pipes/src/pipes/utility/epoch.js</a></span>&apos;</code></pre></div>
   
   
-  
+  <div data-ice="description"><p>Converts a stream of individual Samples of EEG data into a stream of Epochs of a given duration emitted at specified interval. This operator functions similarly to a circular buffer internally and allows overlapping Epochs of data to be emitted (e.g. emitting the last one second of data every 100ms). Requires samplingRate parameter unless stream already contains samplingRate in info.</p>
+</div>
 
   
 
@@ -1852,11 +1751,40 @@
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">objectPattern</td>
-      <td data-ice="type" class="code">{&quot;duration&quot;: <span>*</span>, &quot;interval&quot;: <span>*</span>, &quot;dataProp&quot;: <span>*</span>}</td>
+      <td data-ice="name" class="code" data-depth="0">options</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>Epoching options</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">options.duration</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>Number of samples to include in each epoch</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">options.interval</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>Time between emitted Epochs</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">options.samplingRate</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li></ul></td>
+      <td data-ice="description"><p>Sampling rate</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">options.dataProp</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"><ul><li>optional</li>
-<li>default: {}</li></ul></td>
-      <td data-ice="description"></td>
+<li>default: &apos;data&apos;</li></ul></td>
+      <td data-ice="description"><p>Name of the key associated with eeg data</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -1886,7 +1814,14 @@
 
   
 
-  
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">eeg$.pipe(epoch({ duration: 1024, interval: 100, samplingRate: 256 }))</code></pre>
+    </div>
+</div>
 
   
 
@@ -1933,49 +1868,6 @@
     <div data-ice="returnProperties">
 </div>
   </div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="static-function-getMuseCsv">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    <span data-ice="async">async</span>
-    
-    <span class="code" data-ice="name">getMuseCsv</span><span class="code" data-ice="signature">()</span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/utils/createEEG.js.html#lineNumber9">source</a></span></span>
-    </span>
-  </h3>
-
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {getMuseCsv} from &apos;<span><a href="file/src/utils/createEEG.js.html#lineNumber9">eeg-pipes/src/utils/createEEG.js</a></span>&apos;</code></pre></div>
-  
-  
-  
-
-  
-
-  <div data-ice="properties">
-</div>
-
-  
 
   
 
@@ -2804,18 +2696,19 @@ to [[c0 ...], [c1 ...], ...]</code></pre>
     
     
     
-    <span class="code" data-ice="name">voltsToMicrovolts</span><span class="code" data-ice="signature">(options: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span>Observable</span></span>
+    <span class="code" data-ice="name">voltsToMicrovolts</span><span class="code" data-ice="signature">(options: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span>Observable</span>&lt;<span>Sample</span>|<span>Epoch</span>&gt;</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/pipes/unit/voltsToMicrovolts.js.html#lineNumber17">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/pipes/unit/voltsToMicrovolts.js.html#lineNumber20">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {voltsToMicrovolts} from &apos;<span><a href="file/src/pipes/unit/voltsToMicrovolts.js.html#lineNumber17">eeg-pipes/src/pipes/unit/voltsToMicrovolts.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {voltsToMicrovolts} from &apos;<span><a href="file/src/pipes/unit/voltsToMicrovolts.js.html#lineNumber20">eeg-pipes/src/pipes/unit/voltsToMicrovolts.js</a></span>&apos;</code></pre></div>
   
   
-  
+  <div data-ice="description"><p>Converts a stream of EEG data (either eegObjects or Epochs) from volts to microvolts</p>
+</div>
 
   
 
@@ -2831,7 +2724,24 @@ to [[c0 ...], [c1 ...], ...]</code></pre>
       <td data-ice="name" class="code" data-depth="0">options</td>
       <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Conversion options</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">options.useLog</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: false</li></ul></td>
+      <td data-ice="description"><p>Whether to use logarithmic conversion</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">options.dataProp</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: &apos;data&apos;</li></ul></td>
+      <td data-ice="description"><p>Name of the key associated with eeg data</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -2843,7 +2753,7 @@ to [[c0 ...], [c1 ...], ...]</code></pre>
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>Observable</span></td>
+          <td class="return-type code" data-ice="returnType"><span>Observable</span>&lt;<span>Sample</span>|<span>Epoch</span>&gt;</td>
           
         </tr>
       </tbody>
@@ -2860,7 +2770,14 @@ to [[c0 ...], [c1 ...], ...]</code></pre>
 
   
 
-  
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">eeg&amp;.pipe(toMicrovolts)</code></pre>
+    </div>
+</div>
 
   
 

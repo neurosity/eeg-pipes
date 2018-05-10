@@ -48,7 +48,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-averagePower">averagePower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-betaPower">betaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bufferFFT">bufferFFT</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-chunkFFT">chunkFFT</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deltaPower">deltaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-gammaPower">gammaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-powerByBand">powerByBand</a></span></span></li>
@@ -57,13 +56,12 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pipes-reducer">pipes/reducer</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-averageDeep">averageDeep</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pipes-unit">pipes/unit</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-voltsToMicrovolts">voltsToMicrovolts</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pipes-utility">pipes/utility</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-addInfo">addInfo</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-chunk">chunk</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bufferToEpoch">bufferToEpoch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-epoch">epoch</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-pickChannels">pickChannels</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-removeChannels">removeChannels</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#utils">utils</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-average">average</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createEEG">createEEG</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getMuseCsv">getMuseCsv</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createMockStream">createMockStream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createPipe">createPipe</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-groupByChannel">groupByChannel</a></span></span></li>
@@ -83,24 +81,36 @@ import {
 } from &quot;../../constants&quot;;
 
 /**
+ * Converts a stream of EEG data (either eegObjects or Epochs) from volts to microvolts
  * @method toMicrovolts
- * Takes a data stream of samples and returns the values in microvolts
+ * @example eeg&amp;.pipe(toMicrovolts)
+ * @param {Object} options - Conversion options
+ * @param {boolean} [options.useLog=false] Whether to use logarithmic conversion
+ * @param {string} [options.dataProp=&apos;data&apos;] Name of the key associated with eeg data
  *
- * @param {Object} options
- * @returns {Observable}
+ * @returns {Observable&lt;Sample | Epoch&gt;}
  */
-export const voltsToMicrovolts = (
-  { log = useLog, dataProp = defaultDataProp } = {}
-) =&gt; source =&gt;
+export const voltsToMicrovolts = ({
+  log = useLog,
+  dataProp = defaultDataProp
+} = {}) =&gt; source =&gt;
   createPipe(
     source,
-    map(sample =&gt; ({
-      ...sample,
-      [dataProp]: sample[dataProp].map(
-        volt =&gt;
-          log ? Math.log10(Math.pow(10, 6) * volt) : Math.pow(10, 6) * volt
-      )
-    }))
+    map(eegObject =&gt; {
+      const isEpoch = Array.isArray(eegObject.data[0]);
+      const conversion = log
+        ? volt =&gt; Math.log10(Math.pow(10, 6) * volt)
+        : volt =&gt; Math.pow(10, 6) * volt;
+      return {
+        ...eegObject,
+        [dataProp]: eegObject[dataProp].map(channel =&gt; {
+          if (isEpoch) {
+            return channel.map(conversion);
+          }
+          return conversion(channel);
+        })
+      };
+    })
   );
 </code></pre>
 
