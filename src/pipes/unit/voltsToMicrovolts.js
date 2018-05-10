@@ -15,7 +15,7 @@ import {
  * @param {boolean} [options.useLog=false] Whether to use logarithmic conversion
  * @param {string} [options.dataProp='data'] Name of the key associated with eeg data
  *
- * @returns {Observable}
+ * @returns {Observable<Sample | Epoch>}
  */
 export const voltsToMicrovolts = ({
   log = useLog,
@@ -24,14 +24,14 @@ export const voltsToMicrovolts = ({
   createPipe(
     source,
     map(eegObject => {
-      const isChunk = Array.isArray(eegObject.data[0]);
+      const isEpoch = Array.isArray(eegObject.data[0]);
       const conversion = log
         ? volt => Math.log10(Math.pow(10, 6) * volt)
         : volt => Math.pow(10, 6) * volt;
       return {
         ...eegObject,
         [dataProp]: eegObject[dataProp].map(channel => {
-          if (isChunk) {
+          if (isEpoch) {
             return channel.map(conversion);
           }
           return conversion(channel);
