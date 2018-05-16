@@ -25,10 +25,10 @@ const eeg3$ = createEEG().pipe(
   fft({ bins: 512 })
 );
 
-const eeg4$ = createEEG({ sine: 7, sampleRate: 250 }).pipe(
-  addInfo({ samplingRate: 250 }),
-  epoch({ duration: 512, interval: 256 }),
-  fft({ bins: 256 })
+const eeg4$ = createEEG({ sine: 7, sampleRate: 256 }).pipe(
+  addInfo({ samplingRate: 256 }),
+  epoch({ duration: 1000, interval: 256 }),
+  fft({ bins: 512 })
 );
 
 eeg4$.subscribe(console.log);

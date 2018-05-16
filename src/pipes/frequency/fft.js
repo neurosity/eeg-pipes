@@ -1,19 +1,20 @@
 import { FFT } from "dsp.js";
 import { map } from "rxjs/operators";
 import { createPipe } from "../../utils/createPipe";
+import { zeroPad } from "../../utils/zeroPad";
 
 import {
-  SAMPLE_RATE as defaultSampleRate,
   FFT_BINS as defaultFftBins,
   DATA_PROP as defaultDataProp
 } from "../../constants";
 
+
 /**
- * Applys a Fast Fourier Transform to an Epoch of EEG data and returns a PSD (Power Spectral Density). Frequency resolution will be samplingRate / bins
+ * Applys a Fast Fourier Transform to a stream of Epochs of EEG data and returns a stream of PSDs (Power Spectral Density). Frequency resolution will be samplingRate / bins. If input Epoch duration is not equal to bins, data will be zero-padded or sliced so that is the same length as bins.
  * @method fft
- * @example eeg$.pipe(epoch({ duration: 1024, interval: 100, samplingRate: 256 }), fft({ bins: 1024 }))
+ * @example eeg$.pipe(addInfo({ samplingRate: 256}), epoch({ duration: 256, interval: 100 }), fft({ bins: 256 }))
  * @param {Object} options - FFT options
- * @param {number} options.bins Number of FFT bins. Must be a power of two and same size as input Epoch duration
+ * @param {number} options.bins Number of FFT bins. Must be a power of 2.
  * @param {String} [options.dataProp='data] Name of the key associated with eeg data
  *
  * @returns {Observable<PSD>}
@@ -23,13 +24,20 @@ export const fft = ({
   dataProp = defaultDataProp
 } = {}) => source => {
   const transformChannel = (channel, samplingRate) => {
-    const safeSamples = channel.map(sample => {
+    let safeSamples = channel.map(sample => {
       if (isNaN(sample) || !sample) {
         return 0;
       }
       return sample;
     });
     const fft = new FFT(bins, samplingRate);
+    if (safeSamples.length != bins) {
+      if (safeSamples.length < bins) {
+        safeSamples = zeroPad(safeSamples, bins);
+      } else {
+        safeSamples = safeSamples.slice(safeSamples.length - bins);
+      }
+    }
     fft.forward(safeSamples);
     return Array.from(fft.spectrum);
   };
