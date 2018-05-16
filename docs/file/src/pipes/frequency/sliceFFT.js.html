@@ -49,6 +49,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-betaPower">betaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bufferFFT">bufferFFT</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deltaPower">deltaPower</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fft">fft</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-gammaPower">gammaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-powerByBand">powerByBand</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sliceFFT">sliceFFT</a></span></span></li>
@@ -75,38 +76,33 @@
 
 import { createPipe } from &quot;../../utils/createPipe&quot;;
 
-import { SAMPLE_RATE as defaultSampleRate } from &quot;../../constants&quot;;
-
 /**
+ * Slices a stream of PSDs to a specific frequency range defined by a minimum and maximum frequency in Hz
  * @method sliceFFT
- * Filters FFT buffer by frequency range.
- *
- * @param {array} range: [min, max]
- * @param {number} sampleRate
- * @returns {Observable} fftBuffer
+ * @example eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), sliceFFT([2, 30]))
+ * @param {Array&lt;number&gt;} range Array containing minimum and maximum frequencies
+ * @returns {Observable&lt;PSD&gt;}
  */
-export const sliceFFT = (
-  [min = 0, max = 128],
-  sampleRate = defaultSampleRate
-) =&gt; source =&gt;
+export const sliceFFT = ([min = 0, max = 128]) =&gt; source =&gt;
   createPipe(
     source,
-    map(fftBuffer =&gt; {
-      if (!fftBuffer.length || !fftBuffer[0].length) {
-        return fftBuffer;
+    map(inputPSD =&gt; {
+      if (!inputPSD.psd.length || !inputPSD.psd[0].length) {
+        return inputPSD;
       }
 
-      const bins = fftBuffer[0].length * 2;
-
-      const ranges = Array.from({ length: bins / 2 }, (range, index) =&gt;
-        Math.ceil(index * (sampleRate / bins))
-      );
-
-      return fftBuffer.map(channel =&gt;
+      const filteredPSD = inputPSD.psd.map(channel =&gt;
         channel.filter(
-          (spectrum, index) =&gt; ranges[index] &gt;= min &amp;&amp; ranges[index] &lt;= max
+          (spectrum, index) =&gt;
+            inputPSD.freqs[index] &gt;= min &amp;&amp; inputPSD.freqs[index] &lt;= max
         )
       );
+
+      return {
+        ...inputPSD,
+        psd: filteredPSD,
+        freqs: inputPSD.freqs.filter(freq =&gt; freq &gt;= min &amp;&amp; freq &lt;= max)
+      };
     })
   );
 </code></pre>

@@ -7,7 +7,6 @@ import { averagePower } from "./averagePower";
 import { sliceFFT } from "./sliceFFT";
 
 import {
-  SAMPLE_RATE as defaultSampleRate,
   FREQUENCY_BANDS as defaultBands
 } from "../../constants";
 
@@ -16,7 +15,7 @@ import {
  * @method powerByBand
  * @example eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), powerByBand())
  * @param {Object} [bands] Custom bands object containing corresponding names and frequency ranges
- * @returns {Observable<Array[number]>}
+ * @returns {Observable<Array<number>>}
  */
 export const powerByBand = (bands = defaultBands) => source =>
   createPipe(

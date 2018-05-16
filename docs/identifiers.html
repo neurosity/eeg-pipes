@@ -49,6 +49,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-betaPower">betaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bufferFFT">bufferFFT</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deltaPower">deltaPower</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fft">fft</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-gammaPower">gammaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-powerByBand">powerByBand</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sliceFFT">sliceFFT</a></span></span></li>
@@ -539,13 +540,14 @@
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-alphaPower">alphaPower</a></span></span><span class="code" data-ice="signature">(): <span>Observable</span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-alphaPower">alphaPower</a></span></span><span class="code" data-ice="signature">(): <span>Observable</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;&gt;</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Returns the average alpha power from a stream of PSDs</p>
+</div>
       </div>
     </td>
     <td>
@@ -573,7 +575,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>Takes a stream of PSDs and returns a sream of arrays, containing the average power in each channel</p>
+</div>
       </div>
     </td>
     <td>
@@ -595,13 +598,14 @@
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-betaPower">betaPower</a></span></span><span class="code" data-ice="signature">(): <span>Observable</span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-betaPower">betaPower</a></span></span><span class="code" data-ice="signature">(): <span>Observable</span>&lt;<span>Array[number]</span>&gt;</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Returns the average beta power from a stream of PSDs</p>
+</div>
       </div>
     </td>
     <td>
@@ -629,7 +633,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>Takes a stream of Samples and applies a Fast Fourier Transform to return a stream of PSDs (Power Spectral Density).</p>
+</div>
       </div>
     </td>
     <td>
@@ -651,13 +656,14 @@
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-deltaPower">deltaPower</a></span></span><span class="code" data-ice="signature">(): <span>Observable</span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-deltaPower">deltaPower</a></span></span><span class="code" data-ice="signature">(): <span>Observable</span>&lt;<span>Array[number]</span>&gt;</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Returns the average delta power from a stream of PSDs</p>
+</div>
       </div>
     </td>
     <td>
@@ -679,13 +685,14 @@
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-gammaPower">gammaPower</a></span></span><span class="code" data-ice="signature">(): <span>Observable</span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-fft">fft</a></span></span><span class="code" data-ice="signature">(options: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span>Observable</span>&lt;<span>PSD</span>&gt;</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Applies a Fast Fourier Transform to a stream of Epochs of EEG data and returns a stream of PSDs (Power Spectral Density).</p>
+</div>
       </div>
     </td>
     <td>
@@ -707,13 +714,14 @@
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-powerByBand">powerByBand</a></span></span><span class="code" data-ice="signature">(bands: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span>Observable</span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-gammaPower">gammaPower</a></span></span><span class="code" data-ice="signature">(): <span>Observable</span>&lt;<span>Array[number]</span>&gt;</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Returns the average gamma power from a stream of PSDs</p>
+</div>
       </div>
     </td>
     <td>
@@ -735,13 +743,14 @@
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-sliceFFT">sliceFFT</a></span></span><span class="code" data-ice="signature">(range:: <span>array</span>, sampleRate: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>Observable</span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-powerByBand">powerByBand</a></span></span><span class="code" data-ice="signature">(bands: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span>Observable</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;&gt;</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Takes a stream of PSDs and returns the average power for each of the classic EEG bands (alpha, beta, theta, etc.).</p>
+</div>
       </div>
     </td>
     <td>
@@ -763,13 +772,43 @@
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-thetaPower">thetaPower</a></span></span><span class="code" data-ice="signature">(): <span>Observable</span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-sliceFFT">sliceFFT</a></span></span><span class="code" data-ice="signature">(range: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;): <span>Observable</span>&lt;<span>PSD</span>&gt;</span>
         </p>
       </div>
       <div>
         
         
+        <div data-ice="description"><p>Slices a stream of PSDs to a specific frequency range defined by a minimum and maximum frequency in Hz</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          <span data-ice="kind-icon" class="kind-function">F</span>
+          
+          
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-thetaPower">thetaPower</a></span></span><span class="code" data-ice="signature">(): <span>Observable</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;&gt;</span>
+        </p>
+      </div>
+      <div>
         
+        
+        <div data-ice="description"><p>Returns the average theta power from a stream of PSDs</p>
+</div>
       </div>
     </td>
     <td>
@@ -1143,13 +1182,14 @@
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-groupByChannel">groupByChannel</a></span></span><span class="code" data-ice="signature">(samplesBuffer: <span>any</span>, channelDataByChannel: <span>any</span>)</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-groupByChannel">groupByChannel</a></span></span><span class="code" data-ice="signature">(samplesBuffer: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span>Sample</span>&gt;, dataProp: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;&gt;</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Get a 2D data array organized by channel from an array of Samples.</p>
+</div>
       </div>
     </td>
     <td>
@@ -1171,13 +1211,14 @@
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-zeroPad">zeroPad</a></span></span><span class="code" data-ice="signature">(Array<number>: <span>*</span>): <span>*</span></number></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-zeroPad">zeroPad</a></span></span><span class="code" data-ice="signature">(Array<number>: <span>*</span>, number: <span>*</span>): <span>*</span></number></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>ZeroPads inputs for FFTs of non base 2</p>
+</div>
       </div>
     </td>
     <td>

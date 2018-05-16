@@ -50,7 +50,7 @@ const interpolate = (before, after) => {
  * @param {number} [options.bandWidth=0.5] Width of the cutoff centered around the notched frequency. Larger values reduce filter out more of the notch frequency at the cost of also reducing nearby frequencies
  * @param {boolean} [options.filterHarmonics=false] Whether to filter harmonics of the notch frequency as well
  * @param {number} [options.samplingRate=250] Sampling rate of the EEG device
- * @param {String} [options.characteristic='butterworth'] Filter characteristic. Options are 'bessel' and 'butterworth'
+ * @param {string} [options.characteristic='butterworth'] Filter characteristic. Options are 'bessel' and 'butterworth'
  * @param {number} [options.order=2] Number of 2nd order biquad filters applied to the signal
  * 
  * @returns {Observable<Sample | Epoch>}

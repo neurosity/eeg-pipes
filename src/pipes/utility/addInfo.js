@@ -17,9 +17,8 @@ const patch = sample => info => ({
  * Annotates stream with user-defined metadata
  * @method addInfo
  * @example eeg$.pipe(addinfo({ samplingRate: 256, channelNames: ["Af7", "Fp1", "Fp2", "Af8"] })
- *
- * @param {Object} info - Info to be added to the EEG stream. Relevant info may include: `samplingRate` and `channelNames`
- * @returns {Observable<Sample | Epoch | PSD>}
+ * @param {Object} info Info to be added to the EEG stream. Relevant info may include: `samplingRate` and `channelNames`
+ * @returns {Observable<Sample|Epoch|PSD>}
  */
 export const addInfo = (arg = {}) => source =>
   createPipe(

@@ -49,6 +49,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-betaPower">betaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bufferFFT">bufferFFT</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deltaPower">deltaPower</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fft">fft</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-gammaPower">gammaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-powerByBand">powerByBand</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sliceFFT">sliceFFT</a></span></span></li>
@@ -72,15 +73,15 @@
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/utils/zeroPad.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
- * @method zeroPad
- * zeroPads inputs for FFTs of non base 2
- * @param Array&lt;number&gt; bufferedData, number fftLength
+ * ZeroPads inputs for FFTs of non base 2
+ * @method zeroPad *
+ * @param Array&lt;number&gt; bufferedData
+ * @param number fftLength
  * @returns Array&lt;number&gt;
  */
 
 export const zeroPad = (buffer, fftLength) =&gt; {
   if (fftLength &gt; buffer.length) {
-    console.log(&quot;zeropadding: &quot;, fftLength - buffer.length);
     return buffer.concat(new Array(fftLength - buffer.length).fill(0));
   }
   return buffer;

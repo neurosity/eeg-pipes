@@ -49,6 +49,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-betaPower">betaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bufferFFT">bufferFFT</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deltaPower">deltaPower</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fft">fft</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-gammaPower">gammaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-powerByBand">powerByBand</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sliceFFT">sliceFFT</a></span></span></li>
@@ -74,17 +75,12 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { DATA_PROP as defaultDataProp } from &quot;../constants&quot;;
 
 /**
- * @method groupByChannel
- * Get a 2D data array organized by channel from an array of Samples
- *
- * @example from [{ ...s0 }, { ...s1 }, ...]
- * to [[c0 ...], [c1 ...], ...]
- *
- * @param {any} samplesBuffer array of samples
- * @param {any} channelDataByChannel
- * 
- * Credit to Ken from Seattle&apos;s elegant transposition
+ * Get a 2D data array organized by channel from an array of Samples. Credit to Ken from Seattle&apos;s elegant transposition
  * http://www.codesuck.com/2012/02/transpose-javascript-array-in-one-line.html
+ * @method groupByChannel
+ * @param {Array&lt;Sample&gt;} samplesBuffer Array of Samples to be grouped
+ * @param {string} [dataProp] Name of the key associated with EEG data
+ * @returns {Array&lt;Array&lt;number&gt;&gt;}
  */
 
 export const groupByChannel = (samplesBuffer, dataProp = defaultDataProp) =&gt;

@@ -49,6 +49,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-betaPower">betaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bufferFFT">bufferFFT</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deltaPower">deltaPower</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fft">fft</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-gammaPower">gammaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-powerByBand">powerByBand</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sliceFFT">sliceFFT</a></span></span></li>
@@ -118,13 +119,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-alphaPower">alphaPower</a></span></span><span class="code" data-ice="signature">(): <span>Observable</span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-alphaPower">alphaPower</a></span></span><span class="code" data-ice="signature">(): <span>Observable</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;&gt;</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Returns the average alpha power from a stream of PSDs</p>
+</div>
       </div>
     </td>
     <td>
@@ -208,7 +210,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>Takes a stream of PSDs and returns a sream of arrays, containing the average power in each channel</p>
+</div>
       </div>
     </td>
     <td>
@@ -259,13 +262,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-betaPower">betaPower</a></span></span><span class="code" data-ice="signature">(): <span>Observable</span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-betaPower">betaPower</a></span></span><span class="code" data-ice="signature">(): <span>Observable</span>&lt;<span>Array[number]</span>&gt;</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Returns the average beta power from a stream of PSDs</p>
+</div>
       </div>
     </td>
     <td>
@@ -293,7 +297,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>Takes a stream of Samples and applies a Fast Fourier Transform to return a stream of PSDs (Power Spectral Density).</p>
+</div>
       </div>
     </td>
     <td>
@@ -428,13 +433,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-deltaPower">deltaPower</a></span></span><span class="code" data-ice="signature">(): <span>Observable</span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-deltaPower">deltaPower</a></span></span><span class="code" data-ice="signature">(): <span>Observable</span>&lt;<span>Array[number]</span>&gt;</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Returns the average delta power from a stream of PSDs</p>
+</div>
       </div>
     </td>
     <td>
@@ -485,13 +491,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-gammaPower">gammaPower</a></span></span><span class="code" data-ice="signature">(): <span>Observable</span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-fft">fft</a></span></span><span class="code" data-ice="signature">(options: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span>Observable</span>&lt;<span>PSD</span>&gt;</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Applies a Fast Fourier Transform to a stream of Epochs of EEG data and returns a stream of PSDs (Power Spectral Density).</p>
+</div>
       </div>
     </td>
     <td>
@@ -513,13 +520,43 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-groupByChannel">groupByChannel</a></span></span><span class="code" data-ice="signature">(samplesBuffer: <span>any</span>, channelDataByChannel: <span>any</span>)</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-gammaPower">gammaPower</a></span></span><span class="code" data-ice="signature">(): <span>Observable</span>&lt;<span>Array[number]</span>&gt;</span>
         </p>
       </div>
       <div>
         
         
+        <div data-ice="description"><p>Returns the average gamma power from a stream of PSDs</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-groupByChannel">groupByChannel</a></span></span><span class="code" data-ice="signature">(samplesBuffer: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span>Sample</span>&gt;, dataProp: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;&gt;</span>
+        </p>
+      </div>
+      <div>
         
+        
+        <div data-ice="description"><p>Get a 2D data array organized by channel from an array of Samples.</p>
+</div>
       </div>
     </td>
     <td>
@@ -656,13 +693,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-powerByBand">powerByBand</a></span></span><span class="code" data-ice="signature">(bands: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span>Observable</span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-powerByBand">powerByBand</a></span></span><span class="code" data-ice="signature">(bands: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span>Observable</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;&gt;</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Takes a stream of PSDs and returns the average power for each of the classic EEG bands (alpha, beta, theta, etc.).</p>
+</div>
       </div>
     </td>
     <td>
@@ -712,13 +750,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-sliceFFT">sliceFFT</a></span></span><span class="code" data-ice="signature">(range:: <span>array</span>, sampleRate: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>Observable</span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-sliceFFT">sliceFFT</a></span></span><span class="code" data-ice="signature">(range: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;): <span>Observable</span>&lt;<span>PSD</span>&gt;</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Slices a stream of PSDs to a specific frequency range defined by a minimum and maximum frequency in Hz</p>
+</div>
       </div>
     </td>
     <td>
@@ -740,13 +779,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-thetaPower">thetaPower</a></span></span><span class="code" data-ice="signature">(): <span>Observable</span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-thetaPower">thetaPower</a></span></span><span class="code" data-ice="signature">(): <span>Observable</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;&gt;</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Returns the average theta power from a stream of PSDs</p>
+</div>
       </div>
     </td>
     <td>
@@ -797,13 +837,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-zeroPad">zeroPad</a></span></span><span class="code" data-ice="signature">(Array<number>: <span>*</span>): <span>*</span></number></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-zeroPad">zeroPad</a></span></span><span class="code" data-ice="signature">(Array<number>: <span>*</span>, number: <span>*</span>): <span>*</span></number></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>ZeroPads inputs for FFTs of non base 2</p>
+</div>
       </div>
     </td>
     <td>
@@ -828,11 +869,11 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/pipes/utility/addInfo.js.html#lineNumber24">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/pipes/utility/addInfo.js.html#lineNumber23">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {addInfo} from &apos;<span><a href="file/src/pipes/utility/addInfo.js.html#lineNumber24">eeg-pipes/src/pipes/utility/addInfo.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {addInfo} from &apos;<span><a href="file/src/pipes/utility/addInfo.js.html#lineNumber23">eeg-pipes/src/pipes/utility/addInfo.js</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>Annotates stream with user-defined metadata</p>
@@ -904,7 +945,7 @@
     
     
     
-    <span class="code" data-ice="name">alphaPower</span><span class="code" data-ice="signature">(): <span>Observable</span></span>
+    <span class="code" data-ice="name">alphaPower</span><span class="code" data-ice="signature">(): <span>Observable</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;&gt;</span>
     <span class="right-info">
       
       
@@ -915,7 +956,8 @@
   <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {alphaPower} from &apos;<span><a href="file/src/pipes/frequency/alphaPower.js.html#lineNumber13">eeg-pipes/src/pipes/frequency/alphaPower.js</a></span>&apos;</code></pre></div>
   
   
-  
+  <div data-ice="description"><p>Returns the average alpha power from a stream of PSDs</p>
+</div>
 
   
 
@@ -927,9 +969,8 @@
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>Observable</span></td>
-          <td class="return-desc" data-ice="returnDescription"><p>fftBuffer</p>
-</td>
+          <td class="return-type code" data-ice="returnType"><span>Observable</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;&gt;</td>
+          
         </tr>
       </tbody>
     </table>
@@ -945,7 +986,14 @@
 
   
 
-  
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), alphaPower())</code></pre>
+    </div>
+</div>
 
   
 
@@ -1079,14 +1127,15 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/pipes/frequency/averagePower.js.html#lineNumber13">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/pipes/frequency/averagePower.js.html#lineNumber12">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {averagePower} from &apos;<span><a href="file/src/pipes/frequency/averagePower.js.html#lineNumber13">eeg-pipes/src/pipes/frequency/averagePower.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {averagePower} from &apos;<span><a href="file/src/pipes/frequency/averagePower.js.html#lineNumber12">eeg-pipes/src/pipes/frequency/averagePower.js</a></span>&apos;</code></pre></div>
   
   
-  
+  <div data-ice="description"><p>Takes a stream of PSDs and returns a sream of arrays, containing the average power in each channel</p>
+</div>
 
   
 
@@ -1116,7 +1165,14 @@
 
   
 
-  
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), sliceFFT(10, 20), averagePower())</code></pre>
+    </div>
+</div>
 
   
 
@@ -1187,7 +1243,7 @@
     </tr>
 <tr data-ice="property" data-depth="1">
       <td data-ice="name" class="code" data-depth="1">options.characteristic</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"><ul><li>optional</li>
 <li>default: &apos;butterworth&apos;</li></ul></td>
       <td data-ice="description"><p>Filter characteristic. Options are &apos;bessel&apos; and &apos;butterworth&apos;</p>
@@ -1251,7 +1307,7 @@
     
     
     
-    <span class="code" data-ice="name">betaPower</span><span class="code" data-ice="signature">(): <span>Observable</span></span>
+    <span class="code" data-ice="name">betaPower</span><span class="code" data-ice="signature">(): <span>Observable</span>&lt;<span>Array[number]</span>&gt;</span>
     <span class="right-info">
       
       
@@ -1262,7 +1318,8 @@
   <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {betaPower} from &apos;<span><a href="file/src/pipes/frequency/betaPower.js.html#lineNumber13">eeg-pipes/src/pipes/frequency/betaPower.js</a></span>&apos;</code></pre></div>
   
   
-  
+  <div data-ice="description"><p>Returns the average beta power from a stream of PSDs</p>
+</div>
 
   
 
@@ -1274,9 +1331,8 @@
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>Observable</span></td>
-          <td class="return-desc" data-ice="returnDescription"><p>fftBuffer</p>
-</td>
+          <td class="return-type code" data-ice="returnType"><span>Observable</span>&lt;<span>Array[number]</span>&gt;</td>
+          
         </tr>
       </tbody>
     </table>
@@ -1292,7 +1348,14 @@
 
   
 
-  
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), betaPower())</code></pre>
+    </div>
+</div>
 
   
 
@@ -1311,14 +1374,15 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/pipes/frequency/bufferFFT.js.html#lineNumber20">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/pipes/frequency/bufferFFT.js.html#lineNumber23">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {bufferFFT} from &apos;<span><a href="file/src/pipes/frequency/bufferFFT.js.html#lineNumber20">eeg-pipes/src/pipes/frequency/bufferFFT.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {bufferFFT} from &apos;<span><a href="file/src/pipes/frequency/bufferFFT.js.html#lineNumber23">eeg-pipes/src/pipes/frequency/bufferFFT.js</a></span>&apos;</code></pre></div>
   
   
-  
+  <div data-ice="description"><p>Takes a stream of Samples and applies a Fast Fourier Transform to return a stream of PSDs (Power Spectral Density). Note: this operator works by buffering the stream of samples into buffers that are as long as the supplied number of bins. Because it doesn&apos;t allow as much flexibility in terms of how often data is emitted we recommend using a combination of the <code>epoch</code> and <code>fft</code> operators instead.</p>
+</div>
 
   
 
@@ -1334,7 +1398,30 @@
       <td data-ice="name" class="code" data-depth="0">options</td>
       <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>FFT options</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">options.bins</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>Number of FFT bins. Must be a power of 2.</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">options.sampleRate</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>Sampline rate of EEG siganl</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">options.dataProp</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: &apos;data</li></ul></td>
+      <td data-ice="description"><p>Name of the key associated with eeg data</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -1363,7 +1450,14 @@
 
   
 
-  
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">eeg$.pipe(bufferFFT({ bins: 1024 }))</code></pre>
+    </div>
+</div>
 
   
 
@@ -1670,7 +1764,7 @@
     
     
     
-    <span class="code" data-ice="name">deltaPower</span><span class="code" data-ice="signature">(): <span>Observable</span></span>
+    <span class="code" data-ice="name">deltaPower</span><span class="code" data-ice="signature">(): <span>Observable</span>&lt;<span>Array[number]</span>&gt;</span>
     <span class="right-info">
       
       
@@ -1681,7 +1775,8 @@
   <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {deltaPower} from &apos;<span><a href="file/src/pipes/frequency/deltaPower.js.html#lineNumber13">eeg-pipes/src/pipes/frequency/deltaPower.js</a></span>&apos;</code></pre></div>
   
   
-  
+  <div data-ice="description"><p>Returns the average delta power from a stream of PSDs</p>
+</div>
 
   
 
@@ -1693,9 +1788,8 @@
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>Observable</span></td>
-          <td class="return-desc" data-ice="returnDescription"><p>fftBuffer</p>
-</td>
+          <td class="return-type code" data-ice="returnType"><span>Observable</span>&lt;<span>Array[number]</span>&gt;</td>
+          
         </tr>
       </tbody>
     </table>
@@ -1711,7 +1805,14 @@
 
   
 
-  
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), deltaPower())</code></pre>
+    </div>
+</div>
 
   
 
@@ -1829,6 +1930,101 @@
   
 </div>
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-function-fft">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">fft</span><span class="code" data-ice="signature">(options: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span>Observable</span>&lt;<span>PSD</span>&gt;</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/pipes/frequency/fft.js.html#lineNumber22">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {fft} from &apos;<span><a href="file/src/pipes/frequency/fft.js.html#lineNumber22">eeg-pipes/src/pipes/frequency/fft.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Applies a Fast Fourier Transform to a stream of Epochs of EEG data and returns a stream of PSDs (Power Spectral Density). Frequency resolution will be samplingRate / bins. If input Epoch duration is not equal to bins, data will be zero-padded or sliced so that is the same length as bins.</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">options</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>FFT options</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">options.bins</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>Number of FFT bins. Must be a power of 2.</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">options.dataProp</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: &apos;data</li></ul></td>
+      <td data-ice="description"><p>Name of the key associated with eeg data</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>Observable</span>&lt;<span>PSD</span>&gt;</td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }))</code></pre>
+    </div>
+</div>
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="static-function-gammaPower">
     <span class="access" data-ice="access">public</span>
     
@@ -1836,7 +2032,7 @@
     
     
     
-    <span class="code" data-ice="name">gammaPower</span><span class="code" data-ice="signature">(): <span>Observable</span></span>
+    <span class="code" data-ice="name">gammaPower</span><span class="code" data-ice="signature">(): <span>Observable</span>&lt;<span>Array[number]</span>&gt;</span>
     <span class="right-info">
       
       
@@ -1847,7 +2043,8 @@
   <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {gammaPower} from &apos;<span><a href="file/src/pipes/frequency/gammaPower.js.html#lineNumber13">eeg-pipes/src/pipes/frequency/gammaPower.js</a></span>&apos;</code></pre></div>
   
   
-  
+  <div data-ice="description"><p>Returns the average gamma power from a stream of PSDs</p>
+</div>
 
   
 
@@ -1859,9 +2056,96 @@
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>Observable</span></td>
-          <td class="return-desc" data-ice="returnDescription"><p>fftBuffer</p>
+          <td class="return-type code" data-ice="returnType"><span>Observable</span>&lt;<span>Array[number]</span>&gt;</td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), gammaPower())</code></pre>
+    </div>
+</div>
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-function-groupByChannel">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">groupByChannel</span><span class="code" data-ice="signature">(samplesBuffer: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span>Sample</span>&gt;, dataProp: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;&gt;</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/utils/groupByChannel.js.html#lineNumber12">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {groupByChannel} from &apos;<span><a href="file/src/utils/groupByChannel.js.html#lineNumber12">eeg-pipes/src/utils/groupByChannel.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Get a 2D data array organized by channel from an array of Samples. Credit to Ken from Seattle&apos;s elegant transposition
+<a href="http://www.codesuck.com/2012/02/transpose-javascript-array-in-one-line.html">http://www.codesuck.com/2012/02/transpose-javascript-array-in-one-line.html</a></p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">samplesBuffer</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span>Sample</span>&gt;</td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>Array of Samples to be grouped</p>
 </td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">dataProp</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li></ul></td>
+      <td data-ice="description"><p>Name of the key associated with EEG data</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;&gt;</td>
+          
         </tr>
       </tbody>
     </table>
@@ -1878,82 +2162,6 @@
   
 
   
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="static-function-groupByChannel">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    
-    <span class="code" data-ice="name">groupByChannel</span><span class="code" data-ice="signature">(samplesBuffer: <span>any</span>, channelDataByChannel: <span>any</span>)</span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/utils/groupByChannel.js.html#lineNumber17">source</a></span></span>
-    </span>
-  </h3>
-
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {groupByChannel} from &apos;<span><a href="file/src/utils/groupByChannel.js.html#lineNumber17">eeg-pipes/src/utils/groupByChannel.js</a></span>&apos;</code></pre></div>
-  
-  
-  
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">samplesBuffer</td>
-      <td data-ice="type" class="code"><span>any</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>array of samples</p>
-</td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">channelDataByChannel</td>
-      <td data-ice="type" class="code"><span>any</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>Credit to Ken from Seattle&apos;s elegant transposition
-<a href="http://www.codesuck.com/2012/02/transpose-javascript-array-in-one-line.html">http://www.codesuck.com/2012/02/transpose-javascript-array-in-one-line.html</a></p>
-</td>
-    </tr>
-</tbody>
-  </table>
-</div>
-</div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  <div data-ice="example">
-    <h4>Example:</h4>
-    
-  <div class="example-doc" data-ice="exampleDoc">
-      
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">from [{ ...s0 }, { ...s1 }, ...]
-to [[c0 ...], [c1 ...], ...]</code></pre>
-    </div>
-</div>
 
   
 
@@ -2024,7 +2232,7 @@ to [[c0 ...], [c1 ...], ...]</code></pre>
     </tr>
 <tr data-ice="property" data-depth="1">
       <td data-ice="name" class="code" data-depth="1">options.characteristic</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"><ul><li>optional</li>
 <li>default: &apos;butterworth&apos;</li></ul></td>
       <td data-ice="description"><p>Filter characteristic. Options are &apos;bessel&apos; and &apos;butterworth&apos;</p>
@@ -2144,7 +2352,7 @@ to [[c0 ...], [c1 ...], ...]</code></pre>
     </tr>
 <tr data-ice="property" data-depth="1">
       <td data-ice="name" class="code" data-depth="1">options.characteristic</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"><ul><li>optional</li>
 <li>default: &apos;butterworth&apos;</li></ul></td>
       <td data-ice="description"><p>Filter characteristic. Options are &apos;bessel&apos; and &apos;butterworth&apos;</p>
@@ -2280,7 +2488,7 @@ to [[c0 ...], [c1 ...], ...]</code></pre>
     </tr>
 <tr data-ice="property" data-depth="1">
       <td data-ice="name" class="code" data-depth="1">options.characteristic</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"><ul><li>optional</li>
 <li>default: &apos;butterworth&apos;</li></ul></td>
       <td data-ice="description"><p>Filter characteristic. Options are &apos;bessel&apos; and &apos;butterworth&apos;</p>
@@ -2416,18 +2624,19 @@ to [[c0 ...], [c1 ...], ...]</code></pre>
     
     
     
-    <span class="code" data-ice="name">powerByBand</span><span class="code" data-ice="signature">(bands: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span>Observable</span></span>
+    <span class="code" data-ice="name">powerByBand</span><span class="code" data-ice="signature">(bands: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span>Observable</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;&gt;</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/pipes/frequency/powerByBand.js.html#lineNumber21">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/pipes/frequency/powerByBand.js.html#lineNumber20">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {powerByBand} from &apos;<span><a href="file/src/pipes/frequency/powerByBand.js.html#lineNumber21">eeg-pipes/src/pipes/frequency/powerByBand.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {powerByBand} from &apos;<span><a href="file/src/pipes/frequency/powerByBand.js.html#lineNumber20">eeg-pipes/src/pipes/frequency/powerByBand.js</a></span>&apos;</code></pre></div>
   
   
-  
+  <div data-ice="description"><p>Takes a stream of PSDs and returns the average power for each of the classic EEG bands (alpha, beta, theta, etc.). Classic EEG bands can be overridden by providing a custom bands object (e.g. { lowAlpha: [7.5, 10], highAlpha: [10, 12.5] })</p>
+</div>
 
   
 
@@ -2441,9 +2650,9 @@ to [[c0 ...], [c1 ...], ...]</code></pre>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">bands</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>{ [bandName]: range[min, max] }</p>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li></ul></td>
+      <td data-ice="description"><p>Custom bands object containing corresponding names and frequency ranges</p>
 </td>
     </tr>
 </tbody>
@@ -2456,9 +2665,8 @@ to [[c0 ...], [c1 ...], ...]</code></pre>
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>Observable</span></td>
-          <td class="return-desc" data-ice="returnDescription"><p>bands { [bandName]: bandPower }</p>
-</td>
+          <td class="return-type code" data-ice="returnType"><span>Observable</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;&gt;</td>
+          
         </tr>
       </tbody>
     </table>
@@ -2474,7 +2682,14 @@ to [[c0 ...], [c1 ...], ...]</code></pre>
 
   
 
-  
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), powerByBand())</code></pre>
+    </div>
+</div>
 
   
 
@@ -2561,18 +2776,19 @@ to [[c0 ...], [c1 ...], ...]</code></pre>
     
     
     
-    <span class="code" data-ice="name">sliceFFT</span><span class="code" data-ice="signature">(range:: <span>array</span>, sampleRate: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>Observable</span></span>
+    <span class="code" data-ice="name">sliceFFT</span><span class="code" data-ice="signature">(range: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;): <span>Observable</span>&lt;<span>PSD</span>&gt;</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/pipes/frequency/sliceFFT.js.html#lineNumber15">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/pipes/frequency/sliceFFT.js.html#lineNumber12">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {sliceFFT} from &apos;<span><a href="file/src/pipes/frequency/sliceFFT.js.html#lineNumber15">eeg-pipes/src/pipes/frequency/sliceFFT.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {sliceFFT} from &apos;<span><a href="file/src/pipes/frequency/sliceFFT.js.html#lineNumber12">eeg-pipes/src/pipes/frequency/sliceFFT.js</a></span>&apos;</code></pre></div>
   
   
-  
+  <div data-ice="description"><p>Slices a stream of PSDs to a specific frequency range defined by a minimum and maximum frequency in Hz</p>
+</div>
 
   
 
@@ -2585,17 +2801,11 @@ to [[c0 ...], [c1 ...], ...]</code></pre>
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">range:</td>
-      <td data-ice="type" class="code"><span>array</span></td>
+      <td data-ice="name" class="code" data-depth="0">range</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;</td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"><p>[min, max]</p>
+      <td data-ice="description"><p>Array containing minimum and maximum frequencies</p>
 </td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">sampleRate</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
     </tr>
 </tbody>
   </table>
@@ -2607,9 +2817,8 @@ to [[c0 ...], [c1 ...], ...]</code></pre>
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>Observable</span></td>
-          <td class="return-desc" data-ice="returnDescription"><p>fftBuffer</p>
-</td>
+          <td class="return-type code" data-ice="returnType"><span>Observable</span>&lt;<span>PSD</span>&gt;</td>
+          
         </tr>
       </tbody>
     </table>
@@ -2625,7 +2834,14 @@ to [[c0 ...], [c1 ...], ...]</code></pre>
 
   
 
-  
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), sliceFFT([2, 30]))</code></pre>
+    </div>
+</div>
 
   
 
@@ -2640,7 +2856,7 @@ to [[c0 ...], [c1 ...], ...]</code></pre>
     
     
     
-    <span class="code" data-ice="name">thetaPower</span><span class="code" data-ice="signature">(): <span>Observable</span></span>
+    <span class="code" data-ice="name">thetaPower</span><span class="code" data-ice="signature">(): <span>Observable</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;&gt;</span>
     <span class="right-info">
       
       
@@ -2651,7 +2867,8 @@ to [[c0 ...], [c1 ...], ...]</code></pre>
   <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {thetaPower} from &apos;<span><a href="file/src/pipes/frequency/thetaPower.js.html#lineNumber13">eeg-pipes/src/pipes/frequency/thetaPower.js</a></span>&apos;</code></pre></div>
   
   
-  
+  <div data-ice="description"><p>Returns the average theta power from a stream of PSDs</p>
+</div>
 
   
 
@@ -2663,9 +2880,8 @@ to [[c0 ...], [c1 ...], ...]</code></pre>
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>Observable</span></td>
-          <td class="return-desc" data-ice="returnDescription"><p>fftBuffer</p>
-</td>
+          <td class="return-type code" data-ice="returnType"><span>Observable</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>&gt;&gt;</td>
+          
         </tr>
       </tbody>
     </table>
@@ -2681,7 +2897,14 @@ to [[c0 ...], [c1 ...], ...]</code></pre>
 
   
 
-  
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), thetaPower())</code></pre>
+    </div>
+</div>
 
   
 
@@ -2792,18 +3015,19 @@ to [[c0 ...], [c1 ...], ...]</code></pre>
     
     
     
-    <span class="code" data-ice="name">zeroPad</span><span class="code" data-ice="signature">(Array<number>: <span>*</span>): <span>*</span></number></span>
+    <span class="code" data-ice="name">zeroPad</span><span class="code" data-ice="signature">(Array<number>: <span>*</span>, number: <span>*</span>): <span>*</span></number></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/zeroPad.js.html#lineNumber8">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/zeroPad.js.html#lineNumber9">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {zeroPad} from &apos;<span><a href="file/src/utils/zeroPad.js.html#lineNumber8">eeg-pipes/src/utils/zeroPad.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {zeroPad} from &apos;<span><a href="file/src/utils/zeroPad.js.html#lineNumber9">eeg-pipes/src/utils/zeroPad.js</a></span>&apos;</code></pre></div>
   
   
-  
+  <div data-ice="description"><p>ZeroPads inputs for FFTs of non base 2</p>
+</div>
 
   
 
@@ -2819,7 +3043,14 @@ to [[c0 ...], [c1 ...], ...]</code></pre>
       <td data-ice="name" class="code" data-depth="0">Array&lt;number&gt;</td>
       <td data-ice="type" class="code"><span>*</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"><p>bufferedData, number fftLength</p>
+      <td data-ice="description"><p>bufferedData</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">number</td>
+      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>fftLength</p>
 </td>
     </tr>
 </tbody>

@@ -49,6 +49,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-betaPower">betaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bufferFFT">bufferFFT</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deltaPower">deltaPower</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fft">fft</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-gammaPower">gammaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-powerByBand">powerByBand</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sliceFFT">sliceFFT</a></span></span></li>
@@ -84,10 +85,13 @@ import {
 } from &quot;../../constants&quot;;
 
 /**
+ * Takes a stream of Samples and applies a Fast Fourier Transform to return a stream of PSDs (Power Spectral Density). Note: this operator works by buffering the stream of samples into buffers that are as long as the supplied number of bins. Because it doesn&apos;t allow as much flexibility in terms of how often data is emitted we recommend using a combination of the `epoch` and `fft` operators instead.
  * @method bufferFFT
- * Takes a samples and returns an FFT buffer
- *
- * @param {Object} options
+ * @example eeg$.pipe(bufferFFT({ bins: 1024 }))
+ * @param {Object} options - FFT options
+ * @param {number} options.bins Number of FFT bins. Must be a power of 2.
+ * @param {number} options.sampleRate Sampline rate of EEG siganl
+ * @param {string} [options.dataProp=&apos;data] Name of the key associated with eeg data
  * @returns {Observable}
  */
 export const bufferFFT = ({

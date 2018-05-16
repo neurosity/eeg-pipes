@@ -49,6 +49,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-betaPower">betaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bufferFFT">bufferFFT</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deltaPower">deltaPower</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fft">fft</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-gammaPower">gammaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-powerByBand">powerByBand</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sliceFFT">sliceFFT</a></span></span></li>
@@ -70,7 +71,7 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1>Source <img data-ice="coverageBadge" src="./badge.svg"><span data-ice="totalCoverageCount" class="total-coverage-count">22/57</span></h1>
+<div class="content" data-ice="content"><h1>Source <img data-ice="coverageBadge" src="./badge.svg"><span data-ice="totalCoverageCount" class="total-coverage-count">23/58</span></h1>
 
 <table class="files-summary" data-ice="files" data-use-coverage="true">
   <thead>
@@ -117,7 +118,7 @@
       <td class="coverage"><span data-ice="coverage">25 %</span><span data-ice="coverageCount" class="coverage-count">1/4</span></td>
       <td style="display: none;" data-ice="size">3566 byte</td>
       <td style="display: none;" data-ice="lines">120</td>
-      <td style="display: none;" data-ice="updated">2018-05-05 18:30:57 (UTC)</td>
+      <td style="display: none;" data-ice="updated">2018-05-04 19:31:54 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/pipes/filtering/highpassFilter.js.html#errorLines=10,16">src/pipes/filtering/highpassFilter.js</a></span></td>
@@ -125,7 +126,7 @@
       <td class="coverage"><span data-ice="coverage">33 %</span><span data-ice="coverageCount" class="coverage-count">1/3</span></td>
       <td style="display: none;" data-ice="size">3042 byte</td>
       <td style="display: none;" data-ice="lines">102</td>
-      <td style="display: none;" data-ice="updated">2018-05-05 18:31:06 (UTC)</td>
+      <td style="display: none;" data-ice="updated">2018-05-04 19:25:42 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/pipes/filtering/index.js.html">src/pipes/filtering/index.js</a></span></td>
@@ -141,7 +142,7 @@
       <td class="coverage"><span data-ice="coverage">33 %</span><span data-ice="coverageCount" class="coverage-count">1/3</span></td>
       <td style="display: none;" data-ice="size">3035 byte</td>
       <td style="display: none;" data-ice="lines">102</td>
-      <td style="display: none;" data-ice="updated">2018-05-05 18:31:10 (UTC)</td>
+      <td style="display: none;" data-ice="updated">2018-05-04 19:25:46 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/pipes/filtering/notchFilter.js.html#errorLines=11,29">src/pipes/filtering/notchFilter.js</a></span></td>
@@ -149,87 +150,95 @@
       <td class="coverage"><span data-ice="coverage">33 %</span><span data-ice="coverageCount" class="coverage-count">1/3</span></td>
       <td style="display: none;" data-ice="size">4132 byte</td>
       <td style="display: none;" data-ice="lines">123</td>
-      <td style="display: none;" data-ice="updated">2018-05-05 18:32:17 (UTC)</td>
+      <td style="display: none;" data-ice="updated">2018-05-04 19:35:14 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/pipes/frequency/alphaPower.js.html">src/pipes/frequency/alphaPower.js</a></span></td>
       <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-alphaPower">alphaPower</a></span></td>
       <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">1/1</span></td>
-      <td style="display: none;" data-ice="size">482 byte</td>
-      <td style="display: none;" data-ice="lines">18</td>
-      <td style="display: none;" data-ice="updated">2018-04-06 18:50:22 (UTC)</td>
+      <td style="display: none;" data-ice="size">565 byte</td>
+      <td style="display: none;" data-ice="lines">14</td>
+      <td style="display: none;" data-ice="updated">2018-05-04 19:39:55 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/pipes/frequency/averagePower.js.html">src/pipes/frequency/averagePower.js</a></span></td>
       <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-averagePower">averagePower</a></span></td>
       <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">1/1</span></td>
-      <td style="display: none;" data-ice="size">535 byte</td>
-      <td style="display: none;" data-ice="lines">22</td>
-      <td style="display: none;" data-ice="updated">2018-04-06 18:50:22 (UTC)</td>
+      <td style="display: none;" data-ice="size">622 byte</td>
+      <td style="display: none;" data-ice="lines">18</td>
+      <td style="display: none;" data-ice="updated">2018-05-04 18:02:54 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/pipes/frequency/betaPower.js.html">src/pipes/frequency/betaPower.js</a></span></td>
       <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-betaPower">betaPower</a></span></td>
       <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">1/1</span></td>
-      <td style="display: none;" data-ice="size">478 byte</td>
-      <td style="display: none;" data-ice="lines">18</td>
-      <td style="display: none;" data-ice="updated">2018-04-06 18:50:22 (UTC)</td>
+      <td style="display: none;" data-ice="size">560 byte</td>
+      <td style="display: none;" data-ice="lines">14</td>
+      <td style="display: none;" data-ice="updated">2018-05-04 19:35:45 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/pipes/frequency/bufferFFT.js.html">src/pipes/frequency/bufferFFT.js</a></span></td>
       <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-bufferFFT">bufferFFT</a></span></td>
       <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">1/1</span></td>
-      <td style="display: none;" data-ice="size">1035 byte</td>
-      <td style="display: none;" data-ice="lines">42</td>
-      <td style="display: none;" data-ice="updated">2018-04-05 20:16:38 (UTC)</td>
+      <td style="display: none;" data-ice="size">1677 byte</td>
+      <td style="display: none;" data-ice="lines">45</td>
+      <td style="display: none;" data-ice="updated">2018-05-04 19:26:00 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/pipes/frequency/deltaPower.js.html">src/pipes/frequency/deltaPower.js</a></span></td>
       <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-deltaPower">deltaPower</a></span></td>
       <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">1/1</span></td>
-      <td style="display: none;" data-ice="size">482 byte</td>
-      <td style="display: none;" data-ice="lines">18</td>
-      <td style="display: none;" data-ice="updated">2018-04-06 18:50:22 (UTC)</td>
+      <td style="display: none;" data-ice="size">565 byte</td>
+      <td style="display: none;" data-ice="lines">14</td>
+      <td style="display: none;" data-ice="updated">2018-05-04 19:35:54 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/pipes/frequency/fft.js.html">src/pipes/frequency/fft.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-fft">fft</a></span></td>
+      <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">1/1</span></td>
+      <td style="display: none;" data-ice="size">1881 byte</td>
+      <td style="display: none;" data-ice="lines">57</td>
+      <td style="display: none;" data-ice="updated">2018-05-04 19:26:03 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/pipes/frequency/gammaPower.js.html">src/pipes/frequency/gammaPower.js</a></span></td>
       <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-gammaPower">gammaPower</a></span></td>
       <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">1/1</span></td>
-      <td style="display: none;" data-ice="size">482 byte</td>
-      <td style="display: none;" data-ice="lines">18</td>
-      <td style="display: none;" data-ice="updated">2018-04-06 18:50:22 (UTC)</td>
+      <td style="display: none;" data-ice="size">565 byte</td>
+      <td style="display: none;" data-ice="lines">14</td>
+      <td style="display: none;" data-ice="updated">2018-05-04 19:36:01 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/pipes/frequency/index.js.html">src/pipes/frequency/index.js</a></span></td>
       <td data-ice="identifier" class="identifiers">-</td>
       <td class="coverage"><span data-ice="coverage">-</span></td>
-      <td style="display: none;" data-ice="size">268 byte</td>
-      <td style="display: none;" data-ice="lines">8</td>
-      <td style="display: none;" data-ice="updated">2018-05-05 18:38:47 (UTC)</td>
+      <td style="display: none;" data-ice="size">291 byte</td>
+      <td style="display: none;" data-ice="lines">9</td>
+      <td style="display: none;" data-ice="updated">2018-05-04 17:07:01 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/pipes/frequency/powerByBand.js.html">src/pipes/frequency/powerByBand.js</a></span></td>
       <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-powerByBand">powerByBand</a></span></td>
       <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">1/1</span></td>
-      <td style="display: none;" data-ice="size">1180 byte</td>
-      <td style="display: none;" data-ice="lines">42</td>
-      <td style="display: none;" data-ice="updated">2018-04-06 18:50:22 (UTC)</td>
+      <td style="display: none;" data-ice="size">1399 byte</td>
+      <td style="display: none;" data-ice="lines">38</td>
+      <td style="display: none;" data-ice="updated">2018-05-04 19:42:37 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/pipes/frequency/sliceFFT.js.html">src/pipes/frequency/sliceFFT.js</a></span></td>
       <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-sliceFFT">sliceFFT</a></span></td>
       <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">1/1</span></td>
-      <td style="display: none;" data-ice="size">916 byte</td>
-      <td style="display: none;" data-ice="lines">38</td>
-      <td style="display: none;" data-ice="updated">2018-04-06 18:50:22 (UTC)</td>
+      <td style="display: none;" data-ice="size">1020 byte</td>
+      <td style="display: none;" data-ice="lines">33</td>
+      <td style="display: none;" data-ice="updated">2018-05-04 19:36:15 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/pipes/frequency/thetaPower.js.html">src/pipes/frequency/thetaPower.js</a></span></td>
       <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-thetaPower">thetaPower</a></span></td>
       <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">1/1</span></td>
-      <td style="display: none;" data-ice="size">482 byte</td>
-      <td style="display: none;" data-ice="lines">18</td>
-      <td style="display: none;" data-ice="updated">2018-04-06 18:50:22 (UTC)</td>
+      <td style="display: none;" data-ice="size">565 byte</td>
+      <td style="display: none;" data-ice="lines">14</td>
+      <td style="display: none;" data-ice="updated">2018-05-04 19:40:18 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/pipes/index.js.html">src/pipes/index.js</a></span></td>
@@ -275,9 +284,9 @@
       <td data-ice="filePath"><span><a href="file/src/pipes/utility/addInfo.js.html#errorLines=5,6,8">src/pipes/utility/addInfo.js</a></span></td>
       <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-addInfo">addInfo</a></span></td>
       <td class="coverage"><span data-ice="coverage">25 %</span><span data-ice="coverageCount" class="coverage-count">1/4</span></td>
-      <td style="display: none;" data-ice="size">962 byte</td>
-      <td style="display: none;" data-ice="lines">34</td>
-      <td style="display: none;" data-ice="updated">2018-05-05 18:32:20 (UTC)</td>
+      <td style="display: none;" data-ice="size">953 byte</td>
+      <td style="display: none;" data-ice="lines">33</td>
+      <td style="display: none;" data-ice="updated">2018-05-04 19:41:44 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/pipes/utility/bufferCount.js.html">src/pipes/utility/bufferCount.js</a></span></td>
@@ -371,9 +380,9 @@
       <td data-ice="filePath"><span><a href="file/src/utils/groupByChannel.js.html">src/utils/groupByChannel.js</a></span></td>
       <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-groupByChannel">groupByChannel</a></span></td>
       <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">1/1</span></td>
-      <td style="display: none;" data-ice="size">670 byte</td>
-      <td style="display: none;" data-ice="lines">20</td>
-      <td style="display: none;" data-ice="updated">2018-04-06 18:50:22 (UTC)</td>
+      <td style="display: none;" data-ice="size">674 byte</td>
+      <td style="display: none;" data-ice="lines">15</td>
+      <td style="display: none;" data-ice="updated">2018-05-04 19:39:37 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/utils/index.js.html">src/utils/index.js</a></span></td>
@@ -387,9 +396,9 @@
       <td data-ice="filePath"><span><a href="file/src/utils/zeroPad.js.html">src/utils/zeroPad.js</a></span></td>
       <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-zeroPad">zeroPad</a></span></td>
       <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">1/1</span></td>
-      <td style="display: none;" data-ice="size">391 byte</td>
+      <td style="display: none;" data-ice="size">341 byte</td>
       <td style="display: none;" data-ice="lines">14</td>
-      <td style="display: none;" data-ice="updated">2018-04-05 17:13:28 (UTC)</td>
+      <td style="display: none;" data-ice="updated">2018-05-04 19:42:23 (UTC)</td>
     </tr>
 </tbody>
 </table>

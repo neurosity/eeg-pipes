@@ -1584,7 +1584,7 @@
         "trailingComments": [
           {
             "type": "CommentBlock",
-            "value": "*\n * Applies a highpass filter to EEG Data. Can be applied to both raw or epoched data\n * @method highpassFilter\n * @example eeg$\n  .pipe(highpassFilter({ cutoffFrequency: 2, nbChannels: 4 }))\n * @param {Object} options - Filter options\n * @param {number} options.nbChannels Number of channels\n * @param {number} [options.cutoffFrequency=2] Cutoff frequency in Hz\n * @param {number} [options.samplingRate=250] Sampling rate of the EEG device\n * @param {String} [options.characteristic='butterworth'] Filter characteristic. Options are 'bessel' and 'butterworth'\n * @param {number} [options.order=2] The number of 2nd order biquad filters applied to the signal\n * \n * @returns {Observable<Sample | Epoch>}\n ",
+            "value": "*\n * Applies a highpass filter to EEG Data. Can be applied to both raw or epoched data\n * @method highpassFilter\n * @example eeg$\n  .pipe(highpassFilter({ cutoffFrequency: 2, nbChannels: 4 }))\n * @param {Object} options - Filter options\n * @param {number} options.nbChannels Number of channels\n * @param {number} [options.cutoffFrequency=2] Cutoff frequency in Hz\n * @param {number} [options.samplingRate=250] Sampling rate of the EEG device\n * @param {string} [options.characteristic='butterworth'] Filter characteristic. Options are 'bessel' and 'butterworth'\n * @param {number} [options.order=2] The number of 2nd order biquad filters applied to the signal\n * \n * @returns {Observable<Sample | Epoch>}\n ",
             "start": 646,
             "end": 1356,
             "loc": {
@@ -5247,7 +5247,7 @@
           "leadingComments": [
             {
               "type": "CommentBlock",
-              "value": "*\n * Applies a highpass filter to EEG Data. Can be applied to both raw or epoched data\n * @method highpassFilter\n * @example eeg$\n  .pipe(highpassFilter({ cutoffFrequency: 2, nbChannels: 4 }))\n * @param {Object} options - Filter options\n * @param {number} options.nbChannels Number of channels\n * @param {number} [options.cutoffFrequency=2] Cutoff frequency in Hz\n * @param {number} [options.samplingRate=250] Sampling rate of the EEG device\n * @param {String} [options.characteristic='butterworth'] Filter characteristic. Options are 'bessel' and 'butterworth'\n * @param {number} [options.order=2] The number of 2nd order biquad filters applied to the signal\n * \n * @returns {Observable<Sample | Epoch>}\n ",
+              "value": "*\n * Applies a highpass filter to EEG Data. Can be applied to both raw or epoched data\n * @method highpassFilter\n * @example eeg$\n  .pipe(highpassFilter({ cutoffFrequency: 2, nbChannels: 4 }))\n * @param {Object} options - Filter options\n * @param {number} options.nbChannels Number of channels\n * @param {number} [options.cutoffFrequency=2] Cutoff frequency in Hz\n * @param {number} [options.samplingRate=250] Sampling rate of the EEG device\n * @param {string} [options.characteristic='butterworth'] Filter characteristic. Options are 'bessel' and 'butterworth'\n * @param {number} [options.order=2] The number of 2nd order biquad filters applied to the signal\n * \n * @returns {Observable<Sample | Epoch>}\n ",
               "start": 646,
               "end": 1356,
               "loc": {
@@ -5267,7 +5267,7 @@
         "leadingComments": [
           {
             "type": "CommentBlock",
-            "value": "*\n * Applies a highpass filter to EEG Data. Can be applied to both raw or epoched data\n * @method highpassFilter\n * @example eeg$\n  .pipe(highpassFilter({ cutoffFrequency: 2, nbChannels: 4 }))\n * @param {Object} options - Filter options\n * @param {number} options.nbChannels Number of channels\n * @param {number} [options.cutoffFrequency=2] Cutoff frequency in Hz\n * @param {number} [options.samplingRate=250] Sampling rate of the EEG device\n * @param {String} [options.characteristic='butterworth'] Filter characteristic. Options are 'bessel' and 'butterworth'\n * @param {number} [options.order=2] The number of 2nd order biquad filters applied to the signal\n * \n * @returns {Observable<Sample | Epoch>}\n ",
+            "value": "*\n * Applies a highpass filter to EEG Data. Can be applied to both raw or epoched data\n * @method highpassFilter\n * @example eeg$\n  .pipe(highpassFilter({ cutoffFrequency: 2, nbChannels: 4 }))\n * @param {Object} options - Filter options\n * @param {number} options.nbChannels Number of channels\n * @param {number} [options.cutoffFrequency=2] Cutoff frequency in Hz\n * @param {number} [options.samplingRate=250] Sampling rate of the EEG device\n * @param {string} [options.characteristic='butterworth'] Filter characteristic. Options are 'bessel' and 'butterworth'\n * @param {number} [options.order=2] The number of 2nd order biquad filters applied to the signal\n * \n * @returns {Observable<Sample | Epoch>}\n ",
             "start": 646,
             "end": 1356,
             "loc": {
@@ -5289,7 +5289,7 @@
   "comments": [
     {
       "type": "CommentBlock",
-      "value": "*\n * Applies a highpass filter to EEG Data. Can be applied to both raw or epoched data\n * @method highpassFilter\n * @example eeg$\n  .pipe(highpassFilter({ cutoffFrequency: 2, nbChannels: 4 }))\n * @param {Object} options - Filter options\n * @param {number} options.nbChannels Number of channels\n * @param {number} [options.cutoffFrequency=2] Cutoff frequency in Hz\n * @param {number} [options.samplingRate=250] Sampling rate of the EEG device\n * @param {String} [options.characteristic='butterworth'] Filter characteristic. Options are 'bessel' and 'butterworth'\n * @param {number} [options.order=2] The number of 2nd order biquad filters applied to the signal\n * \n * @returns {Observable<Sample | Epoch>}\n ",
+      "value": "*\n * Applies a highpass filter to EEG Data. Can be applied to both raw or epoched data\n * @method highpassFilter\n * @example eeg$\n  .pipe(highpassFilter({ cutoffFrequency: 2, nbChannels: 4 }))\n * @param {Object} options - Filter options\n * @param {number} options.nbChannels Number of channels\n * @param {number} [options.cutoffFrequency=2] Cutoff frequency in Hz\n * @param {number} [options.samplingRate=250] Sampling rate of the EEG device\n * @param {string} [options.characteristic='butterworth'] Filter characteristic. Options are 'bessel' and 'butterworth'\n * @param {number} [options.order=2] The number of 2nd order biquad filters applied to the signal\n * \n * @returns {Observable<Sample | Epoch>}\n ",
       "start": 646,
       "end": 1356,
       "loc": {
@@ -8824,7 +8824,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n * Applies a highpass filter to EEG Data. Can be applied to both raw or epoched data\n * @method highpassFilter\n * @example eeg$\n  .pipe(highpassFilter({ cutoffFrequency: 2, nbChannels: 4 }))\n * @param {Object} options - Filter options\n * @param {number} options.nbChannels Number of channels\n * @param {number} [options.cutoffFrequency=2] Cutoff frequency in Hz\n * @param {number} [options.samplingRate=250] Sampling rate of the EEG device\n * @param {String} [options.characteristic='butterworth'] Filter characteristic. Options are 'bessel' and 'butterworth'\n * @param {number} [options.order=2] The number of 2nd order biquad filters applied to the signal\n * \n * @returns {Observable<Sample | Epoch>}\n ",
+      "value": "*\n * Applies a highpass filter to EEG Data. Can be applied to both raw or epoched data\n * @method highpassFilter\n * @example eeg$\n  .pipe(highpassFilter({ cutoffFrequency: 2, nbChannels: 4 }))\n * @param {Object} options - Filter options\n * @param {number} options.nbChannels Number of channels\n * @param {number} [options.cutoffFrequency=2] Cutoff frequency in Hz\n * @param {number} [options.samplingRate=250] Sampling rate of the EEG device\n * @param {string} [options.characteristic='butterworth'] Filter characteristic. Options are 'bessel' and 'butterworth'\n * @param {number} [options.order=2] The number of 2nd order biquad filters applied to the signal\n * \n * @returns {Observable<Sample | Epoch>}\n ",
       "start": 646,
       "end": 1356,
       "loc": {

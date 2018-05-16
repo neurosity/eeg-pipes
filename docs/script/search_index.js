@@ -150,6 +150,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "eeg-pipes/src/pipes/frequency/fft.js~fft",
+    "function/index.html#static-function-fft",
+    "<span>fft</span> <span class=\"search-result-import-path\">eeg-pipes/src/pipes/frequency/fft.js</span>",
+    "function"
+  ],
+  [
     "eeg-pipes/src/pipes/frequency/gammapower.js~gammapower",
     "function/index.html#static-function-gammaPower",
     "<span>gammaPower</span> <span class=\"search-result-import-path\">eeg-pipes/src/pipes/frequency/gammaPower.js</span>",
@@ -573,6 +579,12 @@ window.esdocSearchIndex = [
     "src/pipes/frequency/deltapower.js",
     "file/src/pipes/frequency/deltaPower.js.html",
     "src/pipes/frequency/deltaPower.js",
+    "file"
+  ],
+  [
+    "src/pipes/frequency/fft.js",
+    "file/src/pipes/frequency/fft.js.html",
+    "src/pipes/frequency/fft.js",
     "file"
   ],
   [

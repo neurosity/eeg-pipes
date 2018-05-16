@@ -49,6 +49,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-betaPower">betaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bufferFFT">bufferFFT</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deltaPower">deltaPower</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fft">fft</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-gammaPower">gammaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-powerByBand">powerByBand</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sliceFFT">sliceFFT</a></span></span></li>
@@ -108,7 +109,7 @@ const interpolate = (before, after) =&gt; {
  * @param {number} options.nbChannels Number of channels
  * @param {number} [options.cutoffFrequency=2] Cutoff frequency in Hz
  * @param {number} [options.samplingRate=250] Sampling rate of the EEG device
- * @param {String} [options.characteristic=&apos;butterworth&apos;] Filter characteristic. Options are &apos;bessel&apos; and &apos;butterworth&apos;
+ * @param {string} [options.characteristic=&apos;butterworth&apos;] Filter characteristic. Options are &apos;bessel&apos; and &apos;butterworth&apos;
  * @param {number} [options.order=2] The number of 2nd order biquad filters applied to the signal
  * 
  * @returns {Observable&lt;Sample | Epoch&gt;}

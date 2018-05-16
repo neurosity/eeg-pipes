@@ -6,8 +6,8 @@ import { createPipe } from "../../utils/createPipe";
  * Slices a stream of PSDs to a specific frequency range defined by a minimum and maximum frequency in Hz
  * @method sliceFFT
  * @example eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), sliceFFT([2, 30]))
- * @param {array} range: [min, max]
- * @returns {Observable<Array[number]>}
+ * @param {Array<number>} range Array containing minimum and maximum frequencies
+ * @returns {Observable<PSD>}
  */
 export const sliceFFT = ([min = 0, max = 128]) => source =>
   createPipe(

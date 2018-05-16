@@ -49,6 +49,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-betaPower">betaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bufferFFT">bufferFFT</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deltaPower">deltaPower</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fft">fft</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-gammaPower">gammaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-powerByBand">powerByBand</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sliceFFT">sliceFFT</a></span></span></li>
@@ -80,36 +81,32 @@ import { averagePower } from &quot;./averagePower&quot;;
 import { sliceFFT } from &quot;./sliceFFT&quot;;
 
 import {
-    SAMPLE_RATE as defaultSampleRate,
-    FREQUENCY_BANDS as defaultBands
+  FREQUENCY_BANDS as defaultBands
 } from &quot;../../constants&quot;;
 
 /**
+ * Takes a stream of PSDs and returns the average power for each of the classic EEG bands (alpha, beta, theta, etc.). Classic EEG bands can be overridden by providing a custom bands object (e.g. { lowAlpha: [7.5, 10], highAlpha: [10, 12.5] })
  * @method powerByBand
- * Returns an object with average band powers for all the classic EEG bands.
- *
- * @param {object} bands { [bandName]: range[min, max] }
- * @returns {Observable} bands { [bandName]: bandPower }
+ * @example eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), powerByBand())
+ * @param {Object} [bands] Custom bands object containing corresponding names and frequency ranges
+ * @returns {Observable&lt;Array&lt;number&gt;&gt;}
  */
-export const powerByBand = (
-  bands = defaultBands,
-  sampleRate = defaultSampleRate
-) =&gt; source =&gt;
+export const powerByBand = (bands = defaultBands) =&gt; source =&gt;
   createPipe(
     source,
-    flatMap(fftBuffer =&gt; {
+    flatMap(inputPSD =&gt; {
       const entries = Object.entries(bands);
-      const bandPowers = entries.map(([, range ]) =&gt;
-        of(fftBuffer).pipe(
-          sliceFFT(range, sampleRate),
-          averagePower()
-        )
+      const bandPowers = entries.map(([_, range]) =&gt;
+        of(inputPSD).pipe(sliceFFT(range), averagePower())
       );
       const zipPowers = (...powers) =&gt;
-        powers.reduce((acc, power, index) =&gt; ({
-          ...acc,
-          [entries[index][0]]: power
-        }), {});
+        powers.reduce(
+          (acc, power, index) =&gt; ({
+            ...acc,
+            [entries[index][0]]: power
+          }),
+          {}
+        );
       return zip(...bandPowers, zipPowers);
     })
   );

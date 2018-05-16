@@ -1,7 +1,7 @@
 {
-  "coverage": "38.59%",
-  "expectCount": 57,
-  "actualCount": 22,
+  "coverage": "39.65%",
+  "expectCount": 58,
+  "actualCount": 23,
   "files": {
     "src/constants/index.js": {
       "expectCount": 11,
@@ -74,6 +74,11 @@
       "undocumentLines": []
     },
     "src/pipes/frequency/deltaPower.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/pipes/frequency/fft.js": {
       "expectCount": 1,
       "actualCount": 1,
       "undocumentLines": []

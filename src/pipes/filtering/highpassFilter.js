@@ -35,7 +35,7 @@ const interpolate = (before, after) => {
  * @param {number} options.nbChannels Number of channels
  * @param {number} [options.cutoffFrequency=2] Cutoff frequency in Hz
  * @param {number} [options.samplingRate=250] Sampling rate of the EEG device
- * @param {String} [options.characteristic='butterworth'] Filter characteristic. Options are 'bessel' and 'butterworth'
+ * @param {string} [options.characteristic='butterworth'] Filter characteristic. Options are 'bessel' and 'butterworth'
  * @param {number} [options.order=2] The number of 2nd order biquad filters applied to the signal
  * 
  * @returns {Observable<Sample | Epoch>}

@@ -49,6 +49,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-betaPower">betaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bufferFFT">bufferFFT</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deltaPower">deltaPower</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fft">fft</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-gammaPower">gammaPower</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-powerByBand">powerByBand</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sliceFFT">sliceFFT</a></span></span></li>
@@ -90,9 +91,8 @@ const patch = sample =&gt; info =&gt; ({
  * Annotates stream with user-defined metadata
  * @method addInfo
  * @example eeg$.pipe(addinfo({ samplingRate: 256, channelNames: [&quot;Af7&quot;, &quot;Fp1&quot;, &quot;Fp2&quot;, &quot;Af8&quot;] })
- *
- * @param {Object} info - Info to be added to the EEG stream. Relevant info may include: `samplingRate` and `channelNames`
- * @returns {Observable&lt;Sample | Epoch | PSD&gt;}
+ * @param {Object} info Info to be added to the EEG stream. Relevant info may include: `samplingRate` and `channelNames`
+ * @returns {Observable&lt;Sample|Epoch|PSD&gt;}
  */
 export const addInfo = (arg = {}) =&gt; source =&gt;
   createPipe(

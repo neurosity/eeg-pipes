@@ -15,7 +15,7 @@ import {
  * @example eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }))
  * @param {Object} options - FFT options
  * @param {number} options.bins Number of FFT bins. Must be a power of 2.
- * @param {String} [options.dataProp='data] Name of the key associated with eeg data
+ * @param {string} [options.dataProp='data] Name of the key associated with eeg data
  *
  * @returns {Observable<PSD>}
  */

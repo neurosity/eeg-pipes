@@ -17,7 +17,7 @@ import {
  * @param {Object} options - FFT options
  * @param {number} options.bins Number of FFT bins. Must be a power of 2.
  * @param {number} options.sampleRate Sampline rate of EEG siganl
- * @param {String} [options.dataProp='data] Name of the key associated with eeg data
+ * @param {string} [options.dataProp='data] Name of the key associated with eeg data
  * @returns {Observable}
  */
 export const bufferFFT = ({

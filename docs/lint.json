@@ -1,50 +1,5 @@
 [
   {
-    "name": "powerByBand",
-    "filePath": "src/pipes/frequency/powerByBand.js",
-    "lines": [
-      {
-        "lineNumber": 13,
-        "line": "/**"
-      },
-      {
-        "lineNumber": 14,
-        "line": " * @method powerByBand"
-      },
-      {
-        "lineNumber": 15,
-        "line": " * Returns an object with average band powers for all the classic EEG bands."
-      },
-      {
-        "lineNumber": 16,
-        "line": " *"
-      },
-      {
-        "lineNumber": 17,
-        "line": " * @param {object} bands { [bandName]: range[min, max] }"
-      },
-      {
-        "lineNumber": 18,
-        "line": " * @returns {Observable} bands { [bandName]: bandPower }"
-      },
-      {
-        "lineNumber": 19,
-        "line": " */"
-      },
-      {
-        "lineNumber": 20,
-        "line": "export const powerByBand = ("
-      }
-    ],
-    "codeParams": [
-      "bands",
-      "sampleRate"
-    ],
-    "docParams": [
-      "bands"
-    ]
-  },
-  {
     "name": "addInfo",
     "filePath": "src/pipes/utility/addInfo.js",
     "lines": [
@@ -66,22 +21,18 @@
       },
       {
         "lineNumber": 19,
-        "line": " *"
+        "line": " * @param {Object} info Info to be added to the EEG stream. Relevant info may include: `samplingRate` and `channelNames`"
       },
       {
         "lineNumber": 20,
-        "line": " * @param {Object} info - Info to be added to the EEG stream. Relevant info may include: `samplingRate` and `channelNames`"
+        "line": " * @returns {Observable<Sample|Epoch|PSD>}"
       },
       {
         "lineNumber": 21,
-        "line": " * @returns {Observable<Sample | Epoch | PSD>}"
-      },
-      {
-        "lineNumber": 22,
         "line": " */"
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 22,
         "line": "export const addInfo = (arg = {}) => source =>"
       }
     ],
@@ -90,80 +41,6 @@
     ],
     "docParams": [
       "info"
-    ]
-  },
-  {
-    "name": "groupByChannel",
-    "filePath": "src/utils/groupByChannel.js",
-    "lines": [
-      {
-        "lineNumber": 2,
-        "line": "/**"
-      },
-      {
-        "lineNumber": 3,
-        "line": " * @method groupByChannel"
-      },
-      {
-        "lineNumber": 4,
-        "line": " * Get a 2D data array organized by channel from an array of Samples"
-      },
-      {
-        "lineNumber": 5,
-        "line": " *"
-      },
-      {
-        "lineNumber": 6,
-        "line": " * @example from [{ ...s0 }, { ...s1 }, ...]"
-      },
-      {
-        "lineNumber": 7,
-        "line": " * to [[c0 ...], [c1 ...], ...]"
-      },
-      {
-        "lineNumber": 8,
-        "line": " *"
-      },
-      {
-        "lineNumber": 9,
-        "line": " * @param {any} samplesBuffer array of samples"
-      },
-      {
-        "lineNumber": 10,
-        "line": " * @param {any} channelDataByChannel"
-      },
-      {
-        "lineNumber": 11,
-        "line": " * "
-      },
-      {
-        "lineNumber": 12,
-        "line": " * Credit to Ken from Seattle's elegant transposition"
-      },
-      {
-        "lineNumber": 13,
-        "line": " * http://www.codesuck.com/2012/02/transpose-javascript-array-in-one-line.html"
-      },
-      {
-        "lineNumber": 14,
-        "line": " */"
-      },
-      {
-        "lineNumber": 15,
-        "line": ""
-      },
-      {
-        "lineNumber": 16,
-        "line": "export const groupByChannel = (samplesBuffer, dataProp = defaultDataProp) =>"
-      }
-    ],
-    "codeParams": [
-      "samplesBuffer",
-      "dataProp"
-    ],
-    "docParams": [
-      "samplesBuffer",
-      "channelDataByChannel"
     ]
   },
   {
@@ -176,30 +53,34 @@
       },
       {
         "lineNumber": 1,
-        "line": " * @method zeroPad"
+        "line": " * ZeroPads inputs for FFTs of non base 2"
       },
       {
         "lineNumber": 2,
-        "line": " * zeroPads inputs for FFTs of non base 2"
+        "line": " * @method zeroPad *"
       },
       {
         "lineNumber": 3,
-        "line": " * @param Array<number> bufferedData, number fftLength"
+        "line": " * @param Array<number> bufferedData"
       },
       {
         "lineNumber": 4,
-        "line": " * @returns Array<number>"
+        "line": " * @param number fftLength"
       },
       {
         "lineNumber": 5,
-        "line": " */"
+        "line": " * @returns Array<number>"
       },
       {
         "lineNumber": 6,
-        "line": ""
+        "line": " */"
       },
       {
         "lineNumber": 7,
+        "line": ""
+      },
+      {
+        "lineNumber": 8,
         "line": "export const zeroPad = (buffer, fftLength) => {"
       }
     ],
@@ -208,7 +89,8 @@
       "fftLength"
     ],
     "docParams": [
-      "Array<number>"
+      "Array<number>",
+      "number"
     ]
   }
 ]

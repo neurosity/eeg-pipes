@@ -49,6 +49,10 @@ eeg$
   .subscribe(buffer => console.log(buffer));
 ```
 
+## Generating documentation
+
+To generate the docs, run `yarn esdoc`
+
 ## Pipes
 
 ### Filtering (IIR)
