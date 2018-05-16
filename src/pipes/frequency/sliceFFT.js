@@ -26,7 +26,8 @@ export const sliceFFT = ([min = 0, max = 128]) => source =>
 
       return {
         ...inputPSD,
-        psd: filteredPSD
+        psd: filteredPSD,
+        freqs: inputPSD.freqs.filter(freq => freq >= min && freq <= max)
       };
     })
   );
