@@ -5,14 +5,10 @@ import { sliceFFT } from "./sliceFFT";
 import { FREQUENCY_BANDS as frequencyBands } from "../../constants";
 
 /**
+ * Returns the average gamma power from a stream of PSDs
  * @method gammaPower
- * Filters FFT buffer based on gamma frequency range and averages the power
- *
- * @returns {Observable} fftBuffer
+ * @example eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), gammaPower())
+ * @returns {Observable<Array[number>}
  */
 export const gammaPower = () => source =>
-  createPipe(
-    source,
-    sliceFFT(frequencyBands.gamma),
-    averagePower()
-  );
+  createPipe(source, sliceFFT(frequencyBands.gamma), averagePower());

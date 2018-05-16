@@ -5,14 +5,10 @@ import { sliceFFT } from "./sliceFFT";
 import { FREQUENCY_BANDS as frequencyBands } from "../../constants";
 
 /**
+ * Returns the average theta power from a stream of PSDs
  * @method thetaPower
- * Filters FFT buffer based on theta frequency range and averages the power
- *
- * @returns {Observable} fftBuffer
+ * @example eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), thetaPower())
+ * @returns {Observable<Array[number>}
  */
 export const thetaPower = () => source =>
-  createPipe(
-    source,
-    sliceFFT(frequencyBands.theta),
-    averagePower()
-  );
+  createPipe(source, sliceFFT(frequencyBands.theta), averagePower());

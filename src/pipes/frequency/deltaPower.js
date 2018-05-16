@@ -5,14 +5,10 @@ import { sliceFFT } from "./sliceFFT";
 import { FREQUENCY_BANDS as frequencyBands } from "../../constants";
 
 /**
- * @method deltaPower
- * Filters FFT buffer based on delta frequency range and averages the power
- *
- * @returns {Observable} fftBuffer
+ * Returns the average alpha power from a stream of PSDs
+ * @method alphaPower
+ * @example eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), alphaPower())
+ * @returns {Observable<Array[number>}
  */
 export const deltaPower = () => source =>
-  createPipe(
-    source,
-    sliceFFT(frequencyBands.delta),
-    averagePower()
-  );
+  createPipe(source, sliceFFT(frequencyBands.delta), averagePower());

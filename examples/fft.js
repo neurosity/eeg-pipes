@@ -26,9 +26,8 @@ const eeg3$ = createEEG().pipe(
 );
 
 const eeg4$ = createEEG({ sine: 7, sampleRate: 256 }).pipe(
-  addInfo({ samplingRate: 256 }),
-  epoch({ duration: 1000, interval: 256 }),
-  fft({ bins: 512 })
+  epoch({ duration: 256, interval: 256, samplingRate: 256 }),
+  fft({ bins: 256 })
 );
 
 eeg4$.subscribe(console.log);

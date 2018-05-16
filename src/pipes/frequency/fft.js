@@ -10,9 +10,9 @@ import {
 
 
 /**
- * Applys a Fast Fourier Transform to a stream of Epochs of EEG data and returns a stream of PSDs (Power Spectral Density). Frequency resolution will be samplingRate / bins. If input Epoch duration is not equal to bins, data will be zero-padded or sliced so that is the same length as bins.
+ * Applies a Fast Fourier Transform to a stream of Epochs of EEG data and returns a stream of PSDs (Power Spectral Density). Frequency resolution will be samplingRate / bins. If input Epoch duration is not equal to bins, data will be zero-padded or sliced so that is the same length as bins.
  * @method fft
- * @example eeg$.pipe(addInfo({ samplingRate: 256}), epoch({ duration: 256, interval: 100 }), fft({ bins: 256 }))
+ * @example eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }))
  * @param {Object} options - FFT options
  * @param {number} options.bins Number of FFT bins. Must be a power of 2.
  * @param {String} [options.dataProp='data] Name of the key associated with eeg data

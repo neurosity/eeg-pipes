@@ -11,10 +11,13 @@ import {
 } from "../../constants";
 
 /**
+ * Takes a stream of Samples and applies a Fast Fourier Transform to return a stream of PSDs (Power Spectral Density). Note: this operator works by buffering the stream of samples into buffers that are as long as the supplied number of bins. Because it doesn't allow as much flexibility in terms of how often data is emitted we recommend using a combination of the `epoch` and `fft` operators instead.
  * @method bufferFFT
- * Takes a samples and returns an FFT buffer
- *
- * @param {Object} options
+ * @example eeg$.pipe(bufferFFT({ bins: 1024 }))
+ * @param {Object} options - FFT options
+ * @param {number} options.bins Number of FFT bins. Must be a power of 2.
+ * @param {number} options.sampleRate Sampline rate of EEG siganl
+ * @param {String} [options.dataProp='data] Name of the key associated with eeg data
  * @returns {Observable}
  */
 export const bufferFFT = ({
