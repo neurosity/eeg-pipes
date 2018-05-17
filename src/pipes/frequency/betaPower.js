@@ -8,7 +8,7 @@ import { FREQUENCY_BANDS as frequencyBands } from "../../constants";
  * Returns the average beta power from a stream of PSDs
  * @method betaPower
  * @example eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), betaPower())
- * @returns {Observable<Array[number]>}
+ * @returns {Observable<Array<number>>}
  */
 export const betaPower = () => source =>
   createPipe(source, sliceFFT(frequencyBands.beta), averagePower());
