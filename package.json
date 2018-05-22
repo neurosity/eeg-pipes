@@ -1,7 +1,7 @@
 {
   "name": "@neurosity/pipes",
   "description": "Lettable RxJS operators for working with EEG data in Node and the Browser",
-  "version": "2.0.3",
+  "version": "3.0.0",
   "main": "dist/eeg-pipes.umd.js",
   "scripts": {
     "build": "webpack --mode production",
