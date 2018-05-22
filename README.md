@@ -71,7 +71,7 @@ Optional Parameters:
 
 ### Frequency
 
-* bufferFFT({ bins, window, sampleRate })
+* bufferFFT({ bins, window, samplingRate })
 * alphaPower()
 * betaPower()
 * deltaPower()

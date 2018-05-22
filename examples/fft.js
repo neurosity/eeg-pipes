@@ -9,11 +9,11 @@ const {
   bufferToEpoch
 } = require("../");
 
-const eeg1$ = createEEG({ sine: 7, sampleRate: 1024 }).pipe(
+const eeg1$ = createEEG({ sine: 7, samplingRate: 1024 }).pipe(
   bufferFFT({ bins: 1024 })
 );
 
-const eeg2$ = createEEG({ sine: 7, sampleRate: 1024 }).pipe(
+const eeg2$ = createEEG({ sine: 7, samplingRate: 1024 }).pipe(
   addInfo({ samplingRate: 1024 }),
   epoch({ duration: 1024, interval: 1024 }),
   fft({ bins: 1024 })
@@ -25,7 +25,7 @@ const eeg3$ = createEEG().pipe(
   fft({ bins: 512 })
 );
 
-const eeg4$ = createEEG({ sine: 7, sampleRate: 256 }).pipe(
+const eeg4$ = createEEG({ sine: 7, samplingRate: 256 }).pipe(
   epoch({ duration: 256, interval: 256, samplingRate: 256 }),
   fft({ bins: 256 })
 );

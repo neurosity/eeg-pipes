@@ -13,7 +13,7 @@ import { sample } from "rxjs/operator/sample";
 //   );
 
 const NUM_CHANNELS = 4;
-const SAMPLE_RATE = 256;
+const SAMPLING_RATE = 256;
 
 let sinCounter = 0;
 
@@ -22,11 +22,11 @@ const museData = museCsv.map(row => row.slice(1, 5));
 
 const createMockRow = length => Array.from({ length }, () => Math.random());
 
-const createSineRow = (length, freq, sampleRate) => {
+const createSineRow = (length, freq, samplingRate) => {
   sinCounter++;
   return Array.from(
     { length },
-    () => Math.sin(sinCounter / (sampleRate / freq / (Math.PI * 2))) * 100
+    () => Math.sin(sinCounter / (samplingRate / freq / (Math.PI * 2))) * 100
   );
 };
 
@@ -41,18 +41,18 @@ const injectNaNs = (data, [min, max]) =>
  */
 export const createEEG = ({
   channels = NUM_CHANNELS,
-  sampleRate = SAMPLE_RATE,
+  samplingRate = SAMPLING_RATE,
   mock = false,
   NaNRange = [0, 0],
   sine = false,
   csv = museData
 } = {}) =>
-  interval(1000 / sampleRate).pipe(
+  interval(1000 / samplingRate).pipe(
     map(interval => {
       const timestamp = Date.now();
       let row = [];
       if (sine) {
-        row = createSineRow(channels, sine, sampleRate);
+        row = createSineRow(channels, sine, samplingRate);
       } else {
         row = mock ? createMockRow(channels) : getCsvRow(csv, interval);
       }

@@ -1,5 +1,7 @@
 export const CHANNELS = 4;
-export const SAMPLE_RATE = 250;
+export const SAMPLING_RATE = 256;
+export const EPOCH_DURATION = 256;
+export const EPOCH_INTERVAL = 100;
 export const ORDER = 2;
 export const NOTCH_BW = 0.5;
 export const CHARACTERISTIC = "butterworth";

@@ -3,10 +3,13 @@ import { map } from "rxjs/operators";
 import { createPipe } from "../../utils/createPipe";
 import { groupByChannel } from "../../utils/groupByChannel";
 
-import { DATA_PROP as defaultDataProp } from "../../constants";
+import {
+  DATA_PROP as defaultDataProp,
+  SAMPLING_RATE as defaultSamplingRate,
+ } from "../../constants";
 
 /**
- * Takes an array or RxJS buffer of EEG Samples and returns an Epoch. Requires samplingRate parameter unless stream already contains samplingRate in info.
+ * Takes an array or RxJS buffer of EEG Samples and returns an Epoch.
  * @method bufferToEpoch
  * @example eeg$.pipe(bufferTime(1000), bufferToEpoch({ samplingRate: 256 }))
  *
@@ -17,7 +20,7 @@ import { DATA_PROP as defaultDataProp } from "../../constants";
  * @returns {Observable<Epoch>}
  */
 export const bufferToEpoch = ({
-  samplingRate,
+  samplingRate = defaultSamplingRate,
   dataProp = defaultDataProp
 } = {}) => source$ =>
   createPipe(
@@ -25,7 +28,7 @@ export const bufferToEpoch = ({
     map(samplesArray => ({
       [dataProp]: groupByChannel(samplesArray, dataProp),
       info: {
-        ...samplesArray[0].info,
+        ...(samplesArray[0] && samplesArray[0].info ? samplesArray[0].info : {}),
         startTime: samplesArray[0].timestamp,
         samplingRate: samplingRate
           ? samplingRate
