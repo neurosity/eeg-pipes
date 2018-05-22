@@ -1,8 +1,9 @@
 import { CalcCascades, IirFilter } from "fili";
 import { map } from "rxjs/operators";
 import { createPipe } from "../../utils/createPipe";
+import { isEpoch } from "../../utils/isEpoch";
 import {
-  SAMPLE_RATE as defaultsamplingRate,
+  SAMPLING_RATE as defaultsamplingRate,
   ORDER as defaultOrder,
   CHARACTERISTIC as defaultCharacteristic,
   NOTCH_BW as defaultNotchBW
@@ -50,7 +51,7 @@ const interpolate = (before, after) => {
  * @param {number} [options.bandWidth=0.5] Width of the cutoff centered around the notched frequency. Larger values reduce filter out more of the notch frequency at the cost of also reducing nearby frequencies
  * @param {boolean} [options.filterHarmonics=false] Whether to filter harmonics of the notch frequency as well
  * @param {number} [options.samplingRate=250] Sampling rate of the EEG device
- * @param {String} [options.characteristic='butterworth'] Filter characteristic. Options are 'bessel' and 'butterworth'
+ * @param {string} [options.characteristic='butterworth'] Filter characteristic. Options are 'bessel' and 'butterworth'
  * @param {number} [options.order=2] Number of 2nd order biquad filters applied to the signal
  * 
  * @returns {Observable<Sample | Epoch>}
@@ -81,44 +82,40 @@ export const notchFilter = ({
   );
   return createPipe(
     source,
-    map(eegObject => {
-      const isChunk = Array.isArray(eegObject.data[0]);
-      return {
-        ...eegObject,
-        data: eegObject.data.map((channel, index) => {
-          // If Chunk, map through channel data, cleaning NaNs by interpolating.
-          if (isChunk) {
-            const nans = [];
-            const safeChannel = channel.map((sample, sampleIndex) => {
-              if (isNaN(sample)) {
-                nans.push(sampleIndex);
-                const interpolation = interpolate(
-                  channel[sampleIndex - 1],
-                  channel[sampleIndex + 1]
-                );
-                return interpolation;
-              }
-              return sample;
-            });
-
-            // Then, perform filter
-            const filteredData = notchArray[index](safeChannel, "multiStep");
-
-            // Afterwards, reinsert NaNs
-            if (nans.length > 0) {
-              nans.forEach(nan => {
-                filteredData[nan] = NaN;
-              });
+    map(eegObject => ({
+      ...eegObject,
+      data: eegObject.data.map((channel, index) => {
+        if (isEpoch(eegObject)) {
+          const nans = [];
+          const safeChannel = channel.map((sample, sampleIndex) => {
+            if (isNaN(sample)) {
+              nans.push(sampleIndex);
+              const interpolation = interpolate(
+                channel[sampleIndex - 1],
+                channel[sampleIndex + 1]
+              );
+              return interpolation;
             }
-            return filteredData;
+            return sample;
+          });
+
+          // Then, perform filter
+          const filteredData = notchArray[index](safeChannel, "multiStep");
+
+          // Afterwards, reinsert NaNs
+          if (nans.length > 0) {
+            nans.forEach(nan => {
+              filteredData[nan] = NaN;
+            });
           }
-          // If Sample, only filter if not NaN
-          if (!isNaN(channel)) {
-            return notchArray[index](channel, "singleStep");
-          }
-          return channel;
-        })
-      };
-    })
+          return filteredData;
+        }
+        // If Sample, only filter if not NaN
+        if (!isNaN(channel)) {
+          return notchArray[index](channel, "singleStep");
+        }
+        return channel;
+      })
+    }))
   );
 };

@@ -49,6 +49,10 @@ eeg$
   .subscribe(buffer => console.log(buffer));
 ```
 
+## Generating documentation
+
+To generate the docs, run `yarn esdoc`
+
 ## Pipes
 
 ### Filtering (IIR)
@@ -67,7 +71,7 @@ Optional Parameters:
 
 ### Frequency
 
-* bufferFFT({ bins, window, sampleRate })
+* bufferFFT({ bins, window, samplingRate })
 * alphaPower()
 * betaPower()
 * deltaPower()
@@ -79,13 +83,14 @@ Optional Parameters:
 
 #### Unit conversion
 
-* toMicrovolts({ log })
+* voltToMicrovolts({ useLog })
 
 #### Utility
 
+* epoch({ duration, interval, samplingRate })
 * bufferCount()
 * bufferTime()
-* chunk()
+* bufferToEpoch({ samplingRate })
 * pickChannels({ channels: [c1, c2, c3] })
 * removeChannels({ channels: [c1, c2, c3] })
 * addInfo()
@@ -100,34 +105,56 @@ Optional Parameters:
 * polarityFilter()
 * maxFrequencyFilter()
 
-## Chunking Data
+## Data Structures
 
-Most pipes will work when applied to streams of individual EEG samples. However, in order to improve performance, especially when working with high sample rates, it is also possible to chunk data so that each emitted event represents a collection of individual EEG samples. *Only filter pipes support chunked data currently*
+### Sample
 
-Chunks can be created by using a buffer operator such as `bufferCount` or `bufferTime` followed by the `chunk` operator:
-
-```js
-eeg$
-  .pipe(bufferCount(1000), chunk())
-  .subscribe(buffer => console.log(buffer));
-```
-
-Chunks have the following data structure:
+This is the simplest, core data structure for individual samples of EEG data. Samples have a data array containing a single reading from a number of different EEG electrodes along with a single timestamp. Samples can also contain optional other parameters added by the `addInfo` operator. The design for this comes directly from the discussion on the [EEG stream data models repo](https://github.com/NeuroJS/eeg-stream-data-model/issues/1).
 
 ```js
 {
-  data: [
-    [Number, Number, ...],
-    [Number, Number, ...],
-    [Number, Number, ...],
-    [Number, Number, ...],
-  ], // nbChannels x nbSamples 
-  info: {
-    samplingRate: Number,
-    startTime: Number,
-    ...
+    data: [Number, ..., Number], // length == nbChannels
+    timestamp: <Number>,
+    info?: {
+  	  samplingRate?: Number,
+  	  channelNames?: [String, String, String, String],
+  	...
   }
 }
 ```
 
-Chunks contain a 2D data array with shape nbChannels x nbSamples. Instead of individual timestamps for each sample, Chunk objects contain samplingRate and startTime information in the info object in order to allow time at any point within the Chunk to be inferred. Info properties present in Sample objects before being pooled into Chunks will be maintained.
+### Epoch
+
+An Epoch represents the EEG data that has been collected over a specific period of time. They can be produced by using either the `epoch` operator or by using a standard RxJS buffering operator such as `bufferTime` followed by the `bufferToEpoch` operator. Collecting data in this way is necessary for performing frequency-based analyses and, in many cases, will improve performance of filtering and other downstream operations. Epochs contain a 2D data array (channels x samples) and an info object that always includes samplingRate and startTime data so that the timestamps of individual samples can be derived. 
+
+```js
+{
+    data: [
+        [Number, ... , Number], // length == duration
+        [Number, ... , Number]
+    ], // length == nbChannels
+    info: {
+        samplingRate: Number,
+        startTime: Number,
+        channelNames?: [String, ..., String ]
+    }
+}
+```
+
+### Power Spectral Density or PSD: Proposed Work in Progress
+
+A PSD represents the absolute power of different frequency bins in an Epoch of EEG data. PSDs are produced by applying the `fft` operator to Epochs or using the `bufferFFT` operator directly on a stream of EEG Samples. PSDs contain an array of frequencies and a corresponding array of spectral power at each of those frequencies, as well as an info object that contains samplingRate and startTime info similarly to Epochs.
+
+```js
+{
+    psd: [
+        [Number, ... , Number] // spectral power; length = freqs.length
+    ], // length = numChannels
+    freqs: [Number, ... , Number], // length = fftLength / 2
+    info: {
+        samplingRate: Number,
+        startTime: Number,
+        channelNames?: [String, ..., String ]
+    }
+}
+```

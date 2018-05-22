@@ -2,37 +2,32 @@ import { map } from "rxjs/operators";
 
 import { createPipe } from "../../utils/createPipe";
 
-import { SAMPLE_RATE as defaultSampleRate } from "../../constants";
-
 /**
+ * Slices a stream of PSDs to a specific frequency range defined by a minimum and maximum frequency in Hz
  * @method sliceFFT
- * Filters FFT buffer by frequency range.
- *
- * @param {array} range: [min, max]
- * @param {number} sampleRate
- * @returns {Observable} fftBuffer
+ * @example eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), sliceFFT([2, 30]))
+ * @param {Array<number>} range Array containing minimum and maximum frequencies
+ * @returns {Observable<PSD>}
  */
-export const sliceFFT = (
-  [min = 0, max = 128],
-  sampleRate = defaultSampleRate
-) => source =>
+export const sliceFFT = ([min = 0, max = 128]) => source =>
   createPipe(
     source,
-    map(fftBuffer => {
-      if (!fftBuffer.length || !fftBuffer[0].length) {
-        return fftBuffer;
+    map(inputPSD => {
+      if (!inputPSD.psd.length || !inputPSD.psd[0].length) {
+        return inputPSD;
       }
 
-      const bins = fftBuffer[0].length * 2;
-
-      const ranges = Array.from({ length: bins / 2 }, (range, index) =>
-        Math.ceil(index * (sampleRate / bins))
-      );
-
-      return fftBuffer.map(channel =>
+      const filteredPSD = inputPSD.psd.map(channel =>
         channel.filter(
-          (spectrum, index) => ranges[index] >= min && ranges[index] <= max
+          (spectrum, index) =>
+            inputPSD.freqs[index] >= min && inputPSD.freqs[index] <= max
         )
       );
+
+      return {
+        ...inputPSD,
+        psd: filteredPSD,
+        freqs: inputPSD.freqs.filter(freq => freq >= min && freq <= max)
+      };
     })
   );

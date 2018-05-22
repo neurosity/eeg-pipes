@@ -1,6 +1,7 @@
 import { map } from "rxjs/operators";
 
 import { createPipe } from "../../utils/createPipe";
+import { isEpoch } from "../../utils/isEpoch";
 
 import {
   USE_LOG as useLog,
@@ -8,22 +9,33 @@ import {
 } from "../../constants";
 
 /**
+ * Converts a stream of EEG data (either eegObjects or Epochs) from volts to microvolts
  * @method toMicrovolts
- * Takes a data stream of samples and returns the values in microvolts
+ * @example eeg&.pipe(toMicrovolts)
+ * @param {Object} options - Conversion options
+ * @param {boolean} [options.useLog=false] Whether to use logarithmic conversion
+ * @param {string} [options.dataProp='data'] Name of the key associated with eeg data
  *
- * @param {Object} options
- * @returns {Observable}
+ * @returns {Observable<Sample | Epoch>}
  */
-export const voltsToMicrovolts = (
-  { log = useLog, dataProp = defaultDataProp } = {}
-) => source =>
+export const voltsToMicrovolts = ({
+  log = useLog,
+  dataProp = defaultDataProp
+} = {}) => source =>
   createPipe(
     source,
-    map(sample => ({
-      ...sample,
-      [dataProp]: sample[dataProp].map(
-        volt =>
-          log ? Math.log10(Math.pow(10, 6) * volt) : Math.pow(10, 6) * volt
-      )
-    }))
+    map(eegObject => {
+      const conversion = log
+        ? volt => Math.log10(Math.pow(10, 6) * volt)
+        : volt => Math.pow(10, 6) * volt;
+      return {
+        ...eegObject,
+        [dataProp]: eegObject[dataProp].map(channel => {
+          if (isEpoch(eegObject)) {
+            return channel.map(conversion);
+          }
+          return conversion(channel);
+        })
+      };
+    })
   );
