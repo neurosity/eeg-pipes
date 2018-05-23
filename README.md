@@ -1,4 +1,4 @@
-![Neurosity](./assets/logo.png)
+![Neurosity](https://neurosity.co/s/logo-sm.png)
 
 Reimagining brain-computer interfaces and neuro-powered applications.
 
@@ -15,7 +15,7 @@ Features include:
 
 Get started by installing the library:
 
-```bash
+```
 npm install @neurosity/pipes
 ```
 
@@ -33,7 +33,15 @@ Then...
 ```js
 import { fromEvent } from "rxjs";
 
-cosnt eeg$ = fromEvent(bci, "data");
+const eeg$ = fromEvent(bci, "data");
+```
+
+Now we have an Observable of EEG data that support Pipeable operators.
+
+```js
+eeg$.pipe(
+  // ...
+).subscribe();
 ```
 
 The following are some libraries that provide EEG as RxJS observables out of the box:
