@@ -1,7 +1,7 @@
 {
-  "name": "eeg-pipes",
+  "name": "@neurosity/pipes",
   "description": "Lettable RxJS operators for working with EEG data in Node and the Browser",
-  "version": "2.0.3",
+  "version": "3.0.2",
   "main": "dist/eeg-pipes.umd.js",
   "scripts": {
     "build": "webpack --mode production",
@@ -12,9 +12,10 @@
   "files": [
     "dist"
   ],
-  "author": "Alex Castillo <alex@castillo.io>",
+  "author": "Neurosity, Inc",
   "license": "MIT",
   "keywords": [
+    "neurosity",
     "eeg",
     "openbci",
     "neurojs",
@@ -24,10 +25,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:alexcastillo/eeg-pipes.git"
+    "url": "git@github.com:neurosity/eeg-pipes.git"
   },
   "bugs": {
-    "url": "https://github.com/alexcastillo/eeg-pipes/issues"
+    "url": "https://github.com/neurosity/eeg-pipes/issues"
   },
   "dependencies": {
     "dsp.js": "^1.0.1",
