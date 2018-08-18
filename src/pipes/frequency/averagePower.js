@@ -1,7 +1,7 @@
 import { map } from "rxjs/operators";
 
 import { createPipe } from "../../utils/createPipe";
-import { average } from "../../utils";
+import { average } from "../../utils/stats";
 
 /**
  * Takes a stream of PSDs and returns a sream of arrays, containing the average power in each channel
