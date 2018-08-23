@@ -1,5 +1,5 @@
 import { map } from "rxjs/operators";
-import { stats } from "../../utils";
+import { average } from "../../utils/stats";
 
 /**
  * @method averageDeep

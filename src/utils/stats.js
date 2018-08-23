@@ -9,8 +9,6 @@ const min = array => Reflect.apply(Math.min, null, array);
 
 const range = array => max(array) - min(array);
 
-// Array.isArray(value) ? average(value) : value;
-
 const sum = array => {
   let num = 0;
   for (let i = 0, l = array.length; i < l; i++) {
@@ -36,7 +34,7 @@ const meanAbsoluteDeviation = array => {
 // Function aliases:
 const average = mean;
 
-module.exports = {
+export default {
   max,
   min,
   sum,
