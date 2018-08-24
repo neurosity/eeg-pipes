@@ -26,10 +26,10 @@ export const addSignalQuality = ({
         : epoch[dataProp].map((_, i) => i);
       return {
         ...epoch,
-        signalQuality: epoch[dataProp].reduce((acc, curr, index) => {
-          acc[names[index]] = standardDeviation(curr);
-          return acc;
-        }, {})
+        signalQuality: epoch[dataProp].reduce((acc, curr, index) => ({
+          ...acc,
+          [names[index]]: standardDeviation(curr)
+        }), {})
       };
     })
   );
