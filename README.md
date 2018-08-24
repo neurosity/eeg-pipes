@@ -11,6 +11,7 @@ Features include:
 * PSD and Power Bands
 * Buffering and Epoching
 * IIR Filters
+* Signal Quality (new)
 * and more.
 
 Get started by installing the library:
@@ -124,6 +125,8 @@ Optional Parameters:
 * pickChannels({ channels: [c1, c2, c3] })
 * removeChannels({ channels: [c1, c2, c3] })
 * addInfo()
+* addSignalQuality()
+  * signal quality is represented as standard deviation value for each channel
 
 ### Coming soon
 
