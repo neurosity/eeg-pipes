@@ -1,8 +1,5 @@
-![Neurosity](https://neurosity.co/s/logo-sm.png)
-
-Reimagining brain-computer interfaces and neuro-powered applications.
-
 ## EEG Pipes
+#### By Neurosity
 
 Blazingly fast EEG transformers implemented as "Pipeable" RxJS operators for Node and the Browser.
 
