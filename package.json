@@ -13,8 +13,7 @@
     "docs:deploy": "npm run docs:build && gh-pages-deploy -- 'DOCS: build'"
   },
   "gh-pages-deploy": {
-    "staticpath": "docs",
-    "cname": "https://neurosity.github.com/eeg-pipes"
+    "staticpath": "docs"
   },
   "files": [
     "dist"
