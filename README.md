@@ -11,6 +11,8 @@ Features include:
 * Signal Quality (new)
 * and more.
 
+[Read full documentation](https://neurosity.github.com/eeg-pipes)
+
 Get started by installing the library:
 
 ```
