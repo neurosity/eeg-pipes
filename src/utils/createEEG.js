@@ -1,8 +1,7 @@
-import { interval } from "rxjs/observable/interval";
+import { interval } from "rxjs";
 import { map } from "rxjs/operators";
 
 import museCsv from "../../dataset/muse-lsl.csv";
-import { sample } from "rxjs/operator/sample";
 
 // Code splitting: dynaically importing the csv so it is not included in the main bundle
 // @TODO: not currently working, webpack bug: https://twitter.com/castillo__io/status/975585584486916096

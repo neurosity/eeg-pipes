@@ -13,8 +13,8 @@ export const sliceFFT = ([min = 0, max = 128]) => source =>
   createPipe(
     source,
     map(inputPSD => {
-      if (!inputPSD.psd.length || !inputPSD.psd[0].length) {
-        return inputPSD;
+      if (!inputPSD.psd || !inputPSD.psd.length || !inputPSD.psd[0].length) {
+        return { psd: inputPSD };
       }
 
       const filteredPSD = inputPSD.psd.map(channel =>

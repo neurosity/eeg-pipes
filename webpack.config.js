@@ -3,7 +3,7 @@ const webpackRxjsExternals = require("webpack-rxjs-externals");
 const nodeExternals = require("webpack-node-externals");
 
 const externalsList = [
-  nodeExternals({}),
+  //nodeExternals({}),
   webpackRxjsExternals()
 ];
 

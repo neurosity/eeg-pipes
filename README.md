@@ -1,16 +1,54 @@
-# EEG Pipes
+## EEG Pipes
+#### By Neurosity
 
-Pipeable RxJS operators for working with EEG data in Node and the Browser
+Blazingly fast EEG transformers implemented as "Pipeable" RxJS operators for Node and the Browser.
+
+Features include:
+* FFT
+* PSD and Power Bands
+* Buffering and Epoching
+* IIR Filters
+* Signal Quality (new)
+* and more.
+
+[Read full documentation](https://neurosity.github.io/eeg-pipes)
+
+Get started by installing the library:
+
+```
+npm install @neurosity/pipes
+```
 
 ## Usage
 
-Before getting started, you'll need an observable of EEG data.
+An Observable of EEG data is required to work with pipes. This can be done by using `fromEvent` from RxJS in order to push callback events into an Observable stream.
 
-The following are some libraries that provide exactly that:
+Given a callback-driven API such as:
+```js
+bci.on("data", () => { ... });
+```
 
-* [OpenBCI Ganglion BLE (Browser)](https://github.com/alexcastillo/ganglion-ble)
-* [OpenBCI Cyton/Ganglion (Node)](https://github.com/alexcastillo/openbci-rx)
-* [Muse (Browser)](https://github.com/urish/muse-js)
+Then...
+
+```js
+import { fromEvent } from "rxjs";
+
+const eeg$ = fromEvent(bci, "data");
+```
+
+Now we have an Observable of EEG data that support Pipeable operators.
+
+```js
+eeg$.pipe(
+  // ...
+).subscribe();
+```
+
+The following are some libraries that provide EEG as RxJS observables out of the box:
+
+* [OpenBCI Ganglion Web Bluetooth](https://github.com/neurosity/ganglion-ble)
+* [OpenBCI Cyton/Ganglion](https://github.com/neurosity/openbci-observable)
+* [Muse Web Bluetooth](https://github.com/urish/muse-js)
 
 Pipes can be added to an EEG observable of EEG data samples with the
 following data structure:
@@ -29,29 +67,21 @@ following data structure:
 
 Individual samples of EEG data contain an array of values for each EEG channel as well as a timestamp. An additional info object containing metadata about the EEG stream such as sampling rate and channel names can also be included or added with the addInfo operator.
 
-We can start by installing the library:
-
-```bash
-npm install --save eeg-pipes
-```
-
-Then, importing the pipes from the library:
+Import the pipes from the module:
 
 ```js
-import { bufferFFT, alphaPower } from "eeg-pipes";
+import { epoch, fft, alphaPower } from "@neurosity/pipes";
 ```
 
-And adding them to the RxJS observable pipe operator:
+Add to RxJS observable pipe:
 
 ```js
-eeg$
-  .pipe(bufferFFT({ bins: 256 }), alphaPower())
-  .subscribe(buffer => console.log(buffer));
+eeg$.pipe(
+  epoch({ duration: 256, interval: 100 }),
+  fft({ bins: 256 }),
+  alphaPower()
+).subscribe(alphaPower => console.log(alphaPower));
 ```
-
-## Generating documentation
-
-To generate the docs, run `yarn esdoc`
 
 ## Pipes
 
@@ -94,6 +124,8 @@ Optional Parameters:
 * pickChannels({ channels: [c1, c2, c3] })
 * removeChannels({ channels: [c1, c2, c3] })
 * addInfo()
+* addSignalQuality()
+  * signal quality is represented as standard deviation value for each channel
 
 ### Coming soon
 
@@ -158,3 +190,7 @@ A PSD represents the absolute power of different frequency bins in an Epoch of E
     }
 }
 ```
+
+## Generating documentation
+
+To generate the docs, run `yarn esdoc`

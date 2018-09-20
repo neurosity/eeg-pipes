@@ -1,14 +1,11 @@
-import { of } from "rxjs/observable/of";
-import { zip } from "rxjs/observable/zip";
+import { of, zip } from "rxjs";
 import { flatMap } from "rxjs/operators";
 
 import { createPipe } from "../../utils/createPipe";
 import { averagePower } from "./averagePower";
 import { sliceFFT } from "./sliceFFT";
 
-import {
-  FREQUENCY_BANDS as defaultBands
-} from "../../constants";
+import { FREQUENCY_BANDS as defaultBands } from "../../constants";
 
 /**
  * Takes a stream of PSDs and returns the average power for each of the classic EEG bands (alpha, beta, theta, etc.). Classic EEG bands can be overridden by providing a custom bands object (e.g. { lowAlpha: [7.5, 10], highAlpha: [10, 12.5] })
@@ -23,7 +20,10 @@ export const powerByBand = (bands = defaultBands) => source =>
     flatMap(inputPSD => {
       const entries = Object.entries(bands);
       const bandPowers = entries.map(([_, range]) =>
-        of(inputPSD).pipe(sliceFFT(range), averagePower())
+        of(inputPSD).pipe(
+          sliceFFT(range),
+          averagePower()
+        )
       );
       const zipPowers = (...powers) =>
         powers.reduce(
