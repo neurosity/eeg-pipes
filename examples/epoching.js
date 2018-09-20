@@ -14,4 +14,10 @@ const eeg3$ = createEEG({ samplingRate: 1000 }).pipe(
   epoch({ duration: 1024, interval: 100, samplingRate: 256 })
 );
 
-eeg3$.subscribe(console.log);
+// Should leave info.samplingRate = 128 intact
+const eeg4$ = createEEG({samplingRate: 128}).pipe(
+  addInfo({samplingRate: 128}),
+  epoch({duration: 256, interval: 250 }),
+);
+
+eeg2$.subscribe(console.log);
