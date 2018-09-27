@@ -1,15 +1,17 @@
 ## EEG Pipes
+
 #### By Neurosity
 
-Blazingly fast EEG transformers implemented as "Pipeable" RxJS operators for Node and the Browser.
+Blazing fast EEG transformers implemented as "Pipeable" RxJS operators for Node and the Browser.
 
 Features include:
-* FFT
-* PSD and Power Bands
-* Buffering and Epoching
-* IIR Filters
-* Signal Quality (new)
-* and more.
+
+- FFT
+- PSD and Power Bands
+- Buffering and Epoching
+- IIR Filters
+- Signal Quality (new)
+- and more.
 
 [Read full documentation](https://neurosity.github.io/eeg-pipes)
 
@@ -24,6 +26,7 @@ npm install @neurosity/pipes
 An Observable of EEG data is required to work with pipes. This can be done by using `fromEvent` from RxJS in order to push callback events into an Observable stream.
 
 Given a callback-driven API such as:
+
 ```js
 bci.on("data", () => { ... });
 ```
@@ -39,16 +42,18 @@ const eeg$ = fromEvent(bci, "data");
 Now we have an Observable of EEG data that support Pipeable operators.
 
 ```js
-eeg$.pipe(
+eeg$
+  .pipe
   // ...
-).subscribe();
+  ()
+  .subscribe();
 ```
 
 The following are some libraries that provide EEG as RxJS observables out of the box:
 
-* [OpenBCI Ganglion Web Bluetooth](https://github.com/neurosity/ganglion-ble)
-* [OpenBCI Cyton/Ganglion](https://github.com/neurosity/openbci-observable)
-* [Muse Web Bluetooth](https://github.com/urish/muse-js)
+- [OpenBCI Ganglion Web Bluetooth](https://github.com/neurosity/ganglion-ble)
+- [OpenBCI Cyton/Ganglion](https://github.com/neurosity/openbci-observable)
+- [Muse Web Bluetooth](https://github.com/urish/muse-js)
 
 Pipes can be added to an EEG observable of EEG data samples with the
 following data structure:
@@ -76,11 +81,13 @@ import { epoch, fft, alphaPower } from "@neurosity/pipes";
 Add to RxJS observable pipe:
 
 ```js
-eeg$.pipe(
-  epoch({ duration: 256, interval: 100 }),
-  fft({ bins: 256 }),
-  alphaPower()
-).subscribe(alphaPower => console.log(alphaPower));
+eeg$
+  .pipe(
+    epoch({ duration: 256, interval: 100 }),
+    fft({ bins: 256 }),
+    alphaPower()
+  )
+  .subscribe(alphaPower => console.log(alphaPower));
 ```
 
 ## Pipes
@@ -89,10 +96,10 @@ eeg$.pipe(
 
 Filter pipes can be applied to both samples or buffers of samples. Filters are linear IIR filters using a digital biquad implementation.
 
-* lowpassFilter({ nbChannels, cutoffFrequency })
-* highpassFilter({ nbChannels, cutoffFrequency })
-* bandpassFilter({ nbChannels, cutoffFrequencies: [lowBound, highBound] })
-* notchFilter({ nbChannels, cutoffFrequency })
+- lowpassFilter({ nbChannels, cutoffFrequency })
+- highpassFilter({ nbChannels, cutoffFrequency })
+- bandpassFilter({ nbChannels, cutoffFrequencies: [lowBound, highBound] })
+- notchFilter({ nbChannels, cutoffFrequency })
 
 Optional Parameters:  
 `characteristic`: 'butterworth' or 'bessel'. Default is butterworth characteristic because of its steeper cutoff  
@@ -101,41 +108,41 @@ Optional Parameters:
 
 ### Frequency
 
-* bufferFFT({ bins, window, samplingRate })
-* alphaPower()
-* betaPower()
-* deltaPower()
-* gammaPower()
-* thetaPower()
-* averagePower()
-* sliceFFT([ min, max ])
-* powerByBand()
+- bufferFFT({ bins, window, samplingRate })
+- alphaPower()
+- betaPower()
+- deltaPower()
+- gammaPower()
+- thetaPower()
+- averagePower()
+- sliceFFT([ min, max ])
+- powerByBand()
 
 #### Unit conversion
 
-* voltToMicrovolts({ useLog })
+- voltToMicrovolts({ useLog })
 
 #### Utility
 
-* epoch({ duration, interval, samplingRate })
-* bufferCount()
-* bufferTime()
-* bufferToEpoch({ samplingRate })
-* pickChannels({ channels: [c1, c2, c3] })
-* removeChannels({ channels: [c1, c2, c3] })
-* addInfo()
-* addSignalQuality()
-  * signal quality is represented as standard deviation value for each channel
+- epoch({ duration, interval, samplingRate })
+- bufferCount()
+- bufferTime()
+- bufferToEpoch({ samplingRate })
+- pickChannels({ channels: [c1, c2, c3] })
+- removeChannels({ channels: [c1, c2, c3] })
+- addInfo()
+- addSignalQuality()
+  - signal quality is represented as standard deviation value for each channel
 
 ### Coming soon
 
 #### Filtering
 
-* vertScaleFilter()
-* vertAgoFilter()
-* smoothFilter()
-* polarityFilter()
-* maxFrequencyFilter()
+- vertScaleFilter()
+- vertAgoFilter()
+- smoothFilter()
+- polarityFilter()
+- maxFrequencyFilter()
 
 ## Data Structures
 
@@ -157,7 +164,7 @@ This is the simplest, core data structure for individual samples of EEG data. Sa
 
 ### Epoch
 
-An Epoch represents the EEG data that has been collected over a specific period of time. They can be produced by using either the `epoch` operator or by using a standard RxJS buffering operator such as `bufferTime` followed by the `bufferToEpoch` operator. Collecting data in this way is necessary for performing frequency-based analyses and, in many cases, will improve performance of filtering and other downstream operations. Epochs contain a 2D data array (channels x samples) and an info object that always includes samplingRate and startTime data so that the timestamps of individual samples can be derived. 
+An Epoch represents the EEG data that has been collected over a specific period of time. They can be produced by using either the `epoch` operator or by using a standard RxJS buffering operator such as `bufferTime` followed by the `bufferToEpoch` operator. Collecting data in this way is necessary for performing frequency-based analyses and, in many cases, will improve performance of filtering and other downstream operations. Epochs contain a 2D data array (channels x samples) and an info object that always includes samplingRate and startTime data so that the timestamps of individual samples can be derived.
 
 ```js
 {
