@@ -8,7 +8,7 @@
         "brand": {
           "logo": "assets/logo.png",
           "title": "EEG Pipes",
-          "description": "Blazingly fast EEG transformers implemented as 'pipeable' RxJS operators",
+          "description": "Blazing fast EEG transformers implemented as 'pipeable' RxJS operators",
           "repository": "https://github.com/neurosity/eeg-pipes",
           "site": "https://github.com/neurosity",
           "author": "https://twitter.com/neurosityco",
@@ -20,7 +20,7 @@
       "name": "esdoc-ecmascript-proposal-plugin",
       "option": {
         "all": true
-      } 
+      }
     }
   ]
 }
