@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl">
+  <title data-ice="title">Home | EEG Pipes</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Blazingly fast EEG transformers implemented as &apos;pipeable&apos; RxJS operators"><meta property="og:type" content="website"><meta property="og:url" content="https://github.com/neurosity"><meta property="og:site_name" content="EEG Pipes"><meta property="og:title" content="EEG Pipes"><meta property="og:image" content="assets/logo.png"><meta property="og:description" content="Blazingly fast EEG transformers implemented as &apos;pipeable&apos; RxJS operators"><meta property="og:author" content="https://twitter.com/neurosityco"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="EEG Pipes"><meta property="twitter:description" content="Blazingly fast EEG transformers implemented as &apos;pipeable&apos; RxJS operators"><meta property="twitter:image" content="assets/logo.png"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./" style="display: flex; align-items: center;"><img src="./image/brand_logo.png" style="width:34px;"></a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/neurosity/eeg-pipes"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#constants">constants</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CHANNELS">CHANNELS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CHARACTERISTIC">CHARACTERISTIC</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATA_PROP">DATA_PROP</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-EPOCH_DURATION">EPOCH_DURATION</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-EPOCH_INTERVAL">EPOCH_INTERVAL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FFT_BINS">FFT_BINS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FREQUENCY_BANDS">FREQUENCY_BANDS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-GAIN">GAIN</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-NOTCH_BW">NOTCH_BW</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ORDER">ORDER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PREGAIN">PREGAIN</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SAMPLING_RATE">SAMPLING_RATE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-USE_LOG">USE_LOG</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pipes-filtering">pipes/filtering</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bandpassFilter">bandpassFilter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-highpassFilter">highpassFilter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-lowpassFilter">lowpassFilter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-notchFilter">notchFilter</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pipes-frequency">pipes/frequency</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-alphaPower">alphaPower</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-averagePower">averagePower</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-betaPower">betaPower</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bufferFFT">bufferFFT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deltaPower">deltaPower</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fft">fft</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-gammaPower">gammaPower</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-powerByBand">powerByBand</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sliceFFT">sliceFFT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-thetaPower">thetaPower</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pipes-reducer">pipes/reducer</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-averageDeep">averageDeep</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pipes-unit">pipes/unit</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-voltsToMicrovolts">voltsToMicrovolts</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#pipes-utility">pipes/utility</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-addInfo">addInfo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-addSignalQuality">addSignalQuality</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bufferToEpoch">bufferToEpoch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-epoch">epoch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-pickChannels">pickChannels</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-removeChannels">removeChannels</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#utils">utils</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createEEG">createEEG</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createMockStream">createMockStream</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-groupByChannel">groupByChannel</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isEpoch">isEpoch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-max">max</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mean">mean</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-meanAbsoluteDeviation">meanAbsoluteDeviation</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-min">min</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-range">range</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-standardDeviation">standardDeviation</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sum">sum</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-variance">variance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-zeroPad">zeroPad</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-average">average</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h2 id="eeg-pipes">EEG Pipes</h2><h4 id="by-neurosity">By Neurosity</h4><p>Blazing fast EEG transformers implemented as &quot;Pipeable&quot; RxJS operators for Node and the Browser.</p>
+<p>Features include:</p>
+<ul>
+<li>FFT</li>
+<li>PSD and Power Bands</li>
+<li>Buffering and Epoching</li>
+<li>IIR Filters</li>
+<li>Signal Quality (new)</li>
+<li>and more.</li>
+</ul>
+<p><a href="https://neurosity.github.io/eeg-pipes">Read full documentation</a></p>
+<p>Get started by installing the library:</p>
+<pre><code><code class="source-code prettyprint">npm install @neurosity/pipes</code>
+</code></pre><h2 id="usage">Usage</h2><p>An Observable of EEG data is required to work with pipes. This can be done by using <code>fromEvent</code> from RxJS in order to push callback events into an Observable stream.</p>
+<p>Given a callback-driven API such as:</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">bci.on(&quot;data&quot;, () =&gt; { ... });</code>
+</code></pre>
+<p>Then...</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">import { fromEvent } from &quot;rxjs&quot;;
+
+const eeg$ = fromEvent(bci, &quot;data&quot;);</code>
+</code></pre>
+<p>Now we have an Observable of EEG data that support Pipeable operators.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">eeg$
+  .pipe
+  // ...
+  ()
+  .subscribe();</code>
+</code></pre>
+<p>The following are some libraries that provide EEG as RxJS observables out of the box:</p>
+<ul>
+<li><a href="https://github.com/neurosity/ganglion-ble">OpenBCI Ganglion Web Bluetooth</a></li>
+<li><a href="https://github.com/neurosity/openbci-observable">OpenBCI Cyton/Ganglion</a></li>
+<li><a href="https://github.com/urish/muse-js">Muse Web Bluetooth</a></li>
+</ul>
+<p>Pipes can be added to an EEG observable of EEG data samples with the
+following data structure:</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">{
+  data: [Number, Number, Number, Number], // channels
+  timestamp: Date,
+  info?: {
+      samplingRate?: Number,
+      channelNames?: [String, String, String, String],
+      ..
+  }
+};</code>
+</code></pre>
+<p>Individual samples of EEG data contain an array of values for each EEG channel as well as a timestamp. An additional info object containing metadata about the EEG stream such as sampling rate and channel names can also be included or added with the addInfo operator.</p>
+<p>Import the pipes from the module:</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">import { epoch, fft, alphaPower } from &quot;@neurosity/pipes&quot;;</code>
+</code></pre>
+<p>Add to RxJS observable pipe:</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">eeg$
+  .pipe(
+    epoch({ duration: 256, interval: 100 }),
+    fft({ bins: 256 }),
+    alphaPower()
+  )
+  .subscribe(alphaPower =&gt; console.log(alphaPower));</code>
+</code></pre>
+<h2 id="pipes">Pipes</h2><h3 id="filtering--iir-">Filtering (IIR)</h3><p>Filter pipes can be applied to both samples or buffers of samples. Filters are linear IIR filters using a digital biquad implementation.</p>
+<ul>
+<li>lowpassFilter({ nbChannels, cutoffFrequency })</li>
+<li>highpassFilter({ nbChannels, cutoffFrequency })</li>
+<li>bandpassFilter({ nbChannels, cutoffFrequencies: [lowBound, highBound] })</li>
+<li>notchFilter({ nbChannels, cutoffFrequency })</li>
+</ul>
+<p>Optional Parameters:<br><code>characteristic</code>: &apos;butterworth&apos; or &apos;bessel&apos;. Default is butterworth characteristic because of its steeper cutoff<br><code>order</code>: the number of 2nd order biquad filters applied to the signal. Default is 2.<br><code>samplingRate</code>: should match the samplingRate of your EEG device. Default is 250</p>
+<h3 id="frequency">Frequency</h3><ul>
+<li>bufferFFT({ bins, window, samplingRate })</li>
+<li>alphaPower()</li>
+<li>betaPower()</li>
+<li>deltaPower()</li>
+<li>gammaPower()</li>
+<li>thetaPower()</li>
+<li>averagePower()</li>
+<li>sliceFFT([ min, max ])</li>
+<li>powerByBand()</li>
+</ul>
+<h4 id="unit-conversion">Unit conversion</h4><ul>
+<li>voltToMicrovolts({ useLog })</li>
+</ul>
+<h4 id="utility">Utility</h4><ul>
+<li>epoch({ duration, interval, samplingRate })</li>
+<li>bufferCount()</li>
+<li>bufferTime()</li>
+<li>bufferToEpoch({ samplingRate })</li>
+<li>pickChannels({ channels: [c1, c2, c3] })</li>
+<li>removeChannels({ channels: [c1, c2, c3] })</li>
+<li>addInfo()</li>
+<li>addSignalQuality()<ul>
+<li>signal quality is represented as standard deviation value for each channel</li>
+</ul>
+</li>
+</ul>
+<h3 id="coming-soon">Coming soon</h3><h4 id="filtering">Filtering</h4><ul>
+<li>vertScaleFilter()</li>
+<li>vertAgoFilter()</li>
+<li>smoothFilter()</li>
+<li>polarityFilter()</li>
+<li>maxFrequencyFilter()</li>
+</ul>
+<h2 id="data-structures">Data Structures</h2><h3 id="sample">Sample</h3><p>This is the simplest, core data structure for individual samples of EEG data. Samples have a data array containing a single reading from a number of different EEG electrodes along with a single timestamp. Samples can also contain optional other parameters added by the <code>addInfo</code> operator. The design for this comes directly from the discussion on the <a href="https://github.com/NeuroJS/eeg-stream-data-model/issues/1">EEG stream data models repo</a>.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">{
+    data: [Number, ..., Number], // length == nbChannels
+    timestamp: &lt;Number&gt;,
+    info?: {
+        samplingRate?: Number,
+        channelNames?: [String, String, String, String],
+      ...
+  }
+}</code>
+</code></pre>
+<h3 id="epoch">Epoch</h3><p>An Epoch represents the EEG data that has been collected over a specific period of time. They can be produced by using either the <code>epoch</code> operator or by using a standard RxJS buffering operator such as <code>bufferTime</code> followed by the <code>bufferToEpoch</code> operator. Collecting data in this way is necessary for performing frequency-based analyses and, in many cases, will improve performance of filtering and other downstream operations. Epochs contain a 2D data array (channels x samples) and an info object that always includes samplingRate and startTime data so that the timestamps of individual samples can be derived.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">{
+    data: [
+        [Number, ... , Number], // length == duration
+        [Number, ... , Number]
+    ], // length == nbChannels
+    info: {
+        samplingRate: Number,
+        startTime: Number,
+        channelNames?: [String, ..., String ]
+    }
+}</code>
+</code></pre>
+<h3 id="power-spectral-density-or-psd--proposed-work-in-progress">Power Spectral Density or PSD: Proposed Work in Progress</h3><p>A PSD represents the absolute power of different frequency bins in an Epoch of EEG data. PSDs are produced by applying the <code>fft</code> operator to Epochs or using the <code>bufferFFT</code> operator directly on a stream of EEG Samples. PSDs contain an array of frequencies and a corresponding array of spectral power at each of those frequencies, as well as an info object that contains samplingRate and startTime info similarly to Epochs.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">{
+    psd: [
+        [Number, ... , Number] // spectral power; length = freqs.length
+    ], // length = numChannels
+    freqs: [Number, ... , Number], // length = fftLength / 2
+    info: {
+        samplingRate: Number,
+        startTime: Number,
+        channelNames?: [String, ..., String ]
+    }
+}</code>
+</code></pre>
+<h2 id="generating-documentation">Generating documentation</h2><p>To generate the docs, run <code>yarn esdoc</code></p>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

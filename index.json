@@ -1,0 +1,3736 @@
+[
+  {
+    "__docId__": 1,
+    "kind": "external",
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Infinity",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 2,
+    "kind": "external",
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~NaN",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 3,
+    "kind": "external",
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~undefined",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 4,
+    "kind": "external",
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~null",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 5,
+    "kind": "external",
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 6,
+    "kind": "external",
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 7,
+    "kind": "external",
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 8,
+    "kind": "external",
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 9,
+    "kind": "external",
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 10,
+    "kind": "external",
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 11,
+    "kind": "external",
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Symbol",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 12,
+    "kind": "external",
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Error",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 13,
+    "kind": "external",
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~EvalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 14,
+    "kind": "external",
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~InternalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 15,
+    "kind": "external",
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~RangeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 16,
+    "kind": "external",
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~ReferenceError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 17,
+    "kind": "external",
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~SyntaxError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 18,
+    "kind": "external",
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~TypeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 19,
+    "kind": "external",
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~URIError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 20,
+    "kind": "external",
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 21,
+    "kind": "external",
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 22,
+    "kind": "external",
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Date",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 23,
+    "kind": "external",
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~String",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 24,
+    "kind": "external",
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~string",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 25,
+    "kind": "external",
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~RegExp",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 26,
+    "kind": "external",
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 27,
+    "kind": "external",
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 28,
+    "kind": "external",
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 29,
+    "kind": "external",
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint8ClampedArray",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 30,
+    "kind": "external",
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 31,
+    "kind": "external",
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 32,
+    "kind": "external",
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 33,
+    "kind": "external",
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 34,
+    "kind": "external",
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Float32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 35,
+    "kind": "external",
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Float64Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 36,
+    "kind": "external",
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Map",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 37,
+    "kind": "external",
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Set",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 38,
+    "kind": "external",
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~WeakMap",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 39,
+    "kind": "external",
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~WeakSet",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 40,
+    "kind": "external",
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~ArrayBuffer",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 41,
+    "kind": "external",
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~DataView",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 42,
+    "kind": "external",
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~JSON",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 43,
+    "kind": "external",
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Promise",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 44,
+    "kind": "external",
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Generator",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 45,
+    "kind": "external",
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~GeneratorFunction",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 46,
+    "kind": "external",
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Reflect",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 47,
+    "kind": "external",
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Proxy",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 48,
+    "kind": "file",
+    "name": "src/constants/index.js",
+    "content": "export const CHANNELS = 4;\nexport const SAMPLING_RATE = 256;\nexport const EPOCH_DURATION = 256;\nexport const EPOCH_INTERVAL = 100;\nexport const ORDER = 2;\nexport const NOTCH_BW = 0.5;\nexport const CHARACTERISTIC = \"butterworth\";\nexport const GAIN = 0;\nexport const PREGAIN = false;\nexport const FFT_BINS = 256;\nexport const DATA_PROP = \"data\";\nexport const USE_LOG = false;\nexport const FREQUENCY_BANDS = {\n  delta: [0.1, 4],\n  theta: [4, 7.5],\n  alpha: [7.5, 12.5],\n  beta: [12.5, 30],\n  gamma: [30, 100]\n};\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/constants/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 49,
+    "kind": "variable",
+    "name": "CHANNELS",
+    "memberof": "src/constants/index.js",
+    "static": true,
+    "longname": "src/constants/index.js~CHANNELS",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/constants/index.js",
+    "importStyle": "{CHANNELS}",
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 50,
+    "kind": "variable",
+    "name": "SAMPLING_RATE",
+    "memberof": "src/constants/index.js",
+    "static": true,
+    "longname": "src/constants/index.js~SAMPLING_RATE",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/constants/index.js",
+    "importStyle": "{SAMPLING_RATE}",
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 51,
+    "kind": "variable",
+    "name": "EPOCH_DURATION",
+    "memberof": "src/constants/index.js",
+    "static": true,
+    "longname": "src/constants/index.js~EPOCH_DURATION",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/constants/index.js",
+    "importStyle": "{EPOCH_DURATION}",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 52,
+    "kind": "variable",
+    "name": "EPOCH_INTERVAL",
+    "memberof": "src/constants/index.js",
+    "static": true,
+    "longname": "src/constants/index.js~EPOCH_INTERVAL",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/constants/index.js",
+    "importStyle": "{EPOCH_INTERVAL}",
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 53,
+    "kind": "variable",
+    "name": "ORDER",
+    "memberof": "src/constants/index.js",
+    "static": true,
+    "longname": "src/constants/index.js~ORDER",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/constants/index.js",
+    "importStyle": "{ORDER}",
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 54,
+    "kind": "variable",
+    "name": "NOTCH_BW",
+    "memberof": "src/constants/index.js",
+    "static": true,
+    "longname": "src/constants/index.js~NOTCH_BW",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/constants/index.js",
+    "importStyle": "{NOTCH_BW}",
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 55,
+    "kind": "variable",
+    "name": "CHARACTERISTIC",
+    "memberof": "src/constants/index.js",
+    "static": true,
+    "longname": "src/constants/index.js~CHARACTERISTIC",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/constants/index.js",
+    "importStyle": "{CHARACTERISTIC}",
+    "description": null,
+    "lineNumber": 7,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 56,
+    "kind": "variable",
+    "name": "GAIN",
+    "memberof": "src/constants/index.js",
+    "static": true,
+    "longname": "src/constants/index.js~GAIN",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/constants/index.js",
+    "importStyle": "{GAIN}",
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 57,
+    "kind": "variable",
+    "name": "PREGAIN",
+    "memberof": "src/constants/index.js",
+    "static": true,
+    "longname": "src/constants/index.js~PREGAIN",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/constants/index.js",
+    "importStyle": "{PREGAIN}",
+    "description": null,
+    "lineNumber": 9,
+    "undocument": true,
+    "type": {
+      "types": [
+        "boolean"
+      ]
+    }
+  },
+  {
+    "__docId__": 58,
+    "kind": "variable",
+    "name": "FFT_BINS",
+    "memberof": "src/constants/index.js",
+    "static": true,
+    "longname": "src/constants/index.js~FFT_BINS",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/constants/index.js",
+    "importStyle": "{FFT_BINS}",
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    }
+  },
+  {
+    "__docId__": 59,
+    "kind": "variable",
+    "name": "DATA_PROP",
+    "memberof": "src/constants/index.js",
+    "static": true,
+    "longname": "src/constants/index.js~DATA_PROP",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/constants/index.js",
+    "importStyle": "{DATA_PROP}",
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 60,
+    "kind": "variable",
+    "name": "USE_LOG",
+    "memberof": "src/constants/index.js",
+    "static": true,
+    "longname": "src/constants/index.js~USE_LOG",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/constants/index.js",
+    "importStyle": "{USE_LOG}",
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "type": {
+      "types": [
+        "boolean"
+      ]
+    }
+  },
+  {
+    "__docId__": 61,
+    "kind": "variable",
+    "name": "FREQUENCY_BANDS",
+    "memberof": "src/constants/index.js",
+    "static": true,
+    "longname": "src/constants/index.js~FREQUENCY_BANDS",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/constants/index.js",
+    "importStyle": "{FREQUENCY_BANDS}",
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{\"delta\": *, \"theta\": *, \"alpha\": *, \"beta\": *, \"gamma\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 62,
+    "kind": "file",
+    "name": "src/index.js",
+    "content": "export * from \"./pipes\";\nexport * from \"./utils\";\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 63,
+    "kind": "file",
+    "name": "src/pipes/filtering/bandpassFilter.js",
+    "content": "import { CalcCascades, IirFilter } from \"fili\";\nimport { pipe } from \"rxjs\";\nimport { map } from \"rxjs/operators\";\nimport { isEpoch } from \"../../utils/isEpoch\";\nimport {\n  SAMPLING_RATE as defaultSamplingRate,\n  ORDER as defaultOrder,\n  CHARACTERISTIC as defaultCharacteristic\n} from \"../../constants\";\n\nconst createHighpassIIR = options => {\n  const calc = new CalcCascades();\n  const coeffs = calc.highpass({\n    ...options,\n    Fc: options.cutoffFrequencies[0]\n  });\n  return new IirFilter(coeffs, true);\n};\n\nconst createLowpassIIR = options => {\n  const calc = new CalcCascades();\n  const coeffs = calc.lowpass({\n    ...options,\n    Fc: options.cutoffFrequencies[1]\n  });\n  return new IirFilter(coeffs, true);\n};\n\nconst interpolate = (before, after) => {\n  if (!isNaN(before)) {\n    if (!isNaN(after)) {\n      return (before + after) / 2;\n    }\n    return before;\n  }\n  if (!isNaN(after)) {\n    return after;\n  }\n  return 0;\n};\n\n/**\n * Applies a bandpass filter to EEG Data. Can be applied to both raw or epoched data\n * @method bandpassFilter\n * @example eeg$\n  .pipe(bandpassFilter({ cutoffFrequencies: [2, 50], nbChannels: 4 }))\n * @param {Object} options - Filter options\n * @param {number} options.nbChannels Number of channels\n * @param {Array<number>} [options.cutoffFrequencies=[2,50]] Low and high cutoff frequencies in Hz\n * @param {number} [options.samplingRate=250] Sampling rate of the EEG device\n * @param {string} [options.characteristic='butterworth'] Filter characteristic. Options are 'bessel' and 'butterworth'\n * @param {number} [options.order=2] The number of 2nd order biquad filters applied to the signal\n * \n * @returns {Observable<Sample | Epoch>}\n */\nexport const bandpassFilter = ({\n  nbChannels,\n  order = defaultOrder,\n  characteristic = defaultCharacteristic,\n  cutoffFrequencies = [2, 50],\n  samplingRate = defaultSamplingRate,\n  Fs = samplingRate,\n  BW = 1\n} = {}) => {\n  if (!nbChannels) {\n    throw new Error(\"Please supply nbChannels parameter\");\n  }\n  const options = {\n    order,\n    characteristic,\n    cutoffFrequencies,\n    Fs,\n    BW\n  };\n  const bandpassArray = new Array(nbChannels).fill(0).map(() => ({\n    high: createHighpassIIR(options),\n    low: createLowpassIIR(options)\n  }));\n  return pipe(\n    map(eegObject => ({\n      ...eegObject,\n      data: eegObject.data.map((channel, index) => {\n        if (isEpoch(eegObject)) {\n          const nans = [];\n          const safeChannel = channel.map((sample, sampleIndex) => {\n            if (isNaN(sample)) {\n              nans.push(sampleIndex);\n              const interpolation = interpolate(\n                channel[sampleIndex - 1],\n                channel[sampleIndex + 1]\n              );\n              return interpolation;\n            }\n            return sample;\n          });\n\n          // Then, perform filter\n          const filteredData = bandpassArray[index].low.multiStep(\n            bandpassArray[index].high.multiStep(safeChannel)\n          );\n\n          // Afterwards, reinsert NaNs\n          if (nans.length > 0) {\n            nans.forEach(nan => {\n              filteredData[nan] = NaN;\n            });\n          }\n          return filteredData;\n        }\n        // If Sample, only filter if not NaN\n        if (!isNaN(channel)) {\n          return bandpassArray[index].low.singleStep(\n            bandpassArray[index].high.singleStep(channel)\n          );\n        }\n        return channel;\n      })\n    }))\n  );\n};\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/pipes/filtering/bandpassFilter.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 64,
+    "kind": "function",
+    "name": "createHighpassIIR",
+    "memberof": "src/pipes/filtering/bandpassFilter.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/filtering/bandpassFilter.js~createHighpassIIR",
+    "access": "public",
+    "export": false,
+    "importPath": "@neurosity/pipes/src/pipes/filtering/bandpassFilter.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "params": [
+      {
+        "name": "options",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 65,
+    "kind": "function",
+    "name": "createLowpassIIR",
+    "memberof": "src/pipes/filtering/bandpassFilter.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/filtering/bandpassFilter.js~createLowpassIIR",
+    "access": "public",
+    "export": false,
+    "importPath": "@neurosity/pipes/src/pipes/filtering/bandpassFilter.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 20,
+    "undocument": true,
+    "params": [
+      {
+        "name": "options",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 66,
+    "kind": "function",
+    "name": "interpolate",
+    "memberof": "src/pipes/filtering/bandpassFilter.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/filtering/bandpassFilter.js~interpolate",
+    "access": "public",
+    "export": false,
+    "importPath": "@neurosity/pipes/src/pipes/filtering/bandpassFilter.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 29,
+    "undocument": true,
+    "params": [
+      {
+        "name": "before",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "after",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "number"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 67,
+    "kind": "function",
+    "name": "bandpassFilter",
+    "memberof": "src/pipes/filtering/bandpassFilter.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/filtering/bandpassFilter.js~bandpassFilter",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/pipes/filtering/bandpassFilter.js",
+    "importStyle": "{bandpassFilter}",
+    "description": "Applies a bandpass filter to EEG Data. Can be applied to both raw or epoched data",
+    "examples": [
+      "eeg$\n.pipe(bandpassFilter({ cutoffFrequencies: [2, 50], nbChannels: 4 }))"
+    ],
+    "lineNumber": 56,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "bandpassFilter"
+      },
+      {
+        "tagName": "@returns",
+        "tagValue": "{Observable<Sample | Epoch>}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options",
+        "description": "Filter options"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options.nbChannels",
+        "description": "Number of channels"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Array<number>"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "[2,50]",
+        "defaultRaw": [
+          2,
+          50
+        ],
+        "name": "options.cutoffFrequencies",
+        "description": "Low and high cutoff frequencies in Hz"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "250",
+        "defaultRaw": 250,
+        "name": "options.samplingRate",
+        "description": "Sampling rate of the EEG device"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "'butterworth'",
+        "defaultRaw": "'butterworth'",
+        "name": "options.characteristic",
+        "description": "Filter characteristic. Options are 'bessel' and 'butterworth'"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "2",
+        "defaultRaw": 2,
+        "name": "options.order",
+        "description": "The number of 2nd order biquad filters applied to the signal"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Observable<Sample | Epoch>"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 68,
+    "kind": "file",
+    "name": "src/pipes/filtering/highpassFilter.js",
+    "content": "import { CalcCascades, IirFilter } from \"fili\";\nimport { pipe } from \"rxjs\";\nimport { map } from \"rxjs/operators\";\nimport { isEpoch } from \"../../utils/isEpoch\";\nimport {\n  SAMPLING_RATE as defaultSamplingRate,\n  ORDER as defaultOrder,\n  CHARACTERISTIC as defaultCharacteristic\n} from \"../../constants\";\n\nconst createHighpassIIR = options => {\n  const calc = new CalcCascades();\n  const coeffs = calc.highpass(options);\n  return new IirFilter(coeffs);\n};\n\nconst interpolate = (before, after) => {\n  if (!isNaN(before)) {\n    if (!isNaN(after)) {\n      return (before + after) / 2;\n    }\n    return before;\n  }\n  if (!isNaN(after)) {\n    return after;\n  }\n  return 0;\n};\n\n/**\n * Applies a highpass filter to EEG Data. Can be applied to both raw or epoched data\n * @method highpassFilter\n * @example eeg$\n  .pipe(highpassFilter({ cutoffFrequency: 2, nbChannels: 4 }))\n * @param {Object} options - Filter options\n * @param {number} options.nbChannels Number of channels\n * @param {number} [options.cutoffFrequency=2] Cutoff frequency in Hz\n * @param {number} [options.samplingRate=250] Sampling rate of the EEG device\n * @param {string} [options.characteristic='butterworth'] Filter characteristic. Options are 'bessel' and 'butterworth'\n * @param {number} [options.order=2] The number of 2nd order biquad filters applied to the signal\n * \n * @returns {Observable<Sample | Epoch>}\n */\nexport const highpassFilter = ({\n  nbChannels,\n  order = defaultOrder,\n  characteristic = defaultCharacteristic,\n  cutoffFrequency = 2,\n  samplingRate = defaultSamplingRate\n} = {}) => {\n  if (!nbChannels) {\n    throw new Error(\"Please supply nbChannels parameter\");\n  }\n  const highpassArray = new Array(nbChannels).fill(0).map(() =>\n    createHighpassIIR({\n      order,\n      characteristic,\n      Fs: samplingRate,\n      Fc: cutoffFrequency\n    })\n  );\n  return pipe(\n    map(eegObject => ({\n      ...eegObject,\n      data: eegObject.data.map((channel, index) => {\n        if (isEpoch(eegObject)) {\n          const nans = [];\n          const safeChannel = channel.map((sample, sampleIndex) => {\n            if (isNaN(sample)) {\n              nans.push(sampleIndex);\n              const interpolation = interpolate(\n                channel[sampleIndex - 1],\n                channel[sampleIndex + 1]\n              );\n              return interpolation;\n            }\n            return sample;\n          });\n\n          // Then, perform filter\n          const filteredData = highpassArray[index].multiStep(\n            safeChannel\n          );\n\n          // Afterwards, reinsert NaNs\n          if (nans.length > 0) {\n            nans.forEach(nan => {\n              filteredData[nan] = NaN;\n            });\n          }\n          return filteredData;\n        }\n        // If Sample, only filter if not NaN\n        if (!isNaN(channel)) {\n          return highpassArray[index].singleStep(channel);\n        }\n        return channel;\n      })\n    }))\n  );\n};\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/pipes/filtering/highpassFilter.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 69,
+    "kind": "function",
+    "name": "createHighpassIIR",
+    "memberof": "src/pipes/filtering/highpassFilter.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/filtering/highpassFilter.js~createHighpassIIR",
+    "access": "public",
+    "export": false,
+    "importPath": "@neurosity/pipes/src/pipes/filtering/highpassFilter.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "params": [
+      {
+        "name": "options",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 70,
+    "kind": "function",
+    "name": "interpolate",
+    "memberof": "src/pipes/filtering/highpassFilter.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/filtering/highpassFilter.js~interpolate",
+    "access": "public",
+    "export": false,
+    "importPath": "@neurosity/pipes/src/pipes/filtering/highpassFilter.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true,
+    "params": [
+      {
+        "name": "before",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "after",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "number"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 71,
+    "kind": "function",
+    "name": "highpassFilter",
+    "memberof": "src/pipes/filtering/highpassFilter.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/filtering/highpassFilter.js~highpassFilter",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/pipes/filtering/highpassFilter.js",
+    "importStyle": "{highpassFilter}",
+    "description": "Applies a highpass filter to EEG Data. Can be applied to both raw or epoched data",
+    "examples": [
+      "eeg$\n.pipe(highpassFilter({ cutoffFrequency: 2, nbChannels: 4 }))"
+    ],
+    "lineNumber": 44,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "highpassFilter"
+      },
+      {
+        "tagName": "@returns",
+        "tagValue": "{Observable<Sample | Epoch>}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options",
+        "description": "Filter options"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options.nbChannels",
+        "description": "Number of channels"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "2",
+        "defaultRaw": 2,
+        "name": "options.cutoffFrequency",
+        "description": "Cutoff frequency in Hz"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "250",
+        "defaultRaw": 250,
+        "name": "options.samplingRate",
+        "description": "Sampling rate of the EEG device"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "'butterworth'",
+        "defaultRaw": "'butterworth'",
+        "name": "options.characteristic",
+        "description": "Filter characteristic. Options are 'bessel' and 'butterworth'"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "2",
+        "defaultRaw": 2,
+        "name": "options.order",
+        "description": "The number of 2nd order biquad filters applied to the signal"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Observable<Sample | Epoch>"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 72,
+    "kind": "file",
+    "name": "src/pipes/filtering/index.js",
+    "content": "export * from './lowpassFilter';\nexport * from './highpassFilter';\nexport * from './bandpassFilter';\nexport * from './notchFilter';",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/pipes/filtering/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 73,
+    "kind": "file",
+    "name": "src/pipes/filtering/lowpassFilter.js",
+    "content": "import { CalcCascades, IirFilter } from \"fili\";\nimport { pipe } from \"rxjs\";\nimport { map } from \"rxjs/operators\";\nimport { isEpoch } from \"../../utils/isEpoch\";\nimport {\n  SAMPLING_RATE as defaultsamplingRate,\n  ORDER as defaultOrder,\n  CHARACTERISTIC as defaultCharacteristic\n} from \"../../constants\";\n\nconst createLowpassIIR = options => {\n  const calc = new CalcCascades();\n  const coeffs = calc.lowpass(options);\n  return new IirFilter(coeffs);\n};\n\nconst interpolate = (before, after) => {\n  if (!isNaN(before)) {\n    if (!isNaN(after)) {\n      return (before + after) / 2;\n    }\n    return before;\n  }\n  if (!isNaN(after)) {\n    return after;\n  }\n  return 0;\n};\n\n/**\n * Applies a lowpass filter to EEG Data. Can be applied to both raw or epoched data\n * @method lowpassFilter\n * @example eeg$\n  .pipe(lowpassFilter({ cutoffFrequency: 50, nbChannels: 4 }))\n * @param {Object} options - Filter options\n * @param {number} options.nbChannels Number of channels\n * @param {number} [options.cutoffFrequency=50] Cutoff frequency in Hz\n * @param {number} [options.samplingRate=250] Sampling rate of the EEG device\n * @param {string} [options.characteristic='butterworth'] Filter characteristic. Options are 'bessel' and 'butterworth'\n * @param {number} [options.order=2] The number of 2nd order biquad filters applied to the signal\n * \n * @returns {Observable<Sample | Epoch>}\n */\nexport const lowpassFilter = ({\n  nbChannels,\n  order = defaultOrder,\n  characteristic = defaultCharacteristic,\n  cutoffFrequency = 50,\n  samplingRate = defaultsamplingRate\n} = {}) => {\n  if (!nbChannels) {\n    throw new Error(\"Please supply nbChannels parameter\");\n  }\n  const lowpassArray = new Array(nbChannels).fill(0).map(() =>\n    createLowpassIIR({\n      order,\n      characteristic,\n      Fs: samplingRate,\n      Fc: cutoffFrequency\n    })\n  );\n  return pipe(\n    map(eegObject => ({\n      ...eegObject,\n      data: eegObject.data.map((channel, index) => {\n        if (isEpoch(eegObject)) {\n          const nans = [];\n          const safeChannel = channel.map((sample, sampleIndex) => {\n            if (isNaN(sample)) {\n              nans.push(sampleIndex);\n              const interpolation = interpolate(\n                channel[sampleIndex - 1],\n                channel[sampleIndex + 1]\n              );\n              return interpolation;\n            }\n            return sample;\n          });\n\n          // Then, perform filter\n          const filteredData = lowpassArray[index].multiStep(\n            safeChannel\n          );\n\n          // Afterwards, reinsert NaNs\n          if (nans.length > 0) {\n            nans.forEach(nan => {\n              filteredData[nan] = NaN;\n            });\n          }\n          return filteredData;\n        }\n        // If Sample, only filter if not NaN\n        if (!isNaN(channel)) {\n          return lowpassArray[index].singleStep(channel);\n        }\n        return channel;\n      })\n    }))\n  );\n};\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/pipes/filtering/lowpassFilter.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 74,
+    "kind": "function",
+    "name": "createLowpassIIR",
+    "memberof": "src/pipes/filtering/lowpassFilter.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/filtering/lowpassFilter.js~createLowpassIIR",
+    "access": "public",
+    "export": false,
+    "importPath": "@neurosity/pipes/src/pipes/filtering/lowpassFilter.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "params": [
+      {
+        "name": "options",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 75,
+    "kind": "function",
+    "name": "interpolate",
+    "memberof": "src/pipes/filtering/lowpassFilter.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/filtering/lowpassFilter.js~interpolate",
+    "access": "public",
+    "export": false,
+    "importPath": "@neurosity/pipes/src/pipes/filtering/lowpassFilter.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true,
+    "params": [
+      {
+        "name": "before",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "after",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "number"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 76,
+    "kind": "function",
+    "name": "lowpassFilter",
+    "memberof": "src/pipes/filtering/lowpassFilter.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/filtering/lowpassFilter.js~lowpassFilter",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/pipes/filtering/lowpassFilter.js",
+    "importStyle": "{lowpassFilter}",
+    "description": "Applies a lowpass filter to EEG Data. Can be applied to both raw or epoched data",
+    "examples": [
+      "eeg$\n.pipe(lowpassFilter({ cutoffFrequency: 50, nbChannels: 4 }))"
+    ],
+    "lineNumber": 44,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "lowpassFilter"
+      },
+      {
+        "tagName": "@returns",
+        "tagValue": "{Observable<Sample | Epoch>}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options",
+        "description": "Filter options"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options.nbChannels",
+        "description": "Number of channels"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "50",
+        "defaultRaw": 50,
+        "name": "options.cutoffFrequency",
+        "description": "Cutoff frequency in Hz"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "250",
+        "defaultRaw": 250,
+        "name": "options.samplingRate",
+        "description": "Sampling rate of the EEG device"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "'butterworth'",
+        "defaultRaw": "'butterworth'",
+        "name": "options.characteristic",
+        "description": "Filter characteristic. Options are 'bessel' and 'butterworth'"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "2",
+        "defaultRaw": 2,
+        "name": "options.order",
+        "description": "The number of 2nd order biquad filters applied to the signal"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Observable<Sample | Epoch>"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 77,
+    "kind": "file",
+    "name": "src/pipes/filtering/notchFilter.js",
+    "content": "import { CalcCascades, IirFilter } from \"fili\";\nimport { pipe } from \"rxjs\";\nimport { map } from \"rxjs/operators\";\nimport { isEpoch } from \"../../utils/isEpoch\";\nimport {\n  SAMPLING_RATE as defaultsamplingRate,\n  ORDER as defaultOrder,\n  CHARACTERISTIC as defaultCharacteristic,\n  NOTCH_BW as defaultNotchBW\n} from \"../../constants\";\n\nconst createNotchIIR = (options, filterHarmonics) => {\n  const calc = new CalcCascades();\n  const coeffs = calc.bandstop(options);\n\n  if (filterHarmonics) {\n    const thirdHarmonicCoeffs = calc.bandstop({\n      ...options,\n      Fc: options.Fc * 3\n    });\n    const firstFilter = new IirFilter(coeffs);\n    const thirdFilter = new IirFilter(thirdHarmonicCoeffs);\n    return (signal, stepFunction) =>\n      thirdFilter[stepFunction](firstFilter[stepFunction](signal));\n  }\n  const filter = new IirFilter(coeffs);\n  return (signal, stepFunction) => filter[stepFunction](signal);\n};\n\nconst interpolate = (before, after) => {\n  if (!isNaN(before)) {\n    if (!isNaN(after)) {\n      return (before + after) / 2;\n    }\n    return before;\n  }\n  if (!isNaN(after)) {\n    return after;\n  }\n  return 0;\n};\n\n/**\n * Applies a notch filter to EEG Data. Can be applied to both raw or epoched data. Has the ability to filter out harmonics of line noise (e.g. 120Hz, 180Hz), though this is only needed for high-frequency devices with >= 1000hz sampling rate\n * @method notchFilter\n * @example eeg$\n  .pipe(notchFilter({ cutoffFrequency: 60, nbChannels: 10, samplingRate: 1000, filterHarmonics: true }))\n * @param {Object} options - Filter options\n * @param {number} options.nbChannels Number of channels\n * @param {number} [options.cutoffFrequency=60] Cutoff frequency in Hz\n * @param {number} [options.bandWidth=0.5] Width of the cutoff centered around the notched frequency. Larger values reduce filter out more of the notch frequency at the cost of also reducing nearby frequencies\n * @param {boolean} [options.filterHarmonics=false] Whether to filter harmonics of the notch frequency as well\n * @param {number} [options.samplingRate=250] Sampling rate of the EEG device\n * @param {string} [options.characteristic='butterworth'] Filter characteristic. Options are 'bessel' and 'butterworth'\n * @param {number} [options.order=2] Number of 2nd order biquad filters applied to the signal\n * \n * @returns {Observable<Sample | Epoch>}\n */\nexport const notchFilter = ({\n  nbChannels,\n  order = defaultOrder,\n  characteristic = defaultCharacteristic,\n  cutoffFrequency = 60,\n  samplingRate = defaultsamplingRate,\n  bandWidth = defaultNotchBW,\n  filterHarmonics = false\n} = {}) => {\n  if (!nbChannels) {\n    throw new Error(\"Please supply nbChannels parameter\");\n  }\n  const notchArray = new Array(nbChannels).fill(0).map(() =>\n    createNotchIIR(\n      {\n        order,\n        characteristic,\n        Fs: samplingRate,\n        Fc: cutoffFrequency,\n        BW: bandWidth\n      },\n      filterHarmonics\n    )\n  );\n  return pipe(\n    map(eegObject => ({\n      ...eegObject,\n      data: eegObject.data.map((channel, index) => {\n        if (isEpoch(eegObject)) {\n          const nans = [];\n          const safeChannel = channel.map((sample, sampleIndex) => {\n            if (isNaN(sample)) {\n              nans.push(sampleIndex);\n              const interpolation = interpolate(\n                channel[sampleIndex - 1],\n                channel[sampleIndex + 1]\n              );\n              return interpolation;\n            }\n            return sample;\n          });\n\n          // Then, perform filter\n          const filteredData = notchArray[index](\n            safeChannel,\n            \"multiStep\"\n          );\n\n          // Afterwards, reinsert NaNs\n          if (nans.length > 0) {\n            nans.forEach(nan => {\n              filteredData[nan] = NaN;\n            });\n          }\n          return filteredData;\n        }\n        // If Sample, only filter if not NaN\n        if (!isNaN(channel)) {\n          return notchArray[index](channel, \"singleStep\");\n        }\n        return channel;\n      })\n    }))\n  );\n};\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/pipes/filtering/notchFilter.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 78,
+    "kind": "function",
+    "name": "createNotchIIR",
+    "memberof": "src/pipes/filtering/notchFilter.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/filtering/notchFilter.js~createNotchIIR",
+    "access": "public",
+    "export": false,
+    "importPath": "@neurosity/pipes/src/pipes/filtering/notchFilter.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "params": [
+      {
+        "name": "options",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "filterHarmonics",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 79,
+    "kind": "function",
+    "name": "interpolate",
+    "memberof": "src/pipes/filtering/notchFilter.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/filtering/notchFilter.js~interpolate",
+    "access": "public",
+    "export": false,
+    "importPath": "@neurosity/pipes/src/pipes/filtering/notchFilter.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 30,
+    "undocument": true,
+    "params": [
+      {
+        "name": "before",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "after",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "number"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 80,
+    "kind": "function",
+    "name": "notchFilter",
+    "memberof": "src/pipes/filtering/notchFilter.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/filtering/notchFilter.js~notchFilter",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/pipes/filtering/notchFilter.js",
+    "importStyle": "{notchFilter}",
+    "description": "Applies a notch filter to EEG Data. Can be applied to both raw or epoched data. Has the ability to filter out harmonics of line noise (e.g. 120Hz, 180Hz), though this is only needed for high-frequency devices with >= 1000hz sampling rate",
+    "examples": [
+      "eeg$\n.pipe(notchFilter({ cutoffFrequency: 60, nbChannels: 10, samplingRate: 1000, filterHarmonics: true }))"
+    ],
+    "lineNumber": 59,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "notchFilter"
+      },
+      {
+        "tagName": "@returns",
+        "tagValue": "{Observable<Sample | Epoch>}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options",
+        "description": "Filter options"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options.nbChannels",
+        "description": "Number of channels"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "60",
+        "defaultRaw": 60,
+        "name": "options.cutoffFrequency",
+        "description": "Cutoff frequency in Hz"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "0.5",
+        "defaultRaw": 0.5,
+        "name": "options.bandWidth",
+        "description": "Width of the cutoff centered around the notched frequency. Larger values reduce filter out more of the notch frequency at the cost of also reducing nearby frequencies"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "false",
+        "defaultRaw": false,
+        "name": "options.filterHarmonics",
+        "description": "Whether to filter harmonics of the notch frequency as well"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "250",
+        "defaultRaw": 250,
+        "name": "options.samplingRate",
+        "description": "Sampling rate of the EEG device"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "'butterworth'",
+        "defaultRaw": "'butterworth'",
+        "name": "options.characteristic",
+        "description": "Filter characteristic. Options are 'bessel' and 'butterworth'"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "2",
+        "defaultRaw": 2,
+        "name": "options.order",
+        "description": "Number of 2nd order biquad filters applied to the signal"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Observable<Sample | Epoch>"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 81,
+    "kind": "file",
+    "name": "src/pipes/frequency/alphaPower.js",
+    "content": "import { pipe } from \"rxjs\";\nimport { averagePower } from \"./averagePower\";\nimport { sliceFFT } from \"./sliceFFT\";\n\nimport { FREQUENCY_BANDS as frequencyBands } from \"../../constants\";\n\n/**\n * Returns the average alpha power from a stream of PSDs\n * @method alphaPower\n * @example eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), alphaPower())\n * @returns {Observable<Array<number>>}\n */\nexport const alphaPower = () =>\n  pipe(\n    sliceFFT(frequencyBands.alpha),\n    averagePower()\n  );\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/pipes/frequency/alphaPower.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 82,
+    "kind": "function",
+    "name": "alphaPower",
+    "memberof": "src/pipes/frequency/alphaPower.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/frequency/alphaPower.js~alphaPower",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/pipes/frequency/alphaPower.js",
+    "importStyle": "{alphaPower}",
+    "description": "Returns the average alpha power from a stream of PSDs",
+    "examples": [
+      "eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), alphaPower())"
+    ],
+    "lineNumber": 13,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "alphaPower"
+      },
+      {
+        "tagName": "@returns",
+        "tagValue": "{Observable<Array<number>>}"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Observable<Array<number>>"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "params": []
+  },
+  {
+    "__docId__": 83,
+    "kind": "file",
+    "name": "src/pipes/frequency/averagePower.js",
+    "content": "import { pipe } from \"rxjs\";\nimport { map } from \"rxjs/operators\";\n\nimport { average } from \"../../utils/stats\";\n\n/**\n * Takes a stream of PSDs and returns a sream of arrays, containing the average power in each channel\n * @method averagePower\n * @example eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), sliceFFT(10, 20), averagePower())\n * @returns {Observable} band powers array\n */\nexport const averagePower = () =>\n  pipe(\n    map(inputPSD =>\n      inputPSD.psd.reduce(\n        (acc, channel) => [...acc, average(channel)],\n        []\n      )\n    )\n  );\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/pipes/frequency/averagePower.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 84,
+    "kind": "function",
+    "name": "averagePower",
+    "memberof": "src/pipes/frequency/averagePower.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/frequency/averagePower.js~averagePower",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/pipes/frequency/averagePower.js",
+    "importStyle": "{averagePower}",
+    "description": "Takes a stream of PSDs and returns a sream of arrays, containing the average power in each channel",
+    "examples": [
+      "eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), sliceFFT(10, 20), averagePower())"
+    ],
+    "lineNumber": 12,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "averagePower"
+      },
+      {
+        "tagName": "@returns",
+        "tagValue": "{Observable} band powers array"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Observable"
+      ],
+      "spread": false,
+      "description": "band powers array"
+    },
+    "params": []
+  },
+  {
+    "__docId__": 85,
+    "kind": "file",
+    "name": "src/pipes/frequency/betaPower.js",
+    "content": "import { pipe } from \"rxjs\";\nimport { averagePower } from \"./averagePower\";\nimport { sliceFFT } from \"./sliceFFT\";\n\nimport { FREQUENCY_BANDS as frequencyBands } from \"../../constants\";\n\n/**\n * Returns the average beta power from a stream of PSDs\n * @method betaPower\n * @example eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), betaPower())\n * @returns {Observable<Array<number>>}\n */\nexport const betaPower = () =>\n  pipe(\n    sliceFFT(frequencyBands.beta),\n    averagePower()\n  );\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/pipes/frequency/betaPower.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 86,
+    "kind": "function",
+    "name": "betaPower",
+    "memberof": "src/pipes/frequency/betaPower.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/frequency/betaPower.js~betaPower",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/pipes/frequency/betaPower.js",
+    "importStyle": "{betaPower}",
+    "description": "Returns the average beta power from a stream of PSDs",
+    "examples": [
+      "eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), betaPower())"
+    ],
+    "lineNumber": 13,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "betaPower"
+      },
+      {
+        "tagName": "@returns",
+        "tagValue": "{Observable<Array<number>>}"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Observable<Array<number>>"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "params": []
+  },
+  {
+    "__docId__": 87,
+    "kind": "file",
+    "name": "src/pipes/frequency/bufferFFT.js",
+    "content": "import { FFT } from \"dsp.js\";\nimport { pipe } from \"rxjs\";\nimport { bufferCount, map } from \"rxjs/operators\";\n\nimport { groupByChannel } from \"../../utils/groupByChannel\";\n\nimport {\n  SAMPLING_RATE as defaultsamplingRate,\n  FFT_BINS as defaultFftBins,\n  DATA_PROP as defaultDataProp\n} from \"../../constants\";\n\n/**\n * Takes a stream of Samples and applies a Fast Fourier Transform to return a stream of PSDs (Power Spectral Density). Note: this operator works by buffering the stream of samples into buffers that are as long as the supplied number of bins. Because it doesn't allow as much flexibility in terms of how often data is emitted we recommend using a combination of the `epoch` and `fft` operators instead.\n * @method bufferFFT\n * @example eeg$.pipe(bufferFFT({ bins: 1024 }))\n * @param {Object} options - FFT options\n * @param {number} options.bins Number of FFT bins. Must be a power of 2.\n * @param {number} options.samplingRate Sampline rate of EEG siganl\n * @param {string} [options.dataProp='data] Name of the key associated with eeg data\n * @returns {Observable}\n */\nexport const bufferFFT = ({\n  bins = defaultFftBins,\n  window = null,\n  samplingRate = defaultsamplingRate,\n  dataProp = defaultDataProp\n} = {}) => {\n  const fft = channelGroup => {\n    const safeSamples = channelGroup.map(x => {\n      if (isNaN(x) || !x) {\n        return 0;\n      }\n      return x;\n    });\n    const fft = new FFT(bins, samplingRate);\n    fft.forward(safeSamples);\n    return Array.from(fft.spectrum);\n  };\n  return pipe(\n    bufferCount(bins, window),\n    map(samplesBuffer =>\n      groupByChannel(samplesBuffer, dataProp).map(fft)\n    )\n  );\n};\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/pipes/frequency/bufferFFT.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 88,
+    "kind": "function",
+    "name": "bufferFFT",
+    "memberof": "src/pipes/frequency/bufferFFT.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/frequency/bufferFFT.js~bufferFFT",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/pipes/frequency/bufferFFT.js",
+    "importStyle": "{bufferFFT}",
+    "description": "Takes a stream of Samples and applies a Fast Fourier Transform to return a stream of PSDs (Power Spectral Density). Note: this operator works by buffering the stream of samples into buffers that are as long as the supplied number of bins. Because it doesn't allow as much flexibility in terms of how often data is emitted we recommend using a combination of the `epoch` and `fft` operators instead.",
+    "examples": [
+      "eeg$.pipe(bufferFFT({ bins: 1024 }))"
+    ],
+    "lineNumber": 23,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "bufferFFT"
+      },
+      {
+        "tagName": "@returns",
+        "tagValue": "{Observable}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options",
+        "description": "FFT options"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options.bins",
+        "description": "Number of FFT bins. Must be a power of 2."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options.samplingRate",
+        "description": "Sampline rate of EEG siganl"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "'data",
+        "defaultRaw": "'data",
+        "name": "options.dataProp",
+        "description": "Name of the key associated with eeg data"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Observable"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 89,
+    "kind": "file",
+    "name": "src/pipes/frequency/deltaPower.js",
+    "content": "import { pipe } from \"rxjs\";\nimport { averagePower } from \"./averagePower\";\nimport { sliceFFT } from \"./sliceFFT\";\n\nimport { FREQUENCY_BANDS as frequencyBands } from \"../../constants\";\n\n/**\n * Returns the average delta power from a stream of PSDs\n * @method deltaPower\n * @example eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), deltaPower())\n * @returns {Observable<Array<number>>}\n */\nexport const deltaPower = () =>\n  pipe(\n    sliceFFT(frequencyBands.delta),\n    averagePower()\n  );\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/pipes/frequency/deltaPower.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 90,
+    "kind": "function",
+    "name": "deltaPower",
+    "memberof": "src/pipes/frequency/deltaPower.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/frequency/deltaPower.js~deltaPower",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/pipes/frequency/deltaPower.js",
+    "importStyle": "{deltaPower}",
+    "description": "Returns the average delta power from a stream of PSDs",
+    "examples": [
+      "eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), deltaPower())"
+    ],
+    "lineNumber": 13,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "deltaPower"
+      },
+      {
+        "tagName": "@returns",
+        "tagValue": "{Observable<Array<number>>}"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Observable<Array<number>>"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "params": []
+  },
+  {
+    "__docId__": 91,
+    "kind": "file",
+    "name": "src/pipes/frequency/fft.js",
+    "content": "import { FFT } from \"dsp.js\";\nimport { pipe } from \"rxjs\";\nimport { map } from \"rxjs/operators\";\nimport { zeroPad } from \"../../utils/zeroPad\";\n\nimport {\n  FFT_BINS as defaultFftBins,\n  DATA_PROP as defaultDataProp\n} from \"../../constants\";\n\n/**\n * Applies a Fast Fourier Transform to a stream of Epochs of EEG data and returns a stream of PSDs (Power Spectral Density). Frequency resolution will be samplingRate / bins. If input Epoch duration is not equal to bins, data will be zero-padded or sliced so that is the same length as bins.\n * @method fft\n * @example eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }))\n * @param {Object} options - FFT options\n * @param {number} options.bins Number of FFT bins. Must be a power of 2.\n * @param {string} [options.dataProp='data] Name of the key associated with eeg data\n *\n * @returns {Observable<PSD>}\n */\nexport const fft = ({\n  bins = defaultFftBins,\n  dataProp = defaultDataProp\n} = {}) => {\n  const transformChannel = (channel, samplingRate) => {\n    let safeSamples = channel.map(sample => {\n      if (isNaN(sample) || !sample) {\n        return 0;\n      }\n      return sample;\n    });\n    const fft = new FFT(bins, samplingRate);\n    if (safeSamples.length != bins) {\n      if (safeSamples.length < bins) {\n        safeSamples = zeroPad(safeSamples, bins);\n      } else {\n        safeSamples = safeSamples.slice(safeSamples.length - bins);\n      }\n    }\n    fft.forward(safeSamples);\n    return Array.from(fft.spectrum);\n  };\n  return pipe(\n    map(epoch => ({\n      psd: epoch[dataProp].map(channel =>\n        transformChannel(channel, epoch.info.samplingRate)\n      ),\n      freqs: Array.from(\n        { length: bins / 2 },\n        (_, index) => index * (epoch.info.samplingRate / bins)\n      ),\n      info: epoch.info\n    }))\n  );\n};\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/pipes/frequency/fft.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 92,
+    "kind": "function",
+    "name": "fft",
+    "memberof": "src/pipes/frequency/fft.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/frequency/fft.js~fft",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/pipes/frequency/fft.js",
+    "importStyle": "{fft}",
+    "description": "Applies a Fast Fourier Transform to a stream of Epochs of EEG data and returns a stream of PSDs (Power Spectral Density). Frequency resolution will be samplingRate / bins. If input Epoch duration is not equal to bins, data will be zero-padded or sliced so that is the same length as bins.",
+    "examples": [
+      "eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }))"
+    ],
+    "lineNumber": 21,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "fft"
+      },
+      {
+        "tagName": "@returns",
+        "tagValue": "{Observable<PSD>}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options",
+        "description": "FFT options"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options.bins",
+        "description": "Number of FFT bins. Must be a power of 2."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "'data",
+        "defaultRaw": "'data",
+        "name": "options.dataProp",
+        "description": "Name of the key associated with eeg data"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Observable<PSD>"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 93,
+    "kind": "file",
+    "name": "src/pipes/frequency/gammaPower.js",
+    "content": "import { pipe } from \"rxjs\";\nimport { averagePower } from \"./averagePower\";\nimport { sliceFFT } from \"./sliceFFT\";\n\nimport { FREQUENCY_BANDS as frequencyBands } from \"../../constants\";\n\n/**\n * Returns the average gamma power from a stream of PSDs\n * @method gammaPower\n * @example eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), gammaPower())\n * @returns {Observable<Array<number>>}\n */\nexport const gammaPower = () =>\n  pipe(\n    sliceFFT(frequencyBands.gamma),\n    averagePower()\n  );\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/pipes/frequency/gammaPower.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 94,
+    "kind": "function",
+    "name": "gammaPower",
+    "memberof": "src/pipes/frequency/gammaPower.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/frequency/gammaPower.js~gammaPower",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/pipes/frequency/gammaPower.js",
+    "importStyle": "{gammaPower}",
+    "description": "Returns the average gamma power from a stream of PSDs",
+    "examples": [
+      "eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), gammaPower())"
+    ],
+    "lineNumber": 13,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "gammaPower"
+      },
+      {
+        "tagName": "@returns",
+        "tagValue": "{Observable<Array<number>>}"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Observable<Array<number>>"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "params": []
+  },
+  {
+    "__docId__": 95,
+    "kind": "file",
+    "name": "src/pipes/frequency/index.js",
+    "content": "export * from './alphaPower';\nexport * from './averagePower';\nexport * from './betaPower';\nexport * from './bufferFFT';\nexport * from './fft';\nexport * from './deltaPower';\nexport * from './gammaPower';\nexport * from './powerByBand';\nexport * from './sliceFFT';\nexport * from './thetaPower';",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/pipes/frequency/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 96,
+    "kind": "file",
+    "name": "src/pipes/frequency/powerByBand.js",
+    "content": "import { of, zip, pipe } from \"rxjs\";\nimport { flatMap } from \"rxjs/operators\";\n\nimport { averagePower } from \"./averagePower\";\nimport { sliceFFT } from \"./sliceFFT\";\n\nimport { FREQUENCY_BANDS as defaultBands } from \"../../constants\";\n\n/**\n * Takes a stream of PSDs and returns the average power for each of the classic EEG bands (alpha, beta, theta, etc.). Classic EEG bands can be overridden by providing a custom bands object (e.g. { lowAlpha: [7.5, 10], highAlpha: [10, 12.5] })\n * @method powerByBand\n * @example eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), powerByBand())\n * @param {Object} [bands] Custom bands object containing corresponding names and frequency ranges\n * @returns {Observable<Array<number>>}\n */\nexport const powerByBand = (bands = defaultBands) =>\n  pipe(\n    flatMap(inputPSD => {\n      const entries = Object.entries(bands);\n      const bandPowers = entries.map(([_, range]) =>\n        of(inputPSD).pipe(\n          sliceFFT(range),\n          averagePower()\n        )\n      );\n      const zipPowers = (...powers) =>\n        powers.reduce(\n          (acc, power, index) => ({\n            ...acc,\n            [entries[index][0]]: power\n          }),\n          {}\n        );\n      return zip(...bandPowers, zipPowers);\n    })\n  );\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/pipes/frequency/powerByBand.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 97,
+    "kind": "function",
+    "name": "powerByBand",
+    "memberof": "src/pipes/frequency/powerByBand.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/frequency/powerByBand.js~powerByBand",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/pipes/frequency/powerByBand.js",
+    "importStyle": "{powerByBand}",
+    "description": "Takes a stream of PSDs and returns the average power for each of the classic EEG bands (alpha, beta, theta, etc.). Classic EEG bands can be overridden by providing a custom bands object (e.g. { lowAlpha: [7.5, 10], highAlpha: [10, 12.5] })",
+    "examples": [
+      "eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), powerByBand())"
+    ],
+    "lineNumber": 16,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "powerByBand"
+      },
+      {
+        "tagName": "@returns",
+        "tagValue": "{Observable<Array<number>>}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "bands",
+        "description": "Custom bands object containing corresponding names and frequency ranges"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Observable<Array<number>>"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 98,
+    "kind": "file",
+    "name": "src/pipes/frequency/sliceFFT.js",
+    "content": "import { pipe } from \"rxjs\";\nimport { map } from \"rxjs/operators\";\n\n/**\n * Slices a stream of PSDs to a specific frequency range defined by a minimum and maximum frequency in Hz\n * @method sliceFFT\n * @example eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), sliceFFT([2, 30]))\n * @param {Array<number>} range Array containing minimum and maximum frequencies\n * @returns {Observable<PSD>}\n */\nexport const sliceFFT = ([min = 0, max = 128]) =>\n  pipe(\n    map(inputPSD => {\n      if (\n        !inputPSD.psd ||\n        !inputPSD.psd.length ||\n        !inputPSD.psd[0].length\n      ) {\n        return { psd: inputPSD };\n      }\n\n      const filteredPSD = inputPSD.psd.map(channel =>\n        channel.filter(\n          (spectrum, index) =>\n            inputPSD.freqs[index] >= min && inputPSD.freqs[index] <= max\n        )\n      );\n\n      return {\n        ...inputPSD,\n        psd: filteredPSD,\n        freqs: inputPSD.freqs.filter(freq => freq >= min && freq <= max)\n      };\n    })\n  );\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/pipes/frequency/sliceFFT.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 99,
+    "kind": "function",
+    "name": "sliceFFT",
+    "memberof": "src/pipes/frequency/sliceFFT.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/frequency/sliceFFT.js~sliceFFT",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/pipes/frequency/sliceFFT.js",
+    "importStyle": "{sliceFFT}",
+    "description": "Slices a stream of PSDs to a specific frequency range defined by a minimum and maximum frequency in Hz",
+    "examples": [
+      "eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), sliceFFT([2, 30]))"
+    ],
+    "lineNumber": 11,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "sliceFFT"
+      },
+      {
+        "tagName": "@returns",
+        "tagValue": "{Observable<PSD>}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Array<number>"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "range",
+        "description": "Array containing minimum and maximum frequencies"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Observable<PSD>"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 100,
+    "kind": "file",
+    "name": "src/pipes/frequency/thetaPower.js",
+    "content": "import { pipe } from \"rxjs\";\nimport { averagePower } from \"./averagePower\";\nimport { sliceFFT } from \"./sliceFFT\";\n\nimport { FREQUENCY_BANDS as frequencyBands } from \"../../constants\";\n\n/**\n * Returns the average theta power from a stream of PSDs\n * @method thetaPower\n * @example eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), thetaPower())\n * @returns {Observable<Array<number>>}\n */\nexport const thetaPower = () =>\n  pipe(\n    sliceFFT(frequencyBands.theta),\n    averagePower()\n  );\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/pipes/frequency/thetaPower.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 101,
+    "kind": "function",
+    "name": "thetaPower",
+    "memberof": "src/pipes/frequency/thetaPower.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/frequency/thetaPower.js~thetaPower",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/pipes/frequency/thetaPower.js",
+    "importStyle": "{thetaPower}",
+    "description": "Returns the average theta power from a stream of PSDs",
+    "examples": [
+      "eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), thetaPower())"
+    ],
+    "lineNumber": 13,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "thetaPower"
+      },
+      {
+        "tagName": "@returns",
+        "tagValue": "{Observable<Array<number>>}"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Observable<Array<number>>"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "params": []
+  },
+  {
+    "__docId__": 102,
+    "kind": "file",
+    "name": "src/pipes/index.js",
+    "content": "export * from \"./filtering\";\nexport * from \"./frequency\";\nexport * from \"./reducer\";\nexport * from \"./unit\";\nexport * from \"./utility\";\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/pipes/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 103,
+    "kind": "file",
+    "name": "src/pipes/reducer/averageDeep.js",
+    "content": "import { map } from \"rxjs/operators\";\nimport { average } from \"../../utils/stats\";\n\n/**\n * @method averageDeep\n * Averages list of values including deep lists, to a single value\n *\n * @returns {Observable} average\n */\nexport const averageDeep = () =>\n  map(\n    channels =>\n      channels.reduce(\n        (acc, value) => acc + (Array.isArray(value) ? average(value) : value),\n        0\n      ) / channels.length\n  );\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/pipes/reducer/averageDeep.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 104,
+    "kind": "function",
+    "name": "averageDeep",
+    "memberof": "src/pipes/reducer/averageDeep.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/reducer/averageDeep.js~averageDeep",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/pipes/reducer/averageDeep.js",
+    "importStyle": "{averageDeep}",
+    "description": "",
+    "lineNumber": 10,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "averageDeep\nAverages list of values including deep lists, to a single value"
+      },
+      {
+        "tagName": "@returns",
+        "tagValue": "{Observable} average"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Observable"
+      ],
+      "spread": false,
+      "description": "average"
+    },
+    "params": []
+  },
+  {
+    "__docId__": 105,
+    "kind": "file",
+    "name": "src/pipes/reducer/index.js",
+    "content": "export * from \"./averageDeep\";",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/pipes/reducer/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 106,
+    "kind": "file",
+    "name": "src/pipes/unit/index.js",
+    "content": "\nexport * from './voltsToMicrovolts';\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/pipes/unit/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 107,
+    "kind": "file",
+    "name": "src/pipes/unit/voltsToMicrovolts.js",
+    "content": "import { pipe } from \"rxjs\";\nimport { map } from \"rxjs/operators\";\n\nimport { isEpoch } from \"../../utils/isEpoch\";\n\nimport {\n  USE_LOG as useLog,\n  DATA_PROP as defaultDataProp\n} from \"../../constants\";\n\n/**\n * Converts a stream of EEG data (either eegObjects or Epochs) from volts to microvolts\n * @method toMicrovolts\n * @example eeg&.pipe(toMicrovolts)\n * @param {Object} options - Conversion options\n * @param {boolean} [options.useLog=false] Whether to use logarithmic conversion\n * @param {string} [options.dataProp='data'] Name of the key associated with eeg data\n *\n * @returns {Observable<Sample | Epoch>}\n */\nexport const voltsToMicrovolts = ({\n  log = useLog,\n  dataProp = defaultDataProp\n} = {}) =>\n  pipe(\n    map(eegObject => {\n      const conversion = log\n        ? volt => Math.log10(Math.pow(10, 6) * volt)\n        : volt => Math.pow(10, 6) * volt;\n      return {\n        ...eegObject,\n        [dataProp]: eegObject[dataProp].map(channel => {\n          if (isEpoch(eegObject)) {\n            return channel.map(conversion);\n          }\n          return conversion(channel);\n        })\n      };\n    })\n  );\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/pipes/unit/voltsToMicrovolts.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 108,
+    "kind": "function",
+    "name": "voltsToMicrovolts",
+    "memberof": "src/pipes/unit/voltsToMicrovolts.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/unit/voltsToMicrovolts.js~voltsToMicrovolts",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/pipes/unit/voltsToMicrovolts.js",
+    "importStyle": "{voltsToMicrovolts}",
+    "description": "Converts a stream of EEG data (either eegObjects or Epochs) from volts to microvolts",
+    "examples": [
+      "eeg&.pipe(toMicrovolts)"
+    ],
+    "lineNumber": 21,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "toMicrovolts"
+      },
+      {
+        "tagName": "@returns",
+        "tagValue": "{Observable<Sample | Epoch>}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options",
+        "description": "Conversion options"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "false",
+        "defaultRaw": false,
+        "name": "options.useLog",
+        "description": "Whether to use logarithmic conversion"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "'data'",
+        "defaultRaw": "'data'",
+        "name": "options.dataProp",
+        "description": "Name of the key associated with eeg data"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Observable<Sample | Epoch>"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 109,
+    "kind": "file",
+    "name": "src/pipes/utility/addInfo.js",
+    "content": "import { pipe } from \"rxjs\";\nimport { map } from \"rxjs/operators\";\n\nconst isObject = object => object instanceof Object;\nconst isFunction = object => typeof object === \"function\";\n\nconst patch = sample => info => ({\n  ...sample,\n  info: {\n    ...(sample.info || {}),\n    ...(info || {})\n  }\n});\n\n/**\n * Annotates stream with user-defined metadata\n * @method addInfo\n * @example eeg$.pipe(addinfo({ samplingRate: 256, channelNames: [\"Af7\", \"Fp1\", \"Fp2\", \"Af8\"] })\n * @param {Object} info Info to be added to the EEG stream. Relevant info may include: `samplingRate` and `channelNames`\n * @returns {Observable<Sample|Epoch|PSD>}\n */\nexport const addInfo = (arg = {}) =>\n  pipe(\n    map(sample => {\n      if (!isObject(sample) || (!isObject(arg) && !isFunction(arg))) {\n        return sample;\n      }\n      const info = isFunction(arg) ? arg(sample) : arg;\n      return patch(sample)(info);\n    })\n  );\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/pipes/utility/addInfo.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 110,
+    "kind": "function",
+    "name": "isObject",
+    "memberof": "src/pipes/utility/addInfo.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/utility/addInfo.js~isObject",
+    "access": "public",
+    "export": false,
+    "importPath": "@neurosity/pipes/src/pipes/utility/addInfo.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "params": [
+      {
+        "name": "object",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 111,
+    "kind": "function",
+    "name": "isFunction",
+    "memberof": "src/pipes/utility/addInfo.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/utility/addInfo.js~isFunction",
+    "access": "public",
+    "export": false,
+    "importPath": "@neurosity/pipes/src/pipes/utility/addInfo.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "params": [
+      {
+        "name": "object",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 112,
+    "kind": "function",
+    "name": "patch",
+    "memberof": "src/pipes/utility/addInfo.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/utility/addInfo.js~patch",
+    "access": "public",
+    "export": false,
+    "importPath": "@neurosity/pipes/src/pipes/utility/addInfo.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 7,
+    "undocument": true,
+    "params": [
+      {
+        "name": "sample",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 113,
+    "kind": "function",
+    "name": "addInfo",
+    "memberof": "src/pipes/utility/addInfo.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/utility/addInfo.js~addInfo",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/pipes/utility/addInfo.js",
+    "importStyle": "{addInfo}",
+    "description": "Annotates stream with user-defined metadata",
+    "examples": [
+      "eeg$.pipe(addinfo({ samplingRate: 256, channelNames: [\"Af7\", \"Fp1\", \"Fp2\", \"Af8\"] })"
+    ],
+    "lineNumber": 22,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "addInfo"
+      },
+      {
+        "tagName": "@returns",
+        "tagValue": "{Observable<Sample|Epoch|PSD>}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "info",
+        "description": "Info to be added to the EEG stream. Relevant info may include: `samplingRate` and `channelNames`"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Observable<Sample|Epoch|PSD>"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 114,
+    "kind": "file",
+    "name": "src/pipes/utility/addSignalQuality.js",
+    "content": "import { pipe } from \"rxjs\";\nimport { map } from \"rxjs/operators\";\n\nimport { standardDeviation } from \"../../utils/stats\";\n\nimport { DATA_PROP as defaultDataProp } from \"../../constants\";\n\n/**\n * @method addSignalQuality\n * Adds a signal quality property to a stream of Epochs\n * signal quality is represented as standard deviation value for each channel\n * @example eeg$.pipe(addSignalQuality())\n * @param {Object} options - addSignalQuality options\n * @param {string} [options.dataProp='data] Name of key associated with eeg data\n * @returns {Observable<Epoch>}\n */\nexport const addSignalQuality = ({ dataProp = defaultDataProp } = {}) =>\n  pipe(\n    map(epoch => {\n      const names = epoch.info.channelNames\n        ? epoch.info.channelNames\n        : epoch[dataProp].map((_, i) => i);\n      return {\n        ...epoch,\n        signalQuality: epoch[dataProp].reduce(\n          (acc, curr, index) => ({\n            ...acc,\n            [names[index]]: standardDeviation(curr)\n          }),\n          {}\n        )\n      };\n    })\n  );\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/pipes/utility/addSignalQuality.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 115,
+    "kind": "function",
+    "name": "addSignalQuality",
+    "memberof": "src/pipes/utility/addSignalQuality.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/utility/addSignalQuality.js~addSignalQuality",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/pipes/utility/addSignalQuality.js",
+    "importStyle": "{addSignalQuality}",
+    "description": "",
+    "examples": [
+      "eeg$.pipe(addSignalQuality())"
+    ],
+    "lineNumber": 17,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "addSignalQuality\nAdds a signal quality property to a stream of Epochs\nsignal quality is represented as standard deviation value for each channel"
+      },
+      {
+        "tagName": "@returns",
+        "tagValue": "{Observable<Epoch>}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options",
+        "description": "addSignalQuality options"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "'data",
+        "defaultRaw": "'data",
+        "name": "options.dataProp",
+        "description": "Name of key associated with eeg data"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Observable<Epoch>"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 116,
+    "kind": "file",
+    "name": "src/pipes/utility/bufferCount.js",
+    "content": "export { bufferCount } from \"rxjs/operators\";\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/pipes/utility/bufferCount.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 117,
+    "kind": "file",
+    "name": "src/pipes/utility/bufferTime.js",
+    "content": "export { bufferTime } from \"rxjs/operators\";\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/pipes/utility/bufferTime.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 118,
+    "kind": "file",
+    "name": "src/pipes/utility/bufferToEpoch.js",
+    "content": "import { pipe } from \"rxjs\";\nimport { map } from \"rxjs/operators\";\n\nimport { groupByChannel } from \"../../utils/groupByChannel\";\n\nimport {\n  DATA_PROP as defaultDataProp,\n  SAMPLING_RATE as defaultSamplingRate\n} from \"../../constants\";\n\n/**\n * Takes an array or RxJS buffer of EEG Samples and returns an Epoch.\n * @method bufferToEpoch\n * @example eeg$.pipe(bufferTime(1000), bufferToEpoch({ samplingRate: 256 }))\n *\n * @param {Object} options - Data structure options\n * @param {number} [options.samplingRate] Sampling rate\n * @param {string} [options.dataProp='data'] Name of the key associated with eeg data\n *\n * @returns {Observable<Epoch>}\n */\nexport const bufferToEpoch = ({\n  samplingRate = defaultSamplingRate,\n  dataProp = defaultDataProp\n} = {}) =>\n  pipe(\n    map(samplesArray => ({\n      [dataProp]: groupByChannel(samplesArray, dataProp),\n      info: {\n        ...(samplesArray[0] && samplesArray[0].info\n          ? samplesArray[0].info\n          : {}),\n        startTime: samplesArray[0].timestamp,\n        samplingRate:\n          samplesArray[0].info && samplesArray[0].info.samplingRate\n            ? samplesArray[0].info.samplingRate\n            : samplingRate\n      }\n    }))\n  );\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/pipes/utility/bufferToEpoch.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 119,
+    "kind": "function",
+    "name": "bufferToEpoch",
+    "memberof": "src/pipes/utility/bufferToEpoch.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/utility/bufferToEpoch.js~bufferToEpoch",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/pipes/utility/bufferToEpoch.js",
+    "importStyle": "{bufferToEpoch}",
+    "description": "Takes an array or RxJS buffer of EEG Samples and returns an Epoch.",
+    "examples": [
+      "eeg$.pipe(bufferTime(1000), bufferToEpoch({ samplingRate: 256 }))"
+    ],
+    "lineNumber": 22,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "bufferToEpoch"
+      },
+      {
+        "tagName": "@returns",
+        "tagValue": "{Observable<Epoch>}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options",
+        "description": "Data structure options"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "options.samplingRate",
+        "description": "Sampling rate"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "'data'",
+        "defaultRaw": "'data'",
+        "name": "options.dataProp",
+        "description": "Name of the key associated with eeg data"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Observable<Epoch>"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 120,
+    "kind": "file",
+    "name": "src/pipes/utility/epoch.js",
+    "content": "import { pipe } from \"rxjs\";\nimport { bufferCount, scan, filter } from \"rxjs/operators\";\n\nimport { bufferToEpoch } from \"../utility/bufferToEpoch\";\n\nimport {\n  EPOCH_DURATION as defaultEpochDuration,\n  EPOCH_INTERVAL as defaultEpochInterval,\n  SAMPLING_RATE as defaultSamplingRate,\n  DATA_PROP as defaultDataProp\n} from \"../../constants\";\n\n/**\n * Converts a stream of individual Samples of EEG data into a stream of Epochs of a given duration emitted at specified interval. This operator functions similarly to a circular buffer internally and allows overlapping Epochs of data to be emitted (e.g. emitting the last one second of data every 100ms).\n * @method epoch\n * @example eeg$.pipe(epoch({ duration: 1024, interval: 100, samplingRate: 256 }))\n * @param {Object} options - Epoching options\n * @param {number} [options.duration=256] Number of samples to include in each epoch\n * @param {number} [options.interval=100] Time (ms) between emitted Epochs\n * @param {number} [options.samplingRate=256] Sampling rate\n * @param {string} [options.dataProp='data'] Name of the key associated with eeg data\n * @returns {Observable} Epoch\n */\nexport const epoch = ({\n  duration = defaultEpochDuration,\n  interval = defaultEpochInterval,\n  samplingRate = defaultSamplingRate,\n  dataProp = defaultDataProp\n} = {}) =>\n  pipe(\n    bufferCount(interval),\n    scan((acc, val) =>\n      acc.concat(val).slice(acc.length < duration ? 0 : -duration)\n    ),\n    filter(samplesArray => samplesArray.length === duration),\n    bufferToEpoch({ samplingRate, dataProp })\n  );\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/pipes/utility/epoch.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 121,
+    "kind": "function",
+    "name": "epoch",
+    "memberof": "src/pipes/utility/epoch.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/utility/epoch.js~epoch",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/pipes/utility/epoch.js",
+    "importStyle": "{epoch}",
+    "description": "Converts a stream of individual Samples of EEG data into a stream of Epochs of a given duration emitted at specified interval. This operator functions similarly to a circular buffer internally and allows overlapping Epochs of data to be emitted (e.g. emitting the last one second of data every 100ms).",
+    "examples": [
+      "eeg$.pipe(epoch({ duration: 1024, interval: 100, samplingRate: 256 }))"
+    ],
+    "lineNumber": 24,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "epoch"
+      },
+      {
+        "tagName": "@returns",
+        "tagValue": "{Observable} Epoch"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options",
+        "description": "Epoching options"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "256",
+        "defaultRaw": 256,
+        "name": "options.duration",
+        "description": "Number of samples to include in each epoch"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "100",
+        "defaultRaw": 100,
+        "name": "options.interval",
+        "description": "Time (ms) between emitted Epochs"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "256",
+        "defaultRaw": 256,
+        "name": "options.samplingRate",
+        "description": "Sampling rate"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "'data'",
+        "defaultRaw": "'data'",
+        "name": "options.dataProp",
+        "description": "Name of the key associated with eeg data"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Observable"
+      ],
+      "spread": false,
+      "description": "Epoch"
+    }
+  },
+  {
+    "__docId__": 122,
+    "kind": "file",
+    "name": "src/pipes/utility/index.js",
+    "content": "export * from \"./addInfo\";\nexport * from \"./addSignalQuality\";\nexport * from \"./bufferCount\";\nexport * from \"./bufferTime\";\nexport * from \"./bufferToEpoch\";\nexport * from \"./pickChannels\";\nexport * from \"./removeChannels\";\nexport * from \"./epoch\";\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/pipes/utility/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 123,
+    "kind": "file",
+    "name": "src/pipes/utility/pickChannels.js",
+    "content": "import { pipe } from \"rxjs\";\nimport { map } from \"rxjs/operators\";\n\nimport { DATA_PROP as defaultDataProp } from \"../../constants\";\n\n/**\n * @method pickChannels\n * Selects channel based on channel number\n *\n * @param {Object} options\n * @returns {Observable} sample\n */\nexport const pickChannels = ({\n  channels = [],\n  dataProp = defaultDataProp\n} = {}) =>\n  pipe(\n    map(sample => {\n      const channelData = sample[dataProp].filter((channel, index) =>\n        channels.includes(index + 1)\n      );\n\n      return {\n        ...sample,\n        [dataProp]: channelData\n      };\n    })\n  );\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/pipes/utility/pickChannels.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 124,
+    "kind": "function",
+    "name": "pickChannels",
+    "memberof": "src/pipes/utility/pickChannels.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/utility/pickChannels.js~pickChannels",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/pipes/utility/pickChannels.js",
+    "importStyle": "{pickChannels}",
+    "description": "",
+    "lineNumber": 13,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "pickChannels\nSelects channel based on channel number"
+      },
+      {
+        "tagName": "@returns",
+        "tagValue": "{Observable} sample"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Observable"
+      ],
+      "spread": false,
+      "description": "sample"
+    }
+  },
+  {
+    "__docId__": 125,
+    "kind": "file",
+    "name": "src/pipes/utility/removeChannels.js",
+    "content": "import { pipe } from \"rxjs\";\nimport { map } from \"rxjs/operators\";\n\nimport { DATA_PROP as defaultDataProp } from \"../../constants\";\n\n/**\n * @method removeChannels\n * Removes channels from stream based on channel number (indexed at one)\n *\n * @param {Object} options\n * @returns {Observable} sample\n */\nexport const removeChannels = ({\n  channels = [],\n  dataProp = defaultDataProp\n} = {}) =>\n  pipe(\n    map(sample => {\n      const channelData = sample[dataProp].filter(\n        (channel, index) => !channels.includes(index + 1)\n      );\n\n      return {\n        ...sample,\n        [dataProp]: channelData\n      };\n    })\n  );\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/pipes/utility/removeChannels.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 126,
+    "kind": "function",
+    "name": "removeChannels",
+    "memberof": "src/pipes/utility/removeChannels.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/pipes/utility/removeChannels.js~removeChannels",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/pipes/utility/removeChannels.js",
+    "importStyle": "{removeChannels}",
+    "description": "",
+    "lineNumber": 13,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "removeChannels\nRemoves channels from stream based on channel number (indexed at one)"
+      },
+      {
+        "tagName": "@returns",
+        "tagValue": "{Observable} sample"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Observable"
+      ],
+      "spread": false,
+      "description": "sample"
+    }
+  },
+  {
+    "__docId__": 127,
+    "kind": "file",
+    "name": "src/utils/createEEG.js",
+    "content": "import { interval } from \"rxjs\";\nimport { map } from \"rxjs/operators\";\n\nimport museCsv from \"../../dataset/muse-lsl.csv\";\n\n// Code splitting: dynaically importing the csv so it is not included in the main bundle\n// @TODO: not currently working, webpack bug: https://twitter.com/castillo__io/status/975585584486916096\n// export const getMuseCsv = async () =>\n//   await import(/* webpackChunkName: \"museCsv\" */\n//   \"../../dataset/muse-lsl.csv\").then(\n//     csv => csv.map(row => row.slice(1, 5)) // filter channel data\n//   );\n\nconst NUM_CHANNELS = 4;\nconst SAMPLING_RATE = 256;\n\nlet sinCounter = 0;\n\n// filter channel data\nconst museData = museCsv.map(row => row.slice(1, 5));\n\nconst createMockRow = length => Array.from({ length }, () => Math.random());\n\nconst createSineRow = (length, freq, samplingRate) => {\n  sinCounter++;\n  return Array.from(\n    { length },\n    () => Math.sin(sinCounter / (samplingRate / freq / (Math.PI * 2))) * 100\n  );\n};\n\nconst getCsvRow = (csv, interval) => csv[interval % csv.length];\n\nconst injectNaNs = (data, [min, max]) =>\n  data.map(value => (value > min && value < max ? NaN : value));\n\n/*\n * Creates a stream of pre-recorded EEG data that can be used for testing\n * Default data was collected from Muse 2016 with muse-lsl: staring at software \n */\nexport const createEEG = ({\n  channels = NUM_CHANNELS,\n  samplingRate = SAMPLING_RATE,\n  mock = false,\n  NaNRange = [0, 0],\n  sine = false,\n  csv = museData\n} = {}) =>\n  interval(1000 / samplingRate).pipe(\n    map(interval => {\n      const timestamp = Date.now();\n      let row = [];\n      if (sine) {\n        row = createSineRow(channels, sine, samplingRate);\n      } else {\n        row = mock ? createMockRow(channels) : getCsvRow(csv, interval);\n      }\n      const data = injectNaNs(row, NaNRange);\n      return { timestamp, data };\n    })\n  );\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/utils/createEEG.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 128,
+    "kind": "variable",
+    "name": "NUM_CHANNELS",
+    "memberof": "src/utils/createEEG.js",
+    "static": true,
+    "longname": "src/utils/createEEG.js~NUM_CHANNELS",
+    "access": "public",
+    "export": false,
+    "importPath": "@neurosity/pipes/src/utils/createEEG.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 129,
+    "kind": "variable",
+    "name": "SAMPLING_RATE",
+    "memberof": "src/utils/createEEG.js",
+    "static": true,
+    "longname": "src/utils/createEEG.js~SAMPLING_RATE",
+    "access": "public",
+    "export": false,
+    "importPath": "@neurosity/pipes/src/utils/createEEG.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 15,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 130,
+    "kind": "variable",
+    "name": "sinCounter",
+    "memberof": "src/utils/createEEG.js",
+    "static": true,
+    "longname": "src/utils/createEEG.js~sinCounter",
+    "access": "public",
+    "export": false,
+    "importPath": "@neurosity/pipes/src/utils/createEEG.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 131,
+    "kind": "variable",
+    "name": "museData",
+    "memberof": "src/utils/createEEG.js",
+    "static": true,
+    "longname": "src/utils/createEEG.js~museData",
+    "access": "public",
+    "export": false,
+    "importPath": "@neurosity/pipes/src/utils/createEEG.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 20,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 132,
+    "kind": "function",
+    "name": "createMockRow",
+    "memberof": "src/utils/createEEG.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/createEEG.js~createMockRow",
+    "access": "public",
+    "export": false,
+    "importPath": "@neurosity/pipes/src/utils/createEEG.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 22,
+    "undocument": true,
+    "params": [
+      {
+        "name": "length",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 133,
+    "kind": "function",
+    "name": "createSineRow",
+    "memberof": "src/utils/createEEG.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/createEEG.js~createSineRow",
+    "access": "public",
+    "export": false,
+    "importPath": "@neurosity/pipes/src/utils/createEEG.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 24,
+    "undocument": true,
+    "params": [
+      {
+        "name": "length",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "freq",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "samplingRate",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 134,
+    "kind": "function",
+    "name": "getCsvRow",
+    "memberof": "src/utils/createEEG.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/createEEG.js~getCsvRow",
+    "access": "public",
+    "export": false,
+    "importPath": "@neurosity/pipes/src/utils/createEEG.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 32,
+    "undocument": true,
+    "params": [
+      {
+        "name": "csv",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "interval",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 135,
+    "kind": "function",
+    "name": "injectNaNs",
+    "memberof": "src/utils/createEEG.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/createEEG.js~injectNaNs",
+    "access": "public",
+    "export": false,
+    "importPath": "@neurosity/pipes/src/utils/createEEG.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 34,
+    "undocument": true,
+    "params": [
+      {
+        "name": "data",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "arrayPattern1",
+        "types": [
+          "*[]"
+        ],
+        "defaultRaw": [
+          "null",
+          "null"
+        ],
+        "defaultValue": "[null, null]"
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 136,
+    "kind": "function",
+    "name": "createEEG",
+    "memberof": "src/utils/createEEG.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/createEEG.js~createEEG",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/utils/createEEG.js",
+    "importStyle": "{createEEG}",
+    "description": null,
+    "lineNumber": 41,
+    "undocument": true,
+    "params": [
+      {
+        "name": "objectPattern",
+        "optional": true,
+        "types": [
+          "{\"channels\": *, \"samplingRate\": *, \"mock\": *, \"NaNRange\": *, \"sine\": *, \"csv\": *}"
+        ],
+        "defaultRaw": {},
+        "defaultValue": "{}"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 137,
+    "kind": "file",
+    "name": "src/utils/createMockStream.js",
+    "content": "import { createEEG } from \"./createEEG\";\n\n// Exists for backwards compatibility. Displays deprecation warning.\nexport const createMockStream = (options = {}) => {\n  console.warn('createMockStream will be deprecated in the next major release. Use the createEEG instead.');\n  return createEEG({\n    ...options,\n    mock: true\n  });\n};\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/utils/createMockStream.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 138,
+    "kind": "function",
+    "name": "createMockStream",
+    "memberof": "src/utils/createMockStream.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/createMockStream.js~createMockStream",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/utils/createMockStream.js",
+    "importStyle": "{createMockStream}",
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "params": [
+      {
+        "name": "options",
+        "optional": true,
+        "types": [
+          "{}"
+        ],
+        "defaultRaw": {},
+        "defaultValue": "{}"
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 139,
+    "kind": "file",
+    "name": "src/utils/groupByChannel.js",
+    "content": "import { DATA_PROP as defaultDataProp } from \"../constants\";\n\n/**\n * Get a 2D data array organized by channel from an array of Samples. Credit to Ken from Seattle's elegant transposition\n * http://www.codesuck.com/2012/02/transpose-javascript-array-in-one-line.html\n * @method groupByChannel\n * @param {Array<Sample>} samplesBuffer Array of Samples to be grouped\n * @param {string} [dataProp] Name of the key associated with EEG data\n * @returns {Array<Array<number>>}\n */\n\nexport const groupByChannel = (samplesBuffer, dataProp = defaultDataProp) =>\n  samplesBuffer[0][dataProp].map((_, channelIndex) =>\n    samplesBuffer.map(sample => sample[dataProp][channelIndex])\n  );\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/utils/groupByChannel.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 140,
+    "kind": "function",
+    "name": "groupByChannel",
+    "memberof": "src/utils/groupByChannel.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/groupByChannel.js~groupByChannel",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/utils/groupByChannel.js",
+    "importStyle": "{groupByChannel}",
+    "description": "Get a 2D data array organized by channel from an array of Samples. Credit to Ken from Seattle's elegant transposition\nhttp://www.codesuck.com/2012/02/transpose-javascript-array-in-one-line.html",
+    "lineNumber": 12,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "groupByChannel"
+      },
+      {
+        "tagName": "@returns",
+        "tagValue": "{Array<Array<number>>}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Array<Sample>"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "samplesBuffer",
+        "description": "Array of Samples to be grouped"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "dataProp",
+        "description": "Name of the key associated with EEG data"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Array<Array<number>>"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 141,
+    "kind": "file",
+    "name": "src/utils/index.js",
+    "content": "export * from \"./stats\";\nexport * from \"./createEEG\";\nexport * from \"./createMockStream\";\nexport * from \"./isEpoch\";",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/utils/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 142,
+    "kind": "file",
+    "name": "src/utils/isEpoch.js",
+    "content": "export const isEpoch = (eegObject) => Array.isArray(eegObject.data[0]);",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/utils/isEpoch.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 143,
+    "kind": "function",
+    "name": "isEpoch",
+    "memberof": "src/utils/isEpoch.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/isEpoch.js~isEpoch",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/utils/isEpoch.js",
+    "importStyle": "{isEpoch}",
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "params": [
+      {
+        "name": "eegObject",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 144,
+    "kind": "file",
+    "name": "src/utils/stats.js",
+    "content": "/**\n * A collection of useful statistics functions\n * Adapted from Daniel Hug's gist: https://gist.github.com/Daniel-Hug/7273430\n */\n\nexport const max = array => Reflect.apply(Math.max, null, array);\n\nexport const min = array => Reflect.apply(Math.min, null, array);\n\nexport const range = array => max(array) - min(array);\n\nexport const sum = array => {\n  let num = 0;\n  for (let i = 0, l = array.length; i < l; i++) {\n    num += array[i];\n  }\n  return num;\n};\n\nexport const mean = array => sum(array) / array.length;\n\nexport const variance = array => {\n  const arrayMean = mean(array);\n  return mean(array.map(num => Math.pow(num - arrayMean, 2)));\n};\n\nexport const standardDeviation = array => Math.sqrt(variance(array));\n\nexport const meanAbsoluteDeviation = array => {\n  const arrayMean = mean(array);\n  return mean(array.map(num => Math.abs(num - arrayMean)));\n};\n\n// Function aliases:\nexport const average = mean;\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/utils/stats.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 145,
+    "kind": "function",
+    "name": "max",
+    "memberof": "src/utils/stats.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/stats.js~max",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/utils/stats.js",
+    "importStyle": "{max}",
+    "description": "A collection of useful statistics functions\nAdapted from Daniel Hug's gist: https://gist.github.com/Daniel-Hug/7273430",
+    "lineNumber": 6,
+    "params": [
+      {
+        "name": "array",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 146,
+    "kind": "function",
+    "name": "min",
+    "memberof": "src/utils/stats.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/stats.js~min",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/utils/stats.js",
+    "importStyle": "{min}",
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "params": [
+      {
+        "name": "array",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 147,
+    "kind": "function",
+    "name": "range",
+    "memberof": "src/utils/stats.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/stats.js~range",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/utils/stats.js",
+    "importStyle": "{range}",
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "params": [
+      {
+        "name": "array",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 148,
+    "kind": "function",
+    "name": "sum",
+    "memberof": "src/utils/stats.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/stats.js~sum",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/utils/stats.js",
+    "importStyle": "{sum}",
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "params": [
+      {
+        "name": "array",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 149,
+    "kind": "function",
+    "name": "mean",
+    "memberof": "src/utils/stats.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/stats.js~mean",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/utils/stats.js",
+    "importStyle": "{mean}",
+    "description": null,
+    "lineNumber": 20,
+    "undocument": true,
+    "params": [
+      {
+        "name": "array",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 150,
+    "kind": "function",
+    "name": "variance",
+    "memberof": "src/utils/stats.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/stats.js~variance",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/utils/stats.js",
+    "importStyle": "{variance}",
+    "description": null,
+    "lineNumber": 22,
+    "undocument": true,
+    "params": [
+      {
+        "name": "array",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 151,
+    "kind": "function",
+    "name": "standardDeviation",
+    "memberof": "src/utils/stats.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/stats.js~standardDeviation",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/utils/stats.js",
+    "importStyle": "{standardDeviation}",
+    "description": null,
+    "lineNumber": 27,
+    "undocument": true,
+    "params": [
+      {
+        "name": "array",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 152,
+    "kind": "function",
+    "name": "meanAbsoluteDeviation",
+    "memberof": "src/utils/stats.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/stats.js~meanAbsoluteDeviation",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/utils/stats.js",
+    "importStyle": "{meanAbsoluteDeviation}",
+    "description": null,
+    "lineNumber": 29,
+    "undocument": true,
+    "params": [
+      {
+        "name": "array",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 153,
+    "kind": "variable",
+    "name": "average",
+    "memberof": "src/utils/stats.js",
+    "static": true,
+    "longname": "src/utils/stats.js~average",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/utils/stats.js",
+    "importStyle": "{average}",
+    "description": null,
+    "lineNumber": 35,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 154,
+    "kind": "file",
+    "name": "src/utils/zeroPad.js",
+    "content": "/**\n * ZeroPads inputs for FFTs of non base 2\n * @method zeroPad *\n * @param Array<number> bufferedData\n * @param number fftLength\n * @returns Array<number>\n */\n\nexport const zeroPad = (buffer, fftLength) => {\n  if (fftLength > buffer.length) {\n    return buffer.concat(new Array(fftLength - buffer.length).fill(0));\n  }\n  return buffer;\n};\n",
+    "static": true,
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/src/utils/zeroPad.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 155,
+    "kind": "function",
+    "name": "zeroPad",
+    "memberof": "src/utils/zeroPad.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/zeroPad.js~zeroPad",
+    "access": "public",
+    "export": true,
+    "importPath": "@neurosity/pipes/src/utils/zeroPad.js",
+    "importStyle": "{zeroPad}",
+    "description": "ZeroPads inputs for FFTs of non base 2",
+    "lineNumber": 9,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "zeroPad *"
+      },
+      {
+        "tagName": "@returns",
+        "tagValue": "Array<number>"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "Array<number>",
+        "description": "bufferedData"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "number",
+        "description": "fftLength"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": "Array<number>"
+    }
+  },
+  {
+    "kind": "index",
+    "content": "## EEG Pipes\n\n#### By Neurosity\n\nBlazing fast EEG transformers implemented as \"Pipeable\" RxJS operators for Node and the Browser.\n\nFeatures include:\n\n- FFT\n- PSD and Power Bands\n- Buffering and Epoching\n- IIR Filters\n- Signal Quality (new)\n- and more.\n\n[Read full documentation](https://neurosity.github.io/eeg-pipes)\n\nGet started by installing the library:\n\n```\nnpm install @neurosity/pipes\n```\n\n## Usage\n\nAn Observable of EEG data is required to work with pipes. This can be done by using `fromEvent` from RxJS in order to push callback events into an Observable stream.\n\nGiven a callback-driven API such as:\n\n```js\nbci.on(\"data\", () => { ... });\n```\n\nThen...\n\n```js\nimport { fromEvent } from \"rxjs\";\n\nconst eeg$ = fromEvent(bci, \"data\");\n```\n\nNow we have an Observable of EEG data that support Pipeable operators.\n\n```js\neeg$\n  .pipe\n  // ...\n  ()\n  .subscribe();\n```\n\nThe following are some libraries that provide EEG as RxJS observables out of the box:\n\n- [OpenBCI Ganglion Web Bluetooth](https://github.com/neurosity/ganglion-ble)\n- [OpenBCI Cyton/Ganglion](https://github.com/neurosity/openbci-observable)\n- [Muse Web Bluetooth](https://github.com/urish/muse-js)\n\nPipes can be added to an EEG observable of EEG data samples with the\nfollowing data structure:\n\n```js\n{\n  data: [Number, Number, Number, Number], // channels\n  timestamp: Date,\n  info?: {\n  \tsamplingRate?: Number,\n  \tchannelNames?: [String, String, String, String],\n  \t..\n  }\n};\n```\n\nIndividual samples of EEG data contain an array of values for each EEG channel as well as a timestamp. An additional info object containing metadata about the EEG stream such as sampling rate and channel names can also be included or added with the addInfo operator.\n\nImport the pipes from the module:\n\n```js\nimport { epoch, fft, alphaPower } from \"@neurosity/pipes\";\n```\n\nAdd to RxJS observable pipe:\n\n```js\neeg$\n  .pipe(\n    epoch({ duration: 256, interval: 100 }),\n    fft({ bins: 256 }),\n    alphaPower()\n  )\n  .subscribe(alphaPower => console.log(alphaPower));\n```\n\n## Pipes\n\n### Filtering (IIR)\n\nFilter pipes can be applied to both samples or buffers of samples. Filters are linear IIR filters using a digital biquad implementation.\n\n- lowpassFilter({ nbChannels, cutoffFrequency })\n- highpassFilter({ nbChannels, cutoffFrequency })\n- bandpassFilter({ nbChannels, cutoffFrequencies: [lowBound, highBound] })\n- notchFilter({ nbChannels, cutoffFrequency })\n\nOptional Parameters:  \n`characteristic`: 'butterworth' or 'bessel'. Default is butterworth characteristic because of its steeper cutoff  \n`order`: the number of 2nd order biquad filters applied to the signal. Default is 2.  \n`samplingRate`: should match the samplingRate of your EEG device. Default is 250\n\n### Frequency\n\n- bufferFFT({ bins, window, samplingRate })\n- alphaPower()\n- betaPower()\n- deltaPower()\n- gammaPower()\n- thetaPower()\n- averagePower()\n- sliceFFT([ min, max ])\n- powerByBand()\n\n#### Unit conversion\n\n- voltToMicrovolts({ useLog })\n\n#### Utility\n\n- epoch({ duration, interval, samplingRate })\n- bufferCount()\n- bufferTime()\n- bufferToEpoch({ samplingRate })\n- pickChannels({ channels: [c1, c2, c3] })\n- removeChannels({ channels: [c1, c2, c3] })\n- addInfo()\n- addSignalQuality()\n  - signal quality is represented as standard deviation value for each channel\n\n### Coming soon\n\n#### Filtering\n\n- vertScaleFilter()\n- vertAgoFilter()\n- smoothFilter()\n- polarityFilter()\n- maxFrequencyFilter()\n\n## Data Structures\n\n### Sample\n\nThis is the simplest, core data structure for individual samples of EEG data. Samples have a data array containing a single reading from a number of different EEG electrodes along with a single timestamp. Samples can also contain optional other parameters added by the `addInfo` operator. The design for this comes directly from the discussion on the [EEG stream data models repo](https://github.com/NeuroJS/eeg-stream-data-model/issues/1).\n\n```js\n{\n    data: [Number, ..., Number], // length == nbChannels\n    timestamp: <Number>,\n    info?: {\n  \t  samplingRate?: Number,\n  \t  channelNames?: [String, String, String, String],\n  \t...\n  }\n}\n```\n\n### Epoch\n\nAn Epoch represents the EEG data that has been collected over a specific period of time. They can be produced by using either the `epoch` operator or by using a standard RxJS buffering operator such as `bufferTime` followed by the `bufferToEpoch` operator. Collecting data in this way is necessary for performing frequency-based analyses and, in many cases, will improve performance of filtering and other downstream operations. Epochs contain a 2D data array (channels x samples) and an info object that always includes samplingRate and startTime data so that the timestamps of individual samples can be derived.\n\n```js\n{\n    data: [\n        [Number, ... , Number], // length == duration\n        [Number, ... , Number]\n    ], // length == nbChannels\n    info: {\n        samplingRate: Number,\n        startTime: Number,\n        channelNames?: [String, ..., String ]\n    }\n}\n```\n\n### Power Spectral Density or PSD: Proposed Work in Progress\n\nA PSD represents the absolute power of different frequency bins in an Epoch of EEG data. PSDs are produced by applying the `fft` operator to Epochs or using the `bufferFFT` operator directly on a stream of EEG Samples. PSDs contain an array of frequencies and a corresponding array of spectral power at each of those frequencies, as well as an info object that contains samplingRate and startTime info similarly to Epochs.\n\n```js\n{\n    psd: [\n        [Number, ... , Number] // spectral power; length = freqs.length\n    ], // length = numChannels\n    freqs: [Number, ... , Number], // length = fftLength / 2\n    info: {\n        samplingRate: Number,\n        startTime: Number,\n        channelNames?: [String, ..., String ]\n    }\n}\n```\n\n## Generating documentation\n\nTo generate the docs, run `yarn esdoc`\n",
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/README.md",
+    "name": "./README.md",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "packageJSON",
+    "content": "{\n  \"name\": \"@neurosity/pipes\",\n  \"description\": \"Lettable RxJS operators for working with EEG data in Node and the Browser\",\n  \"version\": \"3.2.3\",\n  \"main\": \"dist/eeg-pipes.umd.js\",\n  \"scripts\": {\n    \"build\": \"webpack --mode production\",\n    \"dev\": \"webpack --mode development\",\n    \"start\": \"webpack-dev-server\",\n    \"prepublishOnly\": \"npm run build\",\n    \"postpublish\": \"npm run docs:deploy\",\n    \"docs:build\": \"node ./node_modules/.bin/esdoc\",\n    \"docs:deploy\": \"npm run docs:build && gh-pages-deploy -- 'DOCS: build'\"\n  },\n  \"gh-pages-deploy\": {\n    \"staticpath\": \"docs\"\n  },\n  \"files\": [\n    \"dist\"\n  ],\n  \"author\": \"Neurosity, Inc\",\n  \"license\": \"MIT\",\n  \"keywords\": [\n    \"neurosity\",\n    \"eeg\",\n    \"openbci\",\n    \"neurojs\",\n    \"rxjs\",\n    \"cyton\",\n    \"ganglion\"\n  ],\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git@github.com:neurosity/eeg-pipes.git\"\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/neurosity/eeg-pipes/issues\"\n  },\n  \"dependencies\": {\n    \"dsp.js\": \"^1.0.1\",\n    \"fili\": \"^2.0.1\",\n    \"rxjs\": \"^6.3.1\"\n  },\n  \"devDependencies\": {\n    \"babel-core\": \"^6.26.0\",\n    \"babel-loader\": \"^7.1.5\",\n    \"babel-plugin-dynamic-import-webpack\": \"^1.0.2\",\n    \"babel-plugin-transform-object-rest-spread\": \"^6.26.0\",\n    \"babel-preset-env\": \"^1.6.1\",\n    \"csv-loader\": \"^2.1.1\",\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-ecmascript-proposal-plugin\": \"^1.0.0\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"eslint\": \"^4.18.1\",\n    \"gh-pages-deploy\": \"^0.5.0\",\n    \"webpack\": \"^4.17.1\",\n    \"webpack-cli\": \"^2.1.5\",\n    \"webpack-dev-server\": \"^2.11.3\",\n    \"webpack-node-externals\": \"^1.6.0\",\n    \"webpack-rxjs-externals\": \"^1.1.0\"\n  }\n}\n",
+    "longname": "/Users/alexcastillo/Code/eeg-pipes/package.json",
+    "name": "package.json",
+    "static": true,
+    "access": "public"
+  }
+]

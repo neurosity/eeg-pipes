@@ -1,0 +1,96 @@
+[
+  {
+    "name": "addInfo",
+    "filePath": "src/pipes/utility/addInfo.js",
+    "lines": [
+      {
+        "lineNumber": 14,
+        "line": "/**"
+      },
+      {
+        "lineNumber": 15,
+        "line": " * Annotates stream with user-defined metadata"
+      },
+      {
+        "lineNumber": 16,
+        "line": " * @method addInfo"
+      },
+      {
+        "lineNumber": 17,
+        "line": " * @example eeg$.pipe(addinfo({ samplingRate: 256, channelNames: [\"Af7\", \"Fp1\", \"Fp2\", \"Af8\"] })"
+      },
+      {
+        "lineNumber": 18,
+        "line": " * @param {Object} info Info to be added to the EEG stream. Relevant info may include: `samplingRate` and `channelNames`"
+      },
+      {
+        "lineNumber": 19,
+        "line": " * @returns {Observable<Sample|Epoch|PSD>}"
+      },
+      {
+        "lineNumber": 20,
+        "line": " */"
+      },
+      {
+        "lineNumber": 21,
+        "line": "export const addInfo = (arg = {}) =>"
+      }
+    ],
+    "codeParams": [
+      "arg"
+    ],
+    "docParams": [
+      "info"
+    ]
+  },
+  {
+    "name": "zeroPad",
+    "filePath": "src/utils/zeroPad.js",
+    "lines": [
+      {
+        "lineNumber": 0,
+        "line": "/**"
+      },
+      {
+        "lineNumber": 1,
+        "line": " * ZeroPads inputs for FFTs of non base 2"
+      },
+      {
+        "lineNumber": 2,
+        "line": " * @method zeroPad *"
+      },
+      {
+        "lineNumber": 3,
+        "line": " * @param Array<number> bufferedData"
+      },
+      {
+        "lineNumber": 4,
+        "line": " * @param number fftLength"
+      },
+      {
+        "lineNumber": 5,
+        "line": " * @returns Array<number>"
+      },
+      {
+        "lineNumber": 6,
+        "line": " */"
+      },
+      {
+        "lineNumber": 7,
+        "line": ""
+      },
+      {
+        "lineNumber": 8,
+        "line": "export const zeroPad = (buffer, fftLength) => {"
+      }
+    ],
+    "codeParams": [
+      "buffer",
+      "fftLength"
+    ],
+    "docParams": [
+      "Array<number>",
+      "number"
+    ]
+  }
+]
