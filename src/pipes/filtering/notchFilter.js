@@ -1,6 +1,6 @@
 import { CalcCascades, IirFilter } from "fili";
+import { pipe } from "rxjs";
 import { map } from "rxjs/operators";
-import { createPipe } from "../../utils/createPipe";
 import { isEpoch } from "../../utils/isEpoch";
 import {
   SAMPLING_RATE as defaultsamplingRate,
@@ -64,7 +64,7 @@ export const notchFilter = ({
   samplingRate = defaultsamplingRate,
   bandWidth = defaultNotchBW,
   filterHarmonics = false
-} = {}) => source => {
+} = {}) => {
   if (!nbChannels) {
     throw new Error("Please supply nbChannels parameter");
   }
@@ -80,8 +80,7 @@ export const notchFilter = ({
       filterHarmonics
     )
   );
-  return createPipe(
-    source,
+  return pipe(
     map(eegObject => ({
       ...eegObject,
       data: eegObject.data.map((channel, index) => {
@@ -100,7 +99,10 @@ export const notchFilter = ({
           });
 
           // Then, perform filter
-          const filteredData = notchArray[index](safeChannel, "multiStep");
+          const filteredData = notchArray[index](
+            safeChannel,
+            "multiStep"
+          );
 
           // Afterwards, reinsert NaNs
           if (nans.length > 0) {

@@ -1,6 +1,5 @@
+import { pipe } from "rxjs";
 import { map } from "rxjs/operators";
-
-import { createPipe } from "../../utils/createPipe";
 
 /**
  * Slices a stream of PSDs to a specific frequency range defined by a minimum and maximum frequency in Hz
@@ -9,11 +8,14 @@ import { createPipe } from "../../utils/createPipe";
  * @param {Array<number>} range Array containing minimum and maximum frequencies
  * @returns {Observable<PSD>}
  */
-export const sliceFFT = ([min = 0, max = 128]) => source =>
-  createPipe(
-    source,
+export const sliceFFT = ([min = 0, max = 128]) =>
+  pipe(
     map(inputPSD => {
-      if (!inputPSD.psd || !inputPSD.psd.length || !inputPSD.psd[0].length) {
+      if (
+        !inputPSD.psd ||
+        !inputPSD.psd.length ||
+        !inputPSD.psd[0].length
+      ) {
         return { psd: inputPSD };
       }
 

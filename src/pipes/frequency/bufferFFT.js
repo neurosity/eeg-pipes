@@ -1,7 +1,7 @@
 import { FFT } from "dsp.js";
+import { pipe } from "rxjs";
 import { bufferCount, map } from "rxjs/operators";
 
-import { createPipe } from "../../utils/createPipe";
 import { groupByChannel } from "../../utils/groupByChannel";
 
 import {
@@ -25,7 +25,7 @@ export const bufferFFT = ({
   window = null,
   samplingRate = defaultsamplingRate,
   dataProp = defaultDataProp
-} = {}) => source => {
+} = {}) => {
   const fft = channelGroup => {
     const safeSamples = channelGroup.map(x => {
       if (isNaN(x) || !x) {
@@ -37,9 +37,10 @@ export const bufferFFT = ({
     fft.forward(safeSamples);
     return Array.from(fft.spectrum);
   };
-  return createPipe(
-    source,
+  return pipe(
     bufferCount(bins, window),
-    map(samplesBuffer => groupByChannel(samplesBuffer, dataProp).map(fft))
+    map(samplesBuffer =>
+      groupByChannel(samplesBuffer, dataProp).map(fft)
+    )
   );
 };

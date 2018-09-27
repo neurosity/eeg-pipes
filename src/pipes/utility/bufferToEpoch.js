@@ -1,11 +1,11 @@
+import { pipe } from "rxjs";
 import { map } from "rxjs/operators";
 
-import { createPipe } from "../../utils/createPipe";
 import { groupByChannel } from "../../utils/groupByChannel";
 
 import {
-    DATA_PROP as defaultDataProp,
-    SAMPLING_RATE as defaultSamplingRate
+  DATA_PROP as defaultDataProp,
+  SAMPLING_RATE as defaultSamplingRate
 } from "../../constants";
 
 /**
@@ -20,22 +20,21 @@ import {
  * @returns {Observable<Epoch>}
  */
 export const bufferToEpoch = ({
-    samplingRate = defaultSamplingRate,
-    dataProp = defaultDataProp
-} = {}) => source$ =>
-    createPipe(
-        source$,
-        map(samplesArray => ({
-            [dataProp]: groupByChannel(samplesArray, dataProp),
-            info: {
-                ...(samplesArray[0] && samplesArray[0].info
-                    ? samplesArray[0].info
-                    : {}),
-                startTime: samplesArray[0].timestamp,
-                samplingRate:
-                    samplesArray[0].info && samplesArray[0].info.samplingRate
-                        ? samplesArray[0].info.samplingRate
-                        : samplingRate
-            }
-        }))
-    );
+  samplingRate = defaultSamplingRate,
+  dataProp = defaultDataProp
+} = {}) =>
+  pipe(
+    map(samplesArray => ({
+      [dataProp]: groupByChannel(samplesArray, dataProp),
+      info: {
+        ...(samplesArray[0] && samplesArray[0].info
+          ? samplesArray[0].info
+          : {}),
+        startTime: samplesArray[0].timestamp,
+        samplingRate:
+          samplesArray[0].info && samplesArray[0].info.samplingRate
+            ? samplesArray[0].info.samplingRate
+            : samplingRate
+      }
+    }))
+  );

@@ -1,13 +1,12 @@
 import { FFT } from "dsp.js";
+import { pipe } from "rxjs";
 import { map } from "rxjs/operators";
-import { createPipe } from "../../utils/createPipe";
 import { zeroPad } from "../../utils/zeroPad";
 
 import {
   FFT_BINS as defaultFftBins,
   DATA_PROP as defaultDataProp
 } from "../../constants";
-
 
 /**
  * Applies a Fast Fourier Transform to a stream of Epochs of EEG data and returns a stream of PSDs (Power Spectral Density). Frequency resolution will be samplingRate / bins. If input Epoch duration is not equal to bins, data will be zero-padded or sliced so that is the same length as bins.
@@ -22,7 +21,7 @@ import {
 export const fft = ({
   bins = defaultFftBins,
   dataProp = defaultDataProp
-} = {}) => source => {
+} = {}) => {
   const transformChannel = (channel, samplingRate) => {
     let safeSamples = channel.map(sample => {
       if (isNaN(sample) || !sample) {
@@ -41,8 +40,7 @@ export const fft = ({
     fft.forward(safeSamples);
     return Array.from(fft.spectrum);
   };
-  return createPipe(
-    source,
+  return pipe(
     map(epoch => ({
       psd: epoch[dataProp].map(channel =>
         transformChannel(channel, epoch.info.samplingRate)

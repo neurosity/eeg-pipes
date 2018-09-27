@@ -1,7 +1,6 @@
-import { of, zip } from "rxjs";
+import { of, zip, pipe } from "rxjs";
 import { flatMap } from "rxjs/operators";
 
-import { createPipe } from "../../utils/createPipe";
 import { averagePower } from "./averagePower";
 import { sliceFFT } from "./sliceFFT";
 
@@ -14,9 +13,8 @@ import { FREQUENCY_BANDS as defaultBands } from "../../constants";
  * @param {Object} [bands] Custom bands object containing corresponding names and frequency ranges
  * @returns {Observable<Array<number>>}
  */
-export const powerByBand = (bands = defaultBands) => source =>
-  createPipe(
-    source,
+export const powerByBand = (bands = defaultBands) =>
+  pipe(
     flatMap(inputPSD => {
       const entries = Object.entries(bands);
       const bandPowers = entries.map(([_, range]) =>

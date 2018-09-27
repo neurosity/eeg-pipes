@@ -1,6 +1,5 @@
+import { pipe } from "rxjs";
 import { map } from "rxjs/operators";
-
-import { createPipe } from "../../utils/createPipe";
 
 import { standardDeviation } from "../../utils/stats";
 
@@ -15,21 +14,21 @@ import { DATA_PROP as defaultDataProp } from "../../constants";
  * @param {string} [options.dataProp='data] Name of key associated with eeg data
  * @returns {Observable<Epoch>}
  */
-export const addSignalQuality = ({
-  dataProp = defaultDataProp
-} = {}) => source =>
-  createPipe(
-    source,
+export const addSignalQuality = ({ dataProp = defaultDataProp } = {}) =>
+  pipe(
     map(epoch => {
       const names = epoch.info.channelNames
         ? epoch.info.channelNames
         : epoch[dataProp].map((_, i) => i);
       return {
         ...epoch,
-        signalQuality: epoch[dataProp].reduce((acc, curr, index) => ({
-          ...acc,
-          [names[index]]: standardDeviation(curr)
-        }), {})
+        signalQuality: epoch[dataProp].reduce(
+          (acc, curr, index) => ({
+            ...acc,
+            [names[index]]: standardDeviation(curr)
+          }),
+          {}
+        )
       };
     })
   );

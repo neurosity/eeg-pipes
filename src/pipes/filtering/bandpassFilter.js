@@ -1,6 +1,6 @@
 import { CalcCascades, IirFilter } from "fili";
+import { pipe } from "rxjs";
 import { map } from "rxjs/operators";
-import { createPipe } from "../../utils/createPipe";
 import { isEpoch } from "../../utils/isEpoch";
 import {
   SAMPLING_RATE as defaultSamplingRate,
@@ -19,7 +19,10 @@ const createHighpassIIR = options => {
 
 const createLowpassIIR = options => {
   const calc = new CalcCascades();
-  const coeffs = calc.lowpass({ ...options, Fc: options.cutoffFrequencies[1] });
+  const coeffs = calc.lowpass({
+    ...options,
+    Fc: options.cutoffFrequencies[1]
+  });
   return new IirFilter(coeffs, true);
 };
 
@@ -58,7 +61,7 @@ export const bandpassFilter = ({
   samplingRate = defaultSamplingRate,
   Fs = samplingRate,
   BW = 1
-} = {}) => source => {
+} = {}) => {
   if (!nbChannels) {
     throw new Error("Please supply nbChannels parameter");
   }
@@ -73,8 +76,7 @@ export const bandpassFilter = ({
     high: createHighpassIIR(options),
     low: createLowpassIIR(options)
   }));
-  return createPipe(
-    source,
+  return pipe(
     map(eegObject => ({
       ...eegObject,
       data: eegObject.data.map((channel, index) => {

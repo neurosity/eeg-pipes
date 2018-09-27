@@ -1,6 +1,5 @@
+import { pipe } from "rxjs";
 import { map } from "rxjs/operators";
-
-import { createPipe } from "../../utils/createPipe";
 
 const isObject = object => object instanceof Object;
 const isFunction = object => typeof object === "function";
@@ -20,9 +19,8 @@ const patch = sample => info => ({
  * @param {Object} info Info to be added to the EEG stream. Relevant info may include: `samplingRate` and `channelNames`
  * @returns {Observable<Sample|Epoch|PSD>}
  */
-export const addInfo = (arg = {}) => source =>
-  createPipe(
-    source,
+export const addInfo = (arg = {}) =>
+  pipe(
     map(sample => {
       if (!isObject(sample) || (!isObject(arg) && !isFunction(arg))) {
         return sample;

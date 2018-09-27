@@ -1,6 +1,6 @@
+import { pipe } from "rxjs";
 import { bufferCount, scan, filter } from "rxjs/operators";
 
-import { createPipe } from "../../utils/createPipe";
 import { bufferToEpoch } from "../utility/bufferToEpoch";
 
 import {
@@ -26,9 +26,8 @@ export const epoch = ({
   interval = defaultEpochInterval,
   samplingRate = defaultSamplingRate,
   dataProp = defaultDataProp
-} = {}) => source$ =>
-  createPipe(
-    source$,
+} = {}) =>
+  pipe(
     bufferCount(interval),
     scan((acc, val) =>
       acc.concat(val).slice(acc.length < duration ? 0 : -duration)

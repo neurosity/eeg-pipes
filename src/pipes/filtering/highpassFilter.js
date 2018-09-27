@@ -1,6 +1,6 @@
 import { CalcCascades, IirFilter } from "fili";
+import { pipe } from "rxjs";
 import { map } from "rxjs/operators";
-import { createPipe } from "../../utils/createPipe";
 import { isEpoch } from "../../utils/isEpoch";
 import {
   SAMPLING_RATE as defaultSamplingRate,
@@ -47,7 +47,7 @@ export const highpassFilter = ({
   characteristic = defaultCharacteristic,
   cutoffFrequency = 2,
   samplingRate = defaultSamplingRate
-} = {}) => source => {
+} = {}) => {
   if (!nbChannels) {
     throw new Error("Please supply nbChannels parameter");
   }
@@ -59,8 +59,7 @@ export const highpassFilter = ({
       Fc: cutoffFrequency
     })
   );
-  return createPipe(
-    source,
+  return pipe(
     map(eegObject => ({
       ...eegObject,
       data: eegObject.data.map((channel, index) => {
@@ -79,7 +78,9 @@ export const highpassFilter = ({
           });
 
           // Then, perform filter
-          const filteredData = highpassArray[index].multiStep(safeChannel);
+          const filteredData = highpassArray[index].multiStep(
+            safeChannel
+          );
 
           // Afterwards, reinsert NaNs
           if (nans.length > 0) {

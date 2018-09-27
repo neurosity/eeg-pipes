@@ -1,6 +1,6 @@
+import { pipe } from "rxjs";
 import { map } from "rxjs/operators";
 
-import { createPipe } from "../../utils/createPipe";
 import { average } from "../../utils/stats";
 
 /**
@@ -9,10 +9,12 @@ import { average } from "../../utils/stats";
  * @example eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), sliceFFT(10, 20), averagePower())
  * @returns {Observable} band powers array
  */
-export const averagePower = () => source =>
-  createPipe(
-    source,
+export const averagePower = () =>
+  pipe(
     map(inputPSD =>
-      inputPSD.psd.reduce((acc, channel) => [...acc, average(channel)], [])
+      inputPSD.psd.reduce(
+        (acc, channel) => [...acc, average(channel)],
+        []
+      )
     )
   );

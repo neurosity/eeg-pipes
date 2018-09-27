@@ -1,6 +1,6 @@
+import { pipe } from "rxjs";
 import { map } from "rxjs/operators";
 
-import { createPipe } from "../../utils/createPipe";
 import { isEpoch } from "../../utils/isEpoch";
 
 import {
@@ -21,9 +21,8 @@ import {
 export const voltsToMicrovolts = ({
   log = useLog,
   dataProp = defaultDataProp
-} = {}) => source =>
-  createPipe(
-    source,
+} = {}) =>
+  pipe(
     map(eegObject => {
       const conversion = log
         ? volt => Math.log10(Math.pow(10, 6) * volt)

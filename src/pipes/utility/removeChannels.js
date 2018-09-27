@@ -1,5 +1,5 @@
+import { pipe } from "rxjs";
 import { map } from "rxjs/operators";
-import { createPipe } from "../../utils/createPipe";
 
 import { DATA_PROP as defaultDataProp } from "../../constants";
 
@@ -10,11 +10,11 @@ import { DATA_PROP as defaultDataProp } from "../../constants";
  * @param {Object} options
  * @returns {Observable} sample
  */
-export const removeChannels = (
-  { channels = [], dataProp = defaultDataProp } = {}
-) => source =>
-  createPipe(
-    source,
+export const removeChannels = ({
+  channels = [],
+  dataProp = defaultDataProp
+} = {}) =>
+  pipe(
     map(sample => {
       const channelData = sample[dataProp].filter(
         (channel, index) => !channels.includes(index + 1)
