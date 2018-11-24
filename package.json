@@ -14,7 +14,7 @@
     "build:esm:bundle": "rollup -c",
     "build:browser": "parcel build ./src/index.ts --target browser --out-dir dist/browser --out-file eeg-pipes.js",
     "build:electron": "parcel build ./src/index.ts --target electron --out-dir dist/electron",
-    "build:docs": "typedoc --out docs --target es6 --theme minimal --mode file --name \"EEG Pipes\" --excludePrivate --excludeProtected src",
+    "build:docs": "node ./node_modules/.bin/esdoc",
     "serve:docs": "lite-server --baseDir=./docs",
     "start": "tsc -w",
     "clean": "del dist",
@@ -56,6 +56,10 @@
     "@types/node": "^10.12.10",
     "copyfiles": "^2.1.0",
     "del-cli": "^1.1.0",
+    "esdoc": "^1.1.0",
+    "esdoc-ecmascript-proposal-plugin": "^1.0.0",
+    "esdoc-standard-plugin": "^1.0.0",
+    "esdoc-typescript-plugin": "^1.0.1",
     "gh-pages-deploy": "^0.5.0",
     "inquirer": "^6.2.0",
     "lite-server": "^2.4.0",
@@ -65,7 +69,6 @@
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-node-resolve": "^3.4.0",
     "ts-node": "^7.0.1",
-    "typedoc": "^0.13.0",
     "typescript": "^3.1.6"
   }
 }

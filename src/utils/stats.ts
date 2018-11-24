@@ -32,4 +32,6 @@ export const meanAbsoluteDeviation = array => {
 };
 
 // Function aliases:
-export const average = mean;
+export function average(array) {
+  return mean(array);
+}

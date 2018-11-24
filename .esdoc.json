@@ -1,0 +1,32 @@
+{
+  "source": "./src",
+  "destination": "./docs",
+  "plugins": [
+    {
+      "name": "esdoc-typescript-plugin",
+      "option": {
+        "enable": true
+      }
+    },
+    {
+      "name": "esdoc-standard-plugin",
+      "option": {
+        "brand": {
+          "logo": "assets/logo.png",
+          "title": "EEG Pipes",
+          "description": "Blazing fast EEG transformers implemented as 'pipeable' RxJS operators",
+          "repository": "https://github.com/neurosity/eeg-pipes",
+          "site": "https://github.com/neurosity",
+          "author": "https://twitter.com/neurosityco",
+          "image": "assets/logo.png"
+        }
+      }
+    },
+    {
+      "name": "esdoc-ecmascript-proposal-plugin",
+      "option": {
+        "all": true
+      }
+    }
+  ]
+}
