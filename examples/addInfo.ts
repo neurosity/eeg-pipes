@@ -1,4 +1,4 @@
-const { createEEG, addInfo } = require("../");
+import { createEEG, addInfo } from "../src";
 
 const eeg1$ = createEEG().pipe(addInfo({ samplingRate: 250 }));
 

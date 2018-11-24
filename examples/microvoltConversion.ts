@@ -1,4 +1,4 @@
-const { createEEG, epoch, addInfo, voltsToMicrovolts } = require("../");
+import { createEEG, epoch, addInfo, voltsToMicrovolts } from "../src";
 
 const eeg1$ = createEEG().pipe(voltsToMicrovolts());
 

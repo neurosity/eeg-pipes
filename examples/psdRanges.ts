@@ -1,4 +1,4 @@
-const {
+import {
   createEEG,
   epoch,
   fft,
@@ -9,7 +9,7 @@ const {
   thetaPower,
   averagePower,
   powerByBand
-} = require("..");
+} from "../src";
 
 const eeg1$ = createEEG({ sine: 7, samplingRate: 256 }).pipe(
   epoch({ duration: 256, interval: 100, samplingRate: 256 }),

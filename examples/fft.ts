@@ -1,4 +1,4 @@
-const {
+import {
   createEEG,
   addInfo,
   epoch,
@@ -7,7 +7,7 @@ const {
   bufferFFT,
   bufferCount,
   bufferToEpoch
-} = require("../");
+} from "../src";
 
 const eeg1$ = createEEG({ sine: 7, samplingRate: 1024 }).pipe(
   bufferFFT({ bins: 1024 })

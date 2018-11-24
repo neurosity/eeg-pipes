@@ -1,4 +1,4 @@
-const { createEEG, epoch, addInfo, addSignalQuality } = require("..");
+import { createEEG, epoch, addInfo, addSignalQuality } from "../src";
 
 // Without  channel names
 const eeg1$ = createEEG().pipe(

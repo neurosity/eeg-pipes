@@ -1,4 +1,4 @@
-const { createEEG } = require("..");
+import { createEEG } from "../src";
 
 // defaults to muse-lsl.csv
 const eeg$ = createEEG();
