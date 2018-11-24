@@ -7,3 +7,5 @@ build
 .DS_Store
 */.DS_Store
 docs
+.cache
+.env
