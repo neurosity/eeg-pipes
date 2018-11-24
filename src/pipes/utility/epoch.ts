@@ -1,7 +1,7 @@
 import { pipe } from "rxjs";
 import { bufferCount, scan, filter } from "rxjs/operators";
 
-import { bufferToEpoch } from "../utility/bufferToEpoch";
+import { bufferToEpoch } from "./bufferToEpoch";
 
 import {
   EPOCH_DURATION as defaultEpochDuration,

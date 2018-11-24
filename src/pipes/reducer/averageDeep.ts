@@ -1,5 +1,6 @@
 import { map } from "rxjs/operators";
 import { average } from "../../utils/stats";
+import { Channel } from "../../types/channel";
 
 /**
  * @method averageDeep
@@ -9,9 +10,10 @@ import { average } from "../../utils/stats";
  */
 export const averageDeep = () =>
   map(
-    channels =>
+    (channels: Channel) =>
       channels.reduce(
-        (acc, value) => acc + (Array.isArray(value) ? average(value) : value),
+        (acc, value) =>
+          acc + (Array.isArray(value) ? average(value) : value),
         0
       ) / channels.length
   );

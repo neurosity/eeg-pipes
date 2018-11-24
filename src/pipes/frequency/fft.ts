@@ -8,6 +8,8 @@ import {
   DATA_PROP as defaultDataProp
 } from "../../constants";
 
+import { IFFT } from "../../types/fft";
+
 /**
  * Applies a Fast Fourier Transform to a stream of Epochs of EEG data and returns a stream of PSDs (Power Spectral Density). Frequency resolution will be samplingRate / bins. If input Epoch duration is not equal to bins, data will be zero-padded or sliced so that is the same length as bins.
  * @method fft
@@ -21,7 +23,7 @@ import {
 export const fft = ({
   bins = defaultFftBins,
   dataProp = defaultDataProp
-} = {}) => {
+}: IFFT = {}) => {
   const transformChannel = (channel, samplingRate) => {
     let safeSamples = channel.map(sample => {
       if (isNaN(sample) || !sample) {
@@ -41,7 +43,7 @@ export const fft = ({
     return Array.from(fft.spectrum);
   };
   return pipe(
-    map(epoch => ({
+    map((epoch: any) => ({
       psd: epoch[dataProp].map(channel =>
         transformChannel(channel, epoch.info.samplingRate)
       ),

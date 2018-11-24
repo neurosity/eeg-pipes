@@ -1,4 +1,4 @@
-import { CalcCascades, IirFilter } from "fili";
+import Fili from "fili";
 import { pipe } from "rxjs";
 import { map } from "rxjs/operators";
 import { isEpoch } from "../../utils/isEpoch";
@@ -6,8 +6,11 @@ import {
   SAMPLING_RATE as defaultsamplingRate,
   ORDER as defaultOrder,
   CHARACTERISTIC as defaultCharacteristic,
-  NOTCH_BW as defaultNotchBW
+  NOTCH_BW as defaultNotchBW,
+  CHANNELS as defaultChannels
 } from "../../constants";
+
+const { CalcCascades, IirFilter } = Fili;
 
 const createNotchIIR = (options, filterHarmonics) => {
   const calc = new CalcCascades();
@@ -57,7 +60,7 @@ const interpolate = (before, after) => {
  * @returns {Observable<Sample | Epoch>}
  */
 export const notchFilter = ({
-  nbChannels,
+  nbChannels = defaultChannels,
   order = defaultOrder,
   characteristic = defaultCharacteristic,
   cutoffFrequency = 60,
@@ -81,7 +84,7 @@ export const notchFilter = ({
     )
   );
   return pipe(
-    map(eegObject => ({
+    map((eegObject: any) => ({
       ...eegObject,
       data: eegObject.data.map((channel, index) => {
         if (isEpoch(eegObject)) {

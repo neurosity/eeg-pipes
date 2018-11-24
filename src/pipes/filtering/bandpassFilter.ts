@@ -1,17 +1,33 @@
-import { CalcCascades, IirFilter } from "fili";
+import Fili from "fili";
+
 import { pipe } from "rxjs";
 import { map } from "rxjs/operators";
 import { isEpoch } from "../../utils/isEpoch";
 import {
-  SAMPLING_RATE as defaultsamplingRate,
+  SAMPLING_RATE as defaultSamplingRate,
   ORDER as defaultOrder,
-  CHARACTERISTIC as defaultCharacteristic
+  CHARACTERISTIC as defaultCharacteristic,
+  CHANNELS as defaultChannels
 } from "../../constants";
+
+const { CalcCascades, IirFilter } = Fili;
+
+const createHighpassIIR = options => {
+  const calc = new CalcCascades();
+  const coeffs = calc.highpass({
+    ...options,
+    Fc: options.cutoffFrequencies[0]
+  });
+  return new IirFilter(coeffs, true);
+};
 
 const createLowpassIIR = options => {
   const calc = new CalcCascades();
-  const coeffs = calc.lowpass(options);
-  return new IirFilter(coeffs);
+  const coeffs = calc.lowpass({
+    ...options,
+    Fc: options.cutoffFrequencies[1]
+  });
+  return new IirFilter(coeffs, true);
 };
 
 const interpolate = (before, after) => {
@@ -28,39 +44,44 @@ const interpolate = (before, after) => {
 };
 
 /**
- * Applies a lowpass filter to EEG Data. Can be applied to both raw or epoched data
- * @method lowpassFilter
+ * Applies a bandpass filter to EEG Data. Can be applied to both raw or epoched data
+ * @method bandpassFilter
  * @example eeg$
-  .pipe(lowpassFilter({ cutoffFrequency: 50, nbChannels: 4 }))
+  .pipe(bandpassFilter({ cutoffFrequencies: [2, 50], nbChannels: 4 }))
  * @param {Object} options - Filter options
  * @param {number} options.nbChannels Number of channels
- * @param {number} [options.cutoffFrequency=50] Cutoff frequency in Hz
+ * @param {Array<number>} [options.cutoffFrequencies=[2,50]] Low and high cutoff frequencies in Hz
  * @param {number} [options.samplingRate=250] Sampling rate of the EEG device
  * @param {string} [options.characteristic='butterworth'] Filter characteristic. Options are 'bessel' and 'butterworth'
  * @param {number} [options.order=2] The number of 2nd order biquad filters applied to the signal
  * 
  * @returns {Observable<Sample | Epoch>}
  */
-export const lowpassFilter = ({
-  nbChannels,
+export const bandpassFilter = ({
+  nbChannels = defaultChannels,
   order = defaultOrder,
   characteristic = defaultCharacteristic,
-  cutoffFrequency = 50,
-  samplingRate = defaultsamplingRate
+  cutoffFrequencies = [2, 50],
+  samplingRate = defaultSamplingRate,
+  Fs = samplingRate,
+  BW = 1
 } = {}) => {
   if (!nbChannels) {
     throw new Error("Please supply nbChannels parameter");
   }
-  const lowpassArray = new Array(nbChannels).fill(0).map(() =>
-    createLowpassIIR({
-      order,
-      characteristic,
-      Fs: samplingRate,
-      Fc: cutoffFrequency
-    })
-  );
+  const options = {
+    order,
+    characteristic,
+    cutoffFrequencies,
+    Fs,
+    BW
+  };
+  const bandpassArray = new Array(nbChannels).fill(0).map(() => ({
+    high: createHighpassIIR(options),
+    low: createLowpassIIR(options)
+  }));
   return pipe(
-    map(eegObject => ({
+    map((eegObject: any) => ({
       ...eegObject,
       data: eegObject.data.map((channel, index) => {
         if (isEpoch(eegObject)) {
@@ -78,8 +99,8 @@ export const lowpassFilter = ({
           });
 
           // Then, perform filter
-          const filteredData = lowpassArray[index].multiStep(
-            safeChannel
+          const filteredData = bandpassArray[index].low.multiStep(
+            bandpassArray[index].high.multiStep(safeChannel)
           );
 
           // Afterwards, reinsert NaNs
@@ -92,7 +113,9 @@ export const lowpassFilter = ({
         }
         // If Sample, only filter if not NaN
         if (!isNaN(channel)) {
-          return lowpassArray[index].singleStep(channel);
+          return bandpassArray[index].low.singleStep(
+            bandpassArray[index].high.singleStep(channel)
+          );
         }
         return channel;
       })

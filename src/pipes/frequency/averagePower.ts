@@ -2,6 +2,7 @@ import { pipe } from "rxjs";
 import { map } from "rxjs/operators";
 
 import { average } from "../../utils/stats";
+import { IPSD } from "../../types/psd";
 
 /**
  * Takes a stream of PSDs and returns a sream of arrays, containing the average power in each channel
@@ -11,7 +12,7 @@ import { average } from "../../utils/stats";
  */
 export const averagePower = () =>
   pipe(
-    map(inputPSD =>
+    map((inputPSD: IPSD) =>
       inputPSD.psd.reduce(
         (acc, channel) => [...acc, average(channel)],
         []

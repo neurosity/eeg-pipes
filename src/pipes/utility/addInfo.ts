@@ -1,10 +1,14 @@
 import { pipe } from "rxjs";
 import { map } from "rxjs/operators";
 
-const isObject = object => object instanceof Object;
+import { ISample } from "../../types/sample";
+import { Info } from "../../types/info";
+
+const isObject = object =>
+  object instanceof Object && object === Object(object);
 const isFunction = object => typeof object === "function";
 
-const patch = sample => info => ({
+const patch = (sample: ISample) => (info: Info) => ({
   ...sample,
   info: {
     ...(sample.info || {}),
@@ -19,13 +23,18 @@ const patch = sample => info => ({
  * @param {Object} info Info to be added to the EEG stream. Relevant info may include: `samplingRate` and `channelNames`
  * @returns {Observable<Sample|Epoch|PSD>}
  */
-export const addInfo = (arg = {}) =>
+export const addInfo = (infoValue: any) =>
   pipe(
-    map(sample => {
-      if (!isObject(sample) || (!isObject(arg) && !isFunction(arg))) {
+    map((sample: any) => {
+      if (
+        !isObject(sample) ||
+        (!isObject(infoValue) && !isFunction(infoValue))
+      ) {
         return sample;
       }
-      const info = isFunction(arg) ? arg(sample) : arg;
+      const info: Info = isFunction(infoValue)
+        ? infoValue(sample)
+        : infoValue;
       return patch(sample)(info);
     })
   );

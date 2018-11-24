@@ -4,7 +4,7 @@ import { map } from "rxjs/operators";
 import { isEpoch } from "../../utils/isEpoch";
 
 import {
-  USE_LOG as useLog,
+  USE_LOG as defaultUseLog,
   DATA_PROP as defaultDataProp
 } from "../../constants";
 
@@ -19,12 +19,12 @@ import {
  * @returns {Observable<Sample | Epoch>}
  */
 export const voltsToMicrovolts = ({
-  log = useLog,
+  useLog = defaultUseLog,
   dataProp = defaultDataProp
 } = {}) =>
   pipe(
     map(eegObject => {
-      const conversion = log
+      const conversion = useLog
         ? volt => Math.log10(Math.pow(10, 6) * volt)
         : volt => Math.pow(10, 6) * volt;
       return {

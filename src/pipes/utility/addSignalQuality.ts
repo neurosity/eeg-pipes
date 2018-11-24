@@ -2,7 +2,6 @@ import { pipe } from "rxjs";
 import { map } from "rxjs/operators";
 
 import { standardDeviation } from "../../utils/stats";
-
 import { DATA_PROP as defaultDataProp } from "../../constants";
 
 /**
@@ -16,7 +15,7 @@ import { DATA_PROP as defaultDataProp } from "../../constants";
  */
 export const addSignalQuality = ({ dataProp = defaultDataProp } = {}) =>
   pipe(
-    map(epoch => {
+    map((epoch: any) => {
       const names = epoch.info.channelNames
         ? epoch.info.channelNames
         : epoch[dataProp].map((_, i) => i);
