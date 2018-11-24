@@ -9,7 +9,10 @@ import { DATA_PROP as defaultDataProp } from "../constants";
  * @returns {Array<Array<number>>}
  */
 
-export const groupByChannel = (samplesBuffer, dataProp = defaultDataProp) =>
+export const groupByChannel = (
+  samplesBuffer,
+  dataProp = defaultDataProp
+) =>
   samplesBuffer[0][dataProp].map((_, channelIndex) =>
     samplesBuffer.map(sample => sample[dataProp][channelIndex])
   );
