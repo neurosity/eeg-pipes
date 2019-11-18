@@ -21,7 +21,7 @@ export const removeChannels = ({
       );
 
       return {
-        ...sample,
+        ...(sample as {}),
         [dataProp]: channelData
       };
     })

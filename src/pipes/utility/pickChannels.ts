@@ -21,7 +21,7 @@ export const pickChannels = ({
       );
 
       return {
-        ...sample,
+        ...(sample as {}),
         [dataProp]: channelData
       };
     })

@@ -28,7 +28,7 @@ export const voltsToMicrovolts = ({
         ? volt => Math.log10(Math.pow(10, 6) * volt)
         : volt => Math.pow(10, 6) * volt;
       return {
-        ...eegObject,
+        ...(eegObject as {}),
         [dataProp]: eegObject[dataProp].map(channel => {
           if (isEpoch(eegObject)) {
             return channel.map(conversion);
