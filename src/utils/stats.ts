@@ -17,21 +17,45 @@ export const sum = array => {
   return num;
 };
 
-export const mean = array => sum(array) / array.length;
+export const mean = (array: number[]): number =>
+  sum(array) / array.length;
 
 export const variance = array => {
   const arrayMean = mean(array);
   return mean(array.map(num => Math.pow(num - arrayMean, 2)));
 };
 
-export const standardDeviation = array => Math.sqrt(variance(array));
+export const standardDeviation = (array: number[]) =>
+  Math.sqrt(variance(array));
 
-export const meanAbsoluteDeviation = array => {
+export const meanAbsoluteDeviation = (array: number[]) => {
   const arrayMean = mean(array);
   return mean(array.map(num => Math.abs(num - arrayMean)));
 };
 
+/**
+ * The i-th difference of a signal X with length n is Xn+i - Xn
+ */
+export const difference = (
+  array: number[],
+  span: number = 1
+): number[] => {
+  if (span > array.length - 1)
+    throw new Error("Span must be less than the array length");
+
+  let diff = new Array(array.length - span);
+
+  for (let i = 0; i < array.length - span; i++) {
+    diff[i] = array[i + span] - array[i];
+  }
+
+  return diff;
+};
+
 // Function aliases:
-export function average(array) {
+export function average(array: number[]): number {
   return mean(array);
 }
+
+export const absolute = (array: number[]): number[] =>
+  array.map(Math.abs);
