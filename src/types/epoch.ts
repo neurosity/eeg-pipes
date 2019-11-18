@@ -3,7 +3,7 @@ import { Channel } from "./channel";
 import { Info } from "./info";
 
 export interface IEpoch {
-  data: Array<Channel>;
+  data: Channel[];
   timestamp: number;
   psd?: PSD;
   freqs?: Freqs;
