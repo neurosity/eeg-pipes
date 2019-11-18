@@ -69,6 +69,6 @@
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-node-resolve": "^3.4.0",
     "ts-node": "^7.0.1",
-    "typescript": "^3.1.6"
+    "typescript": "^3.7.2"
   }
 }
