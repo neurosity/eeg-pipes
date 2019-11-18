@@ -7,3 +7,4 @@ export * from "./pickChannels";
 export * from "./removeChannels";
 export * from "./epoch";
 export * from "./means";
+export * from "./standardDeviations";
