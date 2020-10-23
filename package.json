@@ -33,12 +33,10 @@
   "license": "MIT",
   "keywords": [
     "neurosity",
+    "notion",
     "eeg",
-    "openbci",
-    "neurojs",
-    "rxjs",
-    "cyton",
-    "ganglion"
+    "bci",
+    "rxjs"
   ],
   "repository": {
     "type": "git",
