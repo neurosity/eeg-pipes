@@ -2,8 +2,9 @@ node_modules
 npm-debug.log
 .idea
 dist
-package-lock.json
 build
 .DS_Store
 */.DS_Store
 docs
+.cache
+.env

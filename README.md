@@ -21,6 +21,41 @@ Get started by installing the library:
 npm install @neurosity/pipes
 ```
 
+## Getting started
+
+```bash
+npm install @neurosity/pipes
+```
+
+Then import the module
+
+##### ESM
+
+```js
+import { epoch } from "@neurosity/pipes";
+```
+
+##### Node
+
+```js
+const { epoch } = require("@neurosity/pipes");
+```
+
+##### Browser
+
+```html
+<script type="module">
+  import { epoch } from "./node_modules/neurosity/pipes/esm/eeg-pipes.mjs";
+</script>
+<script nomodule src="./node_modules/neurosity/pipes/browser/eeg-pipes.js">
+```
+
+##### Electron
+
+```js
+import { epoch } from "@neurosity/pipes/dist/electron";
+```
+
 ## Usage
 
 An Observable of EEG data is required to work with pipes. This can be done by using `fromEvent` from RxJS in order to push callback events into an Observable stream.
@@ -42,11 +77,7 @@ const eeg$ = fromEvent(bci, "data");
 Now we have an Observable of EEG data that support Pipeable operators.
 
 ```js
-eeg$
-  .pipe
-  // ...
-  ()
-  .subscribe();
+eeg$.pipe().subscribe();
 ```
 
 The following are some libraries that provide EEG as RxJS observables out of the box:
@@ -201,4 +232,4 @@ A PSD represents the absolute power of different frequency bins in an Epoch of E
 
 ## Generating documentation
 
-To generate the docs, run `yarn esdoc`
+To generate the docs, run `npm run build:docs`
