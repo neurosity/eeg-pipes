@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "@types/node": "^10.12.10",
-    "copyfiles": "^2.1.0",
+    "copyfiles": "^2.4.0",
     "del-cli": "^1.1.0",
     "esdoc": "^1.1.0",
     "esdoc-ecmascript-proposal-plugin": "^1.0.0",
