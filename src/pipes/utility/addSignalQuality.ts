@@ -21,13 +21,16 @@ export const addSignalQuality = ({ dataProp = defaultDataProp } = {}) =>
         : epoch[dataProp].map((_, i) => i);
       return {
         ...epoch,
-        signalQuality: epoch[dataProp].reduce(
-          (acc, curr, index) => ({
-            ...acc,
-            [names[index]]: standardDeviation(curr)
-          }),
-          {}
-        )
+        info: {
+          ...epoch.info,
+          signalQuality: epoch[dataProp].reduce(
+            (acc, curr, index) => ({
+              ...acc,
+              [names[index]]: standardDeviation(curr)
+            }),
+            {}
+          )  
+        }
       };
     })
   );
