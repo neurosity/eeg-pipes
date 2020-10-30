@@ -1,3 +1,4 @@
+export * from "./absolutePower";
 export * from "./alphaPower";
 export * from "./averagePower";
 export * from "./betaPower";
