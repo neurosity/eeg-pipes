@@ -11,16 +11,17 @@ import { FREQUENCY_BANDS as defaultBands } from "../../constants";
  * @method powerByBand
  * @example eeg$.pipe(epoch({ duration: 256, interval: 100, samplingRate: 256 }), fft({ bins: 256 }), powerByBand())
  * @param {Object} [bands] Custom bands object containing corresponding names and frequency ranges
+ * @param {Function} [powerMapper] Custom mapping function to compute band power (default = averagePower)
  * @returns {Observable<Array<number>>}
  */
-export const powerByBand = (bands = defaultBands) =>
+export const powerByBand = (bands = defaultBands, powerMapper = averagePower) =>
   pipe(
     flatMap(inputPSD => {
       const entries = Object.entries(bands);
       const bandPowers = entries.map(([_, range]) =>
         of(inputPSD).pipe(
           sliceFFT(range),
-          averagePower()
+          powerMapper()
         )
       );
       const zipPowers = (...powers) =>

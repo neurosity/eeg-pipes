@@ -48,7 +48,7 @@
   "dependencies": {
     "dsp.js": "^1.0.1",
     "fili": "^2.0.1",
-    "rxjs": "^6.3.1"
+    "rxjs": "^6.6.3"
   },
   "devDependencies": {
     "@types/node": "^10.12.10",
