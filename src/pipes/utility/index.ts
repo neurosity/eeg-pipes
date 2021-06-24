@@ -11,3 +11,4 @@ export * from "./center";
 export * from "./standardDeviations";
 export * from "./differences";
 export * from "./absolutes";
+export * from "./samples";

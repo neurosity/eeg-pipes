@@ -119,7 +119,7 @@ eeg$
     fft({ bins: 256 }),
     alphaPower()
   )
-  .subscribe(alphaPower => console.log(alphaPower));
+  .subscribe((alphaPower) => console.log(alphaPower));
 ```
 
 ## Pipes
@@ -165,6 +165,7 @@ Optional Parameters:
 - addInfo()
 - addSignalQuality()
   - signal quality is represented as standard deviation value for each channel
+- samples() // epoch to samples
 
 ### Coming soon
 
