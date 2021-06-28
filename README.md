@@ -166,6 +166,7 @@ Optional Parameters:
 - addSignalQuality()
   - signal quality is represented as standard deviation value for each channel
 - samples() // epoch to samples
+- concatEpochs()
 
 ### Coming soon
 

@@ -12,3 +12,4 @@ export * from "./standardDeviations";
 export * from "./differences";
 export * from "./absolutes";
 export * from "./samples";
+export * from "./concatEpochs";
