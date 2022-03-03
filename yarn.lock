@@ -709,6 +709,11 @@
     "call-me-maybe" "^1.0.1"
     "glob-to-regexp" "^0.3.0"
 
+"@neurosity/dsp@^1.0.1":
+  "integrity" "sha512-rY7KUpe1nLTk6oBPoRx/Eh9FDgTpxnUQSOrs1fsfs1T7l/pT6UtuYvh1UB32jTxe3l4QgUpE5NMq0mNJXrlQwg=="
+  "resolved" "https://registry.npmjs.org/@neurosity/dsp/-/dsp-1.0.1.tgz"
+  "version" "1.0.1"
+
 "@nodelib/fs.stat@^1.1.2":
   "integrity" "sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw=="
   "resolved" "https://registry.npmjs.org/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz"
@@ -2699,11 +2704,6 @@
   "integrity" "sha512-4As8uPrjfwb7VXC+WnLCbXK7y+Ueb2B3zgNCePYfhxS1PYeaO1YTeplffTEcbfLhvFNGLAz90VvJs9yomG7bow=="
   "resolved" "https://registry.npmjs.org/dotenv/-/dotenv-5.0.1.tgz"
   "version" "5.0.1"
-
-"dsp.js@^1.0.1":
-  "integrity" "sha1-AlVKIj7lFM0OImy2+4jW0LPpEwg="
-  "resolved" "https://registry.npmjs.org/dsp.js/-/dsp.js-1.0.1.tgz"
-  "version" "1.0.1"
 
 "duplexer2@~0.1.4":
   "integrity" "sha1-ixLauHjA1p4+eJEFFmKjL8a93ME="

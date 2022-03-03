@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>EEG Pipes</title>
+  </head>
+  <body>
+    <script type="module">
+      import { createEEG } from "../dist/esm/eeg-pipes.esm.js";
+
+      createEEG({
+        mock: true
+      }).subscribe((data) => {
+        console.log(data);
+      });
+    </script>
+  </body>
+</html>

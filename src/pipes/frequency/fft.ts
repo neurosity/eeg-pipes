@@ -1,4 +1,4 @@
-import { FFT } from "dsp.js";
+import { FFT } from "@neurosity/dsp";
 import { pipe } from "rxjs";
 import { map } from "rxjs/operators";
 import { zeroPad } from "../../utils/zeroPad";
@@ -25,7 +25,7 @@ export const fft = ({
   dataProp = defaultDataProp
 }: IFFT = {}) => {
   const transformChannel = (channel, samplingRate) => {
-    let safeSamples = channel.map(sample => {
+    let safeSamples = channel.map((sample) => {
       if (isNaN(sample) || !sample) {
         return 0;
       }
@@ -44,7 +44,7 @@ export const fft = ({
   };
   return pipe(
     map((epoch: any) => ({
-      psd: epoch[dataProp].map(channel =>
+      psd: epoch[dataProp].map((channel) =>
         transformChannel(channel, epoch.info.samplingRate)
       ),
       freqs: Array.from(

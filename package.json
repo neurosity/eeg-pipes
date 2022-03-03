@@ -12,8 +12,7 @@
     "build:cjs": "tsc -p tsconfig.cjs.json",
     "build:esm": "tsc -p tsconfig.esm.json && npm run build:esm:bundle",
     "build:esm:bundle": "rollup -c",
-    "build:browser": "parcel build ./src/index.ts --target browser --out-dir dist/browser --out-file eeg-pipes.js && npm run build:browser:iife",
-    "build:browser:iife": "rollup ./dist/esm/eeg-pipes.mjs --file dist/browser/eeg-pipes.iife.js --format iife --name 'EEGPipes'",
+    "build:browser": "parcel build ./src/index.ts --target browser --out-dir dist/browser --out-file eeg-pipes.js",
     "build:electron": "parcel build ./src/index.ts --target electron --out-dir dist/electron",
     "build:docs": "node ./node_modules/.bin/esdoc",
     "serve:docs": "lite-server --baseDir=./docs",
@@ -47,7 +46,7 @@
     "url": "https://github.com/neurosity/eeg-pipes/issues"
   },
   "dependencies": {
-    "dsp.js": "^1.0.1",
+    "@neurosity/dsp": "^1.0.1",
     "fili": "^2.0.1",
     "rxjs": "^6.6.3"
   },

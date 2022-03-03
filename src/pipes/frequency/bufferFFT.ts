@@ -1,4 +1,4 @@
-import { FFT } from "dsp.js";
+import { FFT } from "@neurosity/dsp";
 import { pipe } from "rxjs";
 import { bufferCount, map } from "rxjs/operators";
 
@@ -26,8 +26,8 @@ export const bufferFFT = ({
   samplingRate = defaultsamplingRate,
   dataProp = defaultDataProp
 } = {}) => {
-  const fft = channelGroup => {
-    const safeSamples = channelGroup.map(x => {
+  const fft = (channelGroup) => {
+    const safeSamples = channelGroup.map((x) => {
       if (isNaN(x) || !x) {
         return 0;
       }
@@ -39,7 +39,7 @@ export const bufferFFT = ({
   };
   return pipe(
     bufferCount(bins, window),
-    map(samplesBuffer =>
+    map((samplesBuffer) =>
       groupByChannel(samplesBuffer, dataProp).map(fft)
     )
   );

@@ -1,4 +1,4 @@
-import { WindowFunction, DSP } from "dsp.js";
+import { WindowFunction, DSP } from "@neurosity/dsp";
 import { pipe } from "rxjs";
 import { map } from "rxjs/operators";
 import { isEpoch } from "../../utils/isEpoch";
@@ -20,19 +20,29 @@ const interpolate = (before, after) => {
 /**
  * All window function types supported by the current DSP library (dsp.js)
  */
-export type WindowType = 'BARTLETT' | 'BARTLETTHANN' | 'BLACKMAN' | 'COSINE' | 'GAUSS' | 'HAMMING' | 'HANN' | 'LANCZOS' | 'RECTANGULAR' | 'TRIANGULAR';
+export type WindowType =
+  | "BARTLETT"
+  | "BARTLETTHANN"
+  | "BLACKMAN"
+  | "COSINE"
+  | "GAUSS"
+  | "HAMMING"
+  | "HANN"
+  | "LANCZOS"
+  | "RECTANGULAR"
+  | "TRIANGULAR";
 
 const WindowTypeMap = {
-    BARTLETT: DSP.BARTLETT,
-    BARTLETTHANN: DSP.BARTLETTHANN,
-    BLACKMAN: DSP.BLACKMAN,
-    COSINE: DSP.COSINE,
-    GAUSS: DSP.GAUSS,
-    HAMMING: DSP.HAMMING,
-    HANN: DSP.HANN,
-    LANCZOS: DSP.LANCZOS,
-    RECTANGULAR: DSP.RECTANGULAR,
-    TRIANGULAR: DSP.TRIANGULAR
+  BARTLETT: DSP.BARTLETT,
+  BARTLETTHANN: DSP.BARTLETTHANN,
+  BLACKMAN: DSP.BLACKMAN,
+  COSINE: DSP.COSINE,
+  GAUSS: DSP.GAUSS,
+  HAMMING: DSP.HAMMING,
+  HANN: DSP.HANN,
+  LANCZOS: DSP.LANCZOS,
+  RECTANGULAR: DSP.RECTANGULAR,
+  TRIANGULAR: DSP.TRIANGULAR
 };
 
 /**
@@ -47,18 +57,18 @@ const WindowTypeMap = {
  * @returns {Observable<Sample | Epoch>}
  */
 export const window = ({
-  windowType = 'HAMMING',
+  windowType = "HAMMING",
   nbChannels = defaultChannels
-}: { windowType?: WindowType, nbChannels?: number } = {}) => {
+}: { windowType?: WindowType; nbChannels?: number } = {}) => {
   if (!nbChannels) {
     throw new Error("Please supply nbChannels parameter");
   }
   const windowFunction = new WindowFunction(WindowTypeMap[windowType]);
-  
+
   return pipe(
     map((eegObject: any) => ({
       ...eegObject,
-      data: eegObject.data.map( (channel) => {
+      data: eegObject.data.map((channel) => {
         if (isEpoch(eegObject)) {
           const nans = [];
           const safeChannel = channel.map((sample, sampleIndex) => {
@@ -78,7 +88,7 @@ export const window = ({
 
           // Afterwards, reinsert NaNs
           if (nans.length > 0) {
-            nans.forEach(nan => {
+            nans.forEach((nan) => {
               filteredData[nan] = NaN;
             });
           }
