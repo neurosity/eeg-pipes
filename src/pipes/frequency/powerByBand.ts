@@ -1,5 +1,5 @@
 import { of, zip, pipe } from "rxjs";
-import { flatMap } from "rxjs/operators";
+import { mergeMap } from "rxjs/operators";
 
 import { averagePower } from "./averagePower";
 import { sliceFFT } from "./sliceFFT";
@@ -14,15 +14,15 @@ import { FREQUENCY_BANDS as defaultBands } from "../../constants";
  * @param {Function} [powerMapper] Custom mapping function to compute band power (default = averagePower)
  * @returns {Observable<Array<number>>}
  */
-export const powerByBand = (bands = defaultBands, powerMapper = averagePower) =>
+export const powerByBand = (
+  bands = defaultBands,
+  powerMapper = averagePower
+) =>
   pipe(
-    flatMap(inputPSD => {
+    mergeMap((inputPSD) => {
       const entries = Object.entries(bands);
       const bandPowers = entries.map(([_, range]) =>
-        of(inputPSD).pipe(
-          sliceFFT(range),
-          powerMapper()
-        )
+        of(inputPSD).pipe(sliceFFT(range), powerMapper())
       );
       const zipPowers = (...powers) =>
         powers.reduce(

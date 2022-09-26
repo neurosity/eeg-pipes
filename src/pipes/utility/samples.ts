@@ -1,5 +1,5 @@
 import { pipe, from } from "rxjs";
-import { flatMap } from "rxjs/operators";
+import { mergeMap } from "rxjs/operators";
 
 import { transpose } from "../../utils/transpose";
 import { ISample } from "../../types/sample";
@@ -12,7 +12,7 @@ import { ISample } from "../../types/sample";
  */
 export const samples = () =>
   pipe(
-    flatMap((epoch: any) => {
+    mergeMap((epoch: any) => {
       const { info } = epoch;
       const data: number[][] = epoch.data;
 
