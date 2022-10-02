@@ -1,8 +1,6 @@
 import { createEEG, notchFilter, epoch, bandpassFilter } from "../src";
 
-const eeg1$ = createEEG({ mock: true }).pipe(
-  notchFilter({ nbChannels: 4 })
-);
+const eeg1$ = createEEG().pipe(notchFilter({ nbChannels: 4 }));
 
 const eeg2$ = createEEG({ NaNRange: [0.29, 0.31] }).pipe(
   notchFilter({ nbChannels: 4 })

@@ -5,8 +5,5 @@ export const createMockStream = (options = {}) => {
   console.warn(
     "createMockStream will be deprecated in the next major release. Use the createEEG instead."
   );
-  return createEEG({
-    ...options,
-    mock: true
-  });
+  return createEEG(options);
 };
