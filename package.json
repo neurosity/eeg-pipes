@@ -33,7 +33,8 @@
   "license": "MIT",
   "keywords": [
     "neurosity",
-    "notion",
+    "crown",
+    "dsp",
     "eeg",
     "bci",
     "rxjs"

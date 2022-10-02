@@ -82,7 +82,7 @@ eeg$.pipe().subscribe();
 
 The following are some libraries that provide EEG as RxJS observables out of the box:
 
-- [Neurosity Notion](https://github.com/neurosity/notion-js)
+- [Neurosity Crown](https://github.com/neurosity/notion-js)
 - [OpenBCI Ganglion Web Bluetooth](https://github.com/neurosity/ganglion-ble)
 - [OpenBCI Cyton/Ganglion](https://github.com/neurosity/openbci-observable)
 - [Muse Web Bluetooth](https://github.com/urish/muse-js)
