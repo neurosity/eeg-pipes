@@ -25,7 +25,8 @@ export const samples = () =>
         const timestamp = info.startTime + sampleOffset;
         const sample: ISample = {
           data,
-          timestamp
+          timestamp,
+          ...(info ? { info } : {})
         };
 
         samples.push(sample);
