@@ -167,6 +167,7 @@ Optional Parameters:
   - signal quality is represented as standard deviation value for each channel
 - samples() // epoch to samples
 - concatEpochs()
+- dynamicBuffer({ minSamples: number, maxSamples: number, incrementCountBy: number })
 
 ### Coming soon
 
