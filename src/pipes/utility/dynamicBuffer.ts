@@ -2,28 +2,30 @@ import { pipe } from "rxjs";
 import { scan, filter, map } from "rxjs/operators";
 
 type Options = {
-  maxSamples: number;
   minSamples?: number;
-  incrementCountBy: number;
+  maxSamples: number;
+  incrementCountBy?: number;
 };
 
 /**
- * Similar to rxjs' bufferCount pipe, but the buffer accepts a minimum, maximum number of samples.
+ * Similar to the bufferCount pipe, but the buffer accepts a minimum, maximum number of samples.
  * @method dynamicBuffer
  * @example samples$.pipe(dynamicBuffer({ minSamples: 5, maxSamples: 20, incrementCountBy: 1 }))
  *
  * @param {Object} options - Data structure options
- * @param {number} [options.minSamples] Minimum number of samples to emit
- * @param {string} [options.maxSamples] Maximum number of samples to emit
- * @param {string} [options.incrementCountBy] Count of samples to increment by
+ * @param {number} [options.minSamples] Optional. Minimum number of samples to emit. Defaults to 1.
+ * @param {number} [options.maxSamples] Maximum number of samples to emit.
+ * @param {number} [options.incrementCountBy] Count of samples to increment by.
  *
- * @returns {Observable<T>}
+ * @returns {Observable<any[]>}
  */
 export function dynamicBuffer({
   minSamples,
   maxSamples,
   incrementCountBy
 }: Options) {
+  const safeIncrementCountBy = incrementCountBy || 1;
+
   return pipe(
     scan(
       (acc, sample) => {
@@ -31,7 +33,7 @@ export function dynamicBuffer({
 
         const nextCountdown =
           acc.emitCountdown === 0
-            ? incrementCountBy - 1
+            ? safeIncrementCountBy - 1
             : acc.emitCountdown - 1;
 
         return {
@@ -41,7 +43,7 @@ export function dynamicBuffer({
       },
       {
         buffer: [],
-        emitCountdown: minSamples ?? incrementCountBy
+        emitCountdown: minSamples || safeIncrementCountBy
       }
     ),
     filter(({ emitCountdown }) => emitCountdown === 0),
